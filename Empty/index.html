@@ -257,6 +257,10 @@ Error message and password prompt
 
 <li>C# Binding 高级应用</li>
 
+<li>C# Http请求下载</li>
+
+<li>C# instance单例？</li>
+
 <li>C# ItemsControl 派生类使用</li>
 
 <li>C# Json SQLite</li>
@@ -297,6 +301,10 @@ Error message and password prompt
 
 <li>C# 窗口划分</li>
 
+<li>C# 获取当前软件版本</li>
+
+<li>C# 获取程序的根目录</li>
+
 <li>C# 获取系统亮度</li>
 
 <li>C# 获取系统参数（电量、亮度、音量）</li>
@@ -306,6 +314,12 @@ Error message and password prompt
 <li>C# 获取系统音量</li>
 
 <li>C# 随机数（未完成）</li>
+
+<li>C#多线程学习系列</li>
+
+<li>C#线程池</li>
+
+<li>C#获取运行软件位置</li>
 
 <li>CIS修改记录_6.1</li>
 
@@ -322,6 +336,8 @@ Error message and password prompt
 <li>DateTime 减操作</li>
 
 <li>Desire</li>
+
+<li>Draft of '软件更新'</li>
 
 <li>FFmpeg</li>
 
@@ -503,6 +519,8 @@ Error message and password prompt
 
 <li>Tiddlywiki-最少关键词设置</li>
 
+<li>TiddlywikiRender html</li>
+
 <li>TiddlywikiRender json</li>
 
 <li>TiddlyWikiText</li>
@@ -655,6 +673,8 @@ Error message and password prompt
 
 <li>服务器安装Git源码</li>
 
+<li>服务器版本信息及对应实体类</li>
+
 <li>查看远程服务器信息</li>
 
 <li>男性生殖结构</li>
@@ -676,6 +696,8 @@ Error message and password prompt
 <li>调用CMD</li>
 
 <li>资源</li>
+
+<li>软件更新</li>
 
 <li>软件更新之服务器搭建</li>
 
@@ -11344,6 +11366,71 @@ public CommandAdvanceViewModel()
 }
 ```</pre>
 </div>
+<div tags="ToDo Temp 软件更新 C#" title="C# Http请求下载" tmap.id="ff8dfea5-0852-481a-8d99-325f6dd8a752" revision="0" bag="default">
+<pre>!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/MrZheng/p/11636254.html&quot; &gt; C# Http请求类&lt;/a&gt;
+* //''`HttpWebRequest 见 马克思主义与社会科学方法论`''//
+** 该类较原始，底层，建立对Http访问的直观认识
+
+!! //''异步形式下载''//
+```c
+var client = new System.Net.WebClient();
+client.DownloadDataCompleted += (x, y) =&gt;
+{
+    ……
+};
+client.DownloadDataAsync(new Uri(url));
+```
+
+
+```c
+var client = new System.Net.WebClient();
+client.DownloadDataCompleted += (x, y) =&gt;
+{
+    try
+    {
+        MemoryStream stream = new MemoryStream(y.Result);
+
+        XDocument xDoc = XDocument.Load(stream);
+        UpdateInfo updateInfo = new UpdateInfo();
+        XElement root = xDoc.Element(&quot;UpdateInfo&quot;);
+        updateInfo.AppName = root.Element(&quot;AppName&quot;).Value;
+        updateInfo.AppVersion = root.Element(&quot;AppVersion&quot;) == null || string.IsNullOrEmpty(root.Element(&quot;AppVersion&quot;).Value) ? null : new Version(root.Element(&quot;AppVersion&quot;).Value);
+        updateInfo.RequiredMinVersion = root.Element(&quot;RequiredMinVersion&quot;) == null || string.IsNullOrEmpty(root.Element(&quot;RequiredMinVersion&quot;).Value) ? null : new Version(root.Element(&quot;RequiredMinVersion&quot;).Value);
+        updateInfo.Desc = root.Element(&quot;Desc&quot;).Value;
+        updateInfo.MD5 = Guid.NewGuid();
+
+        stream.Close();
+        Updater.Instance.StartUpdate(updateInfo);
+    }
+    catch
+    { }
+};
+client.DownloadDataAsync(new Uri(url));
+```</pre>
+</div>
+<div tags="ToDo Temp C#" title="C# instance单例？" tmap.id="0d01e974-54f8-49df-9cb7-26aa216daa47" revision="0" bag="default">
+<pre>* Updater类型的Instance
+* Updater
+
+```c
+public class Updater
+{
+    private static Updater _instance;
+    public static Updater Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new Updater();
+            }
+            return _instance;
+        }
+    }
+
+    string url = Constants.RemoteUrl + Updater.Instance.CallExeName + &quot;/update.xml&quot;;
+```</pre>
+</div>
 <div created="20200509054836360" modified="20200514084630519" tags="C# Style" title="C# ItemsControl 派生类使用" tmap.id="4f4f6c30-8bc8-47c8-bcdb-39ede3793b51" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//1、TreeView//
 ```xml
@@ -12959,6 +13046,32 @@ public class ToMultiRatio : IMultiValueConverter
 ```
 </pre>
 </div>
+<div tags="C# 软件更新 ToDo Temp 文件夹" title="C# 获取当前软件版本" tmap.id="005a6745-d9c9-4d16-9eb4-bb6d7ac6a733" type="" revision="0" bag="default">
+<pre>* `System.Diagnostics.FileVersionInfo`
+
+```c
+FileVersionInfo.GetVersionInfo(Path.Combine(Environment.SystemDirectory, &quot;Notepad.exe&quot;));
+FileVersionInfo myFileVersionInfo = FileVersionInfo.GetVersionInfo(Environment.SystemDirectory + &quot;\\Notepad.exe&quot;);
+
+Console.WriteLine(&quot;File: &quot; + myFileVersionInfo.FileDescription + '\n' + &quot;Version number: &quot; + myFileVersionInfo.FileVersion);
+```
+
+
+```c
+public virtual Version CurrentVersion
+{
+    get { 
+		return new Version(System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).ProductVersion); 
+	}
+}
+```
+* 返回类型：`Version`</pre>
+</div>
+<div tags="ToDo 软件更新 Temp C# 文件夹" title="C# 获取程序的根目录" tmap.id="25730580-7448-4e40-b39c-0b5512c70abe" revision="0" bag="default">
+<pre>```c
+System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location)
+```</pre>
+</div>
 <div tags="WPF基础" title="C# 获取系统亮度" tmap.id="ad6769ee-52ed-40eb-84f3-0858581d52a4" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//1、获取初始化系统亮度//
 ```c
@@ -13352,6 +13465,55 @@ public bool IsMute
 <div created="20200507084441246" modified="20200514124042066" tags="随机数 C# WPF基础" title="C# 随机数（未完成）" tmap.id="0304aaab-2cb7-4bd7-b224-14642a321125" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div tags="ToDo Temp C# 线程" title="C#多线程学习系列" tmap.id="1fae9011-90f2-458f-bee0-b954a4e3903f" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/xugang/archive/2010/11/03/1867945.html&quot; &gt; C#多线程学习&lt;/a&gt;</pre>
+</div>
+<div tags="ToDo Temp 线程 C#" title="C#线程池" tmap.id="b2fc7610-e9cf-4706-b1c5-be91963923ef" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/xugang/archive/2010/04/20/1716042.html&quot; &gt; 浅谈 线程池&lt;/a&gt;
+
+!! ''//什么线程池？//''
+* 容纳线程的容器
+* ThreadPool静态类，通过QueueUserWorkItem()将工作函数排入线程池
+
+!! ''//线程池作用//''
+* 用于突然大量爆发的线程，限定固定线程，减少创建和销毁线程所需的时间
+* 关键：一个线程完成任务后，可为其他任务服务；使用固定的线程轮流为大量的任务服务，减少创建和销毁线程的损耗
+* 缺点：不能控制线程池中的线程
+
+!! ''//不宜使用线程，而使用单独的Thread类//''
+* 不适用场合：采用单独的Thread类
+** 线程执行需要较长时间
+** 指定详细优先级
+** 需要对线程进行控制</pre>
+</div>
+<div tags="软件更新 C#" title="C#获取运行软件位置" tmap.id="46e4f343-b12c-4cf3-950e-22da5cd24d9d" revision="0" bag="default">
+<pre>!! ''//获取运行程序的程序名//''
+
+```c
+System.Reflection.Assembly.GetEntryAssembly().Location.Substring(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf(System.IO.Path.DirectorySeparatorChar) + 1).Replace(&quot;.exe&quot;, &quot;&quot;);
+```
+* index of `\` &gt; Substring &gt; Replace
+
+!! ''//代码分解//''
+!!! ''//程序完整路径//''
+
+```c
+System.Reflection.Assembly.GetEntryAssembly().Location
+```
+* 返回：`……\AppUpdate\AppUpdate\bin\Debug\AppUpdate.exe`
+
+!!! ''//系统盘符分隔符//''
+```c
+System.IO.Path.DirectorySeparatorChar
+```
+* Path路径，`DirectorySeparatorChar`分隔符，返回 `\`
+
+```c
+System.Reflection.Assembly.GetEntryAssembly().Location.Substring()
+```
+* Substring( `起始 index` )
+</pre>
+</div>
 <div tags="Mememori3476" title="CIS修改记录_6.1" tmap.id="3f608cce-5dbd-45ca-8860-965a8719f738" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //Recipe.xml//
 * //''该文件用于 Program 界面显示：~AutoCss、~MultiCss、~MaxLoad''//
@@ -13576,6 +13738,25 @@ TimeSpan diff = t1 - t2;
 &lt;div class=&quot;tc-table-of-contents&quot;&gt;
 &lt;&lt;toc-selective-expandable 'Desire'&gt;&gt;
 &lt;/div&gt;</pre>
+</div>
+<div draft.of="软件更新" draft.title="软件更新" tags="ToDo Temp 软件更新 Mememori3476 C#" title="Draft of '软件更新'" tmap.id="fade6f24-9494-4f94-9aad-7723ac934000" revision="0" bag="default">
+<pre>!! ''//升级流程//''
+* 检测服务器版本号 &gt; 对比本地和服务器版本号 &gt; 下载完成解压升级包 &gt; 文件覆盖 &gt; 升级完成
+
+!! ''//注意事项//''
+* 避免老文件被占用，无法覆盖，升级前应关闭程序
+* 避免升级程序本身需要升级
+* 升级程序需能单独执行
+
+!! //''[[服务器版本信息及对应实体类]]''//
+
+!! ''//检测详细过程//''
+* 异步下载//''`update.xml`''//
+* 分析xml，存储至自定义类UpdateInfo
+* 启动升级程序，//''文件占用''//，无法直接覆盖`AutoUpdater.exe`
+** 将`AutoUpdater.exe`拷贝至缓存文件夹，启动缓存文件夹中的`AutoUpdater.exe`完成升级
+
+!! ''//[[C# Http请求下载]]//''</pre>
 </div>
 <div tags="计算机技巧" title="FFmpeg" tmap.id="8cc27ee5-06f5-4f5b-8330-a6edf3c51809" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;&lt;
@@ -13887,13 +14068,17 @@ TimeSpan diff = t1 - t2;
 <div tags="Git Github" title="Git常用命令" tmap.id="00ee2763-7ac3-456b-b9f6-d6937d97d1ae" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! [[Git与GitHub]]
 
+!! ''//提交至Github//''
 * `$ git add .`，将工作区中所有文件添加至暂存区，临时保存
 ** `$ git rm --cached`，移除缓存
 * `$ git commit -m &quot;FirstTime push&quot;`，将暂存区文件提交至本地仓库
 ** `commit`：提交；`-m`：代表提交信息
 * `Push`：将本地代码推到远程仓库
 ** `$ git push origin master`，本地代码推到远程`master`分支
-</pre>
+
+!! ''//Github clone至本地//''
+* `$ git clone git@github.com:Mememori3476/Mememori3476.github.io.git Mememori`
+** `$ git clone [Address] [newName]`</pre>
 </div>
 <div tags="html Temp" title="HTML字体定义" tmap.id="febe7c24-c0a8-468c-a538-60580d41e46e" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//字体效果 &lt;/font&gt;//''
@@ -14594,7 +14779,7 @@ title:&quot;Structure Note&quot; text:&quot;结构化笔记，用于引导各种
 * `tiddlywiki mememori3476 --render &quot;[[至爱时刻]]&quot; &quot;&quot; &quot;text/plain&quot; $:/core/templates/static.template.html`
 
 
-&lt;&lt;translink &quot;&quot;&quot;Tiddlywiki保存&quot;&quot;&quot;&gt;&gt;
+&lt;&lt;translink &quot;&quot;&quot;TiddlywikiRender html&quot;&quot;&quot;&gt;&gt;
 
 !! //rendertiddlers//
 * ''Syntax：`--rendertiddlers &lt;filter&gt; &lt;template&gt; &lt;pathname&gt; [&lt;type&gt;] [&lt;extension&gt;] [&quot;noclean&quot;]`''
@@ -15032,6 +15217,13 @@ return [{
 </div>
 <div tags="TiddlyPlugin" title="Tiddlywiki-最少关键词设置" tmap.id="80abd049-496a-46c6-8ed9-9c1c2ce3416c" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! $:/config/Search/MinLength，设置内容`2`</pre>
+</div>
+<div tags="TiddlyRender" title="TiddlywikiRender html" tmap.id="6f23fbd8-38c2-4ce4-9850-186d7a43aa97" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//保存 TiddlyWiki//''
+* ''Syntax：`--render &lt;tiddler-filter&gt; [&lt;filename-filter&gt;] [&lt;render-type&gt;] [&lt;template&gt;] [&lt;name&gt;] [&lt;value&gt;]`''
+* lazy-all：//`tiddlywiki mememori3476 --render &quot;[[xxx]]&quot; &quot;&quot; &quot;text/plain&quot; $:/core/save/lazy-all`//
+** 默认保存 Mememori3476/output 文件夹
+* 其余模板见：[[Tiddlywiki Template]]</pre>
 </div>
 <div tags="TiddlyRender Json" title="TiddlywikiRender json" tmap.id="82eb6c66-f5e9-4547-ba10-5ad997af5068" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//Render Syntax//''
@@ -17057,6 +17249,35 @@ namespace testBitOFCPU
 * 修改环境变量、刷新环境变量
 ** `source /etc/profile`</pre>
 </div>
+<div tags="Mememori3476 ToDo Temp C#" title="服务器版本信息及对应实体类" tmap.id="72aaaf73-418d-4eb0-a9cb-c2af551c0e70" revision="0" bag="default">
+<pre>!! ''//服务器上版本信息//''
+```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;UpdateInfo&gt;
+	&lt;AppName&gt;Test&lt;/AppName&gt;
+	&lt;AppVersion&gt;1.0.0.1&lt;/AppVersion&gt;
+	&lt;RequiredMinVersion&gt;1.0.0.0&lt;/RequiredMinVersion&gt;
+	&lt;Desc&gt;shengji&lt;/Desc&gt;
+&lt;/UpdateInfo&gt;
+```
+
+!! ''//实体类对应xml信息//''
+```c
+public class UpdateInfo
+{
+	public string AppName { get; set; }
+	public Version AppVersion { get; set; }
+	public Version RequiredMinVersion { get; set; }
+	public Guid MD5 { get; set; }
+	private string _desc;
+	public string Desc
+	{
+		get{ return _desc;}
+		set{ _desc = string.Join(Environment.NewLine, value.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries));}
+	}
+}
+```</pre>
+</div>
 <div tags="Linux SSH Temp" title="查看远程服务器信息" tmap.id="86ddd655-82e9-4ab8-8682-7d660ea58407" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//查看 Linux服务器系统信息//''
 * `Putty_ssh`，SSH用于远程登陆
@@ -17280,13 +17501,41 @@ private void ipconfigTest()
 &lt;&lt;toc-selective-expandable '资源'&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
+<div tags="ToDo Temp 软件更新 Mememori3476 C#" title="软件更新" tmap.id="fade6f24-9494-4f94-9aad-7723ac934000" revision="0" bag="default">
+<pre>!! ''//升级流程//''
+* 检测服务器版本号 &gt; 对比本地和服务器版本号 &gt; 下载完成解压升级包 &gt; 文件覆盖 &gt; 升级完成
+
+!! ''//注意事项//''
+* 避免老文件被占用，无法覆盖，升级前应关闭程序
+* 避免升级程序本身需要升级
+* 升级程序需能单独执行
+
+!! //''[[服务器版本信息及对应实体类]]''//
+
+!! ''//检测详细过程//''
+* 异步下载//''`update.xml`''//
+* 分析xml，存储至自定义类UpdateInfo
+* 启动升级程序，//''文件占用''//，无法直接覆盖`AutoUpdater.exe`
+** 将`AutoUpdater.exe`拷贝至缓存文件夹，启动缓存文件夹中的`AutoUpdater.exe`完成升级
+
+</pre>
+</div>
 <div tags="ToDo Temp Mememori3476 软件更新 Linux" title="软件更新之服务器搭建" tmap.id="177a719a-8422-4b50-9daf-87cd39cf9fc5" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>!! ''//远程服务器作用//''
-* 存放软件更新文件、清单文件
-* 搭建服务，用于软件版本检测、下载新文件
-* 软件客户端，特定服务检测发现版本更新信息
+<pre>!!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/CBR97/article/details/90183102&quot; &gt;软件更新之服务器搭建&lt;/a&gt;
+
+!! ''//软件更新流程//''
+* 服务器：存放软件更新的文件、清单文件
+* 搭建服务：软件新版本检测、下载新文件
+* 软件客户端，特定服务：检测发现版本更新信息
+** 启动时（点击软件更新）
 * 点击更新，下载清单文件，和本地文件对比
 
+!! ''//服务器作用//''
+* 网络服务，文件下载和应答服务
+* 文件夹，存放更新文件、清单文件
+* 网络任意位置可访问，不限路由器
+
+!! ''////''
 </pre>
 </div>
 <div tags="性情精华" title="避孕" tmap.id="dd379271-3389-4201-a45a-4355dc47533d" type="text/vnd.tiddlywiki" revision="0" bag="default">
