@@ -257,7 +257,13 @@ Error message and password prompt
 
 <li>C# Binding 高级应用</li>
 
+<li>C# http下载</li>
+
+<li>C# Http请求</li>
+
 <li>C# Http请求下载</li>
+
+<li>C# http请求下载</li>
 
 <li>C# instance单例？</li>
 
@@ -283,6 +289,8 @@ Error message and password prompt
 
 <li>C# WPF 拖拽</li>
 
+<li>C# 外部程序调用之接收传递参数</li>
+
 <li>C# 对象对于引用非静态对象、方法或属性是必需的</li>
 
 <li>C# 属性 get set</li>
@@ -295,7 +303,11 @@ Error message and password prompt
 
 <li>C# 文件(夹)操作</li>
 
+<li>C# 文件下载Process</li>
+
 <li>C# 文件移动、txt合并</li>
+
+<li>C# 更新程序复制到缓存文件夹</li>
 
 <li>C# 注册表设置自启动</li>
 
@@ -313,11 +325,15 @@ Error message and password prompt
 
 <li>C# 获取系统音量</li>
 
+<li>C# 调用外部程序</li>
+
 <li>C# 随机数（未完成）</li>
 
 <li>C#多线程学习系列</li>
 
 <li>C#线程池</li>
+
+<li>C#获取编译exe所在目录</li>
 
 <li>C#获取运行软件位置</li>
 
@@ -360,6 +376,8 @@ Error message and password prompt
 <li>Git常用命令</li>
 
 <li>HTML字体定义</li>
+
+<li>http</li>
 
 <li>Java</li>
 
@@ -549,6 +567,8 @@ Error message and password prompt
 
 <li>ToDoList使用</li>
 
+<li>Tomcat服务器配置应用目录</li>
+
 <li>TWCrossLinks和Commander、AdvancedSearch兼容性不好</li>
 
 <li>VSCode配置C#</li>
@@ -674,6 +694,8 @@ Error message and password prompt
 <li>服务器安装Git源码</li>
 
 <li>服务器版本信息及对应实体类</li>
+
+<li>服务器防火墙</li>
 
 <li>查看远程服务器信息</li>
 
@@ -11366,6 +11388,68 @@ public CommandAdvanceViewModel()
 }
 ```</pre>
 </div>
+<div tags="ToDo Temp C# http WebClient" title="C# http下载" tmap.id="95764e8e-caad-45d1-8c34-b05b909c6477" revision="0" bag="default">
+<pre>* 注意该下载模块，需要明确`savepath`的文件名、后缀名
+* 如：`D:/Xian/xian1.jpg`
+
+```c
+public bool Download(string url, string savepath)
+{
+    bool res = false;
+    long startPosition = 0; // 上次下载的文件起始位置
+    FileStream writeStream; // 写入本地文件流对象
+ 
+    // 判断要下载的文件夹是否存在
+    if (File.Exists(savepath))
+    {
+        writeStream = File.OpenWrite(savepath); // 存在则打开要下载的文件
+        startPosition = writeStream.Length; // 获取已经下载的长度,可以结合&quot;HTTP_HEAD获取文件长度&quot;这篇文章算出下载进度百分比
+        writeStream.Seek(startPosition, SeekOrigin.Current); // 本地文件写入位置定位
+    }
+    else
+    {
+        writeStream = new FileStream(savepath, FileMode.Create); // 创建一个文件
+    }
+ 
+    try
+    {
+        HttpWebRequest myRequest = (HttpWebRequest)HttpWebRequest.Create(url); // 打开网络连接
+ 
+        if (startPosition != 0)
+        {
+            myRequest.AddRange((int)startPosition); // 设置Range值,与上面的writeStream.Seek用意相同,是为了定义远程文件读取位置
+        }
+ 
+        Stream readStream = myRequest.GetResponse().GetResponseStream(); // 向服务器请求,获得服务器的回应数据流
+ 
+        byte[] btArray = new byte[512]; // 定义一个字节数据,用来向readStream读取内容和向writeStream写入内容
+        int contentSize = readStream.Read(btArray, 0, btArray.Length); // 尝试读取文件
+ 
+        while (contentSize &gt; 0) // 如果读取长度大于零则续连成功,继续下载
+        {
+            writeStream.Write(btArray, 0, contentSize); // 写入本地文件
+            contentSize = readStream.Read(btArray, 0, btArray.Length); // 继续向远程文件读取
+        }
+ 
+        //关闭流
+        writeStream.Close();
+        readStream.Close();
+ 
+        res = true; //返回true下载成功
+    }
+    catch (Exception)
+    {
+        writeStream.Close();
+        res = false; //返回false下载失败
+    }
+ 
+    return res;
+}
+```</pre>
+</div>
+<div tags="ToDo Temp C# http" title="C# Http请求" tmap.id="e06ebc85-2847-4bca-be1e-47e39a4168de" revision="0" bag="default">
+<pre>!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;http://www.hmister.cn/?id=7&quot; &gt;Http请求&lt;/a&gt;</pre>
+</div>
 <div tags="ToDo Temp 软件更新 C#" title="C# Http请求下载" tmap.id="ff8dfea5-0852-481a-8d99-325f6dd8a752" revision="0" bag="default">
 <pre>!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/MrZheng/p/11636254.html&quot; &gt; C# Http请求类&lt;/a&gt;
 * //''`HttpWebRequest 见 马克思主义与社会科学方法论`''//
@@ -11408,7 +11492,49 @@ client.DownloadDataCompleted += (x, y) =&gt;
 client.DownloadDataAsync(new Uri(url));
 ```</pre>
 </div>
-<div tags="ToDo Temp C#" title="C# instance单例？" tmap.id="0d01e974-54f8-49df-9cb7-26aa216daa47" revision="0" bag="default">
+<div tags="ToDo Temp 软件更新 C# XML http" title="C# http请求下载" tmap.id="ff8dfea5-0852-481a-8d99-325f6dd8a752" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/MrZheng/p/11636254.html&quot; &gt; C# Http请求类&lt;/a&gt;
+* //''`HttpWebRequest 见 马克思主义与社会科学方法论`''//
+** 该类较原始，底层，建立对Http访问的直观认识
+
+!! //''异步形式下载''//
+```c
+var client = new System.Net.WebClient();
+client.DownloadDataCompleted += (x, y) =&gt;
+{
+    ……
+};
+client.DownloadDataAsync(new Uri(url));
+```
+
+
+```c
+var client = new System.Net.WebClient();
+client.DownloadDataCompleted += (x, y) =&gt;
+{
+    try
+    {
+        MemoryStream stream = new MemoryStream(y.Result);
+
+        XDocument xDoc = XDocument.Load(stream);
+        UpdateInfo updateInfo = new UpdateInfo();
+        XElement root = xDoc.Element(&quot;UpdateInfo&quot;);
+        updateInfo.AppName = root.Element(&quot;AppName&quot;).Value;
+        updateInfo.AppVersion = root.Element(&quot;AppVersion&quot;) == null || string.IsNullOrEmpty(root.Element(&quot;AppVersion&quot;).Value) ? null : new Version(root.Element(&quot;AppVersion&quot;).Value);
+        updateInfo.RequiredMinVersion = root.Element(&quot;RequiredMinVersion&quot;) == null || string.IsNullOrEmpty(root.Element(&quot;RequiredMinVersion&quot;).Value) ? null : new Version(root.Element(&quot;RequiredMinVersion&quot;).Value);
+        updateInfo.Desc = root.Element(&quot;Desc&quot;).Value;
+        updateInfo.MD5 = Guid.NewGuid();
+
+        stream.Close();
+        Updater.Instance.StartUpdate(updateInfo);
+    }
+    catch
+    { }
+};
+client.DownloadDataAsync(new Uri(url));
+```</pre>
+</div>
+<div tags="ToDo Temp C#" title="C# instance单例？" tmap.id="0d01e974-54f8-49df-9cb7-26aa216daa47" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Updater类型的Instance
 * Updater
 
@@ -12480,6 +12606,34 @@ private void textBox_Drop(object sender, DragEventArgs e)
 ```
 </pre>
 </div>
+<div tags="ToDo Temp C# 软件更新" title="C# 外部程序调用之接收传递参数" tmap.id="4d243350-df4b-4650-afcd-9c04c6768f69" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! //''Main函数接收传递参数''//
+* 传递至`DownFileProcess(string callExeName, string updateFileDir, string appDir, string appName, string appVersion, string desc)`
+
+```c
+static void Main(string[] args)
+{
+    if (args.Length == 0){ return;}
+    else if (args[0] == &quot;update&quot;){
+        try{
+            string callExeName = args[1];
+            string updateFileDir = args[2];
+            string appDir = args[3];
+            string appName = args[4];
+            string appVersion = args[5];
+            string desc = args[6];
+
+            //Check If Have New Vision
+            Ezhu.AutoUpdater.App app = new Ezhu.AutoUpdater.App();
+            UI.DownFileProcess downUI = new UI.DownFileProcess(callExeName, updateFileDir, appDir, appName, appVersion, desc) { WindowStartupLocation = WindowStartupLocation.CenterScreen };
+            app.Run(downUI);}
+        catch (Exception ex){
+            MessageBox.Show(ex.Message); }
+    }
+}
+```
+</pre>
+</div>
 <div tags="WPF基础" title="C# 对象对于引用非静态对象、方法或属性是必需的" tmap.id="d33c0f63-7269-4ea8-aa7e-ce2783338e76" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! 主函数 调用 另一个非静态函数，提示：//`对象对于引用非静态对象、方法或属性是必需的`//
 ---
@@ -12828,6 +12982,58 @@ string fullnamenoextension = Path.GetFileNameWithoutExtension(fullname);
 
 </pre>
 </div>
+<div tags="ToDo Temp 软件更新 C#" title="C# 文件下载Process" tmap.id="9e5be5e6-a7d1-49ae-85a4-dd6587f716fb" revision="0" bag="default">
+<pre>```c
+public DownFileProcess(string callExeName, string updateFileDir, string appDir, string appName, string appVersion, string desc)
+{
+    InitializeComponent();
+    this.Loaded += (sl, el) =&gt;
+    {
+        YesButton.Content = &quot;现在更新&quot;;
+        NoButton.Content = &quot;暂不更新&quot;;
+
+        this.YesButton.Click += (sender, e) =&gt;
+        {
+            Process[] processes = Process.GetProcessesByName(this.callExeName);
+
+            if (processes.Length &gt; 0)
+            {
+                foreach (var p in processes)
+                {
+                    p.Kill();
+                }
+            }
+
+            DownloadUpdateFile();
+        };
+
+        this.NoButton.Click += (sender, e) =&gt;
+        {
+            this.Close();
+        };
+
+        this.txtProcess.Text = this.appName + &quot;发现新的版本(&quot; + this.appVersion + &quot;),是否现在更新?&quot;;
+        txtDes.Text = this.desc;
+    };
+    this.callExeName = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(callExeName));
+    this.updateFileDir = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(updateFileDir));
+    this.appDir = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(appDir));
+    this.appName = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(appName));
+    this.appVersion = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(appVersion));
+
+    string sDesc = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(desc));
+    if (sDesc.ToLower().Equals(&quot;null&quot;))
+    {
+        this.desc = &quot;&quot;;
+    }
+    else
+    {
+        this.desc = &quot;更新内容如下:\r\n&quot; + sDesc;
+    }
+}
+
+```</pre>
+</div>
 <div created="20200508095131733" modified="20200514125211661" tags="C# 文件夹" title="C# 文件移动、txt合并" tmap.id="d219157a-ac9f-4c59-a063-a793150ce902" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //先验知识：////[[C# 文件(夹)操作]]//
 # 移动文件
@@ -12920,6 +13126,29 @@ using (StreamWriter streamWriter = new StreamWriter(destination, false, Encoding
 
 
 </pre>
+</div>
+<div tags="ToDo Temp C# 软件更新 文件夹" title="C# 更新程序复制到缓存文件夹" tmap.id="393c316c-1291-44e9-857f-af120a764e17" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```c
+//更新程序复制到缓存文件夹
+// Debug
+string appDir = System.IO.Path.Combine(System.Reflection.Assembly.GetEntryAssembly().Location.Substring(0, System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf(System.IO.Path.DirectorySeparatorChar)));
+//文件夹 Debug\Update
+string updateFileDir = System.IO.Path.Combine(System.IO.Path.Combine(appDir.Substring(0, appDir.LastIndexOf(System.IO.Path.DirectorySeparatorChar))), &quot;Update&quot;);
+if (!Directory.Exists(updateFileDir))
+{
+    Directory.CreateDirectory(updateFileDir);
+}
+// Debug\Update\2c159037-8760-4d4d-a7fc-6b0699a7b4c7
+updateFileDir = System.IO.Path.Combine(updateFileDir, updateInfo.MD5.ToString());
+if (!Directory.Exists(updateFileDir))
+{
+    Directory.CreateDirectory(updateFileDir);
+}
+// Debug\Update\2c159037-8760-4d4d-a7fc-6b0699a7b4c7\AutoUpdater.exe
+string exePath = System.IO.Path.Combine(updateFileDir, &quot;AutoUpdater.exe&quot;);
+// 将appDir下的文件，拷贝至缓存文件夹 Debug\Update\2c159037-8760-4d4d-a7fc-6b0699a7b4c7\
+File.Copy(System.IO.Path.Combine(appDir, &quot;AutoUpdater.exe&quot;), exePath, true);
+```</pre>
 </div>
 <div tags="WPF基础" title="C# 注册表设置自启动" tmap.id="938416ce-a2f0-494b-9d4a-d71e76777c7b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//开机自启动实现方式（注册表）：//
@@ -13046,7 +13275,7 @@ public class ToMultiRatio : IMultiValueConverter
 ```
 </pre>
 </div>
-<div tags="C# 软件更新 ToDo Temp 文件夹" title="C# 获取当前软件版本" tmap.id="005a6745-d9c9-4d16-9eb4-bb6d7ac6a733" type="" revision="0" bag="default">
+<div tags="C# 软件更新 ToDo Temp 文件夹" title="C# 获取当前软件版本" tmap.id="005a6745-d9c9-4d16-9eb4-bb6d7ac6a733" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* `System.Diagnostics.FileVersionInfo`
 
 ```c
@@ -13067,7 +13296,7 @@ public virtual Version CurrentVersion
 ```
 * 返回类型：`Version`</pre>
 </div>
-<div tags="ToDo 软件更新 Temp C# 文件夹" title="C# 获取程序的根目录" tmap.id="25730580-7448-4e40-b39c-0b5512c70abe" revision="0" bag="default">
+<div tags="ToDo 软件更新 Temp C# 文件夹" title="C# 获取程序的根目录" tmap.id="25730580-7448-4e40-b39c-0b5512c70abe" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```c
 System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location)
 ```</pre>
@@ -13462,13 +13691,39 @@ public bool IsMute
 }
 ```</pre>
 </div>
+<div tags="C#" title="C# 调用外部程序" tmap.id="cf11a758-faf0-4a98-afd4-27ff969f6bda" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//Process类：调用外部程序//''
+!! ''//ProcessStartInfo类：传入Process类所需的参数//''
+!! ''//示例：[[调用CMD]]//''
+
+!! ''//启动AutoUpdate.exe//''
+* 将升级信息当做参数传递，各参数空格分割
+* 防止残数有空格，Base64编码
+
+```c
+var info = new System.Diagnostics.ProcessStartInfo(exePath);
+info.UseShellExecute = true;//是否适用系统shell启动
+info.WorkingDirectory = exePath.Substring(0, exePath.LastIndexOf(System.IO.Path.DirectorySeparatorChar));//启动进程的起始目录
+updateInfo.Desc = updateInfo.Desc;
+//传递Porcess类所需的参数
+info.Arguments = 
+	&quot;update &quot; + 
+	Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(CallExeName)) + &quot; &quot; + 
+	Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(updateFileDir)) + &quot; &quot; + 
+	Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(appDir)) + &quot; &quot; + 
+	Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(updateInfo.AppName)) + &quot; &quot; + 
+	Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(updateInfo.AppVersion.ToString())) + &quot; &quot; + 
+	(string.IsNullOrEmpty(updateInfo.Desc) ? &quot;&quot; : Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(updateInfo.Desc)));
+System.Diagnostics.Process.Start(info);
+```</pre>
+</div>
 <div created="20200507084441246" modified="20200514124042066" tags="随机数 C# WPF基础" title="C# 随机数（未完成）" tmap.id="0304aaab-2cb7-4bd7-b224-14642a321125" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
-<div tags="ToDo Temp C# 线程" title="C#多线程学习系列" tmap.id="1fae9011-90f2-458f-bee0-b954a4e3903f" revision="0" bag="default">
+<div tags="ToDo Temp C# 线程" title="C#多线程学习系列" tmap.id="1fae9011-90f2-458f-bee0-b954a4e3903f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/xugang/archive/2010/11/03/1867945.html&quot; &gt; C#多线程学习&lt;/a&gt;</pre>
 </div>
-<div tags="ToDo Temp 线程 C#" title="C#线程池" tmap.id="b2fc7610-e9cf-4706-b1c5-be91963923ef" revision="0" bag="default">
+<div tags="ToDo Temp 线程 C#" title="C#线程池" tmap.id="b2fc7610-e9cf-4706-b1c5-be91963923ef" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/xugang/archive/2010/04/20/1716042.html&quot; &gt; 浅谈 线程池&lt;/a&gt;
 
 !! ''//什么线程池？//''
@@ -13486,13 +13741,31 @@ public bool IsMute
 ** 指定详细优先级
 ** 需要对线程进行控制</pre>
 </div>
-<div tags="软件更新 C#" title="C#获取运行软件位置" tmap.id="46e4f343-b12c-4cf3-950e-22da5cd24d9d" revision="0" bag="default">
+<div tags="文件夹 C# 软件更新" title="C#获取编译exe所在目录" tmap.id="64083386-f0e7-4148-9321-80abf1bd704b" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```c
+String appDir = 
+System.IO.Path.Combine(
+  System.Reflection.Assembly.GetEntryAssembly().Location.Substring(
+    0, System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf(
+	  System.IO.Path.DirectorySeparatorChar
+	)
+  )
+)
+```
+* 返回结果：`……\AppUpdate\AppUpdate\bin\Debug`</pre>
+</div>
+<div tags="软件更新 C# 文件夹" title="C#获取运行软件位置" tmap.id="46e4f343-b12c-4cf3-950e-22da5cd24d9d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//获取运行程序的程序名//''
 
 ```c
-System.Reflection.Assembly.GetEntryAssembly().Location.Substring(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf(System.IO.Path.DirectorySeparatorChar) + 1).Replace(&quot;.exe&quot;, &quot;&quot;);
+System.Reflection.Assembly.GetEntryAssembly().Location.Substring(
+  System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf(
+    System.IO.Path.DirectorySeparatorChar
+  ) + 1
+).Replace(&quot;.exe&quot;, &quot;&quot;);
 ```
 * index of `\` &gt; Substring &gt; Replace
+* 返回结果：`……\AppUpdate\AppUpdate\bin\Debug\AppUpdate`
 
 !! ''//代码分解//''
 !!! ''//程序完整路径//''
@@ -14113,6 +14386,13 @@ TimeSpan diff = t1 - t2;
 &lt;h2 style=&quot;background:#CCFFCC&quot;&gt;底色为黄色的标题&lt;/h2&gt;
 &lt;strong style=&quot;background:#FFFFCC&quot;&gt;底色为红色的句子&lt;/strong&gt;
 &lt;p style=&quot;background:#99CCCC&quot;&gt;底色为绿色的段落&lt;/p&gt;</pre>
+</div>
+<div tags="计算机技巧" title="http" tmap.id="4d4f5d0e-64ef-48dd-8c4c-14e69f2b957d" revision="0" bag="default">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+
+&lt;&lt;toc-selective-expandable 'http'&gt;&gt;
+
+&lt;/div&gt;</pre>
 </div>
 <div tags="TableOfContents" title="Java" tmap.id="14040abc-9664-462d-9d83-fec93c221a11" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -15451,6 +15731,34 @@ Fluid-Fixed
 &lt;&lt;translink &quot;&quot;&quot;ToDoList优先级、分类&quot;&quot;&quot; &gt;&gt;
 
 &lt;&lt;translink &quot;&quot;&quot;创建多个ToDoList&quot;&quot;&quot; &gt;&gt;</pre>
+</div>
+<div tags="ToDo Temp Linux 计算机技巧 软件更新" title="Tomcat服务器配置应用目录" tmap.id="6d0ba7b9-f7ef-4140-b97e-9e2d8ba79ef7" revision="0" bag="default">
+<pre>!! ''//配置Tomcat服务器的应用目录//''
+* 默认tomcat应用目录：`webapps`
+* `conf` &gt; `vim server.xml`，修改`appBase`，该值为项目目录
+```xml
+&lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
+```
+
+!! ''//配置默认项目//''
+* 默认项目和其他项目
+** http://servername:8080/
+** http://servername:8080/projectname/
+* tomcat服务器默认项目：webapps/ROOT目录
+* 方法一：适应tomcat服务器的默认项目，应用目录下创建ROOT目录
+* 方法二：自定义默认项目
+
+!!! ''//自定义默认项目//''
+* `conf` &gt; `vim server.xml`
+* `&lt;host&gt;`标签，标签中间，配置如下代码
+```xml
+&lt;Context path=&quot;&quot; docBase=&quot;自定义的默认项目路径&quot; debug=&quot;0&quot; reloadable=&quot;true&quot; /&gt;
+```
+** `path`：应用目录下的直接目录
+** `docBase`：默认项目目录
+** `reloadable`：默认自动编译源文件为class文件，设为`false`，提高Tomcat性能
+
+!!! ''//重启 Tomcat，使配置生效//''</pre>
 </div>
 <div tags="Temp TiddlyPlugin" title="TWCrossLinks和Commander、AdvancedSearch兼容性不好" tmap.id="3e24c280-208b-4992-b988-4e899a25295d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
@@ -17203,6 +17511,7 @@ namespace testBitOFCPU
 ** `systemctl stop tomcat`，停止
 ** `systemctl restart tomcat`，重启
 * ''//注意[[开启8080端口|https://blog.csdn.net/zhaoyanjun6/article/details/78955560]]//''
+** 防火墙开放8080端口：`firewall-cmd --zone=public --add-port=8080/tcp --permanent`
 
 !! ''//安装浏览器管理界面//''
 * 进入`tomcat`的`webapps`目录，查看目录
@@ -17249,7 +17558,7 @@ namespace testBitOFCPU
 * 修改环境变量、刷新环境变量
 ** `source /etc/profile`</pre>
 </div>
-<div tags="Mememori3476 ToDo Temp C#" title="服务器版本信息及对应实体类" tmap.id="72aaaf73-418d-4eb0-a9cb-c2af551c0e70" revision="0" bag="default">
+<div tags="Mememori3476 ToDo Temp C#" title="服务器版本信息及对应实体类" tmap.id="72aaaf73-418d-4eb0-a9cb-c2af551c0e70" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//服务器上版本信息//''
 ```xml
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
@@ -17277,6 +17586,19 @@ public class UpdateInfo
 	}
 }
 ```</pre>
+</div>
+<div tags="ToDo Temp Linux" title="服务器防火墙" tmap.id="d9395ea4-7f96-4f28-979b-3cc9314bdeec" revision="0" bag="default">
+<pre>!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://developer.aliyun.com/adc/student/&quot; &gt;阿里云服务器学生免费领取&lt;/a&gt; &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.bilibili.com/video/BV1s4411D7sC&quot; &gt;Bilibili 阿里云配置Tomcat&lt;/a&gt;
+!! ''//远程连接//''
+* SSH：XShell
+* FTP：Xftp
+
+* 查看防火墙状态：`firewall-cmd --state`
+* 启动防火墙：`systemctl start firewalld`
+* 开机启动防火墙：`systemctl enbale firewalld`
+* 端口文件夹：`conf/server.xml`
+* 防火墙开放8080端口：`firewall-cmd --zone=public --add-port=8080/tcp --permanent`
+</pre>
 </div>
 <div tags="Linux SSH Temp" title="查看远程服务器信息" tmap.id="86ddd655-82e9-4ab8-8682-7d660ea58407" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//查看 Linux服务器系统信息//''
@@ -17501,7 +17823,7 @@ private void ipconfigTest()
 &lt;&lt;toc-selective-expandable '资源'&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div tags="ToDo Temp 软件更新 Mememori3476 C#" title="软件更新" tmap.id="fade6f24-9494-4f94-9aad-7723ac934000" revision="0" bag="default">
+<div tags="ToDo Temp 软件更新 Mememori3476 C#" title="软件更新" tmap.id="fade6f24-9494-4f94-9aad-7723ac934000" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//升级流程//''
 * 检测服务器版本号 &gt; 对比本地和服务器版本号 &gt; 下载完成解压升级包 &gt; 文件覆盖 &gt; 升级完成
 
@@ -17518,7 +17840,20 @@ private void ipconfigTest()
 * 启动升级程序，//''文件占用''//，无法直接覆盖`AutoUpdater.exe`
 ** 将`AutoUpdater.exe`拷贝至缓存文件夹，启动缓存文件夹中的`AutoUpdater.exe`完成升级
 
-</pre>
+!! ''//[[C# http请求下载]]//''
+!! ''//[[C# 获取当前软件版本]]//''
+!! ''//[[C# 更新程序复制到缓存文件夹]]//''
+!! ''//[[C# 调用外部程序]]//''
+
+* 修改AutoUpdater project属性
+** `属性 &gt; 应用程序 &gt; 启动对象设置`
+
+!! ''//开始升级//''
+* 关闭应用程序进程
+* 下载升级包到缓存文件夹
+* 解压升级包到缓存文件夹
+* 从缓存文件夹复制解压后的文件和文件夹到运行程序的文件夹
+* 提醒用户升级成功</pre>
 </div>
 <div tags="ToDo Temp Mememori3476 软件更新 Linux" title="软件更新之服务器搭建" tmap.id="177a719a-8422-4b50-9daf-87cd39cf9fc5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/CBR97/article/details/90183102&quot; &gt;软件更新之服务器搭建&lt;/a&gt;
