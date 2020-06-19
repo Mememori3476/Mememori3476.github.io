@@ -407,6 +407,8 @@ Error message and password prompt
 
 <li>Nodejs</li>
 
+<li>Nodejs Hexo搭建个人博客</li>
+
 <li>nodejs Server版 plugin插件管理</li>
 
 <li>Nodejs 创建本地 Tiddlywiki</li>
@@ -11388,7 +11390,7 @@ public CommandAdvanceViewModel()
 }
 ```</pre>
 </div>
-<div tags="ToDo Temp C# http WebClient" title="C# http下载" tmap.id="95764e8e-caad-45d1-8c34-b05b909c6477" revision="0" bag="default">
+<div tags="ToDo Temp C# http WebClient" title="C# http下载" tmap.id="95764e8e-caad-45d1-8c34-b05b909c6477" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* 注意该下载模块，需要明确`savepath`的文件名、后缀名
 * 如：`D:/Xian/xian1.jpg`
 
@@ -11447,7 +11449,7 @@ public bool Download(string url, string savepath)
 }
 ```</pre>
 </div>
-<div tags="ToDo Temp C# http" title="C# Http请求" tmap.id="e06ebc85-2847-4bca-be1e-47e39a4168de" revision="0" bag="default">
+<div tags="ToDo Temp C# http" title="C# Http请求" tmap.id="e06ebc85-2847-4bca-be1e-47e39a4168de" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;http://www.hmister.cn/?id=7&quot; &gt;Http请求&lt;/a&gt;</pre>
 </div>
 <div tags="ToDo Temp 软件更新 C#" title="C# Http请求下载" tmap.id="ff8dfea5-0852-481a-8d99-325f6dd8a752" revision="0" bag="default">
@@ -12982,7 +12984,7 @@ string fullnamenoextension = Path.GetFileNameWithoutExtension(fullname);
 
 </pre>
 </div>
-<div tags="ToDo Temp 软件更新 C#" title="C# 文件下载Process" tmap.id="9e5be5e6-a7d1-49ae-85a4-dd6587f716fb" revision="0" bag="default">
+<div tags="ToDo Temp 软件更新 C#" title="C# 文件下载Process" tmap.id="9e5be5e6-a7d1-49ae-85a4-dd6587f716fb" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```c
 public DownFileProcess(string callExeName, string updateFileDir, string appDir, string appName, string appVersion, string desc)
 {
@@ -14387,7 +14389,7 @@ TimeSpan diff = t1 - t2;
 &lt;strong style=&quot;background:#FFFFCC&quot;&gt;底色为红色的句子&lt;/strong&gt;
 &lt;p style=&quot;background:#99CCCC&quot;&gt;底色为绿色的段落&lt;/p&gt;</pre>
 </div>
-<div tags="计算机技巧" title="http" tmap.id="4d4f5d0e-64ef-48dd-8c4c-14e69f2b957d" revision="0" bag="default">
+<div tags="计算机技巧" title="http" tmap.id="4d4f5d0e-64ef-48dd-8c4c-14e69f2b957d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 
 &lt;&lt;toc-selective-expandable 'http'&gt;&gt;
@@ -14566,6 +14568,21 @@ Lists:
 &lt;&lt;toc-selective-expandable 'Nodejs'&gt;&gt;
 
 &lt;/div&gt;</pre>
+</div>
+<div tags="ToDo Temp Nodejs Hexo Blog Linux" title="Nodejs Hexo搭建个人博客" tmap.id="a9898a36-b032-41bb-9e80-80affbccf1be" revision="0" bag="default">
+<pre>!! ''//切换国内淘宝源//''（可选）
+* `npm install -g cnpm --registry=https://registry.npm.taobao.org`
+
+!! ''//安装 Hexo并启动//''
+* `npm install -g hexo-cli`
+* 初始化Hexo，`hexo init`
+* 启动博客：`hexo s`
+
+!! ''//新建博客并重新发布//''
+* 新建博客：`hexo n &quot;My First Blog&quot;`
+* `hexo clean`
+* `hexo g`
+ </pre>
 </div>
 <div tags="TiddlyPlugin Nodejs" title="nodejs Server版 plugin插件管理" tmap.id="5a407c3f-f1b6-4086-af53-8b6680f30560" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!''//特点：//'' 
@@ -15732,8 +15749,10 @@ Fluid-Fixed
 
 &lt;&lt;translink &quot;&quot;&quot;创建多个ToDoList&quot;&quot;&quot; &gt;&gt;</pre>
 </div>
-<div tags="ToDo Temp Linux 计算机技巧 软件更新" title="Tomcat服务器配置应用目录" tmap.id="6d0ba7b9-f7ef-4140-b97e-9e2d8ba79ef7" revision="0" bag="default">
-<pre>!! ''//配置Tomcat服务器的应用目录//''
+<div tags="ToDo Temp Linux 计算机技巧 软件更新" title="Tomcat服务器配置应用目录" tmap.id="6d0ba7b9-f7ef-4140-b97e-9e2d8ba79ef7" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/OnlyLove_longshao/article/details/53057381&quot; &gt;Tomcat配置&lt;/a&gt;
+
+!! ''//配置Tomcat服务器的应用目录//''
 * 默认tomcat应用目录：`webapps`
 * `conf` &gt; `vim server.xml`，修改`appBase`，该值为项目目录
 ```xml
@@ -15754,8 +15773,8 @@ Fluid-Fixed
 ```xml
 &lt;Context path=&quot;&quot; docBase=&quot;自定义的默认项目路径&quot; debug=&quot;0&quot; reloadable=&quot;true&quot; /&gt;
 ```
-** `path`：应用目录下的直接目录
-** `docBase`：默认项目目录
+** `path`：虚拟路径，http路径
+** `docBase`：本地真实路径
 ** `reloadable`：默认自动编译源文件为class文件，设为`false`，提高Tomcat性能
 
 !!! ''//重启 Tomcat，使配置生效//''</pre>
@@ -17587,7 +17606,7 @@ public class UpdateInfo
 }
 ```</pre>
 </div>
-<div tags="ToDo Temp Linux" title="服务器防火墙" tmap.id="d9395ea4-7f96-4f28-979b-3cc9314bdeec" revision="0" bag="default">
+<div tags="ToDo Temp Linux" title="服务器防火墙" tmap.id="d9395ea4-7f96-4f28-979b-3cc9314bdeec" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://developer.aliyun.com/adc/student/&quot; &gt;阿里云服务器学生免费领取&lt;/a&gt; &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.bilibili.com/video/BV1s4411D7sC&quot; &gt;Bilibili 阿里云配置Tomcat&lt;/a&gt;
 !! ''//远程连接//''
 * SSH：XShell
