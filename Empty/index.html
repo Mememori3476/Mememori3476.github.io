@@ -329,7 +329,11 @@ Error message and password prompt
 
 <li>C# 随机数（未完成）</li>
 
+<li>C#删除文件、文件夹</li>
+
 <li>C#多线程学习系列</li>
+
+<li>C#文件解压缩</li>
 
 <li>C#线程池</li>
 
@@ -340,6 +344,8 @@ Error message and password prompt
 <li>CIS修改记录_6.1</li>
 
 <li>CIS修改记录_6.14</li>
+
+<li>CIS修改记录_6.16</li>
 
 <li>CMD</li>
 
@@ -404,6 +410,8 @@ Error message and password prompt
 <li>Motovun Jack.svg</li>
 
 <li>MVVM</li>
+
+<li>New Tiddler</li>
 
 <li>Nodejs</li>
 
@@ -569,13 +577,19 @@ Error message and password prompt
 
 <li>ToDoList使用</li>
 
+<li>Tomcat搭建文件下载器</li>
+
 <li>Tomcat服务器配置应用目录</li>
 
 <li>TWCrossLinks和Commander、AdvancedSearch兼容性不好</li>
 
 <li>VSCode配置C#</li>
 
+<li>VS安装包_自定义安装动作</li>
+
 <li>VS打包安装程序</li>
+
+<li>VS打包安装程序_Installer类</li>
 
 <li>WPF</li>
 
@@ -724,6 +738,8 @@ Error message and password prompt
 <li>软件更新</li>
 
 <li>软件更新之服务器搭建</li>
+
+<li>软件自动更新</li>
 
 <li>避孕</li>
 
@@ -13722,8 +13738,60 @@ System.Diagnostics.Process.Start(info);
 <div created="20200507084441246" modified="20200514124042066" tags="随机数 C# WPF基础" title="C# 随机数（未完成）" tmap.id="0304aaab-2cb7-4bd7-b224-14642a321125" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div tags="C# 文件夹" title="C#删除文件、文件夹" tmap.id="49795199-e8fe-4d74-9452-fc198f4a8968" revision="0" bag="default">
+<pre>!! ''//删除所有文件//''
+```c
+private void DeleFile()
+{
+    string fileNeedDelete = @&quot;D:\Desktop\1&quot;;
+    if (Directory.Exists(fileNeedDelete))
+    {
+        string[] filePathList = Directory.GetFiles(fileNeedDelete);
+        foreach (var item in filePathList)
+        {
+            File.Delete(item);
+        }
+    }
+}
+```
+
+!! ''//删除所有文件夹//''
+```c
+private void DeleDirectory()
+{
+    string fileNeedDelete = @&quot;D:\Desktop\1&quot;;
+    if (Directory.Exists(fileNeedDelete))
+    {
+        string[] directoryList = Directory.GetDirectories(fileNeedDelete);
+        foreach (var item in directoryList)
+        {
+            Directory.Delete(item, true);
+        }
+    }
+}
+```</pre>
+</div>
 <div tags="ToDo Temp C# 线程" title="C#多线程学习系列" tmap.id="1fae9011-90f2-458f-bee0-b954a4e3903f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/xugang/archive/2010/11/03/1867945.html&quot; &gt; C#多线程学习&lt;/a&gt;</pre>
+</div>
+<div tags="ToDo Temp C# 文件夹" title="C#文件解压缩" tmap.id="3f50bd29-9106-4164-8780-4e7f2ec3a598" revision="0" bag="default">
+<pre>!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://github.com/icsharpcode/SharpZipLib&quot; &gt;~SharpZipLib&lt;/a&gt;
+
+```c
+using ICSharpCode.SharpZipLib.Zip;
+
+private void UnZipFile()
+{
+    string zipFilePath = targetDir + &quot;碎石机Demo.zip&quot;;
+    string zipTargetDir = targetDir + &quot;Demo&quot;;
+
+    FastZipEvents evt = new FastZipEvents();
+    FastZip fz = new FastZip(evt);
+    fz.ExtractZip(zipFilePath, zipTargetDir, &quot;&quot;);
+}
+```
+
+</pre>
 </div>
 <div tags="ToDo Temp 线程 C#" title="C#线程池" tmap.id="b2fc7610-e9cf-4706-b1c5-be91963923ef" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/xugang/archive/2010/04/20/1716042.html&quot; &gt; 浅谈 线程池&lt;/a&gt;
@@ -13889,6 +13957,31 @@ System.Reflection.Assembly.GetEntryAssembly().Location.Substring()
 ```
 
 </pre>
+</div>
+<div tags="ToDo Mememori3476" title="CIS修改记录_6.16" tmap.id="eadf2ec1-5e0d-4ac8-aa34-0e0902534c8d" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//[[CIS修改记录_6.14]]//''
+* 主要修改自动补偿部分`ViewModelCalibration.cs`
+* 点击`Next`按钮，实现标定参数的记录，保存至：`.\Calibration.xml`
+* 开启自动补偿，且两次已上标定数据记录，则开始自动补偿数据下发
+* 若连续两次`标定的时间间隔过短`（30min），或`带负载运行时间过短`（30min），将删除上一次的标定数据，记录新的标定数据。
+* 默认自动补偿单位时间为60min，未开放至界面，未开放删除xml文件按钮
+* 极端值处理：
+** 数据量：6-14，去除最小值、最大值（共2个）
+** 数据量：15-29，去除最小的两个，最大的两个（共4个）
+** 数据量：30+，正太分布，保留`均值±3*标准差`范围内数据
+
+!! ''//自动补偿文件结构//''
+```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Calibration&gt;
+  &lt;CalibrationSetting&gt;
+    &lt;CalibrationTimeUnit CalibrationTime=&quot;60&quot; /&gt;
+  &lt;/CalibrationSetting&gt;
+  &lt;CalibrationTimeValue Description=&quot;Time and Value to record Calibration&quot;&gt;
+    &lt;CalibrationItem LoadTime=&quot;1.2&quot; Value=&quot;100&quot; Time=“2020/6/14 12:57:12”/&gt;
+  &lt;/CalibrationTimeValue&gt;
+&lt;/Calibration&gt;
+```</pre>
 </div>
 <div tags="计算机技巧" title="CMD" tmap.id="f9eb933c-a14a-4042-baee-37e2acbf3916" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -14562,6 +14655,38 @@ Lists:
 <div color="#502bd4" created="20200514124807618" modified="20200514124815898" tags="WPF" title="MVVM" tmap.id="e5abfc34-c967-4f75-aaba-e6ddb3bb2004" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;list-links &quot;[tag[MVVM]]&quot;&gt;&gt;</pre>
 </div>
+<div tags="ToDo Temp XML" title="New Tiddler" tmap.id="0b60802e-e6b1-4b2e-9bb6-1dd0a2a5b2f3" revision="0" bag="default">
+<pre>```c
+private void SaveConfig()
+{
+    string xmlPath =@&quot;D:\Desktop\MDConfig.xml&quot;;
+    XmlDocument MDxml = new XmlDocument();
+    if (File.Exists(xmlPath))
+    {
+        MDxml.Load(xmlPath);
+        if (MDxml != null)
+        {
+            XmlNodeList xmlNodeList = MDxml.SelectSingleNode(&quot;MDConfig&quot;).ChildNodes;
+            string pathNode = string.Format(&quot;/MDConfig&quot;);
+            XmlElement xmlElement = MDxml.SelectSingleNode(pathNode) as XmlElement;
+            xmlElement.GetElementsByTagName(&quot;NetId&quot;).Item(0).InnerText = &quot;192.168.0.1:0000&quot;;
+            xmlElement.GetElementsByTagName(&quot;SystemMode&quot;).Item(0).InnerText = &quot;SimMode11&quot;;
+            MDxml.Save(xmlPath);
+        }
+    }
+}
+```
+
+```xml
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;MDConfig xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+	&lt;NetId&gt;192.168.1.220.1.1&lt;/NetId&gt;
+	&lt;Port&gt;801&lt;/Port&gt;
+	&lt;!--RealMode/SimMode--&gt;
+	&lt;SystemMode&gt;SimMode&lt;/SystemMode&gt;
+&lt;/MDConfig&gt;
+```</pre>
+</div>
 <div tags="TiddlyWiki" title="Nodejs" tmap.id="50e03ce4-d5e5-4ed4-827f-306678b68c3c" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 
@@ -14569,7 +14694,7 @@ Lists:
 
 &lt;/div&gt;</pre>
 </div>
-<div tags="ToDo Temp Nodejs Hexo Blog Linux" title="Nodejs Hexo搭建个人博客" tmap.id="a9898a36-b032-41bb-9e80-80affbccf1be" revision="0" bag="default">
+<div tags="ToDo Temp Nodejs Hexo Blog Linux" title="Nodejs Hexo搭建个人博客" tmap.id="a9898a36-b032-41bb-9e80-80affbccf1be" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//切换国内淘宝源//''（可选）
 * `npm install -g cnpm --registry=https://registry.npm.taobao.org`
 
@@ -15749,6 +15874,20 @@ Fluid-Fixed
 
 &lt;&lt;translink &quot;&quot;&quot;创建多个ToDoList&quot;&quot;&quot; &gt;&gt;</pre>
 </div>
+<div tags="Linux http html" title="Tomcat搭建文件下载器" tmap.id="1372d278-de13-4c2c-a7cc-965e949ee224" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/d7239900dc84&quot; &gt;Tomcat搭建Http文件下载器&lt;/a&gt;
+!! ''//修改配置文件//''
+* `vim conf/web.xml`
+
+```xml
+&lt;init-param&gt;
+  &lt;param-name&gt;listings&lt;/param-name&gt;
+  &lt;param-value&gt;true&lt;/param-value&gt;
+&lt;/init-param&gt;
+```
+
+!! [[Tomcat服务器配置应用目录]]</pre>
+</div>
 <div tags="ToDo Temp Linux 计算机技巧 软件更新" title="Tomcat服务器配置应用目录" tmap.id="6d0ba7b9-f7ef-4140-b97e-9e2d8ba79ef7" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/OnlyLove_longshao/article/details/53057381&quot; &gt;Tomcat配置&lt;/a&gt;
 
@@ -15773,6 +15912,13 @@ Fluid-Fixed
 ```xml
 &lt;Context path=&quot;&quot; docBase=&quot;自定义的默认项目路径&quot; debug=&quot;0&quot; reloadable=&quot;true&quot; /&gt;
 ```
+
+&lt;&lt;&lt;
+```xml
+&lt;Context path=&quot;/Mori&quot; docBase=&quot;/home/Mori&quot; debug=&quot;0&quot; reloadable=&quot;true&quot; /&gt;
+```
+&lt;&lt;&lt;
+
 ** `path`：虚拟路径，http路径
 ** `docBase`：本地真实路径
 ** `reloadable`：默认自动编译源文件为class文件，设为`false`，提高Tomcat性能
@@ -15814,7 +15960,82 @@ Fluid-Fixed
 * VS：`Alt + Shift +F10`
 * VSCode：`Ctrl + .`</pre>
 </div>
-<div tags="WPF基础 Mememori3476" title="VS打包安装程序" tmap.id="7b6dfdd5-6548-4b79-a90f-879ea31fd949" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="Mememori3476 安装包 C#" title="VS安装包_自定义安装动作" tmap.id="4c9b12d2-c45d-4dbf-a2d4-34d3f8e80310" revision="0" bag="default">
+<pre>! //''[[VS打包安装程序]]''//
+
+!! ''//安装完成后的文件结构//''
+* 同`Application Folder`一致
+* 关注`ConfigFile`、`碎石机Demo.zip`、`VoiceAndBrightness.exe`
+** 该文件结构同`Installer类`中，`xml文件参数修改`、`ZIP解压`有关（其实是 //''`地址`''//）
+** 两者需要对应
+
+```
+Demo
+--ConfigFile
+----MDConfig.xml
+----……
+--碎石机Demo.zip
+--VoiceAndBrightness.exe
+--msiexec.exe
+--xxx.dll
+```
+
+---
+
+!! ''//添加发布程序所需文件//''
+* View &gt; 文件系统
+* File System on Target Machine
+** `Application Folder`：该文件夹便是安装完成后的文件夹结构
+** User's Desktop：桌面快捷方式
+** User's Programs Menu：开始 菜单快捷方式（可创建子目录）
+* 添加文件：
+** Add &gt; 项目输出，通过该方式添加其他项目的输出文件（exe、dll）
+** Add &gt; 文件，手动添加压缩包等
+
+!! ''//安装程序对话框//''
+* //''添加对话框，用于IP地址、运行模式等信息的输入''//
+* View &gt; 用户界面，进入安装界面的流程图
+* Start &gt; 添加对话框 &gt; 选择相应文本框（如：文本框A），用于参数输入
+* 右键 &gt; 调整对话框在流程中的顺序
+* 文本框A &gt; 属性
+** ~BannerText：IP地址
+** ~BodyText：请输入IP地址
+** Edit1label：IP
+** `Edit1Value`：默认值，传递该值
+** `Edit1Property`：相当于Edit1Value得ID（识别码）
+
+!! ''//自定义程序动作 Installer 类//''
+* 通过`this.AfterInstall`实现，安装完成之后的动作……
+* 解决方案 &gt; 类库，删除类库项目的默认cs文件
+* 类库 &gt; 安装程序类，在构造函数，进行相应的操作
+* `targetDir = this.Context.Parameters[&quot;targetDir&quot;];`
+```c
+public Installer1()
+{
+    InitializeComponent();
+    this.AfterInstall += new InstallEventHandler(ConfigAndUpZip);
+}
+string ipAddr, trainMode, targetDir;
+private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)
+{
+    targetDir = this.Context.Parameters[&quot;targetDir&quot;];
+    ipAddr = this.Context.Parameters[&quot;ipAddr&quot;];
+    trainMode = this.Context.Parameters[&quot;trainMode&quot;];
+    SaveConfig();
+    UnZipFile();
+}
+```
+
+!! ''//数据传递//''
+* 安装界面`Edit1Value`通过`Edit1Property`，传递给`ipAddr`
+* View &gt; 自定义操作，进入`Custom Actions`
+** Install、Commit、RollBack、Uninstall，分别表示，安装、提交、回滚、卸载，相关的工作
+* Install &gt; 添加自定义操作 &gt; 选择`主输出 from Library(Active)` &gt; `属性`
+* 关注`CustomActionData`，进行参数传递
+** `/targetDir=&quot;[TARGETDIR]\&quot; ……`
+* 形式：`/parm=“[Property]”`，parm——installer类，Property——对话框的Property</pre>
+</div>
+<div tags="Mememori3476 C# 安装包" title="VS打包安装程序" tmap.id="7b6dfdd5-6548-4b79-a90f-879ea31fd949" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//1、安装打包插件//
 * 工具 &gt; 扩展和更新 &gt; 联机 &gt; 搜索 //`Microsoft Visual Studio 2017 Installer Projects`//
 * 自行下载：[[插件官网|https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2017InstallerProjects]]
@@ -15900,6 +16121,83 @@ Fluid-Fixed
 * 依次点击：//`本地用户和组 &gt; 用户`//
 * 双击：`Administrator`，进入`Administrator属性`界面，取消勾选`账户已禁用`
 * 依次点击：//`开始（Win） &gt; 当前用户名`//，即出现 Administrator，点击进行切换</pre>
+</div>
+<div tags="Mememori3476 C# 安装包" title="VS打包安装程序_Installer类" tmap.id="f02f12ae-2c36-4467-ba40-155514a1b410" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>! //''[[VS打包安装程序]]''//
+!! ''//添加发布程序所需文件//''
+* View &gt; 文件系统
+* File System on Target Machine
+** `Application Folder`：该文件夹便是安装完成后的文件夹结构
+** User's Desktop：桌面快捷方式
+** User's Programs Menu：开始 菜单快捷方式（可创建子目录）
+* 添加文件：
+** Add &gt; 项目输出，通过该方式添加其他项目的输出文件（exe、dll）
+** Add &gt; 文件，手动添加压缩包等
+
+!! ''//安装程序对话框//''
+* //''添加对话框，用于IP地址、运行模式等信息的输入''//
+* View &gt; 用户界面，进入安装界面的流程图
+* Start &gt; 添加对话框 &gt; 选择相应文本框（如：文本框A），用于参数输入
+* 右键 &gt; 调整对话框在流程中的顺序
+* 文本框A &gt; 属性，关注`Edit1Value`、`Edit2Property`，用于参数传递
+** ~BannerText：IP地址
+** ~BodyText：请输入IP地址
+** Edit1label：IP
+** `Edit1Value`：默认值，传递该值
+** `Edit1Property`：相当于Edit1Value得ID（识别码）
+
+!! ''//安装完成后的文件结构//''
+* 同`Application Folder`一致
+* 关注`ConfigFile`、`碎石机Demo.zip`、`VoiceAndBrightness.exe`
+** 该文件结构同`Installer类`中，`xml文件参数修改`、`ZIP解压`有关（其实是 //''`地址`''//）
+** 两者需要对应
+
+```
+Demo
+--ConfigFile
+----MDConfig.xml
+----……
+--碎石机Demo.zip
+--VoiceAndBrightness.exe
+--msiexec.exe
+--xxx.dll
+```
+
+!! ''//自定义程序动作 Installer 类//''
+* 通过`this.AfterInstall`实现，安装完成之后的动作……
+* 解决方案 &gt; 类库，删除类库项目的默认cs文件
+* 类库 &gt; 安装程序类，在构造函数，进行相应的操作
+* `this.AfterInstall += new InstallEventHandler(ConfigAndUpZip);`
+* `private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)`
+* `targetDir = this.Context.Parameters[&quot;targetDir&quot;];`，关注`targetDir`
+```c
+public Installer1()
+{
+    InitializeComponent();
+    this.AfterInstall += new InstallEventHandler(ConfigAndUpZip);
+}
+
+string ipAddr, trainMode, targetDir;
+
+private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)
+{
+    targetDir = this.Context.Parameters[&quot;targetDir&quot;];
+    ipAddr = this.Context.Parameters[&quot;ipAddr&quot;];
+    trainMode = this.Context.Parameters[&quot;trainMode&quot;];
+
+    SaveConfig();
+    UnZipFile();
+}
+```
+
+!! ''//数据传递//''
+* 安装界面`Edit1Value`通过`Edit1Property`，传递给`ipAddr`
+* View &gt; 自定义操作，进入`Custom Actions`
+** Install、Commit、RollBack、Uninstall，分别表示，安装、提交、回滚、卸载，相关的工作
+* Install &gt; 添加自定义操作 &gt; 选择`主输出 from Library(Active)` &gt; `属性`
+* 关注`CustomActionData`，进行参数传递
+** `/targetDir=&quot;[TARGETDIR]\&quot; ……`
+* 形式：`/parm=“[Property]”`，parm——installer类，Property——对话框中的Property</pre>
 </div>
 <div color="#502bd4" created="20200514123446188" modified="20200514125436871" tags="TableOfContents" title="WPF" tmap.id="fe6f285f-1d89-4edb-9b80-85f45c339d56" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;&lt;
@@ -17579,6 +17877,7 @@ namespace testBitOFCPU
 </div>
 <div tags="Mememori3476 ToDo Temp C#" title="服务器版本信息及对应实体类" tmap.id="72aaaf73-418d-4eb0-a9cb-c2af551c0e70" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//服务器上版本信息//''
+* `update.xml`
 ```xml
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;UpdateInfo&gt;
@@ -17891,6 +18190,63 @@ private void ipconfigTest()
 
 !! ''////''
 </pre>
+</div>
+<div tags="软件更新 Linux Mememori3476" title="软件自动更新" tmap.id="30e1e56a-3967-4723-9444-35131eabb1bf" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//软件信息//''
+* `update.xml`
+```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;UpdateInfo&gt;
+	&lt;AppName&gt;Test&lt;/AppName&gt;
+	&lt;AppVersion&gt;1.0.0.1&lt;/AppVersion&gt;
+	&lt;RequiredMinVersion&gt;1.0.0.0&lt;/RequiredMinVersion&gt;
+	&lt;Desc&gt;shengji&lt;/Desc&gt;
+&lt;/UpdateInfo&gt;
+```
+
+!! ''//软件包//''
+* `update.zip`
+* 将所有生成的文件`(exe db ……)`，放置在`App`文件夹，将`App`压缩为`update.zip`，形式如下：
+```
+update.zip
+---App
+------1.exe
+------2.db
+------3.txt
+------……
+```
+
+!! ''//服务器位置设置//''
+* `AutoUpdater项目`中，ip地址位于：`Lib `&gt; `Constants`
+** http://47.114.3.194:8080/Test/
+* 将`update.xml`和`update.zip`，放置在`XXX`文件夹，提交至服务器，地址为：`/home/Akinshi`
+* 文件夹`XXX`，其名称同主程序名一致，如：主程序为`Text.exe`，则文件名为`Text`
+
+
+!! ''//配置Tomcat服务器的应用目录//''
+* 默认tomcat应用目录：`webapps`
+* `conf` &gt; `vim server.xml`，修改`appBase`，该值为项目目录
+```xml
+&lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;……
+```
+
+* `vim conf/web.xml`
+
+```xml
+&lt;init-param&gt;
+  &lt;param-name&gt;listings&lt;/param-name&gt;
+  &lt;param-value&gt;true&lt;/param-value&gt;
+&lt;/init-param&gt;
+```
+!! ''//配置默认项目//''
+!!! ''//自定义默认项目//''
+* `conf` &gt; `vim server.xml`
+* `&lt;host&gt;`标签，标签中间，配置如下代码
+```xml
+&lt;Context path=&quot;&quot; docBase=&quot;自定义的默认项目路径&quot;/&gt;
+```
+* `path`：虚拟路径
+* `docBase`：本地真实路径</pre>
 </div>
 <div tags="性情精华" title="避孕" tmap.id="dd379271-3389-4201-a45a-4355dc47533d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!// [[月经]]//
