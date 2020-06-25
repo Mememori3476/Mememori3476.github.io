@@ -145,6 +145,8 @@ Error message and password prompt
 
 <li>[21世纪性爱指南] A.Girls.Guide.To.21St.Century.Sex</li>
 
+<li>+=(x,y)</li>
+
 <li>$:/config/DefaultSidebarTab</li>
 
 <li>$:/config/NewJournal/Tags</li>
@@ -208,6 +210,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth</li>
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
+
+<li>Action Dispatcher</li>
 
 <li>Android Gradle</li>
 
@@ -293,11 +297,17 @@ Error message and password prompt
 
 <li>C# POST请求</li>
 
+<li>C# Process启动软件</li>
+
 <li>C# SQLite</li>
 
 <li>C# TreeView</li>
 
+<li>C# WebClient下载进度显示</li>
+
 <li>C# WPF 拖拽</li>
+
+<li>C# 关机</li>
 
 <li>C# 外部程序调用之接收传递参数</li>
 
@@ -523,6 +533,8 @@ Error message and password prompt
 
 <li>tag 修改为 英文小写？不要鼠标点击</li>
 
+<li>Task用于电量和时间显示???</li>
+
 <li>Temp</li>
 
 <li>The money is in the hubs</li>
@@ -633,6 +645,8 @@ Error message and password prompt
 
 <li>TWCrossLinks和Commander、AdvancedSearch兼容性不好</li>
 
+<li>ViewModel参数传递</li>
+
 <li>VSCode配置C#</li>
 
 <li>VS安装包_自定义安装动作</li>
@@ -643,6 +657,8 @@ Error message and password prompt
 
 <li>VS打包安装程序_Installer类</li>
 
+<li>WebClient下载Zip文件</li>
+
 <li>WFP自定义窗口-窗口样式_完整版</li>
 
 <li>WPF</li>
@@ -650,6 +666,8 @@ Error message and password prompt
 <li>WPF Button 基于 iconFont</li>
 
 <li>WPF Button 基于 iconFont（未完成）</li>
+
+<li>WPF Button.Name控制属性值</li>
 
 <li>WPF Timer线程</li>
 
@@ -670,6 +688,10 @@ Error message and password prompt
 <li>WPF在Window调用另一个Window资源</li>
 
 <li>WPF基础</li>
+
+<li>WPF弹窗-PopUp</li>
+
+<li>WPF弹窗-系列</li>
 
 <li>WPF拖拽上传</li>
 
@@ -825,6 +847,8 @@ Error message and password prompt
 
 <li>线程</li>
 
+<li>线程Task</li>
+
 <li>网页阅读碎片化笔记</li>
 
 <li>至爱时刻</li>
@@ -834,6 +858,8 @@ Error message and password prompt
 <li>调戏和前戏</li>
 
 <li>调用CMD</li>
+
+<li>调用外部程序</li>
 
 <li>资源</li>
 
@@ -963,6 +989,22 @@ return dateTimeTemp;
 !!//下载地址：// 
 * //[[地址1|http://pan.baidu.com/s/1jG51EyM]]//，密码: wuct；带中文字幕
 * //[[地址2|http://pan.baidu.com/s/1c03BZDe]]//，密码: dgaz；字幕稍有混乱，但视频清晰度更高</pre>
+</div>
+<div tags="ToDo C#" title="+=(x,y)" tmap.id="dedbc97b-14ce-4ce9-a3e7-c77723dd418c" revision="0" bag="default">
+<pre>```c
+client.DownloadDataCompleted += (x, y) =&gt;
+{
+    try
+    {
+        MemoryStream stream = new MemoryStream(y.Result);
+        XDocument xDoc = XDocument.Load(stream);
+		……
+        stream.Close();
+        Updater.Instance.StartUpdate(updateInfo);
+    }
+    catch{ }
+};
+```</pre>
 </div>
 <div created="20200617035332259" modified="20200617035332279" title="$:/config/DefaultSidebarTab" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>ToDo</pre>
@@ -10800,6 +10842,17 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 <div created="20200617040606352" modified="20200617040849906" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>fluid-fixed</pre>
 </div>
+<div tags="ToDo 线程" title="Action Dispatcher" tmap.id="f7726736-8630-4f4b-bfab-e7ee125d8d02" revision="0" bag="default">
+<pre>```cs
+System.Threading.ThreadPool.QueueUserWorkItem((s) =&gt;
+{
+    Action f = () =&gt;
+    {
+       txtProcess.Text = &quot;开始更新程序...&quot;;
+    };
+    this.Dispatcher.Invoke(f);
+```</pre>
+</div>
 <div tags="Java安卓开发" title="Android Gradle" tmap.id="eae51cc7-9b8a-408b-adea-c1096603d091" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;&lt;
 !! //Gradle用于工程管理，帮助我们进行工程的依赖、打包、部署、发布、各种渠道的差异管理等。//
@@ -12434,6 +12487,17 @@ public static string Post(string url, Dictionary&lt;string, string&gt; dic)
 }
 ```</pre>
 </div>
+<div tags="Temp 调用外部程序 软件更新" title="C# Process启动软件" tmap.id="ef57f245-7a01-497f-aee8-b740f89fbfea" revision="0" bag="default">
+<pre>```c
+//启动软件
+string exePath = System.IO.Path.Combine(appDir, callExeName + &quot;.exe&quot;);
+var info = new System.Diagnostics.ProcessStartInfo(exePath);
+info.UseShellExecute = true;
+info.WorkingDirectory = appDir;// exePath.Substring(0, exePath.LastIndexOf(System.IO.Path.DirectorySeparatorChar));
+System.Diagnostics.Process.Start(info);
+
+```</pre>
+</div>
 <div created="20200509140351797" modified="20200514084630572" tags="C# SQL" title="C# SQLite" tmap.id="71fe0c9b-324d-4273-895c-dcbb7a663cbe" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!// Attention !! `释放 数据库实例 ` //
 
@@ -12598,6 +12662,26 @@ TreeInfo = new List&lt;TreeNodeModel&gt;()
 };
 ```</pre>
 </div>
+<div tags="http 软件更新" title="C# WebClient下载进度显示" tmap.id="771b1f22-a3c1-4eed-9dfe-b6dd9bbad233" revision="0" bag="default">
+<pre>```cs
+string url = Constants.RemoteUrl + callExeName + &quot;/update.zip&quot;;
+var client = new System.Net.WebClient();
+client.DownloadProgressChanged += (sender, e) =&gt;
+{
+    UpdateProcess(e.BytesReceived, e.TotalBytesToReceive);
+};
+```
+
+```cs
+public void UpdateProcess(long current, long total)
+{
+    string status = (int)((float)current * 100 / (float)total) + &quot;%&quot;;
+    this.txtProcess.Text = status;
+    rectProcess.Width = ((float)current / (float)total) * bProcess.ActualWidth;
+}
+```
+</pre>
+</div>
 <div created="20200509101954818" modified="20200514125124952" tags="C# 窗体应用 文件夹" title="C# WPF 拖拽" tmap.id="546e79b2-a447-48fc-968b-537281497226" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! //`DragDrop.DoDragDrop(mListBox, dataObject, DragDropEffects.Copy);`//
 * 简单拖拽的实现是：
@@ -12678,6 +12762,15 @@ private void textBox_Drop(object sender, DragEventArgs e)
 }
 ```
 </pre>
+</div>
+<div tags="调用外部程序" title="C# 关机" tmap.id="787fa048-6173-4cbd-a1c5-8b0ac794ac97" revision="0" bag="default">
+<pre>!! ''//调用系统 `shutdown.exe`//''
+* 延时`10s`关闭计算机：`shutdown -s -t 10`
+
+```c
+System.Diagnostics.ProcessStartInfo startinfo = new System.Diagnostics.ProcessStartInfo(&quot;shutdown.exe&quot;, &quot;-s -t 0&quot;);
+System.Diagnostics.Process.Start(startinfo);
+```</pre>
 </div>
 <div tags="C# 软件更新" title="C# 外部程序调用之接收传递参数" tmap.id="4d243350-df4b-4650-afcd-9c04c6768f69" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //''Main函数接收传递参数''//
@@ -13977,7 +14070,7 @@ public bool IsMute
 
 !! //''[[C# 获取当前软件版本]]''//</pre>
 </div>
-<div tags="C#" title="C# 调用外部程序" tmap.id="cf11a758-faf0-4a98-afd4-27ff969f6bda" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="调用外部程序" title="C# 调用外部程序" tmap.id="cf11a758-faf0-4a98-afd4-27ff969f6bda" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//Process类：调用外部程序//''
 !! ''//ProcessStartInfo类：传入Process类所需的参数//''
 !! ''//示例：[[调用CMD]]//''
@@ -15755,6 +15848,42 @@ title:&quot;Structure Note&quot; text:&quot;结构化笔记，用于引导各种
 * tag 区域的下拉搜索不方便  方向键
 * 查看解决方案</pre>
 </div>
+<div tags="线程 [[C# 获取系统电量-系列]] ToDo" title="Task用于电量和时间显示???" tmap.id="261fda7e-a09b-49d9-a065-2940b356321e" revision="0" bag="default">
+<pre>```c
+using System.Threading;
+using System.Management;
+
+public HomePageViewModel()
+{
+    Task.Factory.StartNew(TimeClockStartBatteryQuantity);
+}
+
+private void TimeClockStartBatteryQuantity()
+{
+    ManagementClass manageClass = new ManagementClass(&quot;Win32_Battery&quot;);
+    ManagementObjectCollection manageObjCollection = manageClass.GetInstances();
+    ManagementObjectCollection.ManagementObjectEnumerator manageObjEnumer = manageObjCollection.GetEnumerator();
+    if (manageObjEnumer.MoveNext())
+    {
+        BatteryQuantityShow = double.Parse(manageObjEnumer.Current.Properties[&quot;EstimatedChargeRemaining&quot;].Value.ToString());
+        BatteryQuantityPoint = Math.Round(BatteryQuantityShow / 100.0, 2);
+    }
+
+    while (true)
+    {
+        Thread.Sleep(1000);
+        TimeShow = DateTime.Now.ToString(&quot;HH:mm:ss&quot;);
+
+        if (manageObjEnumer.MoveNext())
+        {
+            BatteryQuantityShow = double.Parse(manageObjEnumer.Current.Properties[&quot;EstimatedChargeRemaining&quot;].Value.ToString());
+            BatteryQuantityPoint = Math.Round(BatteryQuantityShow / 100, 2);
+        }
+    }
+}
+```
+</pre>
+</div>
 <div caption="Temp" color="#428bca" description="Transfer station" is-dropdown="yes" tags="TableOfContents $:/tags/MenuBar" target="Temp" title="Temp" tmap.id="a7909a8d-8229-46a8-bc6c-f85571e0f4d3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 
@@ -16558,6 +16687,73 @@ Fluid-Fixed
 <div tags="Temp TiddlyPlugin" title="TWCrossLinks和Commander、AdvancedSearch兼容性不好" tmap.id="3e24c280-208b-4992-b988-4e899a25295d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div tags="MVVM" title="ViewModel参数传递" tmap.id="e299ffc1-3ea0-41b9-8d61-50b52f6530ee" revision="0" bag="default">
+<pre>!! //''Demo文件结构''//
+```c
+LLRLite.View
+--HomePage.xaml
+--WalkMain.xaml
+--WalkParaSetting.xaml
+LLRLite.ViewModel
+--HomePageViewModel.cs //属性 WeightLoss
+--WalkMainViewModel.cs //属性 WalkParaSettingViewModel.WightLoss
+--WalkParaSettingViewModel.cs //属性 WeightLoss
+```
+* //''`以上3个参数一致，需进行参数的传递`''//
+
+!! ''//~HomePageViewModel.cs//''
+```cs
+var walkMain = ServiceLocator.Current.GetInstance&lt;WalkMainViewModel&gt;();
+walkMain.WalkParaSetViewModel.WeightLoss = LossWeight;
+
+var page = ServiceLocator.Current.GetInstance&lt;INavigationService&gt;();
+page.NavigateTo(CommonKey.WalkMainKey);
+```
+
+!! //''~WalkMain.xaml''//
+
+```xml
+&lt;Popup&gt;
+    &lt;local:WalkParaSetting DataContext=&quot;{Binding WalkParaSetViewModel}&quot;/&gt;
+&lt;/Popup&gt;
+
+&lt;Label Content=&quot;减重:&quot;/&gt;
+&lt;TextBlock Text=&quot;{Binding WalkParaSetViewModel.WeightLoss, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}&quot;/&gt;
+```
+
+!! ''//~WalkMainViewModel.cs//''
+* //''`实例化 WalkParaSettingViewModel 类属性`''//
+```cs
+private WalkParaSettingViewModel walkParaSetViewModel;
+public WalkParaSettingViewModel WalkParaSetViewModel
+{
+    get { return walkParaSetViewModel; }
+    set { Set(ref walkParaSetViewModel, value); }
+}
+```
+
+!! ''//~WalkParaSetting.xaml//''
+```xml
+&lt;sliderUsercontrol:SliderUserControl x:Name=&quot;sliderWeight&quot; BarValue=&quot;{Binding WeightLoss, Mode=TwoWay}&quot;/&gt;
+```
+
+!! ''//~WalkParaSettingViewModel.cs//''
+
+```xml
+private int weightLoss;
+public int WeightLoss
+{
+    get { return weightLoss; }
+    set {
+        if (value &gt;= 0 &amp;&amp; value &lt;= 30)
+            Set(ref weightLoss, value);
+
+        var homePage = ServiceLocator.Current.GetInstance&lt;HomePageViewModel&gt;();
+        homePage.LossWeight = weightLoss;
+    }
+}
+```</pre>
+</div>
 <div tags="WPF基础" title="VSCode配置C#" tmap.id="81f8f0c5-42a3-4fb4-aaed-038413382d08" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!!//1、下载 [[.Net SDK|https://dotnet.microsoft.com/download]]//
 
@@ -16851,6 +17047,16 @@ private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)
 ** `/targetDir=&quot;[TARGETDIR]\&quot; ……`
 * 形式：`/parm=“[Property]”`，parm——installer类，Property——对话框中的Property</pre>
 </div>
+<div tags="http 软件更新" title="WebClient下载Zip文件" tmap.id="16ad1deb-3284-4383-ba91-87e9fc59abad" revision="0" bag="default">
+<pre>```cs
+//启动软件
+string exePath = System.IO.Path.Combine(appDir, callExeName + &quot;.exe&quot;);
+var info = new System.Diagnostics.ProcessStartInfo(exePath);
+info.UseShellExecute = true;
+info.WorkingDirectory = appDir;// exePath.Substring(0, exePath.LastIndexOf(System.IO.Path.DirectorySeparatorChar));
+System.Diagnostics.Process.Start(info);
+```</pre>
+</div>
 <div tags="WPF自定义窗口-系列 Style" title="WFP自定义窗口-窗口样式_完整版" tmap.id="fdbd1f24-da3e-4a10-8f95-8406ece8aa97" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! ''//[[WPF自定义窗口-窗口元素布局]]//''
 
@@ -16944,6 +17150,28 @@ Windows Presentation Foundation（WPF）在美国微软公司推出的 .NET Fram
 * UserControl：类似于 Page 类，多个控件的组合叠加，如：//[[WPF 自定义 Slider]]//
 * CustomControl：扩展已有控件，添加新特性。样式文件//`Themes/Generic.xaml`//；重写样式、模版。
 </pre>
+</div>
+<div tags="窗体应用" title="WPF Button.Name控制属性值" tmap.id="4d26152b-10bf-4110-a876-8ead673f1616" revision="0" bag="default">
+<pre>```c
+ButtoniconFont buttoniconFont = obj as ButtoniconFont;
+switch (buttoniconFont.Name.ToString())
+{
+    case &quot;btnRadarCheck&quot;:
+        RadarChecked = true;
+        RadarUnchecked = false;
+        SenEnable = true;
+        SenOpacity = 1;
+        break;
+    case &quot;btnRadarUncheck&quot;:
+        RadarChecked = false;
+        RadarUnchecked = true;
+        SenEnable = false;
+        SenOpacity = 0.2;
+        break;
+    default:
+        break;
+}
+```</pre>
 </div>
 <div tags="线程" title="WPF Timer线程" tmap.id="5530cc44-0b7c-4fa2-b483-21cab14a6f0f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//Timer工作线程，不干涉 UI 线程//
@@ -17227,6 +17455,32 @@ if (alert.YesBtnSelected)
 &lt;/div&gt;
 </pre>
 </div>
+<div tags="WPF弹窗-系列" title="WPF弹窗-PopUp" tmap.id="d6a94284-24f6-4c50-857e-059c790f2ca2" revision="0" bag="default">
+<pre>!! ''//PopUp中放置内容//''
+* `&lt;local:ShutDown DataContext=&quot;{Binding ShutDViewModel}&quot;/&gt;`
+** `local:ShutDown`，界面元素
+** `DataContext=&quot;{Binding ShutDViewModel}&quot;`，数据绑定
+* ''`ShutDown.xaml`不需要设置`DataContext`''
+
+```xml
+&lt;Popup x:Name=&quot;popUpShutDown&quot; PopupAnimation=&quot;Fade&quot; AllowsTransparency=&quot;True&quot; Placement=&quot;Center&quot; IsOpen=&quot;{Binding OpenPopUpShutDown}&quot; Visibility=&quot;{Binding Backshow}&quot;&gt;
+    &lt;local:ShutDown DataContext=&quot;{Binding ShutDViewModel}&quot;/&gt;
+&lt;/Popup&gt;
+
+&lt;Image Panel.ZIndex=&quot;6&quot; Source=&quot;pack://application:,,,/LLRLite.Resources/Image/background_grey.png&quot; Stretch=&quot;Fill&quot; Visibility=&quot;{Binding Backshow}&quot;&gt;
+    &lt;i:Interaction.Triggers&gt;
+        &lt;i:EventTrigger EventName=&quot;MouseLeftButtonUp&quot;&gt;
+            &lt;i:InvokeCommandAction Command=&quot;{Binding MouseLeftButtonUpCommand}&quot;/&gt;
+        &lt;/i:EventTrigger&gt;
+    &lt;/i:Interaction.Triggers&gt;
+&lt;/Image&gt;
+```</pre>
+</div>
+<div color="#502bd4" tags="Style" title="WPF弹窗-系列" tmap.id="0700eb70-286a-4899-a6d2-54c013a5aa1e" revision="0" bag="default">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+  &lt;&lt;toc-selective-expandable 'WPF弹窗-系列'&gt;&gt;
+&lt;/div&gt;</pre>
+</div>
 <div tags="[[C# MVVMLight 命令]] WPF交互Interaction" title="WPF拖拽上传" tmap.id="f361c95a-b828-4622-b4cf-409e589ce61a" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!// ''拖拽上传''：`本质仍是 事件转命令`//
 * 简单拖拽的实现是：
@@ -17272,6 +17526,29 @@ if (alert.YesBtnSelected)
 </div>
 <div tags="Style" title="WPF样式-点击按钮切换图片" tmap.id="129946cc-2318-437e-9e79-d4ad88943d4f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! //''[[C# 样式模板]]''//
+
+!!! ''//点击动作，关注`ControlTemplate.Triggers`//''
+```xml
+&lt;Style x:Key=&quot;RadioBtnWalk&quot; TargetType=&quot;{x:Type RadioButton}&quot;&gt;
+    &lt;Setter Property=&quot;Template&quot;&gt;
+        &lt;Setter.Value&gt;
+            &lt;ControlTemplate TargetType=&quot;{x:Type RadioButton}&quot;&gt;
+                &lt;Grid&gt;
+                    &lt;!--模版内容--&gt;
+                &lt;/Grid&gt;
+                &lt;ControlTemplate.Triggers&gt;
+                    &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;true&quot;&gt;
+                        &lt;Setter TargetName=&quot;Img&quot; Property=&quot;Source&quot; Value=&quot;pack://application:,,,/LLRLite.Resources/Image/WalkChecked.png&quot;/&gt;
+                    &lt;/Trigger&gt;
+                    &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;false&quot;&gt;
+                        &lt;Setter TargetName=&quot;Img&quot; Property=&quot;Source&quot; Value=&quot;pack://application:,,,/LLRLite.Resources/Image/WalkUnchecked.png&quot;/&gt;
+                    &lt;/Trigger&gt;
+                &lt;/ControlTemplate.Triggers&gt;
+            &lt;/ControlTemplate&gt;
+        &lt;/Setter.Value&gt;
+    &lt;/Setter&gt;
+&lt;/Style&gt;
+```
 
 !! ''//点击按钮，切换图片//''
 ```xml
@@ -17357,13 +17634,15 @@ if (alert.YesBtnSelected)
 &lt;/Grid&gt;
 ```</pre>
 </div>
-<div tags="IReGoLite" title="WPF窗口要素绘制顺序" tmap.id="1a93dceb-dc58-40d7-87ee-e734906cfe88" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="WPF弹窗-系列 WPF交互Interaction" title="WPF窗口要素绘制顺序" tmap.id="1a93dceb-dc58-40d7-87ee-e734906cfe88" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```c
 public int ZIndex { get; }
 ```
 * 首先绘制`低索引值`的元素，然后绘制`高索引值`的元素
+* `Panel.ZIndex=&quot;6&quot;` `Visibility=&quot;{Binding Backshow}&quot;`
+** 只有当`Visibility=true`，才会显示`Image`
 
-```c
+```xml
 &lt;Image Panel.ZIndex=&quot;6&quot; Source=&quot;pack://application:,,,/LLRLite.Resources/Image/background_grey.png&quot; Stretch=&quot;Fill&quot; Visibility=&quot;{Binding Backshow}&quot;&gt;
     &lt;i:Interaction.Triggers&gt;
         &lt;i:EventTrigger EventName=&quot;MouseLeftButtonUp&quot;&gt;
@@ -19049,8 +19328,8 @@ namespace testBitOFCPU
 </div>
 <div tags="性情精华 健康" title="月经" tmap.id="faf181ba-6638-4db1-97b3-c9006bd00e4d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//经期风险//
-* 增加//''`盆腔炎`''//症的风险
-* 可能诱发//''`子宫内膜异位`''//症
+* //''`盆腔炎`''//症
+* //''`子宫内膜异位`''//症
 
 !!//月经//
 
@@ -19235,6 +19514,9 @@ public class UpdateInfo
 &lt;/div&gt;
 </pre>
 </div>
+<div tags="ToDo 线程" title="线程Task" tmap.id="92de0dcc-82be-4c29-9ebc-b44b57bdbeab" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_41885871/article/details/83901318&quot; &gt;多线程之Task&lt;/a&gt;</pre>
+</div>
 <div created="20200512114046578" modified="20200514120839513" tags="Zettelkasten" title="网页阅读碎片化笔记" tmap.id="15fc2a91-dfca-478f-9b5c-5886e2897c34" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;&lt;
 方法论，如何在阅读网页及 RSS 时的做笔记
@@ -19372,7 +19654,7 @@ public class UpdateInfo
 
 !!! //''男人最好的青春其实也就那么些年啊! 你不好好利用就不怕暴殄天物被别人用了么? 姑娘们， 你们要相信一点， 如果你是真的从内到外爽透了， 比你更爽的肯定是他! 看着女人满足这本身就是男人的快感之一! 所以，`投入`! 一定要投入，这是咱强调过很多次的点了!''//</pre>
 </div>
-<div tags="WPF基础 CMD" title="调用CMD" tmap.id="711e769a-143e-438a-93b2-a4cbcfd41e93" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="CMD 调用外部程序" title="调用CMD" tmap.id="711e769a-143e-438a-93b2-a4cbcfd41e93" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;translink &quot;&quot;&quot;CMD多命令组合&quot;&quot;&quot;&gt;&gt;
 
 
@@ -19413,6 +19695,11 @@ private void ipconfigTest()
     RunCmd(cmd, out output);
 }
 ```</pre>
+</div>
+<div tags="C#" title="调用外部程序" tmap.id="cee5223c-ef8c-4833-8297-4db795e03d06" revision="0" bag="default">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+  &lt;&lt;toc-selective-expandable '调用外部程序'&gt;&gt;
+&lt;/div&gt;</pre>
 </div>
 <div tags="" title="资源" tmap.id="ed97009a-6237-49eb-ab95-4538fc6983cd" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -19465,9 +19752,14 @@ private void ipconfigTest()
 !! ''//[[C# 获取当前软件版本]]//''
 !! ''//[[C# 更新程序复制到缓存文件夹]]//''
 !! ''//[[C# 调用外部程序]]//''
+!! ''//[[C# 外部程序调用之接收传递参数]]//''
 
 * 修改AutoUpdater project属性
 ** `属性 &gt; 应用程序 &gt; 启动对象设置`
+
+!! ''//[[C# 文件下载Process]]//''
+!! ''//[[WebClient下载Zip文件]]//''
+
 
 !! ''//开始升级//''
 * 关闭应用程序进程
