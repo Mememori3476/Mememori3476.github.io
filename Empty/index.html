@@ -387,6 +387,8 @@ Error message and password prompt
 
 <li>CMD</li>
 
+<li>CMD 关机</li>
+
 <li>CMD 切换盘符</li>
 
 <li>CMD多命令组合</li>
@@ -12879,7 +12881,7 @@ private void textBox_Drop(object sender, DragEventArgs e)
 ```
 </pre>
 </div>
-<div tags="调用外部程序" title="C# 关机" tmap.id="787fa048-6173-4cbd-a1c5-8b0ac794ac97" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="调用外部程序 CMD" title="C# 关机" tmap.id="787fa048-6173-4cbd-a1c5-8b0ac794ac97" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//调用系统 `shutdown.exe`//''
 * 延时`10s`关闭计算机：`shutdown -s -t 10`
 
@@ -14485,6 +14487,11 @@ System.Reflection.Assembly.GetEntryAssembly().Location.Substring()
 
 &lt;/div&gt;</pre>
 </div>
+<div tags="CMD" title="CMD 关机" tmap.id="d542ada4-1b33-4560-928e-469843779a10" revision="0" bag="default">
+<pre>!!! ''//查看 shutdown命令：`shutdown`//''
+!!! ''//10s 关机：`shutdown -s -t 10`//''
+!!! ''//取消自动关机：`shutdown -a`//''</pre>
+</div>
 <div created="20200507071736763" modified="20200514121254509" tags="CMD" title="CMD 切换盘符" tmap.id="515f48d8-de42-49be-8135-b1a6f2e27950" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>切换至目标盘符：输入``D:``；切换至  ``D:\&gt;``
 
@@ -14687,7 +14694,7 @@ $(currentTiddler)$(?i)
     &lt;/$set&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div color="#502bd4" title="DateTime" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div color="#502bd4" title="DateTime" tmap.id="3f6fd656-a20c-4fcb-b9b9-e269a383abdc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
 <div tags="WPF基础" title="DateTime 减操作" tmap.id="5aea4d76-2cbb-4662-8e86-5d5cb065083b" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -15290,7 +15297,7 @@ Lists:
 &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xl=&quot;http://www.w3.org/1999/xlink&quot; version=&quot;1.1&quot; viewBox=&quot;34 107 510 317&quot; width=&quot;510pt&quot; height=&quot;317pt&quot;&gt;&lt;metadata xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot;&gt;&lt;dc:date&gt;2012-05-10 07:32Z&lt;/dc:date&gt;&lt;!-- Produced by OmniGraffle Professional 5.3.6 --&gt;&lt;/metadata&gt;&lt;defs&gt;&lt;/defs&gt;&lt;g stroke=&quot;none&quot; stroke-opacity=&quot;1&quot; stroke-dasharray=&quot;none&quot; fill=&quot;none&quot; fill-opacity=&quot;1&quot;&gt;&lt;title&gt;Canvas 1&lt;/title&gt;&lt;g&gt;&lt;title&gt;Layer 1&lt;/title&gt;&lt;path d=&quot;M 204.10294 372.67294 L 206.91333 373.50204 C 210.44484 371.92197 217.54364 374.36401 221.30923 375.55795 C 214.37523 367.871 203.92865 356.58286 196.40225 349.4665 C 193.93185 340.85104 194.98593 332.1817 195.51744 323.3866 L 195.62405 322.659 C 192.65733 329.6997 188.89246 336.5437 186.86893 343.95477 C 184.50095 353.95294 197.39323 364.74045 202.39233 370.92294 Z M 419.00293 414.95798 C 399.65295 414.411 391.14194 414.45804 381.28735 398.25296 L 373.60684 398.473 C 364.66696 398.076 368.39264 398.25595 362.42844 397.95901 C 352.45654 397.57098 354.05396 388.09604 352.29965 383.09003 C 349.49335 366.09698 356.01324 349.01611 355.80756 332.01971 C 355.73474 325.98639 347.19724 304.63062 344.14716 296.99548 C 334.58554 298.79572 324.97205 299.13895 315.27176 299.62231 C 292.91254 299.56754 270.70496 296.8295 248.65794 293.35248 C 244.36153 311.10052 231.59093 335.94183 242.14684 353.9793 C 254.95975 372.63696 263.95123 377.80597 277.88824 378.93094 C 291.8251 380.055 294.97214 395.78998 291.60031 401.40997 C 288.61584 405.294 283.37045 405.99902 278.91385 406.94 L 269.99945 407.35898 C 262.98456 407.12299 256.71454 405.229 250.46393 402.30798 C 240.02545 396.48102 229.24443 384.36703 221.23434 375.67001 C 223.09915 379.143 224.21146 385.92294 222.52005 389.07803 C 217.78415 395.78699 197.30133 395.746 187.92093 391.577 C 177.26495 386.84198 151.51596 353.59503 147.53493 328.69455 C 158.12593 308.66583 173.55493 291.2196 181.36093 269.41132 C 164.34593 258.55438 155.23293 240.88019 156.41594 220.8598 L 156.84294 218.5423 C 140.10095 221.67648 148.78296 220.51039 130.772964 221.87279 C 73.41696 221.6973 22.976959 182.80795 51.378967 122.367004 C 53.225952 118.787964 54.982956 115.534 58.113968 117.08801 C 60.626953 118.33496 60.265976 123.33699 59.001953 128.88399 C 42.766968 201.10277 122.11395 201.65552 170.88995 188.29181 C 175.73093 186.96521 185.35893 178.03061 192.02843 175.0687 C 202.93033 170.22757 214.76323 168.2634 226.50644 166.84811 C 255.71411 163.51997 290.81815 178.90649 308.65442 179.4089 C 326.4909 179.91129 351.86395 175.13808 367.43942 176.14308 C 378.74075 176.66016 389.83795 178.70007 400.74194 181.6059 C 407.79996 147.215 408.29895 121.867996 425.03094 116 C 434.85095 117.550995 442.4179 130.93298 448.01895 138.08301 L 448.04193 138.07898 C 459.4489 137.62897 470.30396 140.52301 481.09692 143.73497 C 500.63696 140.962006 517.03394 129.989 534.28992 121.45299 C 534.23596 121.721985 533.95398 121.81297 533.78595 121.99397 C 516.80396 135.72798 514.4319 158.952 516.42993 180.42822 C 517.17297 191.57237 514.02393 203.67166 510.13098 215.08179 C 502.84595 233.67169 488.77692 253.26677 472.44794 252.26176 C 466.27496 252.0665 462.68893 248.57117 458.10095 244.83946 C 457.21094 252.39809 453.71295 259.14267 450.34094 265.82758 C 442.55396 280.64941 422.20496 287.18097 403.36292 303.00763 C 384.52216 318.83453 409.39194 375.35904 415.42194 385.65802 C 421.45096 395.95798 438.28192 399.72598 431.75095 409.02194 C 429.75296 412.09198 426.69794 413.19 423.43292 414.38098 Z&quot; fill=&quot;black&quot;/&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;
 </pre>
 </div>
-<div tags="WCF" title="MSMQBinding" tmap.id="bf5dff06-b205-4b0c-a402-ab8751f2fdd7" revision="0" bag="default">
+<div tags="WCF" title="MSMQBinding" tmap.id="bf5dff06-b205-4b0c-a402-ab8751f2fdd7" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//MSMQBinding：MSMQ的封装//''
 * 用于构建离线访问，MSMQ相当于蓄水池
 * 模型：`Client` ——&gt; `MSMQ` &lt;—— `Service`
@@ -15380,7 +15387,7 @@ private void GoBack()
 #endregion
 ```</pre>
 </div>
-<div tags="WCF" title="NetTcpBinding" tmap.id="62552ced-c74c-48e8-ab28-fa2a7bec08fa" revision="0" bag="default">
+<div tags="WCF" title="NetTcpBinding" tmap.id="62552ced-c74c-48e8-ab28-fa2a7bec08fa" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//NetTcpBinding：Remoting的高级应用//''
 * 使用场景：两个.Net程序搭建的一个跨机器访问，tcp远比http（basicHttpBinding）快
 * http用于，.Net和Java程序之间的通讯
@@ -17347,12 +17354,12 @@ private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)
 ** `/targetDir=&quot;[TARGETDIR]\&quot; ……`
 * 形式：`/parm=“[Property]”`，parm——installer类，Property——对话框中的Property</pre>
 </div>
-<div color="#502bd4" tags="ToDo TableOfContents" title="WCF" tmap.id="766e6bb0-623d-4c15-b4a8-69b7ca0b6850" revision="0" bag="default">
+<div color="#502bd4" tags="ToDo TableOfContents" title="WCF" tmap.id="766e6bb0-623d-4c15-b4a8-69b7ca0b6850" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
   &lt;&lt;toc-selective-expandable 'WCF'&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div tags="WCF" title="WCF Service的App.config" tmap.id="5c4709b2-0ad9-45ab-bc02-6b5abd89b480" revision="0" bag="default">
+<div tags="WCF" title="WCF Service的App.config" tmap.id="5c4709b2-0ad9-45ab-bc02-6b5abd89b480" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//Service 的配置位于：system.serviceModel 节点下//''
 !!! ''//模型结构//''
 ```xml
@@ -17373,7 +17380,7 @@ private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)
   ……
 &lt;/endpoint&gt;</pre>
 </div>
-<div tags="WCF" title="WCF快速搭建" tmap.id="79b49bf9-6566-4219-a6cd-58a0227d4af0" revision="0" bag="default">
+<div tags="WCF" title="WCF快速搭建" tmap.id="79b49bf9-6566-4219-a6cd-58a0227d4af0" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//项目地址：//''
 * VS项目文件夹 ——&gt; WCFDemo1
 
@@ -17443,7 +17450,7 @@ static void Main(string[] args)
 }
 ```</pre>
 </div>
-<div color="#502bd4" title="WebClient" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div color="#502bd4" title="WebClient" tmap.id="0119aabe-e5ab-4528-9650-b0fc31053def" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
 <div tags="http 软件更新" title="WebClient下载Zip文件" tmap.id="16ad1deb-3284-4383-ba91-87e9fc59abad" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -18815,7 +18822,7 @@ Zettelkasten是解决一个常见问题（即知识管理问题）的多种不�
 ** 迫使自己思考笔记之间的联系
 ** &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://roamresearch.com/&quot; &gt; Roam Research&lt;/a&gt;是一款很优秀的笔记软件</pre>
 </div>
-<div tags="WCF" title="什么是WCF" tmap.id="ed5efa22-a963-4a26-9593-7564482ab61a" revision="0" bag="default">
+<div tags="WCF" title="什么是WCF" tmap.id="ed5efa22-a963-4a26-9593-7564482ab61a" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//.NET平台下分布式技术//''
 * webservice，基于http的soap模式
 * remoting，tcp模式的二进制传输
@@ -19074,9 +19081,9 @@ Convert.ToDecimal(&quot;0.33333333&quot;).ToString(&quot;0.00&quot;);
 
 &lt;&lt;translink &quot;&quot;&quot;指数基金分类和筛选&quot;&quot;&quot;&gt;&gt;
 
-!! ''//估值指标//''
-* 不可看大盘点数，决定入盘时机
-</pre>
+&lt;&lt;translink &quot;&quot;&quot;指数基金估值计算&quot;&quot;&quot;&gt;&gt;
+
+&lt;&lt;translink &quot;&quot;&quot;指数基金定投&quot;&quot;&quot;&gt;&gt;</pre>
 </div>
 <div tags="Desire" title="夫妻调摄密要（完全版）" tmap.id="5d6bdcfd-1da5-4e68-9005-80bb01cd36a5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;&lt;
@@ -19322,7 +19329,7 @@ Convert.ToDecimal(&quot;0.33333333&quot;).ToString(&quot;0.00&quot;);
 * 开始进行夫妻性交活动。性交前//''`捏挤阴茎头`''/，再将阴茎纳入阴道内//''`静止`''//，再次//''`挤捏`''//后插入阴道，缓慢抽动//''`摩擦`''//，当快要射精，再次//''`捏挤`''//，后又阴道内//''`静置`''//，较快速度较大幅度的抽动//''`摩擦`''//、井使之在阴道内射精。
 </pre>
 </div>
-<div tags="WCF" title="契约方式的同步、异步调用方式" tmap.id="f2225dfe-4bc6-474c-9baf-5da7854281da" revision="0" bag="default">
+<div tags="WCF" title="契约方式的同步、异步调用方式" tmap.id="f2225dfe-4bc6-474c-9baf-5da7854281da" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//Binding命名规则//''
 * netxxxBinding……，Net程序互通的Binding
 * wsxxxBinding……，非Net程序互通的Binding
@@ -19726,9 +19733,8 @@ private static int QuickSort_Once(int[] arr, int begin, int end)
 * 蛋类：最经济型来源，但 蛋黄胆固醇较高，建议每周2-3个
 * 海鱼、虾蟹、牛肉，较优</pre>
 </div>
-<div tags="基金初级" title="指数基金估值计算" tmap.id="f172878d-df5d-405a-85c0-c8dc171903bf" revision="0" bag="default">
-<pre>
-!! ''//估值指标//''
+<div tags="基金初级" title="指数基金估值计算" tmap.id="f172878d-df5d-405a-85c0-c8dc171903bf" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//估值指标//''
 * 大盘点数，//''不靠谱''//
 * 市盈率PE，一笔钱投资股票，多长时间回本；用于初步判定公司是贵还是便宜，//''不靠谱''//
 * 市净率PB，不靠谱
@@ -19777,7 +19783,7 @@ private static int QuickSort_Once(int[] arr, int begin, int end)
 | 基金名称 | 基金代码 | 跟踪误差率 | 规模 | 成立年限 | 管理费率 | 托管费率 | 费率合计 | 交易方式 |h
 </pre>
 </div>
-<div tags="基金初级" title="指数基金定投" tmap.id="adbae8e3-d70a-432d-8f4e-18780e6d6665" revision="0" bag="default">
+<div tags="基金初级" title="指数基金定投" tmap.id="adbae8e3-d70a-432d-8f4e-18780e6d6665" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//基金投资方式//''
 * 一次性投资
 * 不定期投资，`不建议`
