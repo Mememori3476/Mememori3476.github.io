@@ -365,6 +365,8 @@ Error message and password prompt
 
 <li>C# 调用外部程序</li>
 
+<li>C# 除法运算</li>
+
 <li>C# 随机数（未完成）</li>
 
 <li>C#删除文件、文件夹</li>
@@ -379,11 +381,15 @@ Error message and password prompt
 
 <li>C#获取运行软件位置</li>
 
+<li>C#运算</li>
+
 <li>CIS修改记录_6.1</li>
 
 <li>CIS修改记录_6.14</li>
 
 <li>CIS修改记录_6.16</li>
+
+<li>CIS修改记录_7.2</li>
 
 <li>CMD</li>
 
@@ -406,8 +412,6 @@ Error message and password prompt
 <li>DateTime属性</li>
 
 <li>Desire</li>
-
-<li>Draft of '基金初级'</li>
 
 <li>FFmpeg</li>
 
@@ -14217,6 +14221,30 @@ info.Arguments =
 System.Diagnostics.Process.Start(info);
 ```</pre>
 </div>
+<div tags="C#运算" title="C# 除法运算" tmap.id="c5cab5ef-e395-445f-b942-98535cf8c03b" revision="0" bag="default">
+<pre>!! ''//C#中 a/b返回值为：整数//''
+* 返回：`10/3=3`
+```cs
+private void calculateTimes()
+{
+    int a = 10, b = 3;
+    double times = (double)a/b;
+    Console.WriteLine(times);
+}
+```
+
+!! ''//计算 Ceiling//''
+* 返回：`4`
+
+```cs
+private void calculateTimes()
+{
+    int a = 10, b = 3;
+    double times = Math.Ceiling((double)a/b);
+    Console.WriteLine(times);
+}
+```</pre>
+</div>
 <div created="20200507084441246" modified="20200514124042066" tags="随机数 C# WPF基础" title="C# 随机数（未完成）" tmap.id="0304aaab-2cb7-4bd7-b224-14642a321125" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
@@ -14356,6 +14384,9 @@ System.Reflection.Assembly.GetEntryAssembly().Location.Substring()
 * Substring( `起始 index` )
 </pre>
 </div>
+<div color="#502bd4" title="C#运算" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Mememori3476" title="CIS修改记录_6.1" tmap.id="3f608cce-5dbd-45ca-8860-965a8719f738" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //Recipe.xml//
 * //''该文件用于 Program 界面显示：~AutoCss、~MultiCss、~MaxLoad''//
@@ -14481,6 +14512,31 @@ System.Reflection.Assembly.GetEntryAssembly().Location.Substring()
   &lt;/CalibrationTimeValue&gt;
 &lt;/Calibration&gt;
 ```</pre>
+</div>
+<div tags="Mememori3476" title="CIS修改记录_7.2" tmap.id="cacc913a-ef94-4e23-9300-152be56e8dea" revision="0" bag="default">
+<pre>!! ''//XML文件结构//''
+```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Calibration&gt;
+  &lt;CalibrationSetting&gt;
+    &lt;CalibrationTimeUnit CalibrationTime=&quot;60&quot; /&gt;
+    &lt;CalibrationLimit CalibrationMin=&quot;30&quot;/&gt;
+  &lt;/CalibrationSetting&gt;
+  &lt;CalibrationTimeValue Description=&quot;Time and Value to record Calibration&quot;&gt;
+    &lt;CalibrationItem LoadTime=&quot;1.2&quot; Value=&quot;100&quot; Time=“2020/6/14 12:57:12”/&gt;
+  &lt;/CalibrationTimeValue&gt;
+&lt;/Calibration&gt;
+```
+
+!!! ''//默认参数设置 &gt; XML节点：`CalibrationSetting`//''
+* //''补偿间隔''//：`60min`，//`CalibrationTimeUnit`//
+* ''//最小补偿量//''：`30`，//`CalibrationLimit`//
+
+!! ''//补偿策略//''
+* 未在界面开放 //''补偿间隔''//、//''最小补偿量''//
+* //''单次补偿量''//由平均值计算得出
+* 若//''单次补偿量 &lt; 最小补偿量''//
+** 重新计算//''单次补偿量''//、//''补偿间隔''//</pre>
 </div>
 <div tags="计算机技巧" title="CMD" tmap.id="f9eb933c-a14a-4042-baee-37e2acbf3916" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -14731,27 +14787,6 @@ public string TimeShow
 &lt;div class=&quot;tc-table-of-contents&quot;&gt;
 &lt;&lt;toc-selective-expandable 'Desire'&gt;&gt;
 &lt;/div&gt;</pre>
-</div>
-<div draft.of="基金初级" draft.title="基金初级" tags="理财 基金" title="Draft of '基金初级'" tmap.id="5b1d63e4-46ea-45c1-871b-056857369f19" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
-  &lt;&lt;toc-selective-expandable '基金初级'&gt;&gt;
-&lt;/div&gt;
-
-&lt;&lt;translink &quot;&quot;&quot;什么是基金&quot;&quot;&quot;&gt;&gt;
-
-&lt;&lt;translink &quot;&quot;&quot;基金分类与基金招募书&quot;&quot;&quot;&gt;&gt;
-
-&lt;&lt;translink &quot;&quot;&quot;稳健型基金&quot;&quot;&quot;&gt;&gt;
-
-&lt;&lt;translink &quot;&quot;&quot;收益型基金&quot;&quot;&quot;&gt;&gt;
-
-&lt;&lt;translink &quot;&quot;&quot;什么是指数基金&quot;&quot;&quot;&gt;&gt;
-
-&lt;&lt;translink &quot;&quot;&quot;指数基金分类和筛选&quot;&quot;&quot;&gt;&gt;
-
-&lt;&lt;translink &quot;&quot;&quot;指数基金估值计算&quot;&quot;&quot;&gt;&gt;
-
-&lt;&lt;translink &quot;&quot;&quot;指数基金定投&quot;&quot;&quot;&gt;&gt;</pre>
 </div>
 <div tags="计算机技巧" title="FFmpeg" tmap.id="8cc27ee5-06f5-4f5b-8330-a6edf3c51809" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;&lt;
@@ -20130,7 +20165,7 @@ public class UpdateInfo
 
 </pre>
 </div>
-<div tags="计算机技巧" title="正则表达式Regex" tmap.id="60c54bc4-f76e-42f9-9b65-c797e8db44b7" revision="0" bag="default">
+<div tags="计算机技巧" title="正则表达式Regex" tmap.id="60c54bc4-f76e-42f9-9b65-c797e8db44b7" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>| RegexOne https://regexone.com/ |&lt;|h
 | '' abc…	'' | //'' Letters	''// |
 | '' 123…	'' | //'' Digits	''// |
