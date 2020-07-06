@@ -317,6 +317,8 @@ Error message and password prompt
 
 <li>C# 关机</li>
 
+<li>C# 双引号转义</li>
+
 <li>C# 外部程序调用之接收传递参数</li>
 
 <li>C# 对象对于引用非静态对象、方法或属性是必需的</li>
@@ -863,6 +865,8 @@ Error message and password prompt
 
 <li>床品</li>
 
+<li>开机自启动</li>
+
 <li>快排</li>
 
 <li>性反应周期</li>
@@ -918,6 +922,8 @@ Error message and password prompt
 <li>窗体应用</li>
 
 <li>算法分发和社会分发</li>
+
+<li>红警快捷键</li>
 
 <li>线程</li>
 
@@ -11326,7 +11332,7 @@ consul agent -dev -client 0.0.0.0 -ui
 taskkill /f /im cmd.exe
 exit
 ```
-!! //''[[bat文件开机自启动]]''//</pre>
+!! //''[[开机自启动]]''//</pre>
 </div>
 <div tags="CMD" title="bat批处理" tmap.id="515771cc-7dbf-4093-a538-3b1e547b253e" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //''外部命令、内部命令''//
@@ -12997,6 +13003,16 @@ System.Diagnostics.ProcessStartInfo startinfo = new System.Diagnostics.ProcessSt
 System.Diagnostics.Process.Start(startinfo);
 ```</pre>
 </div>
+<div tags="C#" title="C# 双引号转义" tmap.id="1abde7d8-6003-4700-bcd8-ac14987a2ef0" revision="0" bag="default">
+<pre>!!! ''//若字符串内部有`&quot;`//''
+* 效果：`&quot;&quot;`
+```cs
+string a = @&quot;xxx is a &quot;&quot;good&quot;&quot; girl&quot;
+```
+
+
+</pre>
+</div>
 <div tags="C# 软件更新" title="C# 外部程序调用之接收传递参数" tmap.id="4d243350-df4b-4650-afcd-9c04c6768f69" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //''Main函数接收传递参数''//
 * Class Program，设置项目属性 &gt; 应用程序 &gt; 启动对象 &gt; Program
@@ -13360,8 +13376,9 @@ File.Move(oldName, newName);
 
 !!! //6、FileNameWithoutExtension（Path类）//
 ```c
-string fullname = item.FullName;
-string fullnamenoextension = Path.GetFileNameWithoutExtension(fullname);
+string fullName = item.FullName;
+string fileName = Path.GetFileName(fullName);
+string fullNameNoExtension = Path.GetFileNameWithoutExtension(fullName);
 ```
 
 !!程序中地址的使用
@@ -14620,11 +14637,13 @@ System.Reflection.Assembly.GetEntryAssembly().Location.Substring()
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;Calibration&gt;
   &lt;CalibrationSetting&gt;
-    &lt;CalibrationTimeUnit CalibrationTime=&quot;60&quot; /&gt;
-    &lt;CalibrationLimit CalibrationMin=&quot;30&quot;/&gt;
+    &lt;CalibrationTimeUnit CalibrationTime=&quot;60&quot; /&gt;&lt;!--默认单位min，默认 60 min补偿一次--&gt;
+    &lt;CalibrationLimit CalibrationCssMin=&quot;30&quot;/&gt;&lt;!---css最小极限值--&gt;
   &lt;/CalibrationSetting&gt;
   &lt;CalibrationTimeValue Description=&quot;Time and Value to record Calibration&quot;&gt;
-    &lt;CalibrationItem LoadTime=&quot;1.2&quot; Value=&quot;100&quot; Time=“2020/6/14 12:57:12”/&gt;
+    &lt;!--LoadTime（带负载时间/h） Height（标定高度/mm) CssWear（css磨损/mm）Time（标定时刻系统时间）--&gt;
+    &lt;CalibrationItem LoadTime=&quot;0.5&quot; Height=&quot;120&quot; CssWear=&quot;0&quot; Time=“2020/6/13 12:57:12”/&gt;
+    &lt;CalibrationItem LoadTime=&quot;1.2&quot; Height=&quot;100&quot; CssWear=&quot;0.5&quot; Time=“2020/6/14 12:57:12”/&gt;
   &lt;/CalibrationTimeValue&gt;
 &lt;/Calibration&gt;
 ```
@@ -19762,6 +19781,12 @@ Task.Factory.StartNew(()=&gt;
 
 * 俗话说: //''`女人全身都是 G 点`''//。 别忘了舌头、 双手、 语言、 丁丁都是你的武器， 尽量别让他们闲着。  总之不要一上来就傻乎乎的高速吭哧，多维度全方位的刺激能让妹子更加享受。</pre>
 </div>
+<div tags="CMD 计算机技巧 ToDo" title="开机自启动" tmap.id="8acdc2cb-8c29-4f92-b3ba-9e584afac0f8" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! ''//Win10启动文件夹位置：//''
+* `C:\Users\Memento Mori\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+
+!!! 将`待启动`文件放置`Startup`目录即可</pre>
+</div>
 <div created="20200512081828992" modified="20200514123206339" tags="C# 数据结构与算法" title="快排" tmap.id="1fafa0f3-8073-4411-af9e-050726ba856b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>[img[QuickSort.gif]]
 
@@ -20124,7 +20149,10 @@ Data Structures and Algorithms in Java
 <div color="#502bd4" created="20200514124536555" modified="20200514124550343" tags="WPF" title="文件夹" tmap.id="8004483a-7e8f-4066-8626-d6d33f26d240" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 &lt;&lt;toc-selective-expandable '文件夹'&gt;&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+
+
+</pre>
 </div>
 <div tags="文件夹" title="文件属性获取路径" tmap.id="319421f7-1699-4191-b964-7075db142e70" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //正常文件的路径获取：//
@@ -20350,7 +20378,8 @@ public class UpdateInfo
 | '' (a(bc)) '' | //''	Capture Sub-group	''// |
 | '' (.*) '' | //''	Capture all	''// |
 | '' (abc|def) '' | //'' Matches abc or def	''// |
-</pre>
+
+* 汉字正则：`^[\u4e00-\u9fa5]{2,4}$`</pre>
 </div>
 <div tags="TableOfContents Temp" title="理财" tmap.id="701c7c68-2b3f-423d-b353-e9086e1686c9" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -20406,6 +20435,29 @@ public class UpdateInfo
 ** 微博大V、微商
 * //''`算法`''//分发：借助于算法，分析个人的兴趣点，进行针对性地广告投放
 ** 抖音、头条、Bilibili、网易云歌单//''`推荐`''//……</pre>
+</div>
+<div tags="资源" title="红警快捷键" tmap.id="6f744bc9-3c72-4953-ba74-9b854cac8180" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* 基地：`H`
+* 部署：`D`
+* 建筑：`Q`、`W`、`E`、`R`
+* 移动路径：`Z`
+* 移动+警戒：`Ctrl-Shift-Z`
+* 散开：`X`
+* 维修：`K`
+* 强制共计：`Ctrl`
+* 强制移动（碾兵）：`Alt`
+* 停止移动：`S`
+* 警戒：`G`
+
+!! ''//编号//''
+* `Ctrl+数字`，创建
+* 连续两次`1`，跳转至部队`1`
+
+!! ''//坦克//''
+* 犀牛坦克：移动攻击
+
+
+</pre>
 </div>
 <div color="#502bd4" tags="WPF基础" title="线程" tmap.id="2bd60fc9-85aa-41f2-bb37-4e7d94f2c33a" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
