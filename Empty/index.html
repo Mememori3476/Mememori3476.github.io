@@ -317,6 +317,8 @@ Error message and password prompt
 
 <li>C# 关机</li>
 
+<li>C# 单例</li>
+
 <li>C# 双引号转义</li>
 
 <li>C# 外部程序调用之接收传递参数</li>
@@ -398,6 +400,8 @@ Error message and password prompt
 <li>CIS修改记录_6.16</li>
 
 <li>CIS修改记录_7.2</li>
+
+<li>CIS参数设定_7.7</li>
 
 <li>CMD</li>
 
@@ -13003,7 +13007,37 @@ System.Diagnostics.ProcessStartInfo startinfo = new System.Diagnostics.ProcessSt
 System.Diagnostics.Process.Start(startinfo);
 ```</pre>
 </div>
-<div tags="C#" title="C# 双引号转义" tmap.id="1abde7d8-6003-4700-bcd8-ac14987a2ef0" revision="0" bag="default">
+<div tags="C#" title="C# 单例" tmap.id="2a4b736d-54a1-4d97-ae40-2876ca80da2b" revision="0" bag="default">
+<pre>!! ''//创建单例//''
+
+```cs
+public class ViewModelAutoCompensation 
+{
+    private static ViewModelAutoCompensation _autoCompensation;
+
+    private ViewModelAutoCompensation()
+    {
+
+    }
+
+    public static ViewModelAutoCompensation Creat()
+    {
+        if (_autoCompensation == null)
+        {
+            _autoCompensation = new ViewModelAutoCompensation();
+        }
+        return _autoCompensation;
+    }
+```
+
+!! ''//使用单例//''
+```cs
+ViewModelAutoCompensation vmAutoCompensation = ViewModelAutoCompensation.Creat();
+```
+
+</pre>
+</div>
+<div tags="C#" title="C# 双引号转义" tmap.id="1abde7d8-6003-4700-bcd8-ac14987a2ef0" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//若字符串内部有`&quot;`//''
 * 效果：`&quot;&quot;`
 ```cs
@@ -14657,6 +14691,46 @@ System.Reflection.Assembly.GetEntryAssembly().Location.Substring()
 * //''单次补偿量''//由平均值计算得出
 * 若//''单次补偿量 &lt; 最小补偿量''//
 ** 重新计算//''单次补偿量''//、//''补偿间隔''//</pre>
+</div>
+<div tags="Mememori3476" title="CIS参数设定_7.7" tmap.id="14c9b0e9-b629-4827-bb6b-f070220c5636" revision="0" bag="default">
+<pre>!!! ''//实际参数需进行沟通协调//''
+
+!! ''//XML文件结构//''
+```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Calibration&gt;
+  &lt;CalibrationSetting&gt;
+    &lt;CalibrationTimeUnit CalibrationTime=&quot;60&quot; /&gt;&lt;!--默认单位补偿时间/min，默认 60 min补偿一次--&gt;
+    &lt;CalibrationLimit CalibrationCssMin=&quot;30&quot;/&gt;&lt;!---css最小极限值，默认30--&gt;
+  &lt;/CalibrationSetting&gt;
+  &lt;CalibrationTimeValue Description=&quot;Time and Value to record Calibration&quot;&gt;
+    &lt;!--LoadTime（带负载时间/h）   Height（标定高度/mm)   CssWear（css磨损/mm）  Time（标定时刻系统时间）--&gt;
+    &lt;CalibrationItem LoadTime=&quot;0.5&quot; Height=&quot;120&quot; CssWear=&quot;0&quot; Time=“2020/6/13 12:57:12”/&gt;
+    &lt;CalibrationItem LoadTime=&quot;1.2&quot; Height=&quot;100&quot; CssWear=&quot;0.5&quot; Time=“2020/6/14 12:57:12”/&gt;
+  &lt;/CalibrationTimeValue&gt;
+&lt;/Calibration&gt;
+```
+
+!! ''//默认参数设置//''
+* 为防止`频繁进行标定` 或 机器`带负载运行时间过短`：
+** 仅进行数据更新，不进行xml数据的附加
+** 最小标定间隔 `minCalibrationTimeSpan=30`，`min`；场合：连续两次标定间隔小于30min，防止频繁进行标定操作
+** 最小带负载时间 `minLoadTimeSpan = 0.5`，`h`；场合：连续两次标定之间，带负载运行时间过短（&lt;0.5h），带负载时间累加至 上一次记录
+
+* 磨损量计算，xml属性`CssWear`
+** `( 上一次标定高度 - 当前标定高度 ) / 转化系数`，对其取 `绝对值`
+
+* 自动补偿值计算过程中，极端值处理
+** 数据量：`6-14`，去除最小值、最大值（共`2个`）
+** 数据量：`15-29`，去除最小的两个，最大的两个（共`4个`）
+** 数据量：`30+`，正态分布，保留`均值±2*标准差`范围内数据
+
+
+!! //''补偿策略''//
+* 未在界面开放 `补偿间隔`、`最小补偿量`
+* `单次补偿量`由`平均值`计算得出
+* 若`单次补偿量` &lt; `最小补偿量`
+** `重新计算`单次补偿量、补偿间隔</pre>
 </div>
 <div tags="计算机技巧" title="CMD" tmap.id="f9eb933c-a14a-4042-baee-37e2acbf3916" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -20110,9 +20184,7 @@ private static int QuickSort_Once(int[] arr, int begin, int end)
 !!! 标签不足以统一知识，由此出现了思维导图
 !!! //''structure-note——笔记的笔记，用来引用各种标签和笔记''//
 &lt;&lt;&lt;
-&lt;&lt;image-overlay img:&quot;Structure Note.png&quot; width:60% 
-caption:&quot;//''[[A Tale of Complexity – Structural Layers in Note Taking|https://zettelkasten.de/posts/three-layers-structure-zettelkasten/]]''//&quot; align:&quot;none&quot;
-title:&quot;Structure Note&quot; text:&quot;结构化笔记，用于引导各种标签或笔记&quot; fadein:&quot;bottom&quot;&gt;&gt;
+&lt;&lt;image-overlay img:&quot;Structure Note.png&quot; width:60% caption:&quot;//''[[A Tale of Complexity – Structural Layers in Note Taking|https://zettelkasten.de/posts/three-layers-structure-zettelkasten/]]''//&quot; align:&quot;none&quot; title:&quot;Structure Note&quot; text:&quot;结构化笔记，用于引导各种标签或笔记&quot; fadein:&quot;bottom&quot;&gt;&gt;
 
 
 ! //''碎碎念''//
