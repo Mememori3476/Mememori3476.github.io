@@ -463,6 +463,8 @@ Error message and password prompt
 
 <li>Linux查看所有目录</li>
 
+<li>Linux查看系统信息</li>
+
 <li>LiveCharts</li>
 
 <li>Macros tag</li>
@@ -679,6 +681,8 @@ Error message and password prompt
 
 <li>ViewModel参数传递</li>
 
+<li>vim编辑</li>
+
 <li>VOSviewer</li>
 
 <li>VOSviewer 论文网络分析和可视化</li>
@@ -829,6 +833,8 @@ Error message and password prompt
 
 <li>创建多个ToDoList</li>
 
+<li>卢曼卡片盒</li>
+
 <li>基金分类与基金招募书</li>
 
 <li>基金初级</li>
@@ -910,6 +916,8 @@ Error message and password prompt
 <li>服务器安装Git源码</li>
 
 <li>服务器版本信息及对应实体类</li>
+
+<li>服务器配置FPT</li>
 
 <li>服务器防火墙</li>
 
@@ -13007,7 +13015,7 @@ System.Diagnostics.ProcessStartInfo startinfo = new System.Diagnostics.ProcessSt
 System.Diagnostics.Process.Start(startinfo);
 ```</pre>
 </div>
-<div tags="C#" title="C# 单例" tmap.id="2a4b736d-54a1-4d97-ae40-2876ca80da2b" revision="0" bag="default">
+<div tags="C#" title="C# 单例" tmap.id="2a4b736d-54a1-4d97-ae40-2876ca80da2b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//创建单例//''
 
 ```cs
@@ -14692,7 +14700,7 @@ System.Reflection.Assembly.GetEntryAssembly().Location.Substring()
 * 若//''单次补偿量 &lt; 最小补偿量''//
 ** 重新计算//''单次补偿量''//、//''补偿间隔''//</pre>
 </div>
-<div tags="Mememori3476" title="CIS参数设定_7.7" tmap.id="14c9b0e9-b629-4827-bb6b-f070220c5636" revision="0" bag="default">
+<div tags="Mememori3476" title="CIS参数设定_7.7" tmap.id="14c9b0e9-b629-4827-bb6b-f070220c5636" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//实际参数需进行沟通协调//''
 
 !! ''//XML文件结构//''
@@ -15389,6 +15397,10 @@ public string TimeShow
 * `ll`：查看所有目录
 * `ls`：查看目录的文件
 </pre>
+</div>
+<div tags="Linux" title="Linux查看系统信息" tmap.id="22c8d7f1-2f19-4c0a-9b2e-b22c1e614d49" revision="0" bag="default">
+<pre>* Linux当前系统内核信息：`uname -a`
+* Linux发行版本：`cat /etc/redhat-release`</pre>
 </div>
 <div color="#502bd4" created="20200514124640529" modified="20200514124717038" tags="WPF" title="LiveCharts" tmap.id="9d468296-84b4-4a49-8645-72abb3a85980" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;list-links &quot;[tag[LiveCharts]]&quot;&gt;&gt;</pre>
@@ -17261,6 +17273,18 @@ public int WeightLoss
     }
 }
 ```</pre>
+</div>
+<div tags="Linux" title="vim编辑" tmap.id="d8d95a2d-a2c6-4669-939d-ff3f5672bcf9" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/pythonlearing/p/9749338.html&quot; &gt;Linux之Vim编辑器&lt;/a&gt;
+
+* `i`，进入编辑模式
+* `Esc`，退出编辑模式，返回一般模式
+* `:w`，保存编辑的内容
+* `:q`，离开vim
+* `:q!`，不保存，强制退出
+* `:wq`，保存并离开vim
+
+</pre>
 </div>
 <div tags="TableOfContents" title="VOSviewer" tmap.id="6b587605-be02-4261-82eb-26d012a07246" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -19293,6 +19317,9 @@ Convert.ToDecimal(&quot;0.33333333&quot;).ToString(&quot;0.00&quot;);
 &lt;/$list&gt;
 ```</pre>
 </div>
+<div tags="Zettelkasten.de ToDo" title="卢曼卡片盒" tmap.id="e310955a-d6c5-4dfa-a78c-19be7c122972" revision="0" bag="default">
+<pre>!!! ''//张永锡//''  &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://zhuanlan.zhihu.com/c_152262343&quot; &gt;卢曼卡片盒&lt;/a&gt;</pre>
+</div>
 <div tags="基金初级" title="基金分类与基金招募书" tmap.id="7b86ba30-92fc-4670-95f1-cc0a5a473860" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//基金分类：//''
 * 投资品种：货币2-4%（余额宝）、债券6-8%、股票15-20%+、混合15-20%+
@@ -20403,6 +20430,83 @@ public class UpdateInfo
 }
 ```</pre>
 </div>
+<div tags="Linux FTP" title="服务器配置FPT" tmap.id="306b606c-a1a0-42bf-aa24-03c05ca3bac7" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_36938617/article/details/89077845&quot; &gt;vsftpd安装和使用&lt;/a&gt;
+
+!! ''//安装FTP，并启动//''
+* `yum install vsftpd`
+* `systemctl start vsftpd`
+* 默认安装位置：`/etc/vsftpd/`
+
+!! ''//查看安装路径//''
+* `whereis vsftpd`
+
+!! ''//创建虚拟用户//''
+* 创建FTP文件目录：`mkdir ftpfile`
+** 文件位置：`/home/Akinshi/ftpfile`，ftp文件上传至该文件
+* 添加匿名用户：`useradd ftpuser -d /home/Akinshi/ftpfile -s /sbin/nologin`
+* FTP文件目录权限设置为ftpuser：`chown -R ftpuser.ftpuser /home/Akinshi/ftpfile/`
+* 用户密码：`passwd ftpuser 123456~!`
+
+!! ''//服务器配置vsftpd.conf//''
+* 配置文件地址：`/etc/vsftpd/vsftpd.conf`
+* 添加属性节点
+```bash
+# You may fully customise the login banner string:
+#ftpd_banner=Welcome to blah FTP service.
+
+local_root = /home/Akinshi/ftpfile   #将本地账户指向创建的ftpfile文件夹
+anon_root = /home/Akinshi/ftpfile   #添加匿名账户访问ftpfile文件夹
+use_localtime = YES   #ftp服务器使用本地时间
+#
+# You may specify a file of disallowed anonymous e-mail addresses. Apparently
+```
+
+* 查找`chroot_list`节点，修改为：
+```bash
+#chroot_local_user=YES   #是否锁定../ftpfile为根目录，默认No，锁定，防止其随意访问linux目录
+chroot_list_enable=YES
+# (default follows)
+chroot_list_file=/etc/vsftpd/chroot_list
+allow_writeable_chroot=YES   #解决无法登陆问题
+```
+
+* 禁止匿名访问：
+```bash
+# Allow anonymous FTP? (Beware - allowed by default if you comment this out).
+anonymous_enable=No
+```
+
+* 添加传输接口的范围，限定严格的设置防火墙
+```bash
+pam_service_name=vsftpd
+userlist_enable=YES
+tcp_wrappers=YES
+
+pasv_min_port=61001  #最小接口
+pasv_max_port=62000  #最大接口
+```
+* 编辑`/etc/vsftpd/chroot_list`
+** `cd /etc/vsftpd/`，`vi chroot_list`，若无该文件，则自动创建
+** 写入`ftpuser`，退出
+
+* 编辑`/etc/selinux/config`
+** 修改`SELINUX=disabled`
+** 保证匿名用户创建文件夹或目录
+
+!! ''//配置防火墙//''
+* [[服务器防火墙]]
+* 编辑防火墙文件`vi /etc/sysconfig/iptables`
+```bash
+-A INPUT -p TCP --dport 61001:62000 -j ACCEPT
+-A OUTPUT -p TCP --sport 61001:62000 -j ACCEPT
+-A INPUT -p TCP --dport 20 -j ACCEPT
+-A OUTPUT -p TCP --sport 20 -j ACCEPT
+-A INPUT -p TCP --dport 21 -j ACCEPT
+-A OUTPUT -p TCP --sport 21 -j ACCEPT
+```
+</pre>
+</div>
 <div tags="Linux" title="服务器防火墙" tmap.id="d9395ea4-7f96-4f28-979b-3cc9314bdeec" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://developer.aliyun.com/adc/student/&quot; &gt;阿里云服务器学生免费领取&lt;/a&gt; &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.bilibili.com/video/BV1s4411D7sC&quot; &gt;Bilibili 阿里云配置Tomcat&lt;/a&gt;
 !! ''//远程连接//''
@@ -20814,11 +20918,11 @@ private void ipconfigTest()
 * 将所有生成的文件`(exe db ……)`，放置在`App`文件夹，将`App`压缩为`update.zip`，形式如下：
 ```
 update.zip
----App
-------1.exe
-------2.db
-------3.txt
-------……
+|--App
+|----1.exe
+|----2.db
+|----3.txt
+|----……
 ```
 
 !! ''//服务器位置设置//''
