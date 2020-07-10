@@ -15398,7 +15398,7 @@ public string TimeShow
 * `ls`：查看目录的文件
 </pre>
 </div>
-<div tags="Linux" title="Linux查看系统信息" tmap.id="22c8d7f1-2f19-4c0a-9b2e-b22c1e614d49" revision="0" bag="default">
+<div tags="Linux" title="Linux查看系统信息" tmap.id="22c8d7f1-2f19-4c0a-9b2e-b22c1e614d49" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Linux当前系统内核信息：`uname -a`
 * Linux发行版本：`cat /etc/redhat-release`</pre>
 </div>
@@ -17274,7 +17274,7 @@ public int WeightLoss
 }
 ```</pre>
 </div>
-<div tags="Linux" title="vim编辑" tmap.id="d8d95a2d-a2c6-4669-939d-ff3f5672bcf9" revision="0" bag="default">
+<div tags="Linux" title="vim编辑" tmap.id="d8d95a2d-a2c6-4669-939d-ff3f5672bcf9" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/pythonlearing/p/9749338.html&quot; &gt;Linux之Vim编辑器&lt;/a&gt;
 
 * `i`，进入编辑模式
@@ -19317,7 +19317,7 @@ Convert.ToDecimal(&quot;0.33333333&quot;).ToString(&quot;0.00&quot;);
 &lt;/$list&gt;
 ```</pre>
 </div>
-<div tags="Zettelkasten.de ToDo" title="卢曼卡片盒" tmap.id="e310955a-d6c5-4dfa-a78c-19be7c122972" revision="0" bag="default">
+<div tags="Zettelkasten.de ToDo" title="卢曼卡片盒" tmap.id="e310955a-d6c5-4dfa-a78c-19be7c122972" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//张永锡//''  &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://zhuanlan.zhihu.com/c_152262343&quot; &gt;卢曼卡片盒&lt;/a&gt;</pre>
 </div>
 <div tags="基金初级" title="基金分类与基金招募书" tmap.id="7b86ba30-92fc-4670-95f1-cc0a5a473860" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -20430,7 +20430,7 @@ public class UpdateInfo
 }
 ```</pre>
 </div>
-<div tags="Linux FTP" title="服务器配置FPT" tmap.id="306b606c-a1a0-42bf-aa24-03c05ca3bac7" revision="0" bag="default">
+<div tags="Linux FTP" title="服务器配置FPT" tmap.id="306b606c-a1a0-42bf-aa24-03c05ca3bac7" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_36938617/article/details/89077845&quot; &gt;vsftpd安装和使用&lt;/a&gt;
 
 !! ''//安装FTP，并启动//''
@@ -20515,9 +20515,13 @@ pasv_max_port=62000  #最大接口
 
 * 查看防火墙状态：`firewall-cmd --state`
 * 启动防火墙：`systemctl start firewalld`
+* 查看防火墙状态：`firewall-cmd --zone=public --list-all`
 * 开机启动防火墙：`systemctl enbale firewalld`
 * 端口文件夹：`conf/server.xml`
 * 防火墙开放8080端口：`firewall-cmd --zone=public --add-port=8080/tcp --permanent`
+** 开放多个端口：`firewall-cmd --zone=public --add-port=61001-62000/tcp --permanent`
+* 删除端口：`firewall-cmd --permanent --zone=public --remove-port=8080/tcp`
+* 热启动生效：`firewall-cmd --reload`
 </pre>
 </div>
 <div tags="Linux SSH Temp" title="查看远程服务器信息" tmap.id="86ddd655-82e9-4ab8-8682-7d660ea58407" type="text/vnd.tiddlywiki" revision="0" bag="default">
