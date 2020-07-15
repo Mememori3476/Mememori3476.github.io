@@ -229,6 +229,8 @@ Error message and password prompt
 
 <li>Android文件树</li>
 
+<li>AutoUpdater日志上传文件下载</li>
+
 <li>bat for循环</li>
 
 <li>bat youtube-dl批量下载</li>
@@ -393,6 +395,8 @@ Error message and password prompt
 
 <li>C#运算</li>
 
+<li>CallBack</li>
+
 <li>CIS修改记录_6.1</li>
 
 <li>CIS修改记录_6.14</li>
@@ -425,6 +429,8 @@ Error message and password prompt
 
 <li>Desire</li>
 
+<li>Device.Contracts文件结构</li>
+
 <li>FFmpeg</li>
 
 <li>FFmpeg不常用功能</li>
@@ -439,7 +445,17 @@ Error message and password prompt
 
 <li>FFplay常用命令</li>
 
+<li>FileZilla Server配置FTP服务器</li>
+
 <li>Filter</li>
+
+<li>FTP下载Progress进度条</li>
+
+<li>ftp和vsftpd区别</li>
+
+<li>FTP异步下载</li>
+
+<li>FTP阻塞下载</li>
 
 <li>Git与GitHub</li>
 
@@ -448,6 +464,8 @@ Error message and password prompt
 <li>HTML字体定义</li>
 
 <li>http</li>
+
+<li>Interface</li>
 
 <li>IReGoLite</li>
 
@@ -460,6 +478,8 @@ Error message and password prompt
 <li>Json</li>
 
 <li>Linux</li>
+
+<li>Linux常用命令</li>
 
 <li>Linux查看所有目录</li>
 
@@ -505,6 +525,8 @@ Error message and password prompt
 
 <li>Plugin_edit-comptext</li>
 
+<li>ProgressBar</li>
+
 <li>R语言</li>
 
 <li>Shiraz</li>
@@ -533,6 +555,8 @@ Error message and password prompt
 
 <li>Slider自定义样式</li>
 
+<li>Snippet-internal_link</li>
+
 <li>Snippet-link</li>
 
 <li>Snippet-Shiraz_Alert</li>
@@ -552,6 +576,10 @@ Error message and password prompt
 <li>Snippet-TransLink</li>
 
 <li>SQL</li>
+
+<li>Stream</li>
+
+<li>Stream下载</li>
 
 <li>Structural Layers in Note taking</li>
 
@@ -671,6 +699,8 @@ Error message and password prompt
 
 <li>ToDoList使用</li>
 
+<li>Tomcat和Nginx区别</li>
+
 <li>Tomcat搭建文件下载器</li>
 
 <li>Tomcat服务器配置应用目录</li>
@@ -703,7 +733,11 @@ Error message and password prompt
 
 <li>WCF Service的App.config</li>
 
+<li>WCFService文件结构</li>
+
 <li>WCF快速搭建</li>
+
+<li>WCF接口实现</li>
 
 <li>WebClient</li>
 
@@ -745,6 +779,8 @@ Error message and password prompt
 
 <li>WPF拖拽上传</li>
 
+<li>WPF控件Invoke和BeginInvoke</li>
+
 <li>WPF样式-点击按钮切换图片</li>
 
 <li>WPF样式-窗口操作按钮</li>
@@ -784,6 +820,8 @@ Error message and password prompt
 <li>XML-特定节点</li>
 
 <li>XML-读取</li>
+
+<li>XML-读取1</li>
 
 <li>XML-附加</li>
 
@@ -834,6 +872,12 @@ Error message and password prompt
 <li>创建多个ToDoList</li>
 
 <li>卢曼卡片盒</li>
+
+<li>回调函数</li>
+
+<li>回调函数-接口</li>
+
+<li>圆角矩形Path</li>
 
 <li>基金分类与基金招募书</li>
 
@@ -907,6 +951,8 @@ Error message and password prompt
 
 <li>文件重命名</li>
 
+<li>日期形式：20200714 2020/07/14</li>
+
 <li>月经</li>
 
 <li>月经期间组织变化JPG</li>
@@ -918,6 +964,8 @@ Error message and password prompt
 <li>服务器版本信息及对应实体类</li>
 
 <li>服务器配置FPT</li>
+
+<li>服务器配置FTP记录</li>
 
 <li>服务器防火墙</li>
 
@@ -11001,6 +11049,7 @@ System.Threading.ThreadPool.QueueUserWorkItem((s) =&gt;
        txtProcess.Text = &quot;开始更新程序...&quot;;
     };
     this.Dispatcher.Invoke(f);
+});
 ```</pre>
 </div>
 <div tags="Java安卓开发" title="Android Gradle" tmap.id="eae51cc7-9b8a-408b-adea-c1096603d091" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -11227,6 +11276,34 @@ protected void onCreate(Bundle savedInstanceState) {
 ** build.gradle(Project: Hello)
 ** build.gradle(Module: app)——依赖包、安卓版本
 </pre>
+</div>
+<div tags="FTP Mememori3476" title="AutoUpdater日志上传文件下载" tmap.id="9763dd28-2275-452d-abaa-166d7a3f1af6" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//FTP地址设置//''
+* `Constants.cs`文件夹
+
+!! ''//先上传、后检测更新//''
+!!! ''//上传压缩包：//''
+* 仅上传`当天文件`
+* 文件名：`设备id_Error_20200714.zip`、`设备id_Trace_20200714.zip`
+* 传递地址：`Constants.FTPRemotePath`
+
+!!! ''//下载 `xml` 和 `主程序压缩包`：//''
+* 文件：`update.xml` `update.zip`
+* `update.zip`文件结构
+```cs
+update.zip
+|--App //文件夹
+|----Test.exe //主程序
+|----1.txt //主程序依赖文件
+|----2.log //……
+```
+
+!! ''//设备id：`deviceId`//''
+* 读取相关xml文件，该处未配置，仅仅示意
+* 相关程序，位于：`updater.cs`  `ReadDeviceID`方法
+
+!! ''//下载进度条//''
+* 未正确显示下载进度</pre>
 </div>
 <div tags="CMD" title="bat for循环" tmap.id="93dfdac1-b264-4463-94a2-e9cfe62268b6" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//帮助文档//''
@@ -14547,6 +14624,9 @@ System.Reflection.Assembly.GetEntryAssembly().Location.Substring()
 <div color="#502bd4" title="C#运算" tmap.id="c7d6f05b-c7a0-41d3-a99c-a4ac701de026" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div color="#502bd4" title="CallBack" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="Mememori3476" title="CIS修改记录_6.1" tmap.id="3f608cce-5dbd-45ca-8860-965a8719f738" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //Recipe.xml//
 * //''该文件用于 Program 界面显示：~AutoCss、~MultiCss、~MaxLoad''//
@@ -14990,6 +15070,22 @@ public string TimeShow
 &lt;&lt;toc-selective-expandable 'Desire'&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
+<div tags="WCF" title="Device.Contracts文件结构" tmap.id="26ca05c1-a271-4314-8ac1-d8fa40e752c1" revision="0" bag="default">
+<pre>!! ''//文件结构//''
+```cs
+// IDeviceService.cs
+using System.ServiceModel;
+
+[ServiceContract]  //契约类
+public interface IDeviceService
+{
+
+    [OperationContract(IsOneWay = true)]
+    void UpdateHeartBeat(string UID);
+}
+
+</pre>
+</div>
 <div tags="计算机技巧" title="FFmpeg" tmap.id="8cc27ee5-06f5-4f5b-8330-a6edf3c51809" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;&lt;
 !!//[[FFmpeg]]：Fast Forward Moving Picture Experts Group//
@@ -15204,12 +15300,163 @@ public string TimeShow
 
 &lt;&lt;&lt;</pre>
 </div>
+<div tags="FTP" title="FileZilla Server配置FTP服务器" tmap.id="9666cdd6-84c2-46d8-9e3f-598815b99f84" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://filezilla-project.org/download.php?type=server&quot; &gt;~FileZilla下载地址&lt;/a&gt; &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.howtogeek.com/140352/how-to-host-an-ftp-server-on-windows-with-filezilla/&quot; &gt;Host FTP Server&lt;/a&gt;
+
+!! ''//配置分享的地址//''
+* 编辑 &gt; 用户
+* General：添加FTP用户名、密码
+* Shared Folders：设置共享文件夹
+
+!! ''//设置FileZilla Server//''
+* 系统安全等设置
+
+</pre>
+</div>
 <div tags="TiddlyWiki" title="Filter" tmap.id="4128918f-8043-4c72-8799-6e4bf908e53d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 
 &lt;&lt;toc-selective-expandable 'Filter'&gt;&gt;
 
 &lt;/div&gt;</pre>
+</div>
+<div tags="Style FTP" title="FTP下载Progress进度条" tmap.id="1faba8a4-2e20-4f33-9ceb-918623bd54ea" revision="0" bag="default">
+<pre>!! ''//数据更新//''
+* `UpdateProcess(startbye, allbye);`
+* 尽管实时数据显示，但界面并没有更新
+
+```cs
+public static void FTPDownload(string filePath, string fileName)
+{
+    FtpWeb FTPclient = new FtpWeb(Constants.FTPServerIP, Constants.FTPRemotePath, Constants.FTPUserID, Constants.FTPPassword);
+
+    FtpWebRequest reqFTP;
+    try
+    {
+        FileStream outputStream = new FileStream(filePath, FileMode.Create);
+        reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(Constants.FTPUrl + fileName));
+        reqFTP.Method = WebRequestMethods.Ftp.DownloadFile;
+        reqFTP.UseBinary = true;
+        reqFTP.Credentials = new NetworkCredential(Constants.FTPUserID, Constants.FTPPassword);
+        FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+        Stream ftpStream = response.GetResponseStream();
+        long cl = response.ContentLength;
+
+
+        int bufferSize = 2048;
+        int readCount;
+        byte[] buffer = new byte[bufferSize];
+        // readCount = ftpStream.Read(buffer, 0, bufferSize); // Read 属于阻塞式下载
+
+        //文件大小
+        long allbye = FTPclient.GetFileSize(fileName);
+        long startbye = 0;
+
+        while ((readCount = ftpStream.Read(buffer, 0, bufferSize)) &gt; 0)
+        {
+            outputStream.Write(buffer, 0, readCount);
+            readCount = ftpStream.Read(buffer, 0, bufferSize);
+            startbye += readCount;
+            UpdateProcess(startbye, allbye); // 进度条数据更新
+        }
+        ftpStream.Close();
+        outputStream.Close();
+        response.Close();
+    }
+    catch (Exception)
+    {
+        //Insert_Standard_ErrorLog.Insert(&quot;FtpWeb&quot;, &quot;Download Error --&gt; &quot; + ex.Message);
+    }
+}
+```</pre>
+</div>
+<div tags="Linux FTP ToDo" title="ftp和vsftpd区别" tmap.id="ea1854d4-6bcd-4122-a474-572cdc13c44e" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/axing2015/article/details/89210592&quot; &gt;常用FTP区别&lt;/a&gt;</pre>
+</div>
+<div tags="ToDo Temp FTP" title="FTP异步下载" tmap.id="60f10456-36b4-476f-b483-ad1056a3dd89" revision="0" bag="default">
+<pre>!! //''[[FTP阻塞下载]]''//
+
+```cs
+public void FTPDownload(string filePath, string fileName)
+{
+    FtpWebRequest reqFTP;
+    try
+    {
+        FileStream outputStream = new FileStream(filePath, FileMode.Create);
+        reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(Constants.FTPUrl + fileName));
+        reqFTP.Method = WebRequestMethods.Ftp.DownloadFile;
+        reqFTP.UseBinary = true;
+        reqFTP.Credentials = new NetworkCredential(Constants.FTPUserID, Constants.FTPPassword);
+        FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+        Stream ftpStream = response.GetResponseStream();
+
+        byte[] buffer = new byte[bufferSize];
+        //readCount = ftpStream.Read(buffer, 0, bufferSize); // Read 属于阻塞式下载
+        // BeginRead需要传递的状态
+        var asyncState = new AsyncState { FS = ftpStream, Buffer = buffer, EvtHandle = new ManualResetEvent(false) };
+        IAsyncResult asyncResult = ftpStream.BeginRead(buffer, 0, bufferSize, new AsyncCallback(AsyncReadCallback), asyncState);
+
+        asyncState.EvtHandle.WaitOne();
+
+
+        //文件大小，放置到 异步读取回调函数中
+        
+        long startbye = 0;
+
+        //while ((readCount = ftpStream.Read(buffer, 0, bufferSize)) &gt; 0)
+        //while (readCount &gt; 0)
+        //{
+        //    outputStream.Write(buffer, 0, readCount);
+        //    readCount = ftpStream.Read(buffer, 0, bufferSize);
+        //    startbye += readCount;
+        //    UpdateProcess(startbye, allbye); // 进度条数据更新
+        //}
+
+
+        ftpStream.Close();
+        outputStream.Close();
+        response.Close();
+    }
+    catch (Exception)
+    {
+        //Insert_Standard_ErrorLog.Insert(&quot;FtpWeb&quot;, &quot;Download Error --&gt; &quot; + ex.Message);
+    }
+}
+```</pre>
+</div>
+<div tags="FTP" title="FTP阻塞下载" tmap.id="4135361f-e3b6-4dfb-b793-f959f543569c" revision="0" bag="default">
+<pre>```cs
+public void FTPDownload(string filePath, string fileName)
+{
+    FtpWebRequest reqFTP;
+    try
+    {
+        FileStream outputStream = new FileStream(filePath, FileMode.Create);
+        reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(Constants.FTPUrl + fileName));
+        reqFTP.Method = WebRequestMethods.Ftp.DownloadFile;
+        reqFTP.UseBinary = true;
+        reqFTP.Credentials = new NetworkCredential(Constants.FTPUserID, Constants.FTPPassword);
+        FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+        Stream ftpStream = response.GetResponseStream();
+
+        byte[] buffer = new byte[bufferSize];
+        readCount = ftpStream.Read(buffer, 0, bufferSize); // 阻塞式下载
+      
+        while (readCount &gt; 0)
+        {
+            outputStream.Write(buffer, 0, readCount);
+            readCount = ftpStream.Read(buffer, 0, bufferSize);
+        }
+        ftpStream.Close();
+        outputStream.Close();
+        response.Close();
+    }
+    catch (Exception)
+    {
+        //Insert_Standard_ErrorLog.Insert(&quot;FtpWeb&quot;, &quot;Download Error --&gt; &quot; + ex.Message);
+    }
+}
+```</pre>
 </div>
 <div tags="Git Github" title="Git与GitHub" tmap.id="5a5b4cfd-e813-400e-a351-6c6b36033551" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//教材：《从0开始学习Github系列.pdf》、[[Git教程|https://www.softwhy.com/article-8478-1.html]]//
@@ -15353,6 +15600,9 @@ public string TimeShow
 
 &lt;/div&gt;</pre>
 </div>
+<div color="#502bd4" title="Interface" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
+</div>
 <div color="#502bd4" tags="WPF" title="IReGoLite" tmap.id="9ac63916-3e1a-45f2-b5c7-8f02d57e62a5" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
   &lt;&lt;toc-selective-expandable 'IReGoLite'&gt;&gt;
@@ -15392,6 +15642,10 @@ public string TimeShow
   &lt;&lt;toc-selective-expandable 'Linux'&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
+<div tags="Linux" title="Linux常用命令" tmap.id="cfd16f6a-03d5-4d38-91a7-74cc8ef00066" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* 清楚界面显示：`clear`
+</pre>
+</div>
 <div tags="Temp Linux SSH" title="Linux查看所有目录" tmap.id="334c095d-ce98-4f45-b554-09a05e1e066e" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* `cd /`：根目录
 * `ll`：查看所有目录
@@ -15400,7 +15654,14 @@ public string TimeShow
 </div>
 <div tags="Linux" title="Linux查看系统信息" tmap.id="22c8d7f1-2f19-4c0a-9b2e-b22c1e614d49" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Linux当前系统内核信息：`uname -a`
-* Linux发行版本：`cat /etc/redhat-release`</pre>
+* Linux发行版本：`cat /etc/redhat-release`
+* 查看所有用户：`cat /etc/passwd`
+* 修改用户密码：`passwd root`
+* 添加用户：`useradd ftpuser -d /home/Akinshi/ftpfile -s /sbin/nologin`
+** 匿名登陆：`-s /sbin/nologin`
+* 查看内部IP地址：`hostname -i`
+* 查看是否安装某软件（例：vsftpd）：`yum list installed | grep vsftpd`
+</pre>
 </div>
 <div color="#502bd4" created="20200514124640529" modified="20200514124717038" tags="WPF" title="LiveCharts" tmap.id="9d468296-84b4-4a49-8645-72abb3a85980" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;list-links &quot;[tag[LiveCharts]]&quot;&gt;&gt;</pre>
@@ -15812,6 +16073,9 @@ iii. restart the server.&quot;&quot;&quot;/&gt;</pre>
 &lt;&lt;toc-selective-expandable 'Plugin_edit-comptext'&gt;&gt;
 
 &lt;/div&gt;</pre>
+</div>
+<div tags="ToDo Temp" title="ProgressBar" tmap.id="01b126b0-81c7-4962-93d6-be0df069532d" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/5ca0054febc3&quot; &gt;~ProgressBar线程&lt;/a&gt;</pre>
 </div>
 <div tags="ToDo 学术期刊" title="R语言" tmap.id="f0b91e32-e90b-4683-a062-147d0204d34b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;学术期刊&quot; &gt;R语言&lt;/a&gt; &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://rstudio.com/products/rstudio/download/&quot; &gt;R Studio&lt;/a&gt;
@@ -16281,6 +16545,9 @@ public class Slider : RangeBase
 &lt;/ControlTemplate&gt;
 ```</pre>
 </div>
+<div tags="$:/tags/TextEditor/Snippet TiddlySnippet" title="Snippet-internal_link" tmap.id="5302ae88-d27b-4555-87c7-a01bb566ffcb" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;$link to=&quot;xxx&quot; class=&quot;badge-pill badge-success text-white&quot;&gt;xxx&lt;/$link&gt;</pre>
+</div>
 <div tags="$:/tags/TextEditor/Snippet TiddlySnippet" title="Snippet-link" tmap.id="5302ae88-d27b-4555-87c7-a01bb566ffcb" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;$link to=&quot;xxx&quot; class=&quot;badge-pill badge-success text-white&quot;&gt;xxx&lt;/$link&gt;</pre>
 </div>
@@ -16288,7 +16555,7 @@ public class Slider : RangeBase
 <pre>&lt;&lt;alert  type:&quot;primary&quot;  src:&quot;  ''编辑相关内容''&lt;br&gt;''type: ''primary、secondary、success、danger、warning、info、light、dark&quot;  width:&quot;60%&quot;  class:&quot;&quot;&gt;&gt;</pre>
 </div>
 <div tags="$:/tags/TextEditor/Snippet TiddlySnippet" title="Snippet-Shiraz_BadgeExterLink" tmap.id="6fc1f29a-5272-4b6f-bd8b-80bb9d77850c" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>!!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;httpxxxxxxxx&quot; &gt; 输入相关网址和信息 &lt;/a&gt;</pre>
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;httpxxxxxxxx&quot; &gt; 输入相关网址和信息 &lt;/a&gt;</pre>
 </div>
 <div tags="$:/tags/TextEditor/Snippet Shiraz TiddlySnippet" title="Snippet-Shiraz_Btn" tmap.id="7f6f4f65-f375-4687-b7fe-cd1035bda9a7" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;$link overrideClass=&quot;btn btn-info&quot; to=&quot; shuru &quot;&gt;  输入Title即可 &lt;/$link&gt;</pre>
@@ -16310,6 +16577,72 @@ public class Slider : RangeBase
 </div>
 <div created="20200514125346988" modified="20200514125406314" tags="WPF" title="SQL" tmap.id="26dd2b65-d30f-4608-a8dd-3c5f043cfb7f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;list-links &quot;[tag[SQL]]&quot;&gt;&gt;</pre>
+</div>
+<div color="#502bd4" title="Stream" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
+</div>
+<div tags="C# Stream" title="Stream下载" tmap.id="691b6859-db42-476a-8645-8e95d8fe35fa" revision="0" bag="default">
+<pre>```cs
+//定义异步读取状态类
+class AsyncState
+{
+    public FileStream FS { get; set; }
+    public byte[] Buffer { get; set; }
+    public ManualResetEvent EvtHandle { get; set; }
+}
+static int bufferSize = 512;
+
+
+static void Main(string[] args)
+{
+    string filePath = @&quot;d:\Desktop\1.txt&quot;;
+    //以只读方式打开文件流
+    using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+    {
+        var buffer = new byte[bufferSize];
+        //构造BeginRead需要传递的状态
+        var asyncState = new AsyncState { FS = fileStream, Buffer = buffer, EvtHandle = new ManualResetEvent(false) };
+        //异步读取
+        IAsyncResult asyncResult = fileStream.BeginRead(buffer, 0, bufferSize, new AsyncCallback(AsyncReadCallback), asyncState);
+        //阻塞当前线程直到读取完毕发出信号
+        asyncState.EvtHandle.WaitOne();
+        Console.WriteLine();
+        Console.WriteLine(&quot;read complete&quot;);
+        Console.Read();
+    }
+}
+//异步读取回调处理方法
+public static void AsyncReadCallback(IAsyncResult asyncResult)
+{
+    var asyncState = (AsyncState)asyncResult.AsyncState;
+    int readCn = asyncState.FS.EndRead(asyncResult);
+    //判断是否读到内容
+    if (readCn &gt; 0)
+    {
+        byte[] buffer;
+        if (readCn == bufferSize) buffer = asyncState.Buffer;
+        else
+        {
+            buffer = new byte[readCn];
+            Array.Copy(asyncState.Buffer, 0, buffer, 0, readCn);
+        }
+        //输出读取内容值
+        string readContent = Encoding.UTF8.GetString(buffer);
+
+        Console.Write(readContent);
+    }
+    if (readCn &lt; bufferSize)
+    {
+        asyncState.EvtHandle.Set();
+    }
+    else
+    {
+        Array.Clear(asyncState.Buffer, 0, bufferSize);
+        //再次执行异步读取操作
+        asyncState.FS.BeginRead(asyncState.Buffer, 0, bufferSize, new AsyncCallback(AsyncReadCallback), asyncState);
+    }
+}
+```</pre>
 </div>
 <div tags="Zettelkasten.de" title="Structural Layers in Note taking" tmap.id="32908a6f-9595-4166-9c88-00195eb4e202" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;&lt;
@@ -17147,6 +17480,9 @@ Fluid-Fixed
 
 &lt;&lt;translink &quot;&quot;&quot;创建多个ToDoList&quot;&quot;&quot; &gt;&gt;</pre>
 </div>
+<div tags="Linux http" title="Tomcat和Nginx区别" tmap.id="d2ff2612-5a34-49d6-b7a9-31b35fff17a1" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/weter_drop/article/details/89671457&quot; &gt;Tomcat和Nginx区别&lt;/a&gt;</pre>
+</div>
 <div tags="Linux http html" title="Tomcat搭建文件下载器" tmap.id="1372d278-de13-4c2c-a7cc-965e949ee224" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/d7239900dc84&quot; &gt;Tomcat搭建Http文件下载器&lt;/a&gt;
 !! ''//修改配置文件//''
@@ -17641,6 +17977,36 @@ private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)
   ……
 &lt;/endpoint&gt;</pre>
 </div>
+<div tags="WCF" title="WCFService文件结构" tmap.id="99a7b7d4-e0f8-4434-a172-1df0442d682f" revision="0" bag="default">
+<pre>```cs
+-解决方案-
+ConsoleApp1 //客户端
+|--app.config //客户端endPoint配置
+|--DeviceCallback.cs //和 IDeviceCallback.cs 对应
+|--LLR4ADevice.cs //和 LLR4ADevice.cs 对应
+|--Program.cs
+---
+Device.Contracts //契约
+|--Contracts
+|----IDeviceCallback.cs //回调接口
+|----IDeviceService.cs //契约定义
+|--DeviceMC
+|----Commin.cs
+|----LLR4ADataMC.cs
+---
+DeviceService //服务器
+|--LLR4ADevice
+|----Common
+|----ChannelManager.cs //Message消息，通道
+|----GameTCP.cs
+|----LLR4ADevice.cs //契约方法的实现
+|--UG
+|----App.config //服务器开放接口
+|----TcpServer.cs
+|--MainWindow.xaml
+|----MainWindow.xaml.cs //ServiceHost，开启服务
+</pre>
+</div>
 <div tags="WCF" title="WCF快速搭建" tmap.id="79b49bf9-6566-4219-a6cd-58a0227d4af0" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//项目地址：//''
 * VS项目文件夹 ——&gt; WCFDemo1
@@ -17657,7 +18023,11 @@ ClientDemo // 客户端
 ** 在IFlyService上添加 ServiceContract 特性
 ** Fly方法，添加 OperationContract 特性
 * 定义实现类，继承自定义的接口
-* 定义配置文件；app.config中所有定义，在 system.serviceModel节点下
+* 定义配置文件；app.config中所有定义，在 `system.serviceModel`节点下
+** `using system.serviceModel`
+** `service name=&quot;WCFDemo1.FlyService&quot;`，为具体的实现类
+** `contract=&quot;WCFDemo1.IFlyService&quot;`，为接口类
+
 ```xml
 &lt;system.serviceModel&gt;
     &lt;behaviors&gt;
@@ -17704,12 +18074,46 @@ class Program
 ```cs
 static void Main(string[] args)
 {
-    ServiceHost host = new ServiceHost(typeof(FlyService));
-    host.Open();
-    Console.WriteLine(&quot;WCF服务启动成功&quot;);
-    Console.Read();
+    ServiceReference1.FlyServiceClient client = new ServiceReference1.FlyServiceClient();
+    var result = client.Fly();
+    Console.WriteLine(result);
 }
 ```</pre>
+</div>
+<div tags="WCF" title="WCF接口实现" tmap.id="23f42315-03ee-4fc7-96cf-449d8d5feed6" revision="0" bag="default">
+<pre>! ''//服务器//''
+!! ''//定义接口名称 IService//''
+* `[ServiceContract]`定义接口
+* `[OperationContract]`定义方法
+
+```cs
+[ServiceContract] //服务协定定义
+public interface IChangeline
+{
+    [OperationContract] // 操作服务定义
+    string EsopCheckOk();
+} 
+```
+
+!! ''//定义方法实现 Service//''
+* `[ServiceBehavior]`
+```cs
+[ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single)]
+public class Changeline : IChangeline
+{
+	public string HelloWorld()
+	{
+		string result = &quot;123456&quot;;
+		return result;
+	}
+}
+```
+
+!! ''//开启 WCF需要的程序//''
+* 直接vs参数传递
+
+! ''//客户端//''
+!! ''//配置通道工厂，客户端创立独立通道，//''</pre>
 </div>
 <div color="#502bd4" title="WebClient" tmap.id="0119aabe-e5ab-4528-9650-b0fc31053def" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
@@ -17949,7 +18353,7 @@ public event RoutedPropertyChangedEventHandler&lt;DateTime&gt; TimeUpdated
 </div>
 <div tags="线程" title="WPF 独立线程" tmap.id="b03043e3-0361-454d-863d-809d7748de7a" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//独立线程//
-```
+```cs
 private Thread threadIndependence;
 private AutoResetEvent autoResetEvent = new AutoResetEvent(false);
 private delegate void SetProgressMethodThreadIndependence(int iProrgess);
@@ -18190,6 +18594,9 @@ if (alert.YesBtnSelected)
      FileAdd = ((System.Array)e.Data.GetData(System.Windows.DataFormats.FileDrop)).GetValue(0).ToString();
  }
 ```</pre>
+</div>
+<div tags="ToDo Temp" title="WPF控件Invoke和BeginInvoke" tmap.id="3f6492c5-b10e-4fce-b6e6-2ceb072ffe01" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/db2020461489&quot; &gt;WPF控件Invoke和~BeginInvoke&lt;/a&gt;</pre>
 </div>
 <div tags="Style" title="WPF样式-点击按钮切换图片" tmap.id="129946cc-2318-437e-9e79-d4ad88943d4f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! //''[[C# 样式模板]]''//
@@ -18724,6 +19131,35 @@ private static DateTime toDateTime2(string dateTimes)
 | XML返回值 |&lt;|h
 | Time | Value |
 | 2020/5/27 21:10:58 | 100 |</pre>
+</div>
+<div tags="ToDo Temp" title="XML-读取1" tmap.id="127a059b-ca5b-4a95-b930-e7ee6b42fdec" revision="0" bag="default">
+<pre>!! ''//xml 文件结构//''
+```xml
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;MDConfig xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+	&lt;NetId&gt;192.168.1.101.1.1&lt;/NetId&gt;
+	&lt;Port&gt;851&lt;/Port&gt;
+	&lt;!--RealMode/SimMode--&gt;
+	&lt;SystemMode&gt;RealMode&lt;/SystemMode&gt;
+	&lt;!--DeviceNumber--&gt;
+	&lt;DeviceNumber&gt;5ECA457A-BAB2-47B5-B87A-A6BF529B2B9D&lt;/DeviceNumber&gt;
+&lt;/MDConfig&gt;
+```
+
+!! ''//读取xml-DeviceNumber数据//''
+```cs
+if (File.Exists(configFilePath))
+{
+    XmlDocument xmlDoc = new XmlDocument();
+    xmlDoc.Load(configFilePath);
+    if (xmlDoc != null)
+    {
+        XmlNode nodeList = xmlDoc.SelectSingleNode(&quot;/MDConfig/DeviceNumber&quot;);
+        deviceNumber = nodeList.InnerText;
+    }
+}
+return deviceNumber;
+```</pre>
 </div>
 <div tags="XML" title="XML-附加" tmap.id="8d415ce0-1e1f-4a59-bb44-df437d036294" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//XML文件结构//
@@ -19319,6 +19755,147 @@ Convert.ToDecimal(&quot;0.33333333&quot;).ToString(&quot;0.00&quot;);
 </div>
 <div tags="Zettelkasten.de ToDo" title="卢曼卡片盒" tmap.id="e310955a-d6c5-4dfa-a78c-19be7c122972" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//张永锡//''  &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://zhuanlan.zhihu.com/c_152262343&quot; &gt;卢曼卡片盒&lt;/a&gt;</pre>
+</div>
+<div tags="CallBack" title="回调函数" tmap.id="7bd3b6e6-b99f-4028-80b6-72b2043eb0c0" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wangtianxj/articles/1362786.html&quot; &gt;//''C#实现回调函数''// &lt;/a&gt;
+
+!! //''[[回调函数-接口]]''//
+* 采用 `interface` 进行封装
+
+
+!! ''////''
+
+```cs
+using System; 
+using System.Collections.Generic; 
+using System.Text; 
+namespace ConsoleApplication1 
+{ 
+     class Program 
+     { 
+         static void Main(string[] args) 
+         { 
+             //创建一个控制器对象，将提供给它的回调对象传入 
+             Controller obj = new Controller(new CallBack()); 
+             obj.Star(); 
+         } 
+     } 
+     public class CallBack
+     { 
+         public void run() 
+         { 
+             System.Console.WriteLine(DateTime.Now); 
+         } 
+     } 
+     public class Controller 
+     { 
+         public CallBack CallBackObj = null;   //这里引用回调对象 
+         public Controller(CallBack obj) 
+         { 
+             this.CallBackObj = obj; 
+         } 
+         public void Star() 
+         { 
+             Console.WriteLine(&quot;敲键盘任意键就显示当前的时间，直到按ESC退出....&quot;); 
+             while (Console.ReadKey(true).Key != ConsoleKey.Escape) 
+             { 
+                 CallBackObj.run(); 
+             } 
+         } 
+     } 
+}
+```</pre>
+</div>
+<div tags="CallBack Interface" title="回调函数-接口" tmap.id="5d677499-ec49-4911-a5aa-11c45dff0caf" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wangtianxj/articles/1362786.html&quot; &gt;C#实现接口回调&lt;/a&gt;
+
+!! ''//回调使用场景//''
+* 通常的对象创建，马上使用
+* 回调用于：某个场景出现或条件满足时才调用，延迟调用对象方法
+
+!! ''//回调函数原理//''
+* 创建：回调对象、控制器对象
+* 将回调对象需要被调用的方法告诉控制器对象
+* 控制器对象负责检查某个场景是否出现或某个条件是否满足
+* 若满足，自动调用回调对象的方法
+
+!! ''//回调函数示范//''
+* 键盘任意键，打印系统时间
+```cs
+using System; 
+using System.Collections.Generic; 
+using System.Text; 
+namespace ConsoleApplication1 
+{ 
+     class Program 
+     { 
+         static void Main(string[] args) 
+         { 
+             //创建一个控制器对象，将提供给它的回调对象传入 
+             Controller obj = new Controller(new CallBack()); 
+             obj.Star(); 
+         } 
+     } 
+     public interface IBack 
+     { 
+         void run(); 
+     } 
+     public class CallBack : IBack 
+     { 
+         public void run() 
+         { 
+             System.Console.WriteLine(DateTime.Now); 
+         } 
+     } 
+     public class Controller 
+     { 
+         public IBack CallBackObj = null;   //这里引用回调对象 
+         public Controller(IBack obj) 
+         { 
+             this.CallBackObj = obj; 
+         } 
+         public void Star() 
+         { 
+             Console.WriteLine(&quot;敲键盘任意键就显示当前的时间，直到按ESC退出....&quot;); 
+             while (Console.ReadKey(true).Key != ConsoleKey.Escape) 
+             { 
+                 CallBackObj.run(); 
+             } 
+         } 
+     } 
+} 
+```</pre>
+</div>
+<div tags="Style" title="圆角矩形Path" tmap.id="a865430d-342d-4e21-bdf9-c5b60d25f574" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//PathGeometry//''
+
+```xml
+&lt;Path Stroke=&quot;Black&quot; StrokeThickness=&quot;2&quot;&gt;
+    &lt;Path.Data&gt;
+        &lt;PathGeometry&gt;
+            &lt;PathFigure IsClosed=&quot;True&quot; StartPoint=&quot;20,0&quot;&gt;
+                &lt;ArcSegment Point=&quot;0,20&quot; Size=&quot;20,20&quot;/&gt;
+                &lt;LineSegment Point=&quot;0,40&quot;/&gt;
+                &lt;ArcSegment Point=&quot;20,60&quot; Size=&quot;20,20&quot;/&gt;
+                &lt;LineSegment Point=&quot;158,60&quot;/&gt;
+                &lt;ArcSegment Point=&quot;178,40&quot; Size=&quot;20,20&quot;/&gt;
+                &lt;LineSegment Point=&quot;178,20&quot;/&gt;
+                &lt;ArcSegment Point=&quot;158,0&quot; Size=&quot;20,20&quot;/&gt;
+            &lt;/PathFigure&gt;
+        &lt;/PathGeometry&gt;
+    &lt;/Path.Data&gt;
+&lt;/Path&gt;
+```
+
+!! ''//RectangleGeometry//''
+
+```xml
+&lt;Path Fill=&quot;#8CA0F0&quot; Stroke=&quot;#5b79f0&quot; StrokeThickness=&quot;2&quot;&gt;
+    &lt;Path.Data&gt;
+        &lt;RectangleGeometry x:Name=&quot;trackLeft&quot; Rect=&quot;0,0,300,60&quot; RadiusX=&quot;30&quot; RadiusY=&quot;30&quot;/&gt;
+    &lt;/Path.Data&gt;
+&lt;/Path&gt;
+```</pre>
 </div>
 <div tags="基金初级" title="基金分类与基金招募书" tmap.id="7b86ba30-92fc-4670-95f1-cc0a5a473860" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//基金分类：//''
@@ -20296,6 +20873,17 @@ namespace testBitOFCPU
 }
 ```</pre>
 </div>
+<div tags="C#" title="日期形式：20200714 2020/07/14" tmap.id="0abc9149-04ec-4c6c-a9fd-127c02ebf17e" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//20200714//''
+```cs
+string timeNow = DateTime.Now.ToString(&quot;yyyy&quot;) + DateTime.Now.ToString(&quot;MM&quot;) + DateTime.Now.ToString(&quot;dd&quot;);
+```
+
+!! ''//2020/07/14//''
+```cs
+string timeNow = DateTime.Now.ToString(&quot;yyyy&quot;) + &quot;/&quot; + DateTime.Now.ToString(&quot;MM&quot;) + &quot;/&quot; + DateTime.Now.ToString(&quot;dd&quot;);
+```</pre>
+</div>
 <div tags="性情精华 健康" title="月经" tmap.id="faf181ba-6638-4db1-97b3-c9006bd00e4d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//经期风险//
 * //''`盆腔炎`''//症
@@ -20357,7 +20945,7 @@ namespace testBitOFCPU
 
 !! ''//安装浏览器管理界面//''
 * 进入`tomcat`的`webapps`目录，查看目录
-** `cd webapps`; `ls`
+** `cd webapps` `ls`
 * 安装默认浏览器管理界面
 ** `yum install tomcat-webapps tomcat-admin-webapps`
 
@@ -20431,7 +21019,7 @@ public class UpdateInfo
 ```</pre>
 </div>
 <div tags="Linux FTP" title="服务器配置FPT" tmap.id="306b606c-a1a0-42bf-aa24-03c05ca3bac7" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_36938617/article/details/89077845&quot; &gt;vsftpd安装和使用&lt;/a&gt;
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_36938617/article/details/89077845&quot; &gt;vsftpd安装和使用&lt;/a&gt; &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://phoenixnap.com/kb/how-to-setup-ftp-server-install-vsftpd-centos-7&quot; &gt;~CentOS配置FTP&lt;/a&gt;
 
 !! ''//安装FTP，并启动//''
 * `yum install vsftpd`
@@ -20445,7 +21033,7 @@ public class UpdateInfo
 * 创建FTP文件目录：`mkdir ftpfile`
 ** 文件位置：`/home/Akinshi/ftpfile`，ftp文件上传至该文件
 * 添加匿名用户：`useradd ftpuser -d /home/Akinshi/ftpfile -s /sbin/nologin`
-* FTP文件目录权限设置为ftpuser：`chown -R ftpuser.ftpuser /home/Akinshi/ftpfile/`
+* FTP文件目录权限设置为ftpuser：`chown -R ftpuser.ftpuser /home/Akinshi/ftpfile`
 * 用户密码：`passwd ftpuser 123456~!`
 
 !! ''//服务器配置vsftpd.conf//''
@@ -20507,6 +21095,14 @@ pasv_max_port=62000  #最大接口
 ```
 </pre>
 </div>
+<div tags="Linux FTP" title="服务器配置FTP记录" tmap.id="2347dd82-0eb9-41f9-b9c1-746b8c3fe80a" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* 启动服务器错误：`systemctl restart ftp`
+* 查看是否有类似FTP服务器：`rpm -qa |grep -i &quot;ftp&quot;`
+
+!! ''//FTP配置 530报错//''
+!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.thegeekdiary.com/error-530-permission-denied-when-user-logs-in-to-vsftpd-server-via-ftp/&quot; &gt;Error 530 When Login FTP&lt;/a&gt;
+!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://forums.centos.org/viewtopic.php?t=5152&quot; &gt;530 Error&lt;/a&gt;</pre>
+</div>
 <div tags="Linux" title="服务器防火墙" tmap.id="d9395ea4-7f96-4f28-979b-3cc9314bdeec" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://developer.aliyun.com/adc/student/&quot; &gt;阿里云服务器学生免费领取&lt;/a&gt; &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.bilibili.com/video/BV1s4411D7sC&quot; &gt;Bilibili 阿里云配置Tomcat&lt;/a&gt;
 !! ''//远程连接//''
@@ -20515,13 +21111,20 @@ pasv_max_port=62000  #最大接口
 
 * 查看防火墙状态：`firewall-cmd --state`
 * 启动防火墙：`systemctl start firewalld`
-* 查看防火墙状态：`firewall-cmd --zone=public --list-all`
+* 查看端口信息：`firewall-cmd --zone=public --list-all`
 * 开机启动防火墙：`systemctl enbale firewalld`
 * 端口文件夹：`conf/server.xml`
 * 防火墙开放8080端口：`firewall-cmd --zone=public --add-port=8080/tcp --permanent`
 ** 开放多个端口：`firewall-cmd --zone=public --add-port=61001-62000/tcp --permanent`
 * 删除端口：`firewall-cmd --permanent --zone=public --remove-port=8080/tcp`
 * 热启动生效：`firewall-cmd --reload`
+---
+* 关闭firewalld防火墙：`systemctl stop firewalld`
+* 关闭firewalld开机自启动：`systemctl disable firewalld.service`
+* 安装iptables，`yum install iptables-services`
+* 编辑iptables防火墙设置：`vi /etc/sysconfig/iptables`
+* 开启iptables：`systemctl start iptables`
+
 </pre>
 </div>
 <div tags="Linux SSH Temp" title="查看远程服务器信息" tmap.id="86ddd655-82e9-4ab8-8682-7d660ea58407" type="text/vnd.tiddlywiki" revision="0" bag="default">
