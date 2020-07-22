@@ -775,6 +775,8 @@ Error message and password prompt
 
 <li>WCFService文件结构</li>
 
+<li>WCF创建IIS宿主服务</li>
+
 <li>WCF基础知识</li>
 
 <li>WCF契约简单介绍</li>
@@ -798,6 +800,10 @@ Error message and password prompt
 <li>WCF快速搭建</li>
 
 <li>WCF接口实现</li>
+
+<li>WCF数据契约</li>
+
+<li>WCF数据契约：预防未知类型数据</li>
 
 <li>WCF新建与部署</li>
 
@@ -15184,7 +15190,7 @@ public interface IDeviceService
 
 </pre>
 </div>
-<div tags="ToDo Temp C#" title="Dictionary相关操作" tmap.id="88ebe419-0ed3-44a6-952f-992f5d97e668" revision="0" bag="default">
+<div tags="ToDo Temp C#" title="Dictionary相关操作" tmap.id="88ebe419-0ed3-44a6-952f-992f5d97e668" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/ming-4/p/12204482.html&quot; &gt;C#对字典Dictionary 的添加，遍历，移除系列操作&lt;/a&gt;
 
 ```cs
@@ -15804,7 +15810,7 @@ public void FTPDownload(string filePath, string fileName)
   &lt;&lt;toc-selective-expandable 'IReGoLite'&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div tags="ToDo Temp Mememori3476 IReGo" title="IReGo服务端契约实现文件结构" tmap.id="6997ec57-5926-47bb-bf41-2a521006b2be" type="" revision="0" bag="default">
+<div tags="ToDo Temp Mememori3476 IReGo" title="IReGo服务端契约实现文件结构" tmap.id="6997ec57-5926-47bb-bf41-2a521006b2be" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```cs
 namespace LLR.Device.LLR4ADevice
 {
@@ -15884,7 +15890,13 @@ public event Action&lt;float[]&gt; MPCloudPlatformDateEvent;
 ** ~~LLR4AStartTrain()~~、LLR4APauseTrain()、
 * dit_trainingData清空
 ** LLR4ATerminated()、LLR4AStopTrain()、
-* 什么时候，将数据返回给上位机</pre>
+* 什么时候，将数据返回给上位机
+
+!! ''//心跳//''
+* Login()、UpdateHeartBeat()、Leave()方法
+* Login()方法的调用：初始化时刻 LLR4AInitialized
+* UpdateHeartBeat()方法的调用：Update()
+* Leave()方法的调用：LLR4ATerminated()</pre>
 </div>
 <div color="#502bd4" created="20200509054836360" modified="20200514084630519" tags="C# Style" title="ItemsControl派生类" tmap.id="4f4f6c30-8bc8-47c8-bcdb-39ede3793b51" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -18443,18 +18455,19 @@ DeviceService //实现契约的服务层
 |----MainWindow.xaml.cs //ServiceHost，开启服务
 </pre>
 </div>
-<div tags="WCF系列教程" title="WCF基础知识" tmap.id="f95e8691-91d0-4f6c-bb65-ff0977e99a46" revision="0" bag="default">
-<pre>
-* WCF的体系架构是一种基于拦截机制来实现的，负责传递和拦截消息的组件为`通道`；
+<div tags="ToDo Temp IIS WCF" title="WCF创建IIS宿主服务" tmap.id="efc46a95-d45d-4e08-9291-1ad2b5681430" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/zhili/p/FirstWCF.html&quot; &gt;//''创建IIS宿主客户端''//&lt;/a&gt;</pre>
+</div>
+<div tags="WCF系列教程" title="WCF基础知识" tmap.id="f95e8691-91d0-4f6c-bb65-ff0977e99a46" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* WCF的体系架构是一种基于拦截机制来实现的，负责传递和拦截消息的组件为`通道`；
 * 客户端发起对服务端服务的调用，通过服务代理对象，将对象序列化到消息，通过通道进行消息的传递（序列化、反序列化）
 * 通道，封装了消息的通道细节，如编码、事务处理、安全等，引入绑定的概念，封装通道的组成顺序与处理细节
 
 !! ''//WCF基本知识点//''
 * 通道，ServiceHost为每一个端点创建一个通道侦听器，侦听客户端发送的消息。</pre>
 </div>
-<div tags="WCF系列教程" title="WCF契约简单介绍" tmap.id="32a03937-2e76-44ef-a801-f1c4ddcfa6f4" revision="0" bag="default">
-<pre>
-!! ''//WCF契约的简单介绍——服务契约//''
+<div tags="WCF系列教程" title="WCF契约简单介绍" tmap.id="32a03937-2e76-44ef-a801-f1c4ddcfa6f4" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//WCF契约的简单介绍——服务契约//''
 * 描述了暴露给外部的类型（接口或类）、服务所支持的操作、使用的消息交换模式和消息的格式
 * 引用命名空间`System.ServiceModel`
 !!! ''//服务契约特性——ServiceContractAttribute//''
@@ -18463,7 +18476,7 @@ DeviceService //实现契约的服务层
 !!! ''//服务契约特性——MessageParameterAttribute//''
 * 可以控制参数或返回值的名称，只有Name书属性</pre>
 </div>
-<div tags="ToDo Temp WCF系列教程" title="WCF实例上下文：单例模式" tmap.id="959421d0-77c7-4db2-b59b-60b106372876" revision="0" bag="default">
+<div tags="ToDo Temp WCF系列教程" title="WCF实例上下文：单例模式" tmap.id="959421d0-77c7-4db2-b59b-60b106372876" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! [[WCF实例上下文：单调模式]]
 
 ---
@@ -18508,7 +18521,7 @@ namespace Artech.WcfServices.Service
 }
 ```</pre>
 </div>
-<div tags="ToDo Temp WCF系列教程" title="WCF实例上下文：单调模式" tmap.id="b7db2a7a-9244-4d92-bf5a-02e268b4196f" revision="0" bag="default">
+<div tags="ToDo Temp WCF系列教程" title="WCF实例上下文：单调模式" tmap.id="b7db2a7a-9244-4d92-bf5a-02e268b4196f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//实例上下文 InstanceContextMode//''
 * 客户端的服务实例与客户端的服务代理之间的关联方式
 * 三种模式：单调Per-Call、单例Single、会话Per-Session
@@ -18574,14 +18587,14 @@ class Program
 }
 ```</pre>
 </div>
-<div tags="WCF系列教程" title="WCF开发流程" tmap.id="4262b151-9514-4ffc-8660-07638ae18337" revision="0" bag="default">
+<div tags="WCF系列教程" title="WCF开发流程" tmap.id="4262b151-9514-4ffc-8660-07638ae18337" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//WCF开发流程//''
 * 创建服务，引用System.ServiceModel
 * 创建服务契约和服务的操作，抽象为接口，ServiceContract、OperationContract标记定义在接口和接口的方法上，创建类继承接口给出具体实现
 * 服务的发布，引用服务的程序集、System.ServiceModel，配置端口和绑定
 * 客户端，引用System.ServiceModel，通过添加服务引用的方式创建代理。</pre>
 </div>
-<div tags="ToDo Temp WCF系列教程" title="WCF异常处理" tmap.id="1954c6bf-a777-4a86-911d-4a64aafc83f1" revision="0" bag="default">
+<div tags="ToDo Temp WCF系列教程" title="WCF异常处理" tmap.id="1954c6bf-a777-4a86-911d-4a64aafc83f1" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```xml
 &lt;configuration&gt;
   &lt;system.serviceModel&gt;
@@ -18604,13 +18617,15 @@ class Program
 &lt;/configuration&gt;
 ```</pre>
 </div>
-<div color="#502bd4" tags="ToDo Temp WCF系列教程" title="WCF心跳检测" tmap.id="9432a0dd-7be5-46b1-85f2-aadee359b600" revision="0" bag="default">
+<div color="#502bd4" tags="ToDo Temp WCF系列教程" title="WCF心跳检测" tmap.id="9432a0dd-7be5-46b1-85f2-aadee359b600" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wujy/p/3247141.html&quot; &gt;WCF心跳判断服务端及客户端是否掉线并实现重连接&lt;/a&gt;
 
 !!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://download.csdn.net/detail/u010127054/5894731&quot; &gt;WCF心跳检测代码下载&lt;/a&gt;
 
 * 心跳检测，用于判断服务端和客户端是否掉线进行判断
 * 通过WCF双工知识和心跳包实现相应功能
+
+* 服务端和客户端的时间不一致，若超过5分钟，将会导致通信的失败
 
 &lt;div class=&quot;tc-table-of-contents&quot;&gt;
   &lt;&lt;toc-selective-expandable 'WCF心跳检测'&gt;&gt;
@@ -18625,17 +18640,17 @@ Client //客户端
 |--App.config
 |--CallServer.cs //实现回调接口
 |--Program.cs
-Interface //契约层
+Interface //契约层-dll类库
 |--ICallback.cs //回调接口
 |--IPushMessage.cs
-Service //实现契约的服务层
+Service //实现契约的服务层-Console应用程序
 |--App.config
 |--Program.cs
 |--PushMessageServer.cs //实现接口 IPushMessage 内容
 |--WcfClient.cs //记录客户端的上下限操作
 ```</pre>
 </div>
-<div tags="ToDo Temp WCF心跳检测" title="WCF心跳检测：契约层Interface" tmap.id="5e20ccb9-1093-47cc-8426-b6e9e9860840" revision="0" bag="default">
+<div tags="ToDo Temp WCF心跳检测" title="WCF心跳检测：契约层Interface" tmap.id="5e20ccb9-1093-47cc-8426-b6e9e9860840" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
   &lt;&lt;toc-selective-expandable 'WCF心跳检测'&gt;&gt;
 &lt;/div&gt;
@@ -18681,7 +18696,7 @@ namespace Interface
 }
 ```</pre>
 </div>
-<div tags="ToDo Temp WCF心跳检测" title="WCF心跳检测：契约的服务层Service" tmap.id="ab740ac2-b0f5-4684-be5d-1b9baea91485" revision="0" bag="default">
+<div tags="ToDo Temp WCF心跳检测" title="WCF心跳检测：契约的服务层Service" tmap.id="ab740ac2-b0f5-4684-be5d-1b9baea91485" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
   &lt;&lt;toc-selective-expandable 'WCF心跳检测'&gt;&gt;
 &lt;/div&gt;
@@ -18845,8 +18860,10 @@ namespace Service
 }
 ```</pre>
 </div>
-<div tags="ToDo Temp WCF心跳检测" title="WCF心跳检测：客户端Client" tmap.id="62ce43e7-bc66-489b-b79b-1a453d16af0a" revision="0" bag="default">
-<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+<div tags="ToDo Temp WCF心跳检测" title="WCF心跳检测：客户端Client" tmap.id="62ce43e7-bc66-489b-b79b-1a453d16af0a" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* 没有通过服务引用进行连接
+
+&lt;div class=&quot;tc-table-of-contents&quot;&gt;
   &lt;&lt;toc-selective-expandable 'WCF心跳检测'&gt;&gt;
 &lt;/div&gt;
 
@@ -18956,6 +18973,26 @@ ClientDemo // 客户端
 ** 在IFlyService上添加 ServiceContract 特性
 ** Fly方法，添加 OperationContract 特性
 * 定义实现类，继承自定义的接口
+
+```cs
+[ServiceContract(Name = &quot;HellworldService&quot;, Namespace = &quot;http://www.Learninghard.com&quot;)]
+public interface IHelloWorld
+{
+    [OperationContract()]
+    string GetHelloWorld();
+}
+```
+
+```cs
+public class HelloWorldService : IHelloWorld
+{
+    public string GetHelloWorld()
+    {
+        return &quot;Hello World&quot;;
+    }
+}
+```
+
 * 定义配置文件；app.config中所有定义，在 `system.serviceModel`节点下
 ** `using system.serviceModel`
 ** `service name=&quot;WCFDemo1.FlyService&quot;`，为具体的实现类
@@ -19005,11 +19042,25 @@ class Program
 * 添加 &gt; 服务引用
 * 调用引用
 ```cs
-static void Main(string[] args)
+using Client.HelloWorldServices;
+using System;
+
+namespace Client
 {
-    ServiceReference1.FlyServiceClient client = new ServiceReference1.FlyServiceClient();
-    var result = client.Fly();
-    Console.WriteLine(result);
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // HelloworldServiceClient就是VS为我们创建的服务代理类
+            using (HellworldServiceClient proxy = new HellworldServiceClient())
+            {
+                // 通过代理类来调用进行服务方法的访问
+                Console.WriteLine(&quot;服务返回的结果是: {0}&quot;, proxy.GetHelloWorld());
+            }
+
+            Console.Read();
+        }
+    }
 }
 ```</pre>
 </div>
@@ -19048,11 +19099,147 @@ public class Changeline : IChangeline
 ! ''//客户端//''
 !! ''//配置通道工厂，客户端创立独立通道，//''</pre>
 </div>
+<div tags="ToDo Temp WCF" title="WCF数据契约" tmap.id="2112a309-75b4-47c3-8c76-183cdc1840db" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/zhili/p/WCFDataContract.html&quot; &gt;WCF数据契约与序列化详解&lt;/a&gt;
+
+* 数据契约，需引用`System.Runtime.Serialization`
+* 用于所传递数据的序列化和反序列化
+
+---
+!! ''//数据契约的调用过程//''
+* 客户端将对象序列化为xml格式，格式与绑定的协议有关，使用Http传输协议
+* 通过Http协议进行网络传递到服务
+* 服务程序接受到传输过来的xml格式数据，反序列化对象User，传递至AddNewUser()
+
+
+!! ''//数据契约文件结构//''
+```cs
+-解决方案-
+BussinessEntity
+|--User.cs //DataContract
+Client //客户端
+|--Connected Services
+|----ServiceReference1 //服务引用
+|--App.config
+|--Program.cs
+WCFServiceAndHost //服务端
+|--IUserService.cs
+|--UserService.cs
+|--Program.cs
+```
+
+!! ''//定义数据契约//''
+
+```cs
+using System.Runtime.Serialization;
+
+namespace BusinessEntity
+{
+    [DataContract]// 数据契约属性声明
+    public class User
+    {
+        [DataMember(Name = &quot;UserName&quot;)]//定义别名，使用 UserName进行赋值
+        public string Name { get; set; }
+        [DataMember]
+        public string Password { get; set; }
+        [DataMember]
+        public string Email { get; set; }
+
+        // 没有[DataMember]声明将不会序列化传送
+        public string Mobile { get; set; } 
+        public string Test { get; set; }
+    }
+}
+```
+
+!! ''//定义服务契约和数据契约的实现//''
+```cs
+[ServiceContract]
+public interface IUserValidationService
+{
+    [OperationContract]
+    bool AddNewUser(User user);
+    [OperationContract]
+    User GetUserByName(string name);
+}
+
+public class UserValidationService : IUserValidationService
+{
+    public bool AddNewUser(User user)
+    {
+        return true;
+    }
+    public User GetUserByName(string name)
+    {
+        User user = new User { Name = name, Password = &quot;123&quot;, Email = &quot;123456@qq.com&quot;, Mobile = &quot;13912331245&quot; };
+        return user;
+    }
+}
+```
+
+```cs
+static void Main(string[] args)
+{
+    using (ServiceHost host = new ServiceHost(typeof(UserService)))
+    {
+        host.Open();
+        Console.WriteLine(&quot;Service OK&quot;);
+        Console.ReadKey();
+    }
+}
+```
+
+!! ''//定义配置文件//''
+* 客户端添加服务引用，采用的地址为：baseAddress + address
+** 所示为：`http://localhost:8733/Design_Time_Addresses/WCFServiceAndHost/UserService/mex`
+
+```xml
+&lt;endpoint address=&quot;mex&quot; binding=&quot;mexHttpBinding&quot; contract=&quot;IMetadataExchange&quot; /&gt;
+&lt;host&gt;
+    &lt;baseAddresses&gt;
+        &lt;add baseAddress=&quot;http://localhost:8733/Design_Time_Addresses/WCFServiceAndHost/UserService/&quot; /&gt;
+    &lt;/baseAddresses&gt;
+&lt;/host&gt;
+```
+
+
+!! ''//实现客户端访问服务方法//''
+* 添加服务引用，生成服务客户端代理类
+
+```cs
+using Client.ServiceReference1; //命名空间
+
+static void Main(string[] args)
+{
+    UserServiceClient userServiceClient = new UserServiceClient();
+    User newUser = new User() { UserName = &quot;LearningHard&quot;, Email = &quot;123456@qq.com&quot;, Password = &quot;123&quot; };
+    userServiceClient.AddNewUser(newUser);
+
+    string name = &quot;Learning Hard Client&quot;;
+    User user = userServiceClient.GetUserByName(name);
+    if (user != null)
+    {
+        Console.WriteLine(&quot;User Name is: &quot; + user.UserName);
+        Console.WriteLine(&quot;Email is: &quot; + user.Email);
+    }
+
+    Console.WriteLine(&quot;Press any key to continue...&quot;);
+    Console.Read();
+}
+```
+
+</pre>
+</div>
+<div tags="ToDo Temp WCF" title="WCF数据契约：预防未知类型数据" tmap.id="aab7c72a-bffd-4de9-94ec-45ad49dd135a" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/zhili/p/WCFDataContract.html&quot; &gt;WCF数据契约与序列化详解&lt;/a&gt;
+
+* WCF使用DataContractSerializer进行序列化和反序列化，必须事先确定对象的类型；若对象中包括不可知的类型，序列化和反序列化将失败。</pre>
+</div>
 <div tags="ToDo Temp WCF" title="WCF新建与部署" tmap.id="a96eab3f-fb65-4f83-abb7-66df04350e78" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/0c21fe76173e&quot; &gt;WCF新建与部署&lt;/a&gt;
 !!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/6031fbec7cd8&quot; &gt;MVC调用WCF服务&lt;/a&gt;</pre>
 </div>
-<div tags="WCF系列教程" title="WCF服务的发布" tmap.id="5bf3a760-5204-40b8-ac93-745de0b6e24b" revision="0" bag="default">
+<div tags="WCF系列教程" title="WCF服务的发布" tmap.id="5bf3a760-5204-40b8-ac93-745de0b6e24b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//服务的发布//''
 * 通过配置文件初始化ServiceHost
 ```cs
@@ -19080,7 +19267,7 @@ if(clientChannel == null)
 }
 ```</pre>
 </div>
-<div color="#502bd4" tags="ToDo Temp WCF" title="WCF系列教程" tmap.id="d362b351-19ad-49b9-b52c-495372714276" revision="0" bag="default">
+<div color="#502bd4" tags="ToDo Temp WCF" title="WCF系列教程" tmap.id="d362b351-19ad-49b9-b52c-495372714276" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wujy/tag/WCF/&quot; &gt;WCF入门教程&lt;/a&gt;
 
 &lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -19105,9 +19292,8 @@ if(clientChannel == null)
 <div tags="ToDo Temp WCF" title="WCF绑定netTcpBinding寄宿到控制台应用程序" tmap.id="2153efb0-2b55-4458-b921-994929e37331" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/felixnet/p/7397139.html&quot; &gt;WCF绑定netTcpBinding&lt;/a&gt;</pre>
 </div>
-<div tags="WCF系列教程" title="WCF通信模式：单工" tmap.id="89eb01be-3ec8-47ff-a3f0-93b0c8102134" revision="0" bag="default">
-<pre>
-!! ''//单向模式//''
+<div tags="WCF系列教程" title="WCF通信模式：单工" tmap.id="89eb01be-3ec8-47ff-a3f0-93b0c8102134" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//单向模式//''
 * 客户端向服务器发送请求，不管服务是否执行完成，接着执行下面的程序
 * 不得声明输出参数、引用参数或返回值
 ```cs
@@ -19119,7 +19305,7 @@ public interface IUser
 }
 ```</pre>
 </div>
-<div tags="WCF系列教程" title="WCF通信模式：双工" tmap.id="213ac4ab-add0-49f7-bbd0-cc171bbc8cda" revision="0" bag="default">
+<div tags="WCF系列教程" title="WCF通信模式：双工" tmap.id="213ac4ab-add0-49f7-bbd0-cc171bbc8cda" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//双工模式//''
 * 双向调用
 * 支持回调的4种绑定：WSDualHttpBinding、NetTcpBinding、NetNamedPipeBinding、NetPeerTcpBinding
@@ -19219,7 +19405,7 @@ namespace WCFClient_DualPlex
 }
 ```</pre>
 </div>
-<div tags="WCF系列教程" title="WCF通信模式：请求与答复" tmap.id="80f276e3-b153-41b8-8e2e-521a4d8937da" revision="0" bag="default">
+<div tags="WCF系列教程" title="WCF通信模式：请求与答复" tmap.id="80f276e3-b153-41b8-8e2e-521a4d8937da" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//请求与答复//''
 * WCF默认模式
 * 客户端等待服务器相应，期间处于假死状态（异步调用除外）直到服务器答复，方可执行后续操作
@@ -20780,10 +20966,10 @@ Zettelkasten是解决一个常见问题（即知识管理问题）的多种不�
 !!! ''//WCF是上述三种技术的再次封装//''
 
 !! ''//客户端和服务通信的三要素//''
-* Address，服务地址
-* Binding，Client和Service的通道，若访问web，则为http通道
+* Address，服务地址，提供寻址的辅助信息和标识了服务的真实身份-`服务地址`
+* Binding，通道的所有细节，包括网络传输、消息编码、以及其它为实现某种功能对消息进行的相应处理-`如何传输`
 ** 支持通道：BasicHttpBinding，NetTcpBinding，NetMSMQBinding
-* Contract协议；定义的接口是什么样的，参数，返回值，方法等
+* Contract协议；对服务操作的抽象，对消息交互模式以及消息结构的定义-`服务器提供的功能`
 
 [[WCF快速搭建]]</pre>
 </div>
