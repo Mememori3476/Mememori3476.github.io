@@ -289,6 +289,8 @@ Error message and password prompt
 
 <li>C# http请求下载</li>
 
+<li>C# IEnumerable和List</li>
+
 <li>C# instance单例？</li>
 
 <li>C# ItemsControl 派生类使用</li>
@@ -338,6 +340,8 @@ Error message and password prompt
 <li>C# 属性 get set</li>
 
 <li>C# 控件库 MaterialDesign</li>
+
+<li>C# 操作MySQL数据库</li>
 
 <li>C# 数值验证</li>
 
@@ -397,6 +401,8 @@ Error message and password prompt
 
 <li>C#_Debug：未能正确加载程序集或它的依赖项</li>
 
+<li>C#_Error_SQL logic error no such table:</li>
+
 <li>C#删除文件、文件夹</li>
 
 <li>C#多线程学习系列</li>
@@ -440,6 +446,20 @@ Error message and password prompt
 <li>Command多参数传递</li>
 
 <li>CrossLinks</li>
+
+<li>CURD-删</li>
+
+<li>CURD-增</li>
+
+<li>CURD-改</li>
+
+<li>CURD-查</li>
+
+<li>CURD-统计数目</li>
+
+<li>Dapper</li>
+
+<li>Dapper-数据库连接</li>
 
 <li>DateTime</li>
 
@@ -507,6 +527,8 @@ Error message and password prompt
 
 <li>HTTP</li>
 
+<li>IEnumerable</li>
+
 <li>IIS</li>
 
 <li>Interface</li>
@@ -568,6 +590,8 @@ Error message and password prompt
 <li>MVVM初始页面设置</li>
 
 <li>MVVM页面切换</li>
+
+<li>MySQL 获取表名</li>
 
 <li>MySQL远程访问失败故障排除</li>
 
@@ -650,6 +674,10 @@ Error message and password prompt
 <li>Snippet-TransLink</li>
 
 <li>SQL</li>
+
+<li>SQL GUID和主键自增的比较</li>
+
+<li>SQL并发环境，防止用户名重复</li>
 
 <li>Stream</li>
 
@@ -1035,6 +1063,8 @@ Error message and password prompt
 
 <li>Zettlr</li>
 
+<li>Zettlr_GitHub Doc</li>
+
 <li>什么是WCF</li>
 
 <li>什么是基金</li>
@@ -1178,6 +1208,8 @@ Error message and password prompt
 <li>稳健型基金</li>
 
 <li>窗体应用</li>
+
+<li>笔记本远程连接IReGo下位机</li>
 
 <li>算法分发和社会分发</li>
 
@@ -12311,6 +12343,13 @@ System.Threading.ThreadPool.QueueUserWorkItem((s) =&gt;
 
 ```</pre>
 </div>
+<div tags="C# IEnumerable" title="C# IEnumerable和List" tmap.id="727e795f-1d2d-4162-ba94-26f32c0d9238" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```cs
+public class List&lt;T&gt; : IList&lt;T&gt;, ICollection&lt;T&gt;, IEnumerable&lt;T&gt;, IEnumerable, IList, ICollection, IReadOnlyList&lt;T&gt;, IReadOnlyCollection&lt;T&gt;
+```
+
+* `List` 继承自 `IEnumerable`</pre>
+</div>
 <div tags="ToDo Temp C#" title="C# instance单例？" tmap.id="0d01e974-54f8-49df-9cb7-26aa216daa47" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Updater类型的Instance
 * `Updater.Instance.CallExeName`
@@ -13047,7 +13086,7 @@ System.Diagnostics.Process.Start(info);
 ```</pre>
 </div>
 <div created="20200509140351797" modified="20200514084630572" tags="C# SQL" title="C# SQLite" tmap.id="71fe0c9b-324d-4273-895c-dcbb7a663cbe" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>!!// Attention !! `释放 数据库实例 ` //
+<pre>!!// 释放 数据库实例//
 
 #// 实例化 数据库 类、连接//
 #// 读取 Table Name  `SELECT name FROM sqlite_master WHERE TYPE = 'table'`//
@@ -13473,6 +13512,9 @@ public double WightLossOpacity
 &lt;Button Margin=&quot;50 0&quot; Style=&quot;{DynamicResource MaterialDesignToolButton}&quot; FontSize=&quot;20&quot;&gt;test&lt;/Button&gt;
 ```
 </pre>
+</div>
+<div tags="C# SQL" title="C# 操作MySQL数据库" tmap.id="2750f559-328d-4aba-9642-b2b07e8264f3" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/gaokaitai/p/10633858.html&quot; &gt;''//C#操作MySQL//''&lt;/a&gt;</pre>
 </div>
 <div created="20200509100616094" modified="20200509151032264" tags="C#" title="C# 数值验证" tmap.id="41893b10-1e67-4b56-b152-0d7bd208125a" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! //`未完待续`//
@@ -14763,6 +14805,14 @@ private void calculateTimes()
 <pre>* 目标框架版本
 * 平台目标：x64</pre>
 </div>
+<div tags="SQL" title="C#_Error_SQL logic error no such table:" tmap.id="05bac8e7-46b5-4083-bd1d-4ae3b887da66" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;&lt;&lt;
+!!! //''SQL logic error no such table: ---''//
+&lt;&lt;&lt;
+
+!!! //''设置数据库文件属性''//
+* 复制到输出目录：`始终复制`</pre>
+</div>
 <div tags="C# 文件夹" title="C#删除文件、文件夹" tmap.id="49795199-e8fe-4d74-9452-fc198f4a8968" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//删除文件夹下-所有文件//''
 ```c
@@ -15378,6 +15428,191 @@ $(currentTiddler)$(?i)
     &lt;/$set&gt;
 &lt;/$list&gt;</pre>
 </div>
+<div tags="Dapper" title="CURD-删" tmap.id="186f2d58-4f7c-4015-b9ab-388f85ceb558" revision="0" bag="default">
+<pre>!! ''//CURD-删//''
+```cs
+public static int? DeleteWithID()
+{
+    using (var conn = Program.OpenConnection())
+    {
+        return conn.Delete&lt;Hospital&gt;(14);
+    }
+}
+```
+
+```cs
+public static int? DeleteWithObject()
+{
+    using (var conn = Program.OpenConnection())
+    {
+        var id = conn.Insert(new Hospital { hpName = &quot;TestDeleteByObject&quot;, status = 10 });
+        var user = conn.Get&lt;Hospital&gt;(id);
+        return conn.Delete&lt;Hospital&gt;(user);
+    }
+}
+```
+
+```cs
+public static int? DeleteMultiWhere()
+{
+    using (var conn = Program.OpenConnection())
+    {
+        return conn.DeleteList&lt;Hospital&gt;(new { status = 0});
+        return conn.DeleteList&lt;Hospital&gt;(&quot;Where status &gt; @status&quot;, new { status = -1 });
+    }
+}
+```</pre>
+</div>
+<div tags="Dapper" title="CURD-增" tmap.id="43d3478c-7928-49d7-a6a1-fe2deeeba121" revision="0" bag="default">
+<pre>!! ''//CURD-增//''
+```cs
+// Bug，增 ID=14，删除ID=14，继续增加，结果ID=15，≠14;
+// 可能需要进行 MySQL.Close()
+public static int? InsertWithEntitiy()
+{
+    using (var conn = Program.OpenConnection())
+    {
+        // 对主键赋值无效，默认-自增加
+        conn.Insert(new Hospital {Id = 10, hpName = &quot;上海市第六人民医院&quot;, status= 0});
+        conn.Insert(new Hospital { Id = 11, hpName = &quot;上海市瑞金医院&quot;, status = 0 });
+        conn.Insert(new Hospital { Id = 13, hpName = &quot;上海市岳阳医院&quot;, status = 0 });
+        return 1;
+    }
+}
+```</pre>
+</div>
+<div tags="Dapper" title="CURD-改" tmap.id="e3b14f4f-c6c4-479f-95d0-a9bbaa9bb552" revision="0" bag="default">
+<pre>!! ''//CURD-改//''
+```cs
+public static void UpdateWithEntitiy()
+{
+    using (var conn = Program.OpenConnection())
+    {
+        var newItem = conn.Get&lt;Hospital&gt;(24);
+        newItem.hpName = &quot;东台人民医院&quot;;
+        newItem.status = 3;
+        conn.Update&lt;Hospital&gt;(newItem);
+    }
+}
+```
+
+!! ''//不清楚//''
+```cs
+public static void UpdateTransaction()
+{
+    using (var conn = Program.OpenConnection())
+    using (var transaction = conn.BeginTransaction())
+    {
+        //var id = conn.Insert(new Hospital { hpName = &quot;上海市第八人民医院&quot;, status = 0 });
+        var id = conn.Insert(new Hospital { hpName = &quot;上海市第八人民医院&quot;, status = 0 }, transaction);
+        var hosiptal = conn.Get&lt;Hospital&gt;(id, transaction);
+        hosiptal.hpName = &quot;东台第2医院&quot;;
+        conn.Update(hosiptal, transaction);
+    }
+}
+```</pre>
+</div>
+<div tags="Dapper" title="CURD-查" tmap.id="715febd5-6a21-4263-b252-dde3ea9ae4f9" revision="0" bag="default">
+<pre>!! ''//CURD-查//''
+```cs
+public static Hospital QueryWithEntitiy()
+{
+    using (var conn = Program.OpenConnection())
+    {
+        return conn.Get&lt;Hospital&gt;(19);
+    }
+}
+```
+
+```cs
+public static IEnumerable&lt;Hospital&gt; QueryMultiEntitiy()
+{
+    using (var conn = Program.OpenConnection())
+    {
+        return conn.GetList&lt;Hospital&gt;();
+    }
+}
+```
+
+```cs
+public static IEnumerable&lt;Hospital&gt; QueryWhereEntitiy()
+{
+    using (var conn = Program.OpenConnection())
+    {
+        conn.GetList&lt;Hospital&gt;(new { status = 1} );
+        return conn.GetList&lt;Hospital&gt;( &quot;where status = 0&quot; );
+    }
+}
+```</pre>
+</div>
+<div tags="Dapper" title="CURD-统计数目" tmap.id="03a0da67-c390-49b1-a604-8221b4eb7234" revision="0" bag="default">
+<pre>!! ''//CURD-统计数目//''
+```cs
+public static int RecordCount()
+{
+    using (var conn = Program.OpenConnection())
+    {
+        var count = conn.RecordCount&lt;Hospital&gt;(&quot;Where status &gt; @Status&quot;, new { Status = 0 });
+        return count;
+    }
+}
+```</pre>
+</div>
+<div tags="ORM SQL" title="Dapper" tmap.id="587a033f-a983-457c-b49e-edee1d1b1e46" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/feichengwulai/articles/4277100.html&quot; &gt;//''ORM框架之------Dapper,Net下无敌的ORM''//&lt;/a&gt;
+
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://github.com/ericdc1/Dapper.SimpleCRUD&quot; &gt;//''Dapper.~SimpleCURD简要''//&lt;/a&gt;
+
+!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://github.com/ericdc1/dapper.SimpleCRUD/blob/master/Dapper.SimpleCRUDTests/Tests.cs&quot; &gt;//''Dapper.~SimpleCURD案例''//&lt;/a&gt;
+
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/e201e6a6870c&quot; &gt;//''Dapper正确使用姿势''//&lt;/a&gt;
+
+&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+  &lt;&lt;toc-selective-expandable 'Dapper'&gt;&gt;
+&lt;/div&gt;
+
+---
+
+&lt;&lt;translink &quot;&quot;&quot;Dapper-数据库连接&quot;&quot;&quot;&gt;&gt;
+
+&lt;&lt;translink &quot;&quot;&quot;CURD-增&quot;&quot;&quot;&gt;&gt;
+
+&lt;&lt;translink &quot;&quot;&quot;CURD-删&quot;&quot;&quot;&gt;&gt;
+
+&lt;&lt;translink &quot;&quot;&quot;CURD-查&quot;&quot;&quot;&gt;&gt;
+
+&lt;&lt;translink &quot;&quot;&quot;CURD-改&quot;&quot;&quot;&gt;&gt;
+
+&lt;&lt;translink &quot;&quot;&quot;CURD-统计数目&quot;&quot;&quot;&gt;&gt;</pre>
+</div>
+<div tags="Dapper SQL" title="Dapper-数据库连接" tmap.id="ea748cd8-c5c2-44fa-bfc7-ea9810cfdaf9" revision="0" bag="default">
+<pre>!! ''//数据库-连接//''
+
+* 所有数据库连接，均继承自`IDbConnection`
+
+```cs
+private static readonly string sqliteConnection = @&quot;Data Source=.\IregoTest.db; Initial Catalog=sqlite; Integrated Security=True; Max Pool Size=200&quot;;
+private static readonly string mySQLConnection = @&quot;server=localhost; database=robotdb; uid='root'; pwd='0Oo109778'; charset='gbk'&quot;;
+```
+
+```cs
+public static SQLiteConnection OpenConnection()
+{
+    SQLiteConnection connection = new SQLiteConnection(sqliteConnection);
+    Dapper.SimpleCRUD.SetDialect(Dapper.SimpleCRUD.Dialect.SQLite);
+    connection.Open();
+    return connection;
+}
+
+public static MySqlConnection OpenConnection()
+{
+    MySqlConnection connection = new MySqlConnection(mySQLConnection);
+    SimpleCRUD.SetDialect(SimpleCRUD.Dialect.MySQL);
+    connection.Open();
+    return connection;
+}
+```</pre>
+</div>
 <div color="#502bd4" title="DateTime" tmap.id="3f6fd656-a20c-4fcb-b9b9-e269a383abdc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
@@ -15901,7 +16136,7 @@ public void FTPDownload(string filePath, string fileName)
 <div icon="GitHub" tags="资源 SVG" title="GitHub" tmap.id="93bf3e3b-f490-45df-b34d-7a945ad447bd" type="image/svg+xml" revision="0" bag="default">
 <pre>&lt;svg t=&quot;1595581519439&quot; class=&quot;icon&quot; viewBox=&quot;0 0 1024 1024&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; p-id=&quot;1152&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&lt;path d=&quot;M960 512a435.2 435.2 0 0 1-85.76 263.36 440 440 0 0 1-220.48 161.92 26.88 26.88 0 0 1-23.04-4.16 22.72 22.72 0 0 1-7.04-17.6v-122.88a104.64 104.64 0 0 0-30.4-82.88 416 416 0 0 0 59.52-10.24 218.24 218.24 0 0 0 54.72-23.04 164.8 164.8 0 0 0 47.04-38.4 184 184 0 0 0 32-61.44 293.76 293.76 0 0 0 12.16-88 168.64 168.64 0 0 0-46.4-120 154.88 154.88 0 0 0-4.48-119.04 76.48 76.48 0 0 0-47.04 6.4 300.48 300.48 0 0 0-53.76 25.6l-22.08 13.76a416 416 0 0 0-224 0c-6.4-4.48-14.4-9.28-24.64-15.68A326.08 326.08 0 0 0 326.4 256a82.88 82.88 0 0 0-50.24-8 156.8 156.8 0 0 0-4.16 120 173.76 173.76 0 0 0-46.08 120.64A288 288 0 0 0 238.08 576a196.48 196.48 0 0 0 32 61.44 152 152 0 0 0 47.04 39.04 267.84 267.84 0 0 0 54.72 23.04 414.08 414.08 0 0 0 59.84 10.24 92.48 92.48 0 0 0-28.8 60.16 99.2 99.2 0 0 1-26.56 8.32 167.36 167.36 0 0 1-32 2.88A69.12 69.12 0 0 1 303.36 768a109.44 109.44 0 0 1-32-36.48 96 96 0 0 0-28.16-30.4 80.64 80.64 0 0 0-28.8-14.08h-11.52a41.6 41.6 0 0 0-16.96 2.56q-4.8 2.88-2.88 6.72a44.16 44.16 0 0 0 5.44 8 55.36 55.36 0 0 0 7.68 7.36l4.16 2.56a78.08 78.08 0 0 1 25.6 22.08 157.76 157.76 0 0 1 18.24 29.44l5.76 13.44a72.32 72.32 0 0 0 25.6 36.16 96 96 0 0 0 38.72 16.64 196.16 196.16 0 0 0 40.32 4.16 182.08 182.08 0 0 0 32-2.24l13.44-2.24v83.84a23.04 23.04 0 0 1-7.68 17.6 27.84 27.84 0 0 1-23.36 4.16 438.08 438.08 0 0 1-219.2-162.88A427.84 427.84 0 0 1 64 512a437.44 437.44 0 0 1 60.16-224A443.52 443.52 0 0 1 288 124.16 437.44 437.44 0 0 1 512 64a437.44 437.44 0 0 1 224 60.16A443.52 443.52 0 0 1 899.84 288 436.8 436.8 0 0 1 960 512z&quot; p-id=&quot;1153&quot;&gt;&lt;/path&gt;&lt;/svg&gt;</pre>
 </div>
-<div tags="GitHub 计算机技巧" title="GitHub Release下载" tmap.id="e30d6c90-5836-44cf-bec2-b0b12a7d1c28" revision="0" bag="default">
+<div tags="GitHub 计算机技巧" title="GitHub Release下载" tmap.id="e30d6c90-5836-44cf-bec2-b0b12a7d1c28" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://d.serctl.com/&quot; &gt;//''Manager下载''//&lt;/a&gt;
 !!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;http://g.widora.cn/&quot; &gt;//''~GitHub_代理下载''//&lt;/a&gt;</pre>
 </div>
@@ -16066,6 +16301,9 @@ public void FTPDownload(string filePath, string fileName)
 &lt;&lt;toc-selective-expandable 'HTTP'&gt;&gt;
 
 &lt;/div&gt;</pre>
+</div>
+<div color="#502bd4" title="IEnumerable" tmap.id="9b4b1139-01bc-4519-9441-acaa16293ca0" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
 </div>
 <div color="#1261B0" title="IIS" tmap.id="994803ce-ddbb-4454-bea8-95610418d2dc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
@@ -16508,6 +16746,13 @@ private void GoBack()
 }
 
 #endregion
+```</pre>
+</div>
+<div tags="SQL" title="MySQL 获取表名" tmap.id="33fe9b68-a773-40dc-b287-e4b30e269042" revision="0" bag="default">
+<pre>!! ''//获取 Table-Name//''
+
+```sql
+SELECT * FROM INFORMATION_SCHEMA.TABLES
 ```</pre>
 </div>
 <div tags="ToDo Temp SQL WindowsServer" title="MySQL远程访问失败故障排除" tmap.id="8254ef70-fa36-45ac-9c82-52ff19fc57e5" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -17271,6 +17516,28 @@ public class Slider : RangeBase
 </div>
 <div created="20200514125346988" modified="20200514125406314" tags="WPF" title="SQL" tmap.id="26dd2b65-d30f-4608-a8dd-3c5f043cfb7f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;list-links &quot;[tag[SQL]]&quot;&gt;&gt;</pre>
+</div>
+<div tags="SQL" title="SQL GUID和主键自增的比较" tmap.id="f976b186-46fa-47da-a750-39c3aa8d28dc" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/leihope_/article/details/89326489&quot; &gt;//''数据库GUID和主键自增''//&lt;/a&gt;
+
+!! ''//GUID和主键自增//''
+!!! ''//GUID//''
+* 唯一性，兼容性好
+* 多个数据库融合
+* 占用空间
+
+
+!!! ''//主键自增//''
+* 占用空间小，性能好
+* 多个数据库融合，主键重复
+* 兼容性差，难以处理并发</pre>
+</div>
+<div tags="SQL Concurrency" title="SQL并发环境，防止用户名重复" tmap.id="19c336ad-1dc7-4fae-b1f5-4cdcf33ac478" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_37677519/article/details/78334777&quot; &gt;''//并发环境下，防止用户名注册一致//''&lt;/a&gt;
+
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://q.cnblogs.com/q/39047/&quot; &gt;''//并发环境，防止多用户注册//''&lt;/a&gt;
+
+</pre>
 </div>
 <div color="#502bd4" title="Stream" tmap.id="18e2260a-4a78-4aa9-ba3d-7a0a5a0daa23" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
@@ -19453,7 +19720,7 @@ namespace Service
 {
     public class PushMessageServer:IPushMessage
     {
-        static Dictionary&lt;string, WcfCleint&gt; dit_callback = new Dictionary&lt;string, WcfCleint&gt;();
+        static Dictionary&lt;string, WcfClient&gt; dit_callback = new Dictionary&lt;string, WcfClient&gt;();
 
         private static Object lockObje = new Object();
 
@@ -20911,7 +21178,7 @@ public void ShowTextToRichBox(string data,RichTextBox box)
 <div tags="ToDo Temp" title="WPF控件Invoke和BeginInvoke" tmap.id="3f6492c5-b10e-4fce-b6e6-2ceb072ffe01" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/db2020461489&quot; &gt;WPF控件Invoke和~BeginInvoke&lt;/a&gt;</pre>
 </div>
-<div tags="ToDo Temp WPF PDF" title="WPF显示PDF" tmap.id="9c13c6d3-6fde-4eca-9612-a9d0a5ddc895" revision="0" bag="default">
+<div tags="ToDo Temp WPF PDF" title="WPF显示PDF" tmap.id="9c13c6d3-6fde-4eca-9612-a9d0a5ddc895" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://github.com/itext/itextsharp&quot; &gt;//''iTextSharp_GitHub''//&lt;/a&gt;</pre>
 </div>
 <div tags="Style" title="WPF样式-点击按钮切换图片" tmap.id="129946cc-2318-437e-9e79-d4ad88943d4f" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -21448,7 +21715,7 @@ private static DateTime toDateTime2(string dateTimes)
 | Time | Value |
 | 2020/5/27 21:10:58 | 100 |</pre>
 </div>
-<div tags="ToDo Temp" title="XML-读取1" tmap.id="127a059b-ca5b-4a95-b930-e7ee6b42fdec" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="XML" title="XML-读取1" tmap.id="127a059b-ca5b-4a95-b930-e7ee6b42fdec" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//xml 文件结构//''
 ```xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
@@ -21537,7 +21804,7 @@ doc.Save(path);
 !!//Syntax：//
 * `.\youtube-dl https://www.bilibili.com/video/xxx`</pre>
 </div>
-<div tags="ToDo Temp 文献" title="Zetero的一些讨论" tmap.id="d6be7b42-cf53-43a1-bc0b-895ebff3c786" revision="0" bag="default">
+<div tags="ToDo Temp 文献" title="Zetero的一些讨论" tmap.id="d6be7b42-cf53-43a1-bc0b-895ebff3c786" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://forum.zettlr.com/discussion/94/zotero-as-zettelkasten&quot; &gt;//''Zetero作为Zettelkasten系统''//&lt;/a&gt;
 
 * Zetero是一个-参考管理器
@@ -21863,8 +22130,11 @@ Zettelkasten是解决一个常见问题（即知识管理问题）的多种不�
 ** 迫使自己思考笔记之间的联系
 ** &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://roamresearch.com/&quot; &gt; Roam Research&lt;/a&gt;是一款很优秀的笔记软件</pre>
 </div>
-<div tags="ToDo Temp 文献" title="Zettlr" tmap.id="6db38afc-c833-48b2-bccc-d9e6fbefbf0b" revision="0" bag="default">
+<div tags="ToDo Temp 文献" title="Zettlr" tmap.id="6db38afc-c833-48b2-bccc-d9e6fbefbf0b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.zettlr.com/shortcuts&quot; &gt;//''Zettlr快捷键''//&lt;/a&gt;</pre>
+</div>
+<div tags="ToDo Temp Zettlr Zettelkasten.de" title="Zettlr_GitHub Doc" tmap.id="6c8d3c70-5a37-4f91-954b-5d92caa3775b" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://docs.zettlr.com/en/&quot; &gt;//''Zettlr_Docs''//&lt;/a&gt;</pre>
 </div>
 <div tags="WCF" title="什么是WCF" tmap.id="ed5efa22-a963-4a26-9593-7564482ab61a" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//.NET平台下分布式技术//''
@@ -22899,7 +23169,7 @@ Task.Factory.StartNew(()=&gt;
 
 * 俗话说: //''`女人全身都是 G 点`''//。 别忘了舌头、 双手、 语言、 丁丁都是你的武器， 尽量别让他们闲着。  总之不要一上来就傻乎乎的高速吭哧，多维度全方位的刺激能让妹子更加享受。</pre>
 </div>
-<div tags="CMD 计算机技巧 ToDo" title="开机自启动" tmap.id="8acdc2cb-8c29-4f92-b3ba-9e584afac0f8" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="CMD 计算机技巧" title="开机自启动" tmap.id="8acdc2cb-8c29-4f92-b3ba-9e584afac0f8" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//Win10启动文件夹位置：//''
 * `C:\Users\Memento Mori\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 
@@ -23682,6 +23952,10 @@ pasv_max_port=62000  #最大接口
   &lt;&lt;toc-selective-expandable '窗体应用'&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
+<div tags="Mememori3476" title="笔记本远程连接IReGo下位机" tmap.id="3de00f0b-1957-481a-bbc9-68685faf83df" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* 下位机IP：`192.168.1.100`
+* 修改自身IP：`192.168.1.12`</pre>
+</div>
 <div tags="Temp" title="算法分发和社会分发" tmap.id="946d1820-c5cb-4028-9fbd-cb4a590e55f7" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* //''`社会`''//分发：人与人之间的可信赖关系，建立在这种信赖关系基础上的，通过特定平台进行产品的宣传
 ** //''`社交关系`''//：影响力、传播价值
@@ -24212,10 +24486,10 @@ update.zip
 *[[锻炼手册_动画]]
 *[[锻炼手册_附录]]</pre>
 </div>
-<div tags="ToDo Temp ECS" title="阿里云服务器" tmap.id="2bf5f9a6-ae98-4a2c-84da-6182cc8db839" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://developer.aliyun.com/adc/student/&quot; &gt;阿里云学生服务器申请&lt;/a&gt;
-!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://www.aliyun.com/minisite/goods&quot; &gt;阿里云-优惠站&lt;/a&gt;
-!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://dashi.aliyun.com/site/cloud/student&quot; &gt;阿里云学生服务器-优惠&lt;/a&gt;
+<div tags="ECS" title="阿里云服务器" tmap.id="2bf5f9a6-ae98-4a2c-84da-6182cc8db839" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://developer.aliyun.com/adc/student/&quot; &gt;//''阿里云学生服务器申请''//&lt;/a&gt;
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://www.aliyun.com/minisite/goods&quot; &gt;//''阿里云-优惠站''//&lt;/a&gt;
+!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://dashi.aliyun.com/site/cloud/student&quot; &gt;//''阿里云学生服务器-优惠''//&lt;/a&gt;
 </pre>
 </div>
 <div color="#502bd4" title="随机数" tmap.id="0ee425b5-9939-4f8c-8823-f7730fb15711" type="text/vnd.tiddlywiki" revision="0" bag="default">
