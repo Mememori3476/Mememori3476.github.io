@@ -279,6 +279,8 @@ Error message and password prompt
 
 <li>C# DataGrid</li>
 
+<li>C# DateTime.Now.ToString()</li>
+
 <li>C# GET请求</li>
 
 <li>C# http下载</li>
@@ -295,7 +297,15 @@ Error message and password prompt
 
 <li>C# ItemsControl 派生类使用</li>
 
+<li>C# Json (反)序列化_控制</li>
+
 <li>C# Json SQLite</li>
+
+<li>C# Json 反序列化 Demo</li>
+
+<li>C# Json 序列化</li>
+
+<li>C# Json序列化Demo</li>
 
 <li>C# ListBox</li>
 
@@ -319,6 +329,8 @@ Error message and password prompt
 
 <li>C# SQLite</li>
 
+<li>C# SQLite知识点</li>
+
 <li>C# TreeView</li>
 
 <li>C# WebClient下载进度显示</li>
@@ -330,6 +342,8 @@ Error message and password prompt
 <li>C# 单例</li>
 
 <li>C# 双引号转义</li>
+
+<li>C# 同一类不同实例 属性值复制</li>
 
 <li>C# 外部程序调用之接收传递参数</li>
 
@@ -350,6 +364,8 @@ Error message and password prompt
 <li>C# 文件(夹)操作</li>
 
 <li>C# 文件下载Process</li>
+
+<li>C# 文件写入</li>
 
 <li>C# 文件移动、txt合并</li>
 
@@ -374,6 +390,8 @@ Error message and password prompt
 <li>C# 获取本机IP</li>
 
 <li>C# 获取程序的根目录</li>
+
+<li>C# 获取类的所有属性</li>
 
 <li>C# 获取系统亮度</li>
 
@@ -461,6 +479,8 @@ Error message and password prompt
 
 <li>Dapper-数据库连接</li>
 
+<li>Dapper-数据表形式</li>
+
 <li>DateTime</li>
 
 <li>DateTime 减操作</li>
@@ -514,6 +534,8 @@ Error message and password prompt
 <li>Git与GitHub</li>
 
 <li>Git常用命令</li>
+
+<li>Google Protocol Buffers 之.Net应用</li>
 
 <li>Hexo</li>
 
@@ -677,7 +699,15 @@ Error message and password prompt
 
 <li>SQL GUID和主键自增的比较</li>
 
+<li>SQL ORM对象映射注意事项</li>
+
+<li>SQL TimeStamp_时间戳</li>
+
 <li>SQL并发环境，防止用户名重复</li>
+
+<li>SQL直接对Json操作</li>
+
+<li>SQL获取某一时间数据</li>
 
 <li>Stream</li>
 
@@ -1064,6 +1094,8 @@ Error message and password prompt
 <li>Zettlr</li>
 
 <li>Zettlr_GitHub Doc</li>
+
+<li>互斥锁 Mutex</li>
 
 <li>什么是WCF</li>
 
@@ -12164,6 +12196,26 @@ public CommandAdvanceViewModel()
 &lt;/DataGrid&gt;
 ```</pre>
 </div>
+<div tags="C# DateTime" title="C# DateTime.Now.ToString()" tmap.id="348ece61-d5de-43f8-baf4-c3888235e8d5" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/gl1573/p/12916365.html&quot; &gt;//''~DateTime.~ToString屏蔽系统时间影响''//&lt;/a&gt;
+
+* `DateTime.Now.ToString()`，其输出格式取决于`系统的日期格式`
+* 每台计算机的`DateTime.Now.ToString()`，输出结果均不一致
+---
+!!! ''//完全限定输出格式//''
+```cs
+DateTime.Now.ToString(&quot;yyyy/MM/dd hh:mm:ss&quot;, System.Globalization.DateTimeFormatInfo.InvariantInfo)
+```
+
+!! ''//系统日期格式优先级高于ToString()//''
+* 系统日期：`yyyy-MM-dd`
+* `DateTime.Now.ToString(&quot;yyyy/MM/dd hh:mm:ss&quot;)`
+* 系统仍然输出`yyyy-MM-dd`
+!!! //''解决方案，DateTime属性''//
+```cs
+System.Globalization.DateTimeFormatInfo.InvariantInfo
+```</pre>
+</div>
 <div tags="C# HTTP" title="C# GET请求" tmap.id="e06ebc85-2847-4bca-be1e-47e39a4168de" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;http://www.hmister.cn/?id=7&quot; &gt;GET POST请求&lt;/a&gt;
 
@@ -12439,46 +12491,111 @@ TreeInfo = new List&lt;TreeNodeModel&gt;()
 &lt;/ListBox&gt;
 ```</pre>
 </div>
+<div tags="Json" title="C# Json (反)序列化_控制" tmap.id="be67940a-1bac-4cdb-95ea-dd43df9c93bf" type="" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/mq0036/p/9411488.html&quot; &gt;//''C# Json 只处理部分属性''//&lt;/a&gt;
+
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/usharei/archive/2012/04/20/2458858.html&quot; &gt;//''Json系列文章_(反)序列化控制''//&lt;/a&gt;
+
+!! //''JsonSerializerSettings 类，实现控制''//
+```cs
+// 初始化 JsonSerializerSettings 类，作为参数 传递至 SerializeObject()
+var jSetting = new JsonSerializerSettings();
+string json = JsonConvert.SerializeObject(obj,jSetting);
+```
+
+!! ''//Null 值控制//''
+| null 的处理 |&lt;|h
+| `NullValueHandling.Ignore` | 忽略为NULL的值 |
+| `NullValueHandling.Include` | 默认值,包括为NULL的值 |
+
+```cs
+DBDoctor details = new DBDoctor();
+details.DepartmentId = 12;  //
+details.HospitalId = 123456;  //
+details.JobNumber = &quot;sdfgh&quot;;  //
+JsonSerializerSettings jsonSetting = new JsonSerializerSettings();
+jsonSetting.NullValueHandling = NullValueHandling.Ignore;
+jsonSetting.DefaultValueHandling = DefaultValueHandling.Ignore;
+```
+
+---
+!! ''//Setting结果//''
+!!! ''//无设置//''
+```json
+{&quot;JobNumber&quot;:&quot;sdfgh&quot;,&quot;OfficePhone&quot;:&quot;&quot;,&quot;Email&quot;:&quot;&quot;,&quot;Id&quot;:0,&quot;RemoteId&quot;:0,&quot;Account&quot;:&quot;&quot;,&quot;Password&quot;:&quot;&quot;,&quot;UserType&quot;:0,&quot;Name&quot;:null,&quot;Sex&quot;:0,&quot;Age&quot;:0,&quot;RegDate&quot;:&quot;0001-01-01T00:00:00&quot;,&quot;FaceFeature&quot;:null,&quot;PicImg&quot;:null,&quot;FaceRegistered&quot;:0,&quot;DepartmentId&quot;:12,&quot;HospitalId&quot;:123456,&quot;IdentityCard&quot;:&quot;&quot;}
+```
+!!! ''//jsonSerializerSettings.NullValueHandling = NullValueHandling.Ignore;//''
+```json
+{&quot;JobNumber&quot;:&quot;sdfgh&quot;,&quot;OfficePhone&quot;:&quot;&quot;,&quot;Email&quot;:&quot;&quot;,&quot;Id&quot;:0,&quot;RemoteId&quot;:0,&quot;Account&quot;:&quot;&quot;,&quot;Password&quot;:&quot;&quot;,&quot;UserType&quot;:0,&quot;Sex&quot;:0,&quot;Age&quot;:0,&quot;RegDate&quot;:&quot;0001-01-01T00:00:00&quot;,&quot;FaceRegistered&quot;:0,&quot;DepartmentId&quot;:12,&quot;HospitalId&quot;:123456,&quot;IdentityCard&quot;:&quot;&quot;}
+```
+
+!!! ''//jsonSerializerSettings.DefaultValueHandling = DefaultValueHandling.Ignore;//''
+```json
+{&quot;JobNumber&quot;:&quot;sdfgh&quot;,&quot;OfficePhone&quot;:&quot;&quot;,&quot;Email&quot;:&quot;&quot;,&quot;Account&quot;:&quot;&quot;,&quot;Password&quot;:&quot;&quot;,&quot;DepartmentId&quot;:12,&quot;HospitalId&quot;:123456,&quot;IdentityCard&quot;:&quot;&quot;}
+```
+!! ''//未解决：属性-string.Empty，无法忽略//''
+
+```cs
+// 属性 OfficePhone、Email……
+public string OfficePhone { get; set; } = string.Empty;
+public string Email { get; set; } = string.Empty;
+```</pre>
+</div>
 <div created="20200512051655852" modified="20200514084630527" tags="C# SQL Json" title="C# Json SQLite" tmap.id="6f736956-bf2c-445c-857b-5befc8fb7493" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!!//在项目开发中，为避免 Class 的变动，导致的 SQL 结构变化，将 Class 采用 Json 封装。类似于 DateTime 封装了 YYYY-MM-DD。采用 `Newtonsoft.Json` 进行序列化（`JsonConvert.SerializeObject`）、反序列化（`JsonConvert.DeserializeObject&lt;RehabWalk&gt;`）//
 
-!!// SQLite 知识回顾 [[C# SQLite]]//
+!!! //''[[C# SQLite知识点]]''//
 
-#// 实例化 数据库 类、连接//
-#// 读取 Table Name  `SELECT name FROM sqlite_master WHERE TYPE = 'table'`//
-#// 读取 Column Name  `cmdtest.CommandText = $&quot;PRAGMA TABLE_INFO({tableSource})&quot;;`//
-#// 插入数据库  `string.Format(@&quot;INSERT INTO RehabPlan ( id, PatientId ) VALUES ( '{0}', '{1}')&quot;, item.Id, item.PatientId)`//
-#// 删除数据库  `DELETE FROM RehabPlan`//
-#// 查询数据库  `SELECT * FROM RehabPlan`//
+!!! //''[[C# 同一类不同实例 属性值复制]]''//
 
-!!//1、同一类下，不同实例的 `属性值复制`//
-*// propertyClass1 ——&gt; propertyClass0//
-*// 获取属性：`PropertyInfo[] myPropertyInfo = propertyClass0.GetType().GetProperties();`//
-*// 属性值 复制：`myPropertyInfo[i].SetValue(propertyClass0, myPropertyInfo[i].GetValue(propertyClass1, null), null);`//
-*// `GetValue` 和 `SetValue` 方法来自于 `DependencyObject` 类，用于 `获取或设置类的属性值`//
+&lt;&lt;translink &quot;&quot;&quot;C# Json 序列化&quot;&quot;&quot; &gt;&gt;
 
+&lt;&lt;translink &quot;&quot;&quot;C# Json 反序列化&quot;&quot;&quot; &gt;&gt;</pre>
+</div>
+<div tags="SQL Json Demo" title="C# Json 反序列化 Demo" tmap.id="37837852-915b-4e58-a1b4-e08bace3b544" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!// C# Json 反序列化 `JsonConvert.DeserializeObject&lt;RehabWalk&gt;`//
 ```c
-// 将 propertyClass1 属性的值，赋给 propertyClass0
-private void BtnInsertproperty_Click(object sender, RoutedEventArgs e)
+// 解析json
+private void BtnCommit1_Click(object sender, RoutedEventArgs e)
 {
-    PropertyClass propertyClass1 = new PropertyClass();
-    PropertyClassObject propertyClass0 = new PropertyClassObject();
-    propertyClass1.a = &quot;proclass1_a&quot;;
-    propertyClass1.b = &quot;proclass1_b&quot;;
-    ……
-
-    //Type t = typeof(PropertyClass);
-    PropertyInfo[] myPropertyInfo = propertyClass0.GetType().GetProperties();
-    for (int i = 0; i &lt; myPropertyInfo.Length; i++)
+    SQLTestConfig();
+    RehabWalk rehabWalk = new RehabWalk();
+    string jsonInstance = &quot;&quot;;
+    cmdtest.CommandText = string.Format(@&quot;SELECT Walk FROM RehabPlan WHERE Id = 1&quot;);
+    crdtest = cmdtest.ExecuteReader();
+    while (crdtest.Read())
     {
-        //被赋值对象是 propertyClass0，所赋的值是 i.ToString
-        myPropertyInfo[i].SetValue(propertyClass0, myPropertyInfo[i].GetValue(propertyClass1, null), null);
-        Console.WriteLine(myPropertyInfo[i].GetValue(propertyClass1, null));
+        jsonInstance = crdtest.GetValue(0).ToString();
     }
+    crdtest.Close();
+    contest.Close();
+
+    RehabWalk jsonplanid = JsonConvert.DeserializeObject&lt;RehabWalk&gt;(jsonInstance);
+    jsonplanid.Walk_Mode = Convert.ToInt32(textboxInsert.Text);
+    string jsonnewwalk = JsonConvert.SerializeObject(jsonplanid);
 }
+```</pre>
+</div>
+<div tags="SQL Json" title="C# Json 序列化" tmap.id="b980c678-2327-486b-974b-6e4254b5e785" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! //''[[C# Json序列化Demo]]''//
+
+```cs
+DBDoctor dBDoctorDetails = new DBDoctor();
+dBDoctorDetails.DepartmentId = 12;  //
+dBDoctorDetails.HospitalId = 123456;  //
+dBDoctorDetails.JobNumber = &quot;sdfgh&quot;;  //
+Console.WriteLine(JsonConvert.SerializeObject(dBDoctorDetails));
 ```
 
-!!// 2、序列化 `JsonConvert.SerializeObject`//
+!!! //''序列化结果''//
+* 未赋值属性，均表现为`初始值`
+
+```json
+{&quot;JobNumber&quot;:&quot;sdfgh&quot;,&quot;OfficePhone&quot;:&quot;&quot;,&quot;Email&quot;:&quot;&quot;,&quot;Id&quot;:0,&quot;RemoteId&quot;:0,&quot;Account&quot;:&quot;&quot;,&quot;Password&quot;:&quot;&quot;,&quot;UserType&quot;:0,&quot;Name&quot;:null,&quot;Sex&quot;:0,&quot;Age&quot;:0,&quot;RegDate&quot;:&quot;0001-01-01T00:00:00&quot;,&quot;FaceFeature&quot;:null,&quot;PicImg&quot;:null,&quot;FaceRegistered&quot;:0,&quot;DepartmentId&quot;:12,&quot;HospitalId&quot;:123456,&quot;IdentityCard&quot;:&quot;&quot;}
+```</pre>
+</div>
+<div tags="Json Demo" title="C# Json序列化Demo" tmap.id="2f2443ed-293a-49ba-b063-6caa10a98a4a" revision="0" bag="default">
+<pre>!!// C# Json 序列化 `JsonConvert.SerializeObject`//
 ```c
 using Newtonsoft.Json;
 
@@ -12518,33 +12635,6 @@ private void BtnReadRehab_Click(object sender, RoutedEventArgs e)
             ……
         });
     }
-}
-```
-
-```json
-序列化结果
-```
-
-!!// 3、反序列化 `JsonConvert.DeserializeObject&lt;RehabWalk&gt;`//
-```c
-// 解析json
-private void BtnCommit1_Click(object sender, RoutedEventArgs e)
-{
-    SQLTestConfig();
-    RehabWalk rehabWalk = new RehabWalk();
-    string jsonInstance = &quot;&quot;;
-    cmdtest.CommandText = string.Format(@&quot;SELECT Walk FROM RehabPlan WHERE Id = 1&quot;);
-    crdtest = cmdtest.ExecuteReader();
-    while (crdtest.Read())
-    {
-        jsonInstance = crdtest.GetValue(0).ToString();
-    }
-    crdtest.Close();
-    contest.Close();
-
-    RehabWalk jsonplanid = JsonConvert.DeserializeObject&lt;RehabWalk&gt;(jsonInstance);
-    jsonplanid.Walk_Mode = Convert.ToInt32(textboxInsert.Text);
-    string jsonnewwalk = JsonConvert.SerializeObject(jsonplanid);
 }
 ```</pre>
 </div>
@@ -13223,6 +13313,16 @@ public void submitData()
 ```
 </pre>
 </div>
+<div tags="SQL" title="C# SQLite知识点" tmap.id="c406cebe-6b75-4445-8f91-d0221a13700a" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!// SQLite 知识回顾 [[C# SQLite]]//
+
+#// 实例化 数据库 类、连接//
+#// 读取 Table Name  `SELECT name FROM sqlite_master WHERE TYPE = 'table'`//
+#// 读取 Column Name  `cmdtest.CommandText = $&quot;PRAGMA TABLE_INFO({tableSource})&quot;;`//
+#// 插入数据库  `string.Format(@&quot;INSERT INTO RehabPlan ( id, PatientId ) VALUES ( '{0}', '{1}')&quot;, item.Id, item.PatientId)`//
+#// 删除数据库  `DELETE FROM RehabPlan`//
+#// 查询数据库  `SELECT * FROM RehabPlan`//</pre>
+</div>
 <div tags="ItemsControl派生类" title="C# TreeView" tmap.id="2de49b53-9dba-4e52-8a48-068e9ea3b7be" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//C# ItemsControl-TreeView//
 ```xml
@@ -13398,6 +13498,34 @@ string a = @&quot;xxx is a &quot;&quot;good&quot;&quot; girl&quot;
 
 </pre>
 </div>
+<div tags="C# 属性 反射" title="C# 同一类不同实例 属性值复制" tmap.id="612ada6a-4633-4fcd-a0b5-6b8db170e9c2" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!//C# 同一类下，不同实例的 属性值复制//
+*// propertyClass1 ——&gt; propertyClass0//
+*// 获取属性：`PropertyInfo[] myPropertyInfo = propertyClass0.GetType().GetProperties();`//
+*// 属性值 复制：`myPropertyInfo[i].SetValue(propertyClass0, myPropertyInfo[i].GetValue(propertyClass1, null), null);`//
+*// `GetValue` 和 `SetValue` 方法来自于 `DependencyObject` 类，用于 `获取或设置类的属性值`//
+
+```c
+// 将 propertyClass1 属性的值，赋给 propertyClass0
+private void BtnInsertproperty_Click(object sender, RoutedEventArgs e)
+{
+    PropertyClass propertyClass1 = new PropertyClass();
+    PropertyClassObject propertyClass0 = new PropertyClassObject();
+    propertyClass1.a = &quot;proclass1_a&quot;;
+    propertyClass1.b = &quot;proclass1_b&quot;;
+    ……
+
+    //Type t = typeof(PropertyClass);
+    PropertyInfo[] myPropertyInfo = propertyClass0.GetType().GetProperties();
+    for (int i = 0; i &lt; myPropertyInfo.Length; i++)
+    {
+        //被赋值对象是 propertyClass0，所赋的值是 i.ToString
+        myPropertyInfo[i].SetValue(propertyClass0, myPropertyInfo[i].GetValue(propertyClass1, null), null);
+        Console.WriteLine(myPropertyInfo[i].GetValue(propertyClass1, null));
+    }
+}
+```</pre>
+</div>
 <div tags="C# 软件更新" title="C# 外部程序调用之接收传递参数" tmap.id="4d243350-df4b-4650-afcd-9c04c6768f69" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //''Main函数接收传递参数''//
 * Class Program，设置项目属性 &gt; 应用程序 &gt; 启动对象 &gt; Program
@@ -13513,7 +13641,7 @@ public double WightLossOpacity
 ```
 </pre>
 </div>
-<div tags="C# SQL" title="C# 操作MySQL数据库" tmap.id="2750f559-328d-4aba-9642-b2b07e8264f3" revision="0" bag="default">
+<div tags="C# SQL" title="C# 操作MySQL数据库" tmap.id="2750f559-328d-4aba-9642-b2b07e8264f3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/gaokaitai/p/10633858.html&quot; &gt;''//C#操作MySQL//''&lt;/a&gt;</pre>
 </div>
 <div created="20200509100616094" modified="20200509151032264" tags="C#" title="C# 数值验证" tmap.id="41893b10-1e67-4b56-b152-0d7bd208125a" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -13833,6 +13961,26 @@ public DownFileProcess(string callExeName, string updateFileDir, string appDir, 
     }
 }
 
+```</pre>
+</div>
+<div tags="文件夹" title="C# 文件写入" tmap.id="bc3f6bc4-b0e8-468f-b22a-23c1fedc83aa" revision="0" bag="default">
+<pre>```cs
+try
+{
+    FileStream fs = new FileStream(@&quot;..\Error&quot;, FileMode.Append);
+    //获得字节数组
+    mesg = mesg + &quot;\n&quot;;
+    byte[] data = System.Text.Encoding.Default.GetBytes(mesg);
+    //开始写入
+    fs.Write(data, 0, data.Length);
+    //清空缓冲区、关闭流
+    fs.Flush();
+    fs.Close();
+}
+catch
+{
+    Console.WriteLine(&quot;WriteError&quot;);
+}
 ```</pre>
 </div>
 <div created="20200508095131733" modified="20200514125211661" tags="C# 文件夹" title="C# 文件移动、txt合并" tmap.id="d219157a-ac9f-4c59-a063-a793150ce902" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -14241,6 +14389,16 @@ public string GetIP()
 <div tags="软件更新 C# 文件夹" title="C# 获取程序的根目录" tmap.id="25730580-7448-4e40-b39c-0b5512c70abe" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```c
 System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location)
+```</pre>
+</div>
+<div tags="属性 反射" title="C# 获取类的所有属性" tmap.id="ce790a1f-4d6b-4e84-8e3b-0b3b2bb0706b" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```cs
+var list = typeof(DSRegister).GetProperties();
+foreach (var item in list)
+{
+    Console.WriteLine(item.Name);
+}
+Console.WriteLine(&quot;DSRegister&quot;);
 ```</pre>
 </div>
 <div tags="WPF基础" title="C# 获取系统亮度" tmap.id="ad6769ee-52ed-40eb-84f3-0858581d52a4" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -15428,8 +15586,10 @@ $(currentTiddler)$(?i)
     &lt;/$set&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div tags="Dapper" title="CURD-删" tmap.id="186f2d58-4f7c-4015-b9ab-388f85ceb558" revision="0" bag="default">
+<div tags="Dapper CURD" title="CURD-删" tmap.id="186f2d58-4f7c-4015-b9ab-388f85ceb558" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//CURD-删//''
+* 若删除成功，返回 `The number of affected records`，删除失败，返回 `0`
+
 ```cs
 public static int? DeleteWithID()
 {
@@ -15463,7 +15623,7 @@ public static int? DeleteMultiWhere()
 }
 ```</pre>
 </div>
-<div tags="Dapper" title="CURD-增" tmap.id="43d3478c-7928-49d7-a6a1-fe2deeeba121" revision="0" bag="default">
+<div tags="Dapper CURD" title="CURD-增" tmap.id="43d3478c-7928-49d7-a6a1-fe2deeeba121" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//CURD-增//''
 ```cs
 // Bug，增 ID=14，删除ID=14，继续增加，结果ID=15，≠14;
@@ -15481,7 +15641,7 @@ public static int? InsertWithEntitiy()
 }
 ```</pre>
 </div>
-<div tags="Dapper" title="CURD-改" tmap.id="e3b14f4f-c6c4-479f-95d0-a9bbaa9bb552" revision="0" bag="default">
+<div tags="Dapper CURD" title="CURD-改" tmap.id="e3b14f4f-c6c4-479f-95d0-a9bbaa9bb552" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//CURD-改//''
 ```cs
 public static void UpdateWithEntitiy()
@@ -15512,7 +15672,7 @@ public static void UpdateTransaction()
 }
 ```</pre>
 </div>
-<div tags="Dapper" title="CURD-查" tmap.id="715febd5-6a21-4263-b252-dde3ea9ae4f9" revision="0" bag="default">
+<div tags="Dapper CURD" title="CURD-查" tmap.id="715febd5-6a21-4263-b252-dde3ea9ae4f9" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//CURD-查//''
 ```cs
 public static Hospital QueryWithEntitiy()
@@ -15545,7 +15705,7 @@ public static IEnumerable&lt;Hospital&gt; QueryWhereEntitiy()
 }
 ```</pre>
 </div>
-<div tags="Dapper" title="CURD-统计数目" tmap.id="03a0da67-c390-49b1-a604-8221b4eb7234" revision="0" bag="default">
+<div tags="Dapper CURD" title="CURD-统计数目" tmap.id="03a0da67-c390-49b1-a604-8221b4eb7234" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//CURD-统计数目//''
 ```cs
 public static int RecordCount()
@@ -15575,6 +15735,8 @@ public static int RecordCount()
 
 &lt;&lt;translink &quot;&quot;&quot;Dapper-数据库连接&quot;&quot;&quot;&gt;&gt;
 
+&lt;&lt;translink &quot;&quot;&quot;Dapper-数据表形式&quot;&quot;&quot; &gt;&gt;
+
 &lt;&lt;translink &quot;&quot;&quot;CURD-增&quot;&quot;&quot;&gt;&gt;
 
 &lt;&lt;translink &quot;&quot;&quot;CURD-删&quot;&quot;&quot;&gt;&gt;
@@ -15585,7 +15747,7 @@ public static int RecordCount()
 
 &lt;&lt;translink &quot;&quot;&quot;CURD-统计数目&quot;&quot;&quot;&gt;&gt;</pre>
 </div>
-<div tags="Dapper SQL" title="Dapper-数据库连接" tmap.id="ea748cd8-c5c2-44fa-bfc7-ea9810cfdaf9" revision="0" bag="default">
+<div tags="Dapper CURD" title="Dapper-数据库连接" tmap.id="ea748cd8-c5c2-44fa-bfc7-ea9810cfdaf9" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//数据库-连接//''
 
 * 所有数据库连接，均继承自`IDbConnection`
@@ -15613,8 +15775,27 @@ public static MySqlConnection OpenConnection()
 }
 ```</pre>
 </div>
-<div color="#502bd4" title="DateTime" tmap.id="3f6fd656-a20c-4fcb-b9b9-e269a383abdc" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre></pre>
+<div tags="Dapper CURD" title="Dapper-数据表形式" tmap.id="1a1ec3e2-9726-4265-8264-7a6c954283aa" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://github.com/ericdc1/Dapper.SimpleCRUD&quot; &gt;//''Dapper.~SimpleCURD简要''//&lt;/a&gt;
+
+```cs
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+[Table(&quot;hospital&quot;)]
+public class Hospital
+{
+    [Dapper.Key]
+    public int Id { get; set; }
+    public string hpName { get; set; }
+    public int status { get; set; }
+}
+```</pre>
+</div>
+<div color="#502bd4" tags="C#" title="DateTime" tmap.id="3f6fd656-a20c-4fcb-b9b9-e269a383abdc" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+  &lt;&lt;toc-selective-expandable 'DateTime'&gt;&gt;
+&lt;/div&gt;</pre>
 </div>
 <div tags="WPF基础" title="DateTime 减操作" tmap.id="5aea4d76-2cbb-4662-8e86-5d5cb065083b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//返回值：`Day.HH:mm:ss`//
@@ -16241,6 +16422,11 @@ public void FTPDownload(string filePath, string fileName)
 * `$ git clone git@github.com:Mememori3476/Mememori3476.github.io.git Mememori`
 ** `$ git clone [Address] [newName]`</pre>
 </div>
+<div tags="ToDo Temp Protocol" title="Google Protocol Buffers 之.Net应用" tmap.id="9ca9237c-b08d-45e0-966e-53030d6fcda7" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wu-jian/archive/2011/02/22/1961104.html&quot; &gt;''//Google Protocol Buffers 之.Net应用//''&lt;/a&gt;
+
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wu-jian/archive/2011/02/22/1961104.html&quot; &gt;//''Google Protocol Buffer 的使用和原理''//&lt;/a&gt;</pre>
+</div>
 <div color="#0E83CD" icon="Hexo svg" title="Hexo" tmap.id="97d1ca4a-0f2e-4924-a064-45dd58ffcc4d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
@@ -16439,7 +16625,9 @@ public event Action&lt;float[]&gt; MPCloudPlatformDateEvent;
 &lt;&lt;tabs tabsList:&quot;[tag[Java安卓开发]!tag[advanced]]&quot; default:&quot;one&quot; class:&quot;tc-vertical&quot;&gt;&gt;</pre>
 </div>
 <div color="" title="Json" tmap.id="4934ac74-d573-40a9-9be6-b756ebc5ad09" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre></pre>
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+  &lt;&lt;toc-selective-expandable 'Json'&gt;&gt;
+&lt;/div&gt;</pre>
 </div>
 <div icon="Linux svg" tags="计算机技巧" title="Linux" tmap.id="927c67a9-c204-482e-9bc1-b66b7d5c1848" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -16521,7 +16709,9 @@ telnet  127.0.0.1 8080
 </pre>
 </div>
 <div color="#502bd4" created="20200514124640529" modified="20200514124717038" tags="WPF" title="LiveCharts" tmap.id="9d468296-84b4-4a49-8645-72abb3a85980" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>&lt;&lt;list-links &quot;[tag[LiveCharts]]&quot;&gt;&gt;</pre>
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_43307934/category_9894857.html&quot; &gt;//''~LiveCharts系列教程''//&lt;/a&gt;
+
+&lt;&lt;list-links &quot;[tag[LiveCharts]]&quot;&gt;&gt;</pre>
 </div>
 <div tags="[[Tiddlywiki Macros]]" title="Macros tag" tmap.id="9425fd06-cd07-4e68-b257-7298d7f0aaad" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //[[$:/core/macros/tag]]//
@@ -16748,7 +16938,7 @@ private void GoBack()
 #endregion
 ```</pre>
 </div>
-<div tags="SQL" title="MySQL 获取表名" tmap.id="33fe9b68-a773-40dc-b287-e4b30e269042" revision="0" bag="default">
+<div tags="SQL" title="MySQL 获取表名" tmap.id="33fe9b68-a773-40dc-b287-e4b30e269042" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//获取 Table-Name//''
 
 ```sql
@@ -17517,7 +17707,7 @@ public class Slider : RangeBase
 <div created="20200514125346988" modified="20200514125406314" tags="WPF" title="SQL" tmap.id="26dd2b65-d30f-4608-a8dd-3c5f043cfb7f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;&lt;list-links &quot;[tag[SQL]]&quot;&gt;&gt;</pre>
 </div>
-<div tags="SQL" title="SQL GUID和主键自增的比较" tmap.id="f976b186-46fa-47da-a750-39c3aa8d28dc" revision="0" bag="default">
+<div tags="SQL" title="SQL GUID和主键自增的比较" tmap.id="f976b186-46fa-47da-a750-39c3aa8d28dc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/leihope_/article/details/89326489&quot; &gt;//''数据库GUID和主键自增''//&lt;/a&gt;
 
 !! ''//GUID和主键自增//''
@@ -17532,12 +17722,181 @@ public class Slider : RangeBase
 * 多个数据库融合，主键重复
 * 兼容性差，难以处理并发</pre>
 </div>
-<div tags="SQL Concurrency" title="SQL并发环境，防止用户名重复" tmap.id="19c336ad-1dc7-4fae-b1f5-4cdcf33ac478" revision="0" bag="default">
+<div tags="SQL ORM" title="SQL ORM对象映射注意事项" tmap.id="e0556d2b-2af7-4315-8667-d0521c3b8651" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! ''//对象的属性，必须在数据库中出现//''
+* 注意对象的属性，在数据库中必须出现，否则报错
+* `MySqlException:“Unknown column 'Synced' in 'field list'”`
+
+---
+
+!!! ''//Demo//''
+
+* 注意属性：`Synced`；数据库没有该`ColumnName`
+* `dBRehabPlan = conn.GetList&lt;DBRehabPlan&gt;(filterQuery);`
+
+!!! ''//解决方案：[NotMapped]//''
+```cs
+[NotMapped]
+public int Synced { get; set; } = 0; // 0:False 1:True
+```
+
+!!! ''//对象//''
+
+```cs
+[Table(&quot;rehabplan&quot;)]
+public class DBRehabPlan
+{
+    [Key]
+    public int Id { get; set; }
+    public int Synced { get; set; } = 0; // 0:False 1:True
+    public int PatientId { get; set; }
+    public DateTime StartTime { get; set; }
+    public int CompleteStatus { get; set; }
+}
+```
+
+!!! ''//数据库//''
+
+```sql
+CREATE TABLE `rehabplan` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `PatientId` int(11) DEFAULT NULL,
+  `devicetype` int(11) DEFAULT NULL,
+  `StartTime` datetime DEFAULT NULL,
+  `CompleteStatus` int(11) DEFAULT NULL,
+  `details` json DEFAULT NULL,
+  `advice` varchar(1024) DEFAULT NULL,
+  `modify` json DEFAULT NULL,
+  `createtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=371 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+```</pre>
+</div>
+<div tags="SQL" title="SQL TimeStamp_时间戳" tmap.id="7ffab457-43ed-4ab1-ba93-789b63e0a7c8" revision="0" bag="default">
+<pre>* `TimeStamp` ''时间戳'' 自动添加，无需理会
+
+```sql
+CREATE TABLE `rehabplan` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `PatientId` int(11) DEFAULT NULL,
+  `devicetype` int(11) DEFAULT NULL,
+  `StartTime` datetime DEFAULT NULL,
+  `createtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=371 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+```
+
+```sql
+insert into rehabplan (PatientId, devicetype, StartTime) values ('200000', '2', now());
+```
+| Id | PatientId | DeviceType | StartTime | CompleteStatus | Details | Advice | Modify | Createtime |h
+| 371 | 200000 | 2 | 2020-08-06 11:04:25 ||||| 2020-08-06 11:04:25 |
+</pre>
+</div>
+<div tags="SQL Concurrency" title="SQL并发环境，防止用户名重复" tmap.id="19c336ad-1dc7-4fae-b1f5-4cdcf33ac478" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_37677519/article/details/78334777&quot; &gt;''//并发环境下，防止用户名注册一致//''&lt;/a&gt;
 
 !!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://q.cnblogs.com/q/39047/&quot; &gt;''//并发环境，防止多用户注册//''&lt;/a&gt;
 
 </pre>
+</div>
+<div tags="SQL Json" title="SQL直接对Json操作" tmap.id="cfc60d91-d0b2-4263-b99f-7ee58db2cfda" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.mysqltutorial.org/mysql-json/&quot; &gt;''//A Practical Guide to ~MySQL JSON Data Type By Example//''&lt;/a&gt;
+
+!!! ''//数据库结构//''
+| 数据库结构 |&lt;|h
+| Id | int(11) |
+| details | json |
+
+!!! ''//Json文件结构//''
+
+```json
+{&quot;id&quot;: 1000007, &quot;age&quot;: &quot;29&quot;, &quot;sex&quot;: 0, &quot;irego&quot;: {&quot;hemi&quot;: 1, &quot;loss&quot;: 0, &quot;pelv&quot;: 0}, &quot;phone&quot;: &quot;19000000000&quot;, &quot;height&quot;: &quot;188&quot;, &quot;weight&quot;: &quot;66&quot;, &quot;iconurl&quot;: null, &quot;doctorid&quot;: 1000079, &quot;hospital&quot;: &quot;上海市岳阳医院&quot;, &quot;password&quot;: &quot;&quot;, &quot;patientid&quot;: 1000007, &quot;department&quot;: 1, &quot;hospitalid&quot;: 13, &quot;contactinfo&quot;: &quot;111111&quot;, &quot;identitycard&quot;: &quot;111111111111111111&quot;}
+```
+
+!!! ''//直接读取 Json数据//''
+* 注意结果，带有`“”`
+* 输出结果，不带`“”`，采用`-&gt;&gt;`
+
+
+```sql
+SELECT Name, details-&gt;'$.age' details FROM robotdb.users;
+```
+
+```bash
++----+-----------+
+| id | browser   |
++----+-----------+
+|  1 | &quot;Safari&quot;  |
+|  2 | &quot;Firefox&quot; |
+|  3 | &quot;Safari&quot;  |
+|  4 | &quot;Firefox&quot; |
+|  5 | &quot;Firefox&quot; |
+|  6 | &quot;Chrome&quot;  |
++----+-----------+
+```
+
+```sql
+SELECT Name, details-&gt;&gt;'$.age' details FROM robotdb.users;
+```
+```bash
++----+---------+
+| id | browser |
++----+---------+
+|  1 | Safari  |
+|  2 | Firefox |
+|  3 | Safari  |
+|  4 | Firefox |
+|  5 | Firefox |
+|  6 | Chrome  |
++----+---------+
+```
+
+```sql
+SELECT details-&gt;&gt;'$.age' details, count(details) FROM robotdb.users group by details-&gt;&gt;'$.age';
+```
+```bash
++---------+----------------+
+| browser | count(browser) |
++---------+----------------+
+| Safari  |              2 |
+| Firefox |              3 |
+| Chrome  |              1 |
++---------+----------------+
+```
+
+```sql
+SELECT visitor, SUM(properties-&gt;&gt;'$.amount') revenue
+FROM events
+WHERE properties-&gt;&gt;'$.amount' &gt; 0
+GROUP BY visitor;
+```
+
+</pre>
+</div>
+<div tags="SQL" title="SQL获取某一时间数据" tmap.id="6479a193-b22f-40b9-bf71-735ff092c90c" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! ''//数据库形式//''
+
+```cs
+// 数据表-形式
+StartTime DateTime
+//
+2019-08-01 0:00:15
+2020-01-01 12:00:14
+...
+```
+
+!!! ''//根据 Year、Month查询//''
+
+```sql
+Select * From rebotdb Where year(StartTime) = {0}&quot;, year;
+```
+
+!!! ''//查询某一时间范围内数据//''
+* `to_days()`
+```sql
+SELECT * FROM robotdb.rehabplan where to_days(StartTime) &gt; to_days('2019-06-01') and to_days(StartTime) &lt; to_days('2020-06-01');
+```</pre>
 </div>
 <div color="#502bd4" title="Stream" tmap.id="18e2260a-4a78-4aa9-ba3d-7a0a5a0daa23" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
@@ -22135,6 +22494,23 @@ Zettelkasten是解决一个常见问题（即知识管理问题）的多种不�
 </div>
 <div tags="ToDo Temp Zettlr Zettelkasten.de" title="Zettlr_GitHub Doc" tmap.id="6c8d3c70-5a37-4f91-954b-5d92caa3775b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://docs.zettlr.com/en/&quot; &gt;//''Zettlr_Docs''//&lt;/a&gt;</pre>
+</div>
+<div tags="线程" title="互斥锁 Mutex" tmap.id="1028001a-e061-45b7-adb2-221a4385a378" revision="0" bag="default">
+<pre>!! ''//互斥锁//''
+* 互斥的同步对象，同一时间只有一个线程获取它
+* 适用于：一个共享资源每次只能被一个线程访问的情况
+* 确保一个线程独占一个资源的访问
+
+```cs
+Public Mutex(bool owned);
+
+private System.Threading.Mutex mutex = new System.Threading.Mutex(true, &quot;LLRobot&quot;);
+```
+* 若`owned = true`，互斥锁的初始状态：被主线程所获取
+* `WaitOne()`，获取互斥锁，继承自`Thread.WaitHandle`
+** 等待状态，直到所调用的互斥锁，被获取
+* `ReleaseMutex()`释放，互斥锁可以被其他线程获取
+</pre>
 </div>
 <div tags="WCF" title="什么是WCF" tmap.id="ed5efa22-a963-4a26-9593-7564482ab61a" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//.NET平台下分布式技术//''
