@@ -215,6 +215,8 @@ Error message and password prompt
 
 <li>5.17 新场古镇</li>
 
+<li>8.10 IReGo讨论</li>
+
 <li>Action Dispatcher</li>
 
 <li>Action Dispatcher线程池</li>
@@ -330,6 +332,8 @@ Error message and password prompt
 <li>C# SQLite</li>
 
 <li>C# SQLite知识点</li>
+
+<li>C# TimeStamp</li>
 
 <li>C# TreeView</li>
 
@@ -451,6 +455,8 @@ Error message and password prompt
 
 <li>CIS参数设定_7.7</li>
 
+<li>CIS标定细节化8.14</li>
+
 <li>CMD</li>
 
 <li>CMD 关机</li>
@@ -543,7 +549,13 @@ Error message and password prompt
 
 <li>HTML</li>
 
+<li>HTML Video 自动播放策略</li>
+
 <li>HTML字体定义</li>
+
+<li>HTML开启网页自动播放</li>
+
+<li>HTML网页默认全屏播放</li>
 
 <li>http</li>
 
@@ -644,6 +656,8 @@ Error message and password prompt
 <li>PN532进行NFC加密卡读取</li>
 
 <li>ProgressBar</li>
+
+<li>PropertyChange属性变化</li>
 
 <li>R语言</li>
 
@@ -975,6 +989,8 @@ Error message and password prompt
 
 <li>WindowsServer配置FTP</li>
 
+<li>Windows屏保.scr</li>
+
 <li>Windows查看IP端口信息</li>
 
 <li>Windows查看特定端口是否开启</li>
@@ -1005,6 +1021,8 @@ Error message and password prompt
 
 <li>WPF元素阴影效果</li>
 
+<li>WPF利用WebBrowser获取HTML元素</li>
+
 <li>WPF在Window调用另一个Window资源</li>
 
 <li>WPF地图开发ArcEngine</li>
@@ -1020,6 +1038,8 @@ Error message and password prompt
 <li>WPF拖拽上传</li>
 
 <li>WPF控件Invoke和BeginInvoke</li>
+
+<li>WPF播放视频</li>
 
 <li>WPF显示PDF</li>
 
@@ -1160,6 +1180,8 @@ Error message and password prompt
 <li>安装包</li>
 
 <li>家庭常备药</li>
+
+<li>局域网通信 Ping请求超时</li>
 
 <li>属性</li>
 
@@ -11315,6 +11337,32 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 
 !!! //''十景溪湾石笋、书楼爽秋、雷音晓钟，横塘晩棹、仙洞丹霞、海眼原泉、高阁晴云、上方烟雨、千秋夜月、南山雨霁、古镇石拱桥''//</pre>
 </div>
+<div tags="Mememori3476" title="8.10 IReGo讨论" tmap.id="931e2d92-c20d-4671-8d53-8f83fbe91f65" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* 笑脸，作为屏保界面，点击即进入 主界面
+* 主界面，右下角，添加`医生入口`，仅医生可发现，调用`医生客户端`（快捷方式-的形式）
+* 通用设置界面，不显示`超声波`，换到：行走训练界面，仅行走训练需要：超声波避障
+
+* 行走训练界面，显示：步数、得分、行走距离、时间
+* 步态的距离曲线，形式：横轴不动，曲线的极值点（共两个）为脚尖处
+* 距离曲线，动态显示
+* 距离曲线：脚尖和原始位置的距离，作为得分依据，分为：大小花（体现为：）
+* 行走训练的模式设置（主动、阻力、助力），效果不如之前的选项卡较好
+** 模式设置的弹跳，脑卒中患者，可能无法区别其`弹跳效果`
+** 体现了：设计师的思想
+
+* 主界面的`六边形`，采用`呼吸灯`形式（较难实现）
+* 训练截止倒计时，采用界面大花的形式
+
+* 坐站训练，得分，体现为，没完成一次+100分
+* 若坐站速度较快，体现为：体现为单次坐站时间较短，对其进行`加分`
+* 坐站训练的曲线，同行走训练一致
+
+* 平衡测定和平衡训练，测定-没有减重值
+* 平衡训练-界面，需要重新设计
+---
+
+</pre>
+</div>
 <div tags="ToDo 线程" title="Action Dispatcher" tmap.id="f7726736-8630-4f4b-bfab-e7ee125d8d02" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```cs
 System.Threading.ThreadPool.QueueUserWorkItem((s) =&gt;
@@ -13322,6 +13370,11 @@ public void submitData()
 #// 插入数据库  `string.Format(@&quot;INSERT INTO RehabPlan ( id, PatientId ) VALUES ( '{0}', '{1}')&quot;, item.Id, item.PatientId)`//
 #// 删除数据库  `DELETE FROM RehabPlan`//
 #// 查询数据库  `SELECT * FROM RehabPlan`//</pre>
+</div>
+<div tags="SQL" title="C# TimeStamp" tmap.id="1281f5d3-f268-4263-ae12-205b62bfd709" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* 时间戳，指`1970年0时0分0秒 —— Now`秒数
+* 类型：INT
+* 数据库中，较：DateTime 节省空间</pre>
 </div>
 <div tags="ItemsControl派生类" title="C# TreeView" tmap.id="2de49b53-9dba-4e52-8a48-068e9ea3b7be" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//C# ItemsControl-TreeView//
@@ -15372,6 +15425,51 @@ private void SetText(string text)
 * 若`单次补偿量` &lt; `最小补偿量`
 ** `重新计算`单次补偿量、补偿间隔</pre>
 </div>
+<div tags="Mememori3476" title="CIS标定细节化8.14" tmap.id="00edcf34-d1f3-44b5-844b-4e358fb19a37" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!! ''//大致流程：大标定-铅块//''
+```cs
+switch (step)
+{
+    case 3:
+        css = InputData;
+        break;
+    case 5:
+        height = InputData;
+        if (height&lt;15)
+        {
+            MessageBoxEx.Show(&quot;标定H值过小&quot;);
+        }
+        break;
+    case 9:
+        height += css * factorHeightCss;
+        vmAutoCompensation.SaveCalibration(height.ToString(), 0, runningTime, factorHeightCss, type);
+        break;
+    default:
+        break;
+}
+```
+
+!! ''//XML文件格式//''
+```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;Calibration&gt;
+  &lt;CalibrationSetting&gt;
+    &lt;CalibrationTimeUnit CalibrationTime=&quot;60&quot; /&gt;
+    &lt;CalibrationLimit CalibrationCssMin=&quot;30&quot; /&gt;
+    &lt;CalibrationReference CalibrationHeightInit=&quot;888&quot; /&gt;
+    &lt;CalibrationSwitch CalibrationOpenOrNot=&quot;0&quot; /&gt;
+  &lt;/CalibrationSetting&gt;
+  &lt;CalibrationTimeValue&gt;
+    &lt;CalibrationItem LoadTime=&quot;20&quot; Height=&quot;1276.5&quot; CssWear=&quot;0&quot; Time=&quot;2020/08/14 02:31:46&quot; /&gt;
+  &lt;/CalibrationTimeValue&gt;
+&lt;/Calibration&gt;
+```
+
+---
+* 对`Next`按钮，`machine.WriteValue(&quot;CalibrationValue&quot;, InputData);`表示疑问
+** 这个`CalibrationValue`表示什么？
+</pre>
+</div>
 <div color="#1262B0" tags="计算机技巧" title="CMD" tmap.id="f9eb933c-a14a-4042-baee-37e2acbf3916" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 
@@ -16440,6 +16538,9 @@ public void FTPDownload(string filePath, string fileName)
 
 &lt;/div&gt;</pre>
 </div>
+<div tags="HTML" title="HTML Video 自动播放策略" tmap.id="b1ee4ef0-e0ba-477d-8b21-187630c3366f" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/c3c6944eed5a&quot; &gt;''//Autoplay自动播放策略//''&lt;/a&gt;</pre>
+</div>
 <div tags="Temp HTML" title="HTML字体定义" tmap.id="febe7c24-c0a8-468c-a538-60580d41e46e" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//字体效果 &lt;/font&gt;//''
 * 颜色：`&lt;font color=#006633&gt;娴啊娴&lt;/font&gt;`，&lt;font color=#006633&gt;娴啊娴&lt;/font&gt;
@@ -16473,6 +16574,59 @@ public void FTPDownload(string filePath, string fileName)
 &lt;h2 style=&quot;background:#CCFFCC&quot;&gt;底色为黄色的标题&lt;/h2&gt;
 &lt;strong style=&quot;background:#FFFFCC&quot;&gt;底色为红色的句子&lt;/strong&gt;
 &lt;p style=&quot;background:#99CCCC&quot;&gt;底色为绿色的段落&lt;/p&gt;</pre>
+</div>
+<div tags="HTML" title="HTML开启网页自动播放" tmap.id="928fd5a0-a0e5-4f4a-a573-419cf32ead6c" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```html
+&lt;video id=&quot;video&quot; src=&quot;xxx/xxx.mp4&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; muted=&quot;muted&quot; height=&quot;100%&quot; width=&quot;100%&quot;&gt;&lt;/video&gt;
+```</pre>
+</div>
+<div tags="HTML" title="HTML网页默认全屏播放" tmap.id="87021605-c60f-458d-957e-abdc82c68473" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!''//其他解决方案：暂无法解决//'' 
+!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/linysuccess/article/details/82491578&quot; &gt;''//html5 video全屏播放/自动播放//''&lt;/a&gt;
+
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/lunhui1994_/article/details/79924884&quot; &gt;''//HTML进入全屏、退出全屏//''&lt;/a&gt;
+
+!! ''//CSS样式，实现全屏动画播放//''
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;title&gt;Hello World&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        video{
+            position: fixed;
+            right: 0px;
+            bottom: 0px;
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            width: auto;
+            /*加滤镜*/
+            /*-webkit-filter: grayscale(100%);*/
+            /*filter:grayscale(100%);*/
+        }
+        source{
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            width: auto;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;!--资源格式自己进行添加--&gt;
+	&lt;video autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; muted=&quot;muted&quot;&gt;
+		&lt;source src=&quot;Seconds Of Beauty.mp4&quot; type=&quot;video/mp4&quot; &gt;;
+	&lt;/video&gt;
+&lt;/body&gt;
+```</pre>
 </div>
 <div tags="计算机技巧 ToDo" title="http" tmap.id="4d4f5d0e-64ef-48dd-8c4c-14e69f2b957d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -17189,6 +17343,82 @@ iii. restart the server.&quot;&quot;&quot;/&gt;</pre>
 </div>
 <div tags="ToDo Temp" title="ProgressBar" tmap.id="01b126b0-81c7-4962-93d6-be0df069532d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/5ca0054febc3&quot; &gt;~ProgressBar线程&lt;/a&gt;</pre>
+</div>
+<div tags="属性" title="PropertyChange属性变化" tmap.id="b2a55820-cbf6-48a4-8894-ea9a37a8bc7a" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wlming/p/5574778.html&quot; &gt;''//~INotifyPropertyChanged使用方法//''&lt;/a&gt;
+
+```cs
+using System.ComponentModel;
+
+// 继承自 INotifyPropertyChanged
+public class LLR4AClientDevice:INotifyPropertyChanged
+
+// 实现 PropertyChanged()
+public event PropertyChangedEventHandler PropertyChanged;
+
+private int timeProgressPro;
+public int TimeProgressPro
+{
+    get { return timeProgressPro; }
+    set {
+        timeProgressPro = value;
+        PropertyChanged.Invoke(this, new PropertyChangedEventArgs(&quot;TimeProgressPro&quot;));
+    }
+}
+```
+
+!!! ''//不正确的委托使用，将会触发null//''
+* PropertyChanged是一个委托对象的实例，在类里也是事件
+```cs
+现在来看你所写的这段代码，你奇怪于PropertyChanged一直为null，这很正常，因为你没有使用 user.PropertyChanged += new ……这样的实例化语句来指定委托如何实现，
+其次，OnPropertyChanged放在类自身中，然后又调用PropertyChanged()，幸亏你的PropertyChanged是null，否则就堆栈溢出了，这是假设PropertyChanged不为null的情况：
+PropertyChanged触发 → OnPropertyChanged() → 再次调用PropertyChanged → OnPropertyChanged() → 再次调用PropertyChanged 
+```
+
+```cs
+class User
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private string _name;
+    public string Name
+    {
+        get { return this._name; }
+        set {
+            this._name = value;
+            if (PropertyChanged != null) PropertyChanged.Invoke(this, new PropertyChangedEventArgs(&quot;Name&quot;));
+        }
+    }
+}
+````
+
+!!! ''//外部调用//''
+
+```cs
+User user = new User();
+user.PropertyChanged += new PropertyChangedEventHandler(user_PropertyChanged);
+private void user_PropertyChanged(object sender, PropertyChangedEventArgs e)
+{
+    MessageBox.Show(&quot;user的&quot; + e.PropertyName + &quot;属性被更改&quot;);
+}
+```
+!! ''//属性变化，通知界面，流程//''
+
+```cs
+当user的Name属性发生变更：
+user.Name = &quot;abc&quot;;
+
+这时就会以这样的方式实现委托的过程
+1、调用Name.set过程
+2、因为user.PropertyChanged已经指定了委托实现函数（user_PropertyChanged），所以这个函数会因为PropertyChanged.Invoke而触发
+3、弹出对话框“user的Name属性被更改”
+```
+
+!! ''//PropertyChanged 作用//''
+* 让User以外的地方得以知道User的某个属性发生了变化，从而做出处理，相当于“通知”的作用
+
+
+</pre>
 </div>
 <div tags="ToDo 学术期刊" title="R语言" tmap.id="f0b91e32-e90b-4683-a062-147d0204d34b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;学术期刊&quot; &gt;R语言&lt;/a&gt; &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://rstudio.com/products/rstudio/download/&quot; &gt;R Studio&lt;/a&gt;
@@ -19975,9 +20205,9 @@ class Program
 ```</pre>
 </div>
 <div color="#502bd4" tags="ToDo Temp WCF系列教程" title="WCF心跳检测" tmap.id="9432a0dd-7be5-46b1-85f2-aadee359b600" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wujy/p/3247141.html&quot; &gt;WCF心跳判断服务端及客户端是否掉线并实现重连接&lt;/a&gt;
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wujy/p/3247141.html&quot; &gt;//''WCF心跳判断服务端及客户端是否掉线并实现重连接''//&lt;/a&gt;
 
-!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://download.csdn.net/detail/u010127054/5894731&quot; &gt;WCF心跳检测代码下载&lt;/a&gt;
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://download.csdn.net/detail/u010127054/5894731&quot; &gt;//''WCF心跳检测代码下载''//&lt;/a&gt;
 
 * 心跳检测，用于判断服务端和客户端是否掉线进行判断
 * 通过WCF双工知识和心跳包实现相应功能
@@ -21058,6 +21288,9 @@ netsh int ipv4 set dynamicport protocol=tcp startport=3000 numberofports=300
 ** 登陆进去不显示列表
 *** `动态端口未限制`，或`账户无访问权限`，或`IP限制`，或`安全组未放行动态端口`</pre>
 </div>
+<div tags="计算机技巧" title="Windows屏保.scr" tmap.id="c17b9281-9d7f-45ce-bb69-bc0724a4bb9c" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="ToDo Temp IP" title="Windows查看IP端口信息" tmap.id="9add1c95-39b3-4d33-a1a0-d43689dc6227" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```cs
 netstat -aon|findstr 5037 //查看占用 5037 的PID
@@ -21390,6 +21623,9 @@ private void SelectChange()
 &lt;/Grid.Effect&gt;
 ```</pre>
 </div>
+<div tags="WPF基础 HTML" title="WPF利用WebBrowser获取HTML元素" tmap.id="75c27a60-57c3-4f41-bb39-e2b4c56cc0a7" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/andy930606/article/details/101336146&quot; &gt;''//WPF获取HTML元素//''&lt;/a&gt;</pre>
+</div>
 <div tags="Temp C# 窗体应用 WPF基础" title="WPF在Window调用另一个Window资源" tmap.id="6ee0fdb1-9538-4369-8c6d-198bc344cc47" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//实例化AlertWin类，使用Window的调用//''
 ```c
@@ -21536,6 +21772,44 @@ public void ShowTextToRichBox(string data,RichTextBox box)
 </div>
 <div tags="ToDo Temp" title="WPF控件Invoke和BeginInvoke" tmap.id="3f6492c5-b10e-4fce-b6e6-2ceb072ffe01" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/db2020461489&quot; &gt;WPF控件Invoke和~BeginInvoke&lt;/a&gt;</pre>
+</div>
+<div tags="WPF基础" title="WPF播放视频" tmap.id="1a311e8b-359e-42ef-848a-00bf9e8e86a4" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.jianshu.com/p/95ae487552b9&quot; &gt;''//【WPF】播放视频//''&lt;/a&gt;
+
+!! ''//将 MP4资源发布至 exe文件//''
+* 关键：`Resource`
+```cs
+// 属性
+复制到输出目录：如果较新则复制
+生成操作：Resource
+```
+!! ''//exe无标题栏//''
+* `WindowStyle=&quot;None&quot;`
+
+```xml
+&lt;Window x:Class=&quot;ScreenSaver.MainWindow&quot;
+        Activated=&quot;ScreenSaver_Activated&quot; Deactivated=&quot;ScreenSaver_Deactivated&quot;
+        Name=&quot;ScreenSaver&quot; Closed=&quot;ScreenSaver_Closed&quot; WindowStyle=&quot;None&quot;
+        Title=&quot;MainWindow&quot; Height=&quot;450&quot; Width=&quot;800&quot;&gt;
+    &lt;Grid Name=&quot;grid&quot;&gt;
+        &lt;MediaElement x:Name=&quot;mediaElement&quot; Margin=&quot;0&quot; LoadedBehavior=&quot;Manual&quot; Source=&quot;Seconds Of Beauty.mp4&quot; Stretch=&quot;Fill&quot;/&gt;
+    &lt;/Grid&gt;
+&lt;/Window&gt;
+```
+
+```cs
+private void ScreenSaver_Activated(object sender, EventArgs e){
+    this.mediaElement.Play();  }
+
+private void ScreenSaver_Deactivated(object sender, EventArgs e){
+    this.mediaElement.Pause();  }
+
+private void ScreenSaver_Closed(object sender, EventArgs e){
+    MessageBoxResult result = MessageBox.Show(&quot;您确定是否退出媒体播放器？&quot;, this.Title, MessageBoxButton.OKCancel, MessageBoxImage.Question);
+    if (result == MessageBoxResult.Cancel)
+        this.mediaElement.Stop();
+}
+```</pre>
 </div>
 <div tags="ToDo Temp WPF PDF" title="WPF显示PDF" tmap.id="9c13c6d3-6fde-4eca-9612-a9d0a5ddc895" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://github.com/itext/itextsharp&quot; &gt;//''iTextSharp_GitHub''//&lt;/a&gt;</pre>
@@ -22163,7 +22437,7 @@ doc.Save(path);
 !!//Syntax：//
 * `.\youtube-dl https://www.bilibili.com/video/xxx`</pre>
 </div>
-<div tags="ToDo Temp 文献" title="Zetero的一些讨论" tmap.id="d6be7b42-cf53-43a1-bc0b-895ebff3c786" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="ToDo Temp 文献 Zettelkasten.de" title="Zetero的一些讨论" tmap.id="d6be7b42-cf53-43a1-bc0b-895ebff3c786" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://forum.zettlr.com/discussion/94/zotero-as-zettelkasten&quot; &gt;//''Zetero作为Zettelkasten系统''//&lt;/a&gt;
 
 * Zetero是一个-参考管理器
@@ -23383,6 +23657,18 @@ Task.Factory.StartNew(()=&gt;
 !!//5、高血压//
 *`复方利血平`
 </pre>
+</div>
+<div tags="HTTP" title="局域网通信 Ping请求超时" tmap.id="5db3b28e-3d8e-43b4-915b-d0b4abff0aa3" revision="0" bag="default">
+<pre>```cs
+// 自身能通
+ping 127.0.0.1
+
+// 请求超时
+ping 192.168.1.100
+```
+
+!! ''//解决方法：//''
+* 关闭对方`防火墙`</pre>
 </div>
 <div color="#502bd4" title="属性" tmap.id="61eb7b8a-5f80-462c-9712-de92207ea00e" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
