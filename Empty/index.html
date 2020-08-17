@@ -389,6 +389,8 @@ Error message and password prompt
 
 <li>C# 线程 WinForm-InvokeRequired</li>
 
+<li>C# 获取WCF config EndPoint</li>
+
 <li>C# 获取当前软件版本</li>
 
 <li>C# 获取本机IP</li>
@@ -602,6 +604,8 @@ Error message and password prompt
 <li>Linux系统状态检测</li>
 
 <li>LiveCharts</li>
+
+<li>LiveCharts UIElement显示</li>
 
 <li>Macros tag</li>
 
@@ -1046,6 +1050,8 @@ Error message and password prompt
 <li>WPF样式-点击按钮切换图片</li>
 
 <li>WPF样式-窗口操作按钮</li>
+
+<li>WPF界面线程卡住</li>
 
 <li>WPF窗口要素绘制顺序</li>
 
@@ -14398,6 +14404,49 @@ public class ToMultiRatio : IMultiValueConverter
 ** 若两个线程一致，True
 **若两个线程不一致，False</pre>
 </div>
+<div tags="WCF C#" title="C# 获取WCF config EndPoint" tmap.id="1e465107-01e0-4d2d-8a7f-cb3b1a832d3c" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! ''//获取 endpoint中 address的 IP地址//''
+
+```xml
+&lt;system.serviceModel&gt;
+  &lt;bindings&gt;
+    ……
+  &lt;/bindings&gt;
+  &lt;client&gt;
+    &lt;endpoint address=&quot;net.tcp://192.168.1.100:9000/&quot; binding=&quot;netTcpBinding&quot; bindingConfiguration=&quot;NetTcpBinding_IDeviceService&quot; contract=&quot;Device.Contracts.Contracts.IDeviceService&quot; name=&quot;NetTcpBinding_IDeviceService&quot;&gt;
+```
+
+```cs
+using System.ServiceModel.Configuration;
+using System.Text.RegularExpressions;
+
+public class GetAppConfig: ConfigurationSection
+{
+    public string GetConfig()
+    {
+        ClientSection clientSettings = ConfigurationManager.GetSection(&quot;system.serviceModel/client&quot;) as ClientSection;
+
+        string address = null;
+        foreach (ChannelEndpointElement endpointElement in clientSettings.Endpoints)
+        {
+            if (endpointElement.Name == &quot;NetTcpBinding_IDeviceService&quot;)
+                address = endpointElement.Address.ToString();
+        }
+        return GetIpAddr(address);
+    }
+
+    private string GetIpAddr(string addr)
+    {
+        Regex regex = new Regex(@&quot;^net\.tcp\:\/{2}(.*)\:\d{4}\/$&quot;);
+        if (regex.IsMatch(addr))
+            Match match = regex.Match(addr);
+            string ipAddr = match.Groups[1].Value;
+            return ipAddr;
+        return &quot;&quot;;
+    }
+}
+</pre>
+</div>
 <div tags="C# 软件更新 文件夹" title="C# 获取当前软件版本" tmap.id="005a6745-d9c9-4d16-9eb4-bb6d7ac6a733" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* `System.Diagnostics.FileVersionInfo`
 
@@ -16866,6 +16915,9 @@ telnet  127.0.0.1 8080
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_43307934/category_9894857.html&quot; &gt;//''~LiveCharts系列教程''//&lt;/a&gt;
 
 &lt;&lt;list-links &quot;[tag[LiveCharts]]&quot;&gt;&gt;</pre>
+</div>
+<div tags="LiveCharts" title="LiveCharts UIElement显示" tmap.id="af177357-7328-493a-95d0-bb273a7fd05e" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/zh7791/p/12617961.html&quot; &gt;''//~LiveCharts图标详解//''&lt;/a&gt;</pre>
 </div>
 <div tags="[[Tiddlywiki Macros]]" title="Macros tag" tmap.id="9425fd06-cd07-4e68-b257-7298d7f0aaad" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //[[$:/core/macros/tag]]//
@@ -21924,6 +21976,9 @@ private void ScreenSaver_Closed(object sender, EventArgs e){
 &lt;/Grid&gt;
 ```</pre>
 </div>
+<div tags="ToDo Temp" title="WPF界面线程卡住" tmap.id="ab180291-8b12-4fdd-a6c1-515668149cf8" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre></pre>
+</div>
 <div tags="WPF弹窗-系列 WPF交互Interaction" title="WPF窗口要素绘制顺序" tmap.id="1a93dceb-dc58-40d7-87ee-e734906cfe88" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```c
 public int ZIndex { get; }
@@ -23658,7 +23713,7 @@ Task.Factory.StartNew(()=&gt;
 *`复方利血平`
 </pre>
 </div>
-<div tags="HTTP" title="局域网通信 Ping请求超时" tmap.id="5db3b28e-3d8e-43b4-915b-d0b4abff0aa3" revision="0" bag="default">
+<div tags="HTTP" title="局域网通信 Ping请求超时" tmap.id="5db3b28e-3d8e-43b4-915b-d0b4abff0aa3" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```cs
 // 自身能通
 ping 127.0.0.1
@@ -23727,6 +23782,8 @@ ping 192.168.1.100
 * 二维码读取、生成：//[[PsQREdit|http://www.psytec.co.jp/]]//
 ** Mememori3476 github page生成：`网页书签 &gt; 1、网页名称：空着；2、URL：https://Mememori3476.github.io`
 ** WiFi共享：`页面信息 &gt; WIFI:T:WPA;S:xxx;P:xxx;;`，第一个xxx为`用户名`；第二个xxx为`密码`；`T`安全模式，`WPA`或 `WPA2`
+* 屏保：//[[Screensaver Factory|https://appnee.com/screensaver-factory/]]//、//[[Screensaver Wonder|https://appnee.com/screensaver-wonder/]]//
+** [[Windows屏保.scr]]
 
 !! //软件下载//
 * 高质量软件下载：//[[AppNee|https://appnee.com/]]//
