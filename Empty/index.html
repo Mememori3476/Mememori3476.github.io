@@ -615,6 +615,8 @@ Error message and password prompt
 
 <li>Markdown语法</li>
 
+<li>MatLab Plot</li>
+
 <li>Mememori3476</li>
 
 <li>Mememori3476 Personal NoteBook</li>
@@ -1009,7 +1011,11 @@ Error message and password prompt
 
 <li>WPF Timer线程</li>
 
+<li>WPF ToolTip使用</li>
+
 <li>WPF UserControl 和 CustomControl（未完成）</li>
+
+<li>WPF Xaml String.Format</li>
 
 <li>WPF 独立线程</li>
 
@@ -16916,7 +16922,7 @@ telnet  127.0.0.1 8080
 
 &lt;&lt;list-links &quot;[tag[LiveCharts]]&quot;&gt;&gt;</pre>
 </div>
-<div tags="LiveCharts" title="LiveCharts UIElement显示" tmap.id="af177357-7328-493a-95d0-bb273a7fd05e" revision="0" bag="default">
+<div tags="LiveCharts" title="LiveCharts UIElement显示" tmap.id="af177357-7328-493a-95d0-bb273a7fd05e" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/zh7791/p/12617961.html&quot; &gt;''//~LiveCharts图标详解//''&lt;/a&gt;</pre>
 </div>
 <div tags="[[Tiddlywiki Macros]]" title="Macros tag" tmap.id="9425fd06-cd07-4e68-b257-7298d7f0aaad" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -17011,6 +17017,25 @@ Lists:
   代码
 (```)
 ```</pre>
+</div>
+<div tags="MatLab" title="MatLab Plot" tmap.id="7de4401d-7fd4-40b7-aeeb-f51027227230" revision="0" bag="default">
+<pre>!!! ''//多条曲线绘制//''
+```matlab
+x=0:0.1:10; y1=-0.02*(x-5).*(x-5)+0.5; plot(x,y1); hold on... % 继续绘制
+x=0:0.1:10; y1=-0.04*(x-5).*(x-5)+1; plot(x,y1);
+```
+
+!!! ''//设定曲线范围，坐标轴比例一致//''
+```matlab
+axis equal;  % 坐标轴比例一致
+axis([0 10 0 2]);  % x轴范围：0-10；y轴范围：0-2
+```
+
+!!! ''//橡皮筋曲线//''
+```cs
+// XX / A = 0.25 / 0.01
+y = -A(x-5)^2 + XX
+</pre>
 </div>
 <div color="#0385bc" icon="pao.png" tags="TableOfContents" title="Mememori3476" tmap.id="549bdee2-fd09-4d91-bd22-2a1264c03f17" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -21431,6 +21456,22 @@ public void TestTimerCallBack(object state)
 
 !//[[WPF 独立线程]]//</pre>
 </div>
+<div tags="WPF基础" title="WPF ToolTip使用" tmap.id="bd9ba601-8428-4511-9099-a0687dfe1067" revision="0" bag="default">
+<pre>!!! ''//相关属性//''
+* `ToolTipService.ShowDuration=&quot;12000&quot;`，鼠标悬浮于元素12s后，ToolTip隐藏
+* `PlacementRectangle=&quot;250 0 100 50&quot;`，Placement 参考位置，`x y width height`
+* `Placement=&quot;Top&quot;`，相对于`PlacementRectangle`，ToolTip位置
+
+```xml
+&lt;Image ToolTipService.ShowDuration=&quot;12000&quot; Source=&quot;pack://application:,,,/Images/Flower/pink.png&quot; Height=&quot;200&quot; Width=&quot;200&quot;&gt;
+    &lt;Image.ToolTip&gt;
+        &lt;ToolTip PlacementRectangle=&quot;250 0 100 50&quot; Placement=&quot;Top&quot; Background=&quot;Transparent&quot; BorderThickness=&quot;0&quot;&gt;
+            &lt;TextBlock Text=&quot;+50&quot; FontSize=&quot;50&quot; Background=&quot;Transparent&quot; Foreground=&quot;YellowGreen&quot;/&gt;
+        &lt;/ToolTip&gt;
+    &lt;/Image.ToolTip&gt;
+&lt;/Image&gt;
+```</pre>
+</div>
 <div created="20200512091344964" modified="20200514084630668" tags="C# Style" title="WPF UserControl 和 CustomControl（未完成）" tmap.id="bca01bdb-4fdd-4ec7-962f-b221bb9ade49" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!// UserControl 和 CustomControl 区别//
 * UserControl：类似于 Page 类，多个控件的组合叠加，如：//[[WPF 自定义 Slider系列]]//
@@ -21509,6 +21550,25 @@ public event RoutedPropertyChangedEventHandler&lt;DateTime&gt; TimeUpdated
 !!// 3、为控件添加 命令（`Command`）//
 
 </pre>
+</div>
+<div tags="WPF基础 格式化" title="WPF Xaml String.Format" tmap.id="fa23b9ff-66fb-40d5-b13e-0e5364b030ad" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/candyzkn/p/4476832.html&quot; &gt;''//WPF中XAML中使用String.Format格式化字符串示例//''&lt;/a&gt;
+
+```xml
+&lt;TextBox Text=&quot;{Binding ImageScore, StringFormat=+{0}}&quot;/&gt;
+```
+* 显示结果：`+50`
+* 类似于cs，`string.Format(&quot;+{0}&quot;, ImageScore)`
+
+!!! ''//多值绑定//''
+```xml
+&lt;TextBox.Text&gt;
+    &lt;MultiBinding StringFormat=&quot;姓名：{0}{1}&quot;&gt;
+        &lt;Binding Path=&quot;FristName&quot; /&gt;
+        &lt;Binding Path=&quot;LastName&quot; /&gt;
+    &lt;/MultiBinding&gt;
+&lt;/TextBox.Text&gt;
+```</pre>
 </div>
 <div tags="线程" title="WPF 独立线程" tmap.id="b03043e3-0361-454d-863d-809d7748de7a" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//独立线程//
