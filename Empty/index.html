@@ -237,6 +237,8 @@ Error message and password prompt
 
 <li>Android文件树</li>
 
+<li>Anki</li>
+
 <li>AutoUpdater日志上传文件下载</li>
 
 <li>bat for循环</li>
@@ -275,6 +277,8 @@ Error message and password prompt
 
 <li>C#</li>
 
+<li>C# 16进制颜色转为Brush</li>
+
 <li>C# Binding 简单应用</li>
 
 <li>C# Binding 高级应用</li>
@@ -282,6 +286,8 @@ Error message and password prompt
 <li>C# DataGrid</li>
 
 <li>C# DateTime.Now.ToString()</li>
+
+<li>C# Debug 无法创建抽象类或者接口的实例</li>
 
 <li>C# GET请求</li>
 
@@ -416,6 +422,8 @@ Error message and password prompt
 <li>C# 获取系统音量</li>
 
 <li>C# 获取软件版本信息</li>
+
+<li>C# 读取App.config节点值</li>
 
 <li>C# 调用外部程序</li>
 
@@ -607,6 +615,8 @@ Error message and password prompt
 
 <li>LiveCharts UIElement显示</li>
 
+<li>LiveCharts曲线绘制注意事项</li>
+
 <li>Macros tag</li>
 
 <li>Macros translink</li>
@@ -616,6 +626,8 @@ Error message and password prompt
 <li>Markdown语法</li>
 
 <li>MatLab Plot</li>
+
+<li>MatLab读取矩阵 Plot</li>
 
 <li>Mememori3476</li>
 
@@ -993,6 +1005,8 @@ Error message and password prompt
 
 <li>WindowsServer服务器配置MySQL</li>
 
+<li>WindowsServer账号备份</li>
+
 <li>WindowsServer配置FTP</li>
 
 <li>Windows屏保.scr</li>
@@ -1009,6 +1023,10 @@ Error message and password prompt
 
 <li>WPF Button.Name控制属性值</li>
 
+<li>WPF DynamicDataDisplay 添加断点图</li>
+
+<li>WPF DynamicDataDisplay 绘图</li>
+
 <li>WPF Timer线程</li>
 
 <li>WPF ToolTip使用</li>
@@ -1022,6 +1040,8 @@ Error message and password prompt
 <li>WPF 自定义 Slider（未完成）</li>
 
 <li>WPF 自定义 Slider系列</li>
+
+<li>WPF 虚线显示Dash Pen</li>
 
 <li>WPF中Dispatcher讨论</li>
 
@@ -1126,6 +1146,8 @@ Error message and password prompt
 <li>Zettlr</li>
 
 <li>Zettlr_GitHub Doc</li>
+
+<li>临时</li>
 
 <li>互斥锁 Mutex</li>
 
@@ -11629,6 +11651,15 @@ protected void onCreate(Bundle savedInstanceState) {
 ** build.gradle(Module: app)——依赖包、安卓版本
 </pre>
 </div>
+<div tags="TiddlyWiki Zettelkasten.de" title="Anki" tmap.id="cda027be-3bf6-4c6a-83c8-4e28d5375501" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! ''//利用 Anki，将一些想法不断呈现在眼前，模仿：灵光一现//''
+!!! ''//在线划词助手 - 论文，将 idea，不断呈现//''
+* 要求时间间隔较长
+
+&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+  &lt;&lt;toc-selective-expandable 'Anki'&gt;&gt;
+&lt;/div&gt;</pre>
+</div>
 <div tags="FTP Mememori3476" title="AutoUpdater日志上传文件下载" tmap.id="9763dd28-2275-452d-abaa-166d7a3f1af6" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//FTP地址设置//''
 * `Constants.cs`文件夹
@@ -12029,6 +12060,13 @@ d: &amp; cd d:/desktop
 <div color="#502bd4" title="C#" tmap.id="868fcdce-d5c5-4a01-bfe1-17221ad40e35" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre></pre>
 </div>
+<div tags="C#" title="C# 16进制颜色转为Brush" tmap.id="3c645626-6cef-40ae-8d07-956db8130f26" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```cs
+Pen pen = new Pen();
+BrushConverter brushConverter = new BrushConverter();
+pen.Brush = (Brush)brushConverter.ConvertFromString(&quot;#EFF1FA&quot;);
+```</pre>
+</div>
 <div created="20200508061519153" modified="20200514084630458" tags="C# Binding" title="C# Binding 简单应用" tmap.id="226118ed-3d00-4548-bc81-f6c3eacbf6a0" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//1、Binding：slider -- textblock -- textbox//
 
@@ -12274,6 +12312,45 @@ DateTime.Now.ToString(&quot;yyyy/MM/dd hh:mm:ss&quot;, System.Globalization.Date
 !!! //''解决方案，DateTime属性''//
 ```cs
 System.Globalization.DateTimeFormatInfo.InvariantInfo
+```</pre>
+</div>
+<div tags="C# Debug" title="C# Debug 无法创建抽象类或者接口的实例" tmap.id="a8fcf2ed-1de1-4906-adfd-a53085c70089" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;&lt;&lt;
+!!! ''//抽象类 或 接口 无法直接实例化，只能 实例化 抽象类和接口 的非抽象子类//''
+&lt;&lt;&lt;
+
+```cs
+// Class 继承
+Description（abstract） ——&gt; StandardDescription  ——&gt; PenDescription（seal）
+```
+* 不得实例化 `Description`
+* 只能实例化 `PenDescription`
+
+
+```cs
+public static LineGraph AddLineGraph(this Plotter2D plotter, IPointDataSource pointSource, Pen linePen, Description description);
+```
+* AddLineGraph 参数：`Description description`
+* `plotter.AddLineGraph(dataSource_1, pen, new PenDescription(&quot;参考&quot;));`
+
+```cs
+public abstract class Description
+{
+    protected Description();
+    public LegendItem LegendItem { get; }
+    ……
+}
+```
+
+```cs
+public class StandardDescription : Description
+{
+    public StandardDescription();
+    public StandardDescription(string description);
+```
+
+```cs
+public sealed class PenDescription : StandardDescription
 ```</pre>
 </div>
 <div tags="C# HTTP" title="C# GET请求" tmap.id="e06ebc85-2847-4bca-be1e-47e39a4168de" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -14410,7 +14487,7 @@ public class ToMultiRatio : IMultiValueConverter
 ** 若两个线程一致，True
 **若两个线程不一致，False</pre>
 </div>
-<div tags="WCF C#" title="C# 获取WCF config EndPoint" tmap.id="1e465107-01e0-4d2d-8a7f-cb3b1a832d3c" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="WCF C# Regex" title="C# 获取WCF config EndPoint" tmap.id="1e465107-01e0-4d2d-8a7f-cb3b1a832d3c" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//获取 endpoint中 address的 IP地址//''
 
 ```xml
@@ -15013,6 +15090,28 @@ public bool IsMute
 <pre>!!! &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/zexin1000/article/details/7550077&quot; &gt;获取软件版本&lt;/a&gt;
 
 !! //''[[C# 获取当前软件版本]]''//</pre>
+</div>
+<div tags="WPF基础" title="C# 读取App.config节点值" tmap.id="a94dced7-a5b5-4f84-903e-128770f9de39" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! ''//添加 System.Configuration 引用//''
+
+!!! ''//添加节点 appSettings//''
+
+```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;configuration&gt;
+    &lt;appSettings&gt;
+      &lt;add key=&quot;DoctorProcessPath&quot; value=&quot;C:\Users\SRI\AppData\Local\Programs\training_platform_doctor\iRe+ Training Platform.exe&quot;/&gt;
+    &lt;/appSettings&gt;
+&lt;/configuration&gt;
+```
+
+!!! ''//获取 appSettings 节点值//''
+```cs
+using System.Configuration;
+string str = ConfigurationManager.AppSettings[&quot;DoctorProcessPath&quot;];
+```
+
+</pre>
 </div>
 <div tags="调用外部程序" title="C# 调用外部程序" tmap.id="cf11a758-faf0-4a98-afd4-27ff969f6bda" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//Process类：调用外部程序//''
@@ -16920,10 +17019,32 @@ telnet  127.0.0.1 8080
 <div color="#502bd4" created="20200514124640529" modified="20200514124717038" tags="WPF" title="LiveCharts" tmap.id="9d468296-84b4-4a49-8645-72abb3a85980" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_43307934/category_9894857.html&quot; &gt;//''~LiveCharts系列教程''//&lt;/a&gt;
 
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/newlifechou/tag/LiveCharts/&quot; &gt;''//~LiveCharts博客园//''&lt;/a&gt;
+
 &lt;&lt;list-links &quot;[tag[LiveCharts]]&quot;&gt;&gt;</pre>
 </div>
 <div tags="LiveCharts" title="LiveCharts UIElement显示" tmap.id="af177357-7328-493a-95d0-bb273a7fd05e" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/zh7791/p/12617961.html&quot; &gt;''//~LiveCharts图标详解//''&lt;/a&gt;</pre>
+</div>
+<div tags="LiveCharts" title="LiveCharts曲线绘制注意事项" tmap.id="8b34a1a7-be0c-43e4-87e8-e428447a8848" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>* LiveCharts 不得绘制相同坐标点
+
+!!! ''//错误做法//''
+```cs
+ScatterPoint pointCenter = new ScatterPoint(0,0,6);
+seriesCenterBlue.Values.Add(pointCenter);
+seriesCenterBlue.Values.Add(pointCenter);
+```
+
+!!! ''//正确做法//''
+```cs
+ScatterPoint pointCenter1 = new ScatterPoint(1,1,6);
+ScatterPoint pointCenter2 = new ScatterPoint(0,0,6);
+seriesCenterBlue.Values.Add(pointCenter1);
+seriesCenterBlue.Values.Add(pointCenter2);
+```
+
+</pre>
 </div>
 <div tags="[[Tiddlywiki Macros]]" title="Macros tag" tmap.id="9425fd06-cd07-4e68-b257-7298d7f0aaad" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //[[$:/core/macros/tag]]//
@@ -17018,7 +17139,7 @@ Lists:
 (```)
 ```</pre>
 </div>
-<div tags="MatLab" title="MatLab Plot" tmap.id="7de4401d-7fd4-40b7-aeeb-f51027227230" revision="0" bag="default">
+<div tags="MatLab" title="MatLab Plot" tmap.id="7de4401d-7fd4-40b7-aeeb-f51027227230" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//多条曲线绘制//''
 ```matlab
 x=0:0.1:10; y1=-0.02*(x-5).*(x-5)+0.5; plot(x,y1); hold on... % 继续绘制
@@ -17036,6 +17157,16 @@ axis([0 10 0 2]);  % x轴范围：0-10；y轴范围：0-2
 // XX / A = 0.25 / 0.01
 y = -A(x-5)^2 + XX
 </pre>
+</div>
+<div tags="MatLab" title="MatLab读取矩阵 Plot" tmap.id="912bdb64-e7a9-4803-b6d0-47e3565184fd" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! ''//读取矩阵第 i列//''
+
+```matlab
+fig = textread('D:\LLR\readcircle.txt');
+ox = fig(:,1)  % 第一列
+oy = fig(:,2)  % 第二列
+plot(ox, oy)
+```</pre>
 </div>
 <div color="#0385bc" icon="pao.png" tags="TableOfContents" title="Mememori3476" tmap.id="549bdee2-fd09-4d91-bd22-2a1264c03f17" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
@@ -21334,6 +21465,23 @@ System.Diagnostics.Process.Start(info);
 !!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_38839887/article/details/100173116&quot; &gt;无法连接SQL，错误1130&lt;/a&gt;
 * 更改`mysql`数据库中`user`表中`host`项，`localhost` --&gt; `%`</pre>
 </div>
+<div tags="WindowsServer" title="WindowsServer账号备份" tmap.id="91947397-d14e-4561-af68-f38d6e8520a9" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! ''//服务器 IP//''
+* `39.100.253.194`
+
+!!! ''//FTP账户信息//''
+```cs
+用户名：ftp_user
+密码：0Oo109778
+```
+
+!!! ''//MySQL账户信息//''
+```cs
+地址：39.100.253.194:3306
+密码：0Oo109778,.
+```
+</pre>
+</div>
 <div tags="WindowsServer FTP IIS" title="WindowsServer配置FTP" tmap.id="19b20cd5-29c6-4742-a63d-3e746fad45fc" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.bilibili.com/video/BV1p7411t7HY&quot; &gt;Windows Server配置FTP&lt;/a&gt;
 
@@ -21428,6 +21576,12 @@ switch (buttoniconFont.Name.ToString())
 }
 ```</pre>
 </div>
+<div tags="WPF基础 Plot" title="WPF DynamicDataDisplay 添加断点图" tmap.id="f2d53967-6658-4e89-a116-3f3728f9c324" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/jtl309/article/details/48502761&quot; &gt;''//给 ~DynamicDataDisplay添加 ~BrokenLineGraph//''&lt;/a&gt;</pre>
+</div>
+<div tags="WPF基础 Plot" title="WPF DynamicDataDisplay 绘图" tmap.id="e5256aee-cd5a-40ec-a43e-c87d5fa60535" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/shzt/p/9150984.html&quot; &gt;''//WPF中 ~DynamicDataDisplay 的使用总结//''&lt;/a&gt;</pre>
+</div>
 <div tags="线程" title="WPF Timer线程" tmap.id="5530cc44-0b7c-4fa2-b483-21cab14a6f0f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//Timer工作线程，不干涉 UI 线程//
 * //Timer工作线程，无法直接处理 UI元素，需采用 BeginInvoke//
@@ -21456,7 +21610,7 @@ public void TestTimerCallBack(object state)
 
 !//[[WPF 独立线程]]//</pre>
 </div>
-<div tags="WPF基础" title="WPF ToolTip使用" tmap.id="bd9ba601-8428-4511-9099-a0687dfe1067" revision="0" bag="default">
+<div tags="WPF基础" title="WPF ToolTip使用" tmap.id="bd9ba601-8428-4511-9099-a0687dfe1067" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//相关属性//''
 * `ToolTipService.ShowDuration=&quot;12000&quot;`，鼠标悬浮于元素12s后，ToolTip隐藏
 * `PlacementRectangle=&quot;250 0 100 50&quot;`，Placement 参考位置，`x y width height`
@@ -21551,7 +21705,7 @@ public event RoutedPropertyChangedEventHandler&lt;DateTime&gt; TimeUpdated
 
 </pre>
 </div>
-<div tags="WPF基础 格式化" title="WPF Xaml String.Format" tmap.id="fa23b9ff-66fb-40d5-b13e-0e5364b030ad" revision="0" bag="default">
+<div tags="WPF基础 格式化" title="WPF Xaml String.Format" tmap.id="fa23b9ff-66fb-40d5-b13e-0e5364b030ad" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/candyzkn/p/4476832.html&quot; &gt;''//WPF中XAML中使用String.Format格式化字符串示例//''&lt;/a&gt;
 
 ```xml
@@ -21621,6 +21775,32 @@ private void Window_Closed(object sender, EventArgs e)
 &lt;&lt;translink &quot;&quot;&quot;SliderUserControl.xaml.cs&quot;&quot;&quot; &gt;&gt;
 
 &lt;&lt;translink &quot;&quot;&quot;使用自定义Slider&quot;&quot;&quot;&gt;&gt;</pre>
+</div>
+<div tags="WPF基础" title="WPF 虚线显示Dash Pen" tmap.id="1b52bdfb-b673-4df2-bf0e-6a59827f6fd6" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```xml
+&lt;TextBlock FontSize=&quot;36&quot; Text=“the lazy brown dog.”&gt;
+  &lt;TextBlock.TextDecorations&gt;
+    &lt;TextDecoration Location=&quot;Underline&quot; PenThicknessUnit=&quot;FontRecommended&quot;&gt;
+      &lt;TextDecoration.Pen&gt;
+        &lt;Pen Thickness=&quot;1.5&quot; Brush=&quot;Red&quot; &gt;
+          &lt;!-- For the underline, create a dashed line with each dash twice the thickness of the Pen and each gap 8 times the thickness of the Pen. --&gt;
+          &lt;Pen.DashStyle&gt;
+            &lt;DashStyle Dashes=&quot;2,8&quot;/&gt;
+          &lt;/Pen.DashStyle&gt;
+        &lt;/Pen&gt;
+      &lt;/TextDecoration.Pen&gt;
+    &lt;/TextDecoration&gt;
+  &lt;/TextBlock.TextDecorations&gt;
+&lt;/TextBlock&gt;
+```
+
+```cs
+Pen pen = new Pen();
+BrushConverter brushConverter = new BrushConverter();
+pen.Brush = (Brush)brushConverter.ConvertFromString(&quot;#EFF1FA&quot;);
+double[] thickGap = new double[2] { 0.5, 2 };
+pen.DashStyle.Dashes = new DoubleCollection(thickGap);
+```</pre>
 </div>
 <div tags="ToDo Temp WPF基础 线程" title="WPF中Dispatcher讨论" tmap.id="7508f165-02f0-4f72-b4e2-a7ddc7ae1b91" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_16587307/article/details/79638353&quot; &gt;WPF中Dispatcher的初步探讨&lt;/a&gt;
@@ -22883,6 +23063,12 @@ Zettelkasten是解决一个常见问题（即知识管理问题）的多种不�
 </div>
 <div tags="ToDo Temp Zettlr Zettelkasten.de" title="Zettlr_GitHub Doc" tmap.id="6c8d3c70-5a37-4f91-954b-5d92caa3775b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://docs.zettlr.com/en/&quot; &gt;//''Zettlr_Docs''//&lt;/a&gt;</pre>
+</div>
+<div tags="ToDo Temp" title="临时" tmap.id="8af50633-fdef-44c5-bf8f-435cda20c6d8" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```cs
+var flower = chart.VisualElements[0] as FlowerTip;
+flower.TipScore = 100;
+```</pre>
 </div>
 <div tags="线程" title="互斥锁 Mutex" tmap.id="1028001a-e061-45b7-adb2-221a4385a378" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//互斥锁//''
@@ -24654,7 +24840,7 @@ pasv_max_port=62000  #最大接口
 
 </pre>
 </div>
-<div tags="计算机技巧" title="正则表达式Regex" tmap.id="60c54bc4-f76e-42f9-9b65-c797e8db44b7" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div tags="计算机技巧 Regex" title="正则表达式Regex" tmap.id="60c54bc4-f76e-42f9-9b65-c797e8db44b7" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>| RegexOne https://regexone.com/ |&lt;|h
 | '' abc…	'' | //'' Letters	''// |
 | '' 123…	'' | //'' Digits	''// |
@@ -24733,7 +24919,10 @@ pasv_max_port=62000  #最大接口
 </div>
 <div tags="Mememori3476" title="笔记本远程连接IReGo下位机" tmap.id="3de00f0b-1957-481a-bbc9-68685faf83df" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* 下位机IP：`192.168.1.100`
-* 修改自身IP：`192.168.1.12`</pre>
+* 修改自身IP：`192.168.1.12`
+
+* 检查网口连接是否正常：`ping 192.168.1.100`
+</pre>
 </div>
 <div tags="Temp" title="算法分发和社会分发" tmap.id="946d1820-c5cb-4028-9fbd-cb4a590e55f7" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* //''`社会`''//分发：人与人之间的可信赖关系，建立在这种信赖关系基础上的，通过特定平台进行产品的宣传
