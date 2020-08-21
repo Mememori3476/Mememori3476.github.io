@@ -915,6 +915,10 @@ Error message and password prompt
 
 <li>WCF 消息传递Request、Reponse_未知</li>
 
+<li>WCF 超时时间参数意义</li>
+
+<li>WCF 超时时间配置</li>
+
 <li>WCF_Demo</li>
 
 <li>WCF_回调注意事项</li>
@@ -19490,7 +19494,9 @@ public int WeightLoss
 </div>
 <div tags="Mememori3476 安装包" title="VS安装包_自定义安装动作" tmap.id="4c9b12d2-c45d-4dbf-a2d4-34d3f8e80310" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! //''[[VS打包安装程序]]''//
-
+&lt;&lt;&lt;
+!!! ''//实例位于：`G:\C#\音频亮度处理\VoiceAndBrightness\VoiceAndBrightness.sln`//''
+&lt;&lt;&lt;
 !! ''//安装完成后的文件结构//''
 * 同`Application Folder`一致
 * 关注`ConfigFile`、`碎石机Demo.zip`、`VoiceAndBrightness.exe`
@@ -19533,9 +19539,20 @@ Demo
 ** `Edit1Property`：相当于Edit1Value得ID（识别码）
 
 !! ''//自定义程序动作 Installer 类//''
+&lt;&lt;&lt;
+!! ''//Attention：自定义动作，添加的主输出，为 `主输出 From Installer`//''
+&lt;&lt;&lt;
 * 通过`this.AfterInstall`实现，安装完成之后的动作……
 * 解决方案 &gt; 类库，删除类库项目的默认cs文件
 * 类库 &gt; 安装程序类，在构造函数，进行相应的操作
+** 相关代码位于：`Installer.cs[设计]`，界面显示：
+** 点击 `切换到代码视图`
+&lt;&lt;&lt;
+```cs
+若要在类中添加组件，请从工具箱中拖出它们，然后使用‘属性’窗口来设置他们的属性，若要为类创建方法和事件，请--切换到代码视图--
+```
+&lt;&lt;&lt;
+
 * `targetDir = this.Context.Parameters[&quot;targetDir&quot;];`
 ```c
 public Installer1()
@@ -19580,7 +19597,7 @@ private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)
 * Value：`1`
 
 !! ''//Orca修改msi信息//''
-* &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://www.jb51.net/softs/16217.html&quot; &gt;Orca 脚本之家下载&lt;/a&gt;
+* &lt;a class=&quot;badge-pill badge-primary &quot; target=&quot;_blank&quot; href=&quot;https://www.jb51.net/softs/16217.html&quot; &gt;//''Orca 脚本之家下载''//&lt;/a&gt;
 * `Property` &gt; `添加行` &gt; Property、Value
 </pre>
 </div>
@@ -19627,6 +19644,10 @@ private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)
 ** Uninstall.exe（快捷方式中） 程序属性 Arguments &gt; `/x ProductCode`
 
 !!//8、修改注册表设置开机自启动//
+&lt;&lt;&lt;
+!!! ''//[[开机自启动]]//''
+&lt;&lt;&lt;
+
 * SetUp Project &gt; View &gt; 注册表
 * 添加字段至 HKEY_LOCAL_MACHINE（所有用户）
 **`\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run` (win10_64)
@@ -19641,8 +19662,9 @@ private void ConfigAndUpZip(object sender, InstallEventArgs eventArgs)
 * `从组件供应商的网站上下载系统必备组件`
 
 !!//10、[[软件管理员权限启动|https://blog.csdn.net/weixin_43145361/article/details/87965767]]//
-* Project 属性页 &gt; 安全性 &gt; 勾选`○启用 ClickOnce 安全设置`
+* Project 属性页`（工具栏 -- 调试）` &gt; 安全性 &gt; 勾选`○启用 ClickOnce 安全设置`
 * 解决方案资源管理器 &gt; Properties &gt; 编辑 app.manifest（应用程序清单文件）
+** Properties，同级文件有：`Assemblyinfo.cs` `Resources.rex` `Settings.settings`
 ** 修改 requestedExecutionLevel level属性（共三种）为 requireAdministrator
 *** `asInvoker`：一般程序（默认）
 *** `highestAvailable`：当前用户最高权限
@@ -19937,6 +19959,56 @@ public Interface.ClientTrainCommon ReadTrainingData(out Interface.ClientWalkData
     balanceData = retVal.balanceData;
     return retVal.trainCommon;
 }
+```</pre>
+</div>
+<div tags="ToDo Temp" title="WCF 超时时间参数意义" tmap.id="7d61c560-34b3-4817-aece-945af6247949" revision="0" bag="default">
+<pre>```xml
+&lt;bindings&gt;
+	&lt;basicHttpBinding&gt;
+		&lt;binding name=&quot;IncreasedTimeout&quot;
+			openTimeout=&quot;12:00:00&quot;
+			closeTimeout=&quot;12:00:00&quot;
+			sendTimeout=&quot;12:00:00&quot;
+			receiveTimeout=&quot;12:00:00&quot;/&gt;
+	&lt;/basicHttpBinding&gt;
+&lt;/bindings&gt;
+```
+
+!!! ''//各参数含义：//''
+* `openTimeout` 客户端打开与WCF服务连接时，愿意等待的时间
+* `closeTimeout` 关闭连接（放置客户端代理）之前在引发异常之前要等待的时间
+* `sendTimeout` 等待发送操作完成的最大时长
+* `receiveTimeout` 等待接收操作完成的最大时长
+
+** 若为`普通消息`，则`sendTimeout`和`receiveTimeout`较短，接收SOAP消息、解密、检查和反序列化时间较短
+** 若为`流媒体`，花费时间较长</pre>
+</div>
+<div tags="WCF TimeOut" title="WCF 超时时间配置" tmap.id="893c31e2-32ac-4946-b7f3-77d0534b17cd" revision="0" bag="default">
+<pre>!!! ''//openTimeout 超时时间，类型 TimeSpan//''
+* TimeSpan 不存 `00:60:00`，只有 `01:00:00`
+```xml
+&lt;configuration&gt;
+  &lt;system.serviceModel&gt;
+    &lt;bindings&gt;
+      &lt;wsHttpBinding&gt;
+        &lt;binding openTimeout=&quot;00:10:00&quot; closeTimeout=&quot;00:10:00&quot; sendTimeout=&quot;00:10:00&quot; receiveTimeout=&quot;00:10:00&quot;/&gt;
+      &lt;/wsHttpBinding&gt;
+    &lt;/bindings&gt;
+```
+
+```cs
+TimeSpan timeSpan = new TimeSpan(00,60,00);
+Console.WriteLine(timeSpan.ToString());
+```
+* 返回结果：`01:00:00`
+
+!!! ''//超时返回结果：//''
+```cs
+System.ServiceModel.CommunicationObjectFaultedException:“通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。”
+```
+
+```cs
+终结器线程重新引发了未观察到的异常
 ```</pre>
 </div>
 <div tags="ToDo Temp WCF" title="WCF_Demo" tmap.id="b8253f90-3939-4080-8051-69e6343ae7fe" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -25194,7 +25266,7 @@ private void ipconfigTest()
 &lt;/div&gt;</pre>
 </div>
 <div tags="ToDo Temp WCF" title="跟我一起学WCF" tmap.id="609bac29-fac1-4eec-87fc-bdc9865ea223" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/zhili/category/610655.html&quot; &gt;跟我一起学WCF&lt;/a&gt;
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/zhili/category/610655.html&quot; &gt;//''跟我一起学 WCF''//&lt;/a&gt;
 
 &lt;div class=&quot;tc-table-of-contents&quot;&gt;
   &lt;&lt;toc-selective-expandable '跟我一起学WCF'&gt;&gt;
