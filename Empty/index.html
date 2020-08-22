@@ -1003,6 +1003,8 @@ Error message and password prompt
 
 <li>WebClient下载Zip文件</li>
 
+<li>WebDAV服务器</li>
+
 <li>WFP自定义窗口-窗口样式_完整版</li>
 
 <li>WindowsServer</li>
@@ -1038,6 +1040,8 @@ Error message and password prompt
 <li>WPF UserControl 和 CustomControl（未完成）</li>
 
 <li>WPF Xaml String.Format</li>
+
+<li>WPF xaml换行符号</li>
 
 <li>WPF 独立线程</li>
 
@@ -19961,7 +19965,7 @@ public Interface.ClientTrainCommon ReadTrainingData(out Interface.ClientWalkData
 }
 ```</pre>
 </div>
-<div tags="ToDo Temp" title="WCF 超时时间参数意义" tmap.id="7d61c560-34b3-4817-aece-945af6247949" revision="0" bag="default">
+<div tags="ToDo Temp" title="WCF 超时时间参数意义" tmap.id="7d61c560-34b3-4817-aece-945af6247949" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```xml
 &lt;bindings&gt;
 	&lt;basicHttpBinding&gt;
@@ -19983,7 +19987,7 @@ public Interface.ClientTrainCommon ReadTrainingData(out Interface.ClientWalkData
 ** 若为`普通消息`，则`sendTimeout`和`receiveTimeout`较短，接收SOAP消息、解密、检查和反序列化时间较短
 ** 若为`流媒体`，花费时间较长</pre>
 </div>
-<div tags="WCF TimeOut" title="WCF 超时时间配置" tmap.id="893c31e2-32ac-4946-b7f3-77d0534b17cd" revision="0" bag="default">
+<div tags="WCF TimeOut" title="WCF 超时时间配置" tmap.id="893c31e2-32ac-4946-b7f3-77d0534b17cd" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//openTimeout 超时时间，类型 TimeSpan//''
 * TimeSpan 不存 `00:60:00`，只有 `01:00:00`
 ```xml
@@ -21437,6 +21441,11 @@ info.WorkingDirectory = appDir;// exePath.Substring(0, exePath.LastIndexOf(Syste
 System.Diagnostics.Process.Start(info);
 ```</pre>
 </div>
+<div tags="计算机技巧" title="WebDAV服务器" tmap.id="ed0ae7f5-64fa-40ae-9930-84fb4d155c26" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://caddyserver.com/&quot; &gt;''//Caddy服务器//''&lt;/a&gt;
+
+!!! ''//Caddy可创建 WebDAV服务器//''</pre>
+</div>
 <div tags="WPF自定义窗口-系列 Style" title="WFP自定义窗口-窗口样式_完整版" tmap.id="fdbd1f24-da3e-4a10-8f95-8406ece8aa97" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>! ''//[[WPF自定义窗口-窗口元素布局]]//''
 
@@ -21794,6 +21803,13 @@ public event RoutedPropertyChangedEventHandler&lt;DateTime&gt; TimeUpdated
         &lt;Binding Path=&quot;LastName&quot; /&gt;
     &lt;/MultiBinding&gt;
 &lt;/TextBox.Text&gt;
+```</pre>
+</div>
+<div tags="WPF基础" title="WPF xaml换行符号" tmap.id="a8e5a059-c014-4c98-a38a-78f98ad825be" revision="0" bag="default">
+<pre>!!! ''//XAML 换行符：`&amp;#13;`//''
+
+```xml
+&lt;TextBlock Text=&quot;This is the WCF Server&amp;#13;Please do not close it!&quot;/&gt;
 ```</pre>
 </div>
 <div tags="线程" title="WPF 独立线程" tmap.id="b03043e3-0361-454d-863d-809d7748de7a" type="text/vnd.tiddlywiki" revision="0" bag="default">
