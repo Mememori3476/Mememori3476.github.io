@@ -357,6 +357,8 @@ Error message and password prompt
 
 <li>C# SQLite知识点</li>
 
+<li>C# String转为Type类型</li>
+
 <li>C# struct结构体</li>
 
 <li>C# TimeStamp</li>
@@ -413,7 +415,13 @@ Error message and password prompt
 
 <li>C# 更新程序复制到缓存文件夹</li>
 
+<li>C# 查找字符串值是否在Enum中</li>
+
 <li>C# 样式模板</li>
+
+<li>C# 泛型简单使用</li>
+
+<li>C# 泛型约束</li>
 
 <li>C# 注册表设置自启动</li>
 
@@ -434,6 +442,8 @@ Error message and password prompt
 <li>C# 线程等待 ManualResetEvent</li>
 
 <li>C# 获取WCF config EndPoint</li>
+
+<li>C# 获取属性名和数据类型</li>
 
 <li>C# 获取当前软件版本</li>
 
@@ -830,6 +840,8 @@ Error message and password prompt
 <li>The money is in the hubs</li>
 
 <li>Thread Stream</li>
+
+<li>Thread.Abort并不能让线程终止</li>
 
 <li>Tiddlers Filter</li>
 
@@ -1265,6 +1277,8 @@ Error message and password prompt
 
 <li>从零实现Http服务器</li>
 
+<li>任务调度系统  Quartz</li>
+
 <li>使用自定义Slider</li>
 
 <li>保留两位小数</li>
@@ -1286,6 +1300,8 @@ Error message and password prompt
 <li>创建多个ToDoList</li>
 
 <li>卢曼卡片盒</li>
+
+<li>反射</li>
 
 <li>回调函数</li>
 
@@ -1400,6 +1416,10 @@ Error message and password prompt
 <li>查看远程服务器信息</li>
 
 <li>正则表达式Regex</li>
+
+<li>泛型 协变和逆变</li>
+
+<li>泛型 缓存</li>
 
 <li>理财</li>
 
@@ -11807,7 +11827,7 @@ update.zip
 !! ''//下载进度条//''
 * 未正确显示下载进度</pre>
 </div>
-<div tags="CMD FFmpeg" title="Bat FFMpeg视频切片" tmap.id="9f223204-3d4f-4521-a93f-87723588e7a6" revision="0" bag="default">
+<div tags="CMD FFmpeg" title="Bat FFMpeg视频切片" tmap.id="9f223204-3d4f-4521-a93f-87723588e7a6" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//注意 Bat 和 命令行 语法//''
 * 命令行：`%Variable`
 * Bat：`%%Variable`
@@ -13734,6 +13754,12 @@ public void submitData()
 #// 删除数据库  `DELETE FROM RehabPlan`//
 #// 查询数据库  `SELECT * FROM RehabPlan`//</pre>
 </div>
+<div tags="C#运算" title="C# String转为Type类型" tmap.id="028f3375-4df1-4fa8-8534-9952a53786ea" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```cs
+// Type.GetType转换类型是要加命名空间
+Type.GetType(&quot;System.&quot;+&quot;Int32&quot;);
+```</pre>
+</div>
 <div tags="C#" title="C# struct结构体" tmap.id="6610fddd-d46a-43b2-9f9a-94be6f6d7137" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>```cs
 //定义结构体类型
@@ -13910,7 +13936,7 @@ System.Diagnostics.ProcessStartInfo startinfo = new System.Diagnostics.ProcessSt
 System.Diagnostics.Process.Start(startinfo);
 ```</pre>
 </div>
-<div tags="内存 优化" title="C# 内存释放" tmap.id="91a31915-b9a4-4b32-854b-982da9249024" revision="0" bag="default">
+<div tags="内存 优化" title="C# 内存释放" tmap.id="91a31915-b9a4-4b32-854b-982da9249024" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/worfdream/articles/2345053.html&quot; &gt;//''C#内存释放''//&lt;/a&gt;</pre>
 </div>
 <div tags="C#" title="C# 单例" tmap.id="2a4b736d-54a1-4d97-ae40-2876ca80da2b" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -14009,7 +14035,7 @@ static void Main(string[] args)
 ```
 </pre>
 </div>
-<div tags="C# ToDo" title="C# 委托" tmap.id="4c20e784-ab89-4175-9f7b-94037bf1c45a" revision="0" bag="default">
+<div tags="C# ToDo" title="C# 委托" tmap.id="4c20e784-ab89-4175-9f7b-94037bf1c45a" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//C# 委托//''
 * 事件在类中声明且生成，通过使用同一个类或其他类中的委托与事件处理程序关联。包含事件的类，用于发布事件，发布器；其他接受该事件的类，订阅器；事件采用发布-订阅模型。
 * 发布器，包含事件和委托定义的对象，同时在其中定义，事件和委托之间的联系；发布器对象调用该事件，并通知其他对象。
@@ -14677,6 +14703,33 @@ string exePath = System.IO.Path.Combine(updateFileDir, &quot;AutoUpdater.exe&quo
 File.Copy(System.IO.Path.Combine(appDir, &quot;AutoUpdater.exe&quot;), exePath, true);
 ```</pre>
 </div>
+<div tags="C#运算" title="C# 查找字符串值是否在Enum中" tmap.id="22a81cf1-d288-4bb9-967c-db03481c4795" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```cs
+[Flags]
+public enum Age
+{
+    New_Born = 1,
+    Toddler = 2,
+    Preschool = 4,
+    Kindergarten = 8
+}
+```
+
+!!! ''//返回值：Bool//''
+```cs
+Enum.IsDefined(typeof(Age), youragevariable)
+```
+
+!!! ''//返回值：Enum类型//''
+```cs
+Age age;
+if (Enum.TryParse&lt;Age&gt;(&quot;New_Born&quot;, out age))
+{
+    // You now have the value in age 
+    Console.WriteLine((int)age);  // 返回值 1
+}
+```</pre>
+</div>
 <div tags="[[C# 获取系统电量-系列]] Style" title="C# 样式模板" tmap.id="84e00be4-27c2-4a11-beab-e6f3d960114d" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! //''自定义电池控件_UserControl，附加属性 Value、BorderBrushes''//
 
@@ -14706,6 +14759,71 @@ File.Copy(System.IO.Path.Combine(appDir, &quot;AutoUpdater.exe&quot;), exePath, 
 
 &lt;/Style&gt;
 ```</pre>
+</div>
+<div tags="Generic" title="C# 泛型简单使用" tmap.id="a18e4679-3ef2-45e5-9d6a-c8097b83ad42" revision="0" bag="default">
+<pre>!!! ''//指定类型 int string//''
+```cs
+public static void ShowInt(int iParameter)
+{
+    Console.WriteLine(&quot;This is {0}, parameter={1}, type={2}&quot;, 
+		typeof(CommonMethod).Name, iParameter.GetType().Name, iParameter);
+}
+
+public static void ShowString(string sParameter)
+{
+    Console.WriteLine(&quot;This is {0}, parameter={1}, type={2}&quot;, 
+		typeof(CommonMethod).Name, sParameter.GetType().Name, sParameter);
+}
+```
+
+!!! ''//Object 基类//''
+* 缺点：object类型带来的，`装箱、拆箱`；
+```cs
+public static void ShowObject(object oParameter)
+{
+	Console.WriteLine(&quot;This is {0}, parameter={1}, type={2}&quot;, 
+		typeof(CommonMethod), oParameter.GetType().Name, oParameter);
+}
+```
+
+!!! ''//泛型  Generic//''
+* 泛型，延迟声明；
+* 延迟思想的体现；如：泛型、分布式缓存队列、EF延迟加载
+```cs
+public static void Show&lt;T&gt;(T tParameter)
+{
+    Console.WriteLine(&quot;This is {0}, parameter={1}, type={2}&quot;,
+        typeof(GenericMethod), tParameter.GetType().Name, tParameter.ToString());
+}
+```
+
+!!! ''//泛型类//''
+```cs
+public class GenericClass&lt;T&gt;
+{
+    public T _T;
+}
+
+// T是int类型
+GenericClass&lt;int&gt; genericInt = new GenericClass&lt;int&gt;();
+genericInt._T = 123;
+// T是string类型
+GenericClass&lt;string&gt; genericString = new GenericClass&lt;string&gt;();
+genericString._T = &quot;123&quot;;
+```</pre>
+</div>
+<div tags="Generic" title="C# 泛型约束" tmap.id="84646850-5ff2-4cfa-ae0d-0486635d8a32" revision="0" bag="default">
+<pre>
+!!! ''//限制约束类型//''
+
+```cs
+public static void Show&lt;T&gt;(T tParameter) where T : People, Chinese
+{
+      Console.WriteLine($&quot;{tParameter.Id}_{tParameter.Name}&quot;);
+      tParameter.Hi();
+}
+```
+</pre>
 </div>
 <div tags="WPF基础" title="C# 注册表设置自启动" tmap.id="938416ce-a2f0-494b-9d4a-d71e76777c7b" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//开机自启动实现方式（注册表）：//
@@ -15048,6 +15166,48 @@ public class GetAppConfig: ConfigurationSection
     }
 }
 </pre>
+</div>
+<div tags="反射 属性" title="C# 获取属性名和数据类型" tmap.id="ad4f1537-6026-4352-af0e-8ac901ee6058" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>```cs
+Type typePlCVar = typeof(MRMC);
+properties = typePlCVar.GetProperties();
+Console.WriteLine(properties[0].Name + “ -- ” + properties[0].PropertyType.Name);
+```
+* 返回值：`Step -- Double`
+
+```cs
+public class MRMC
+{
+    public enum PLCVAR_Enum
+    {
+        gh_Step,
+        gh_steps,//int
+        gh_height,
+        gh_recommand,//bool
+        gh_length,
+        gh_angle,
+        gh_stepT,
+        gh_confirm,//bool
+        gh_power,//bool
+        gh_stand,//bool
+        gh_InStep,//bool
+
+        InstructionMax
+    }
+
+    public static double Step { get; set; }
+    public static int steps { get; set; }
+    public static double height { get; set; }
+    public static bool recommand { get; set; } = false;
+    public static double length { get; set; }
+    public static double angle { get; set; }
+    public static double stepTime { get; set; }
+    public static bool confirm { get; set; } = false;
+    public static bool power { get; set; } = false;
+    public static bool stand { get; set; } = false;
+    public static bool inStep { get; set; } = false;
+}
+```</pre>
 </div>
 <div tags="C# 软件更新 文件夹" title="C# 获取当前软件版本" tmap.id="005a6745-d9c9-4d16-9eb4-bb6d7ac6a733" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//AssemblyFileVersion//''
@@ -16375,7 +16535,7 @@ public class UserInfoConverter : IMultiValueConverter
 &lt;/Button&gt;
 ```</pre>
 </div>
-<div tags="学术期刊" title="ConnectedPapers" tmap.id="d1166a1d-f6f8-4a37-8424-7d878ced0674" revision="0" bag="default">
+<div tags="学术期刊" title="ConnectedPapers" tmap.id="d1166a1d-f6f8-4a37-8424-7d878ced0674" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.connectedpapers.com&quot; &gt;//''文献分析 ~ConnectedPapers''//&lt;/a&gt;</pre>
 </div>
 <div caption="CrossLinks" tags="$:/tags/SideBar TiddlyPlugin" title="CrossLinks" tmap.id="0a88cddd-023c-4011-99e2-d1d0fab6e054" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -17451,7 +17611,7 @@ public void FTPDownload(string filePath, string fileName)
   &lt;&lt;toc-selective-expandable 'IReGoLite'&gt;&gt;
 &lt;/div&gt;</pre>
 </div>
-<div tags="Mememori3476" title="iReGo下位机自启动" tmap.id="7a9ee4df-d2a0-4f2e-8611-46353dbd143f" revision="0" bag="default">
+<div tags="Mememori3476" title="iReGo下位机自启动" tmap.id="7a9ee4df-d2a0-4f2e-8611-46353dbd143f" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>* Windows搜索：`远程桌面`
 ** IP：`192.168.1.100`
 ** 密码：`1`
@@ -19273,6 +19433,11 @@ var task2 = Task.Factory.StartNew(() =&gt;
 </div>
 <div tags="$:/tags/Commander/Working" title="Thread Stream" tmap.id="94ba2f2e-91a1-4a5d-8798-eb639de94cdb" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/JimmyZheng/category/356410.html&quot; &gt;C# 线程 流&lt;/a&gt;</pre>
+</div>
+<div tags="线程" title="Thread.Abort并不能让线程终止" tmap.id="aa90f5ee-8685-4758-9dcb-69365652804a" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/OpenCoder/p/4587249.html&quot; &gt;//''注意！你的Thread.Abort方法真的让线程停止了吗？''//&lt;/a&gt;
+
+!!! ''//来自博主：&lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/OpenCoder/&quot; &gt;//''~OpenCoder''//&lt;/a&gt;//''</pre>
 </div>
 <div tags="Filter" title="Tiddlers Filter" tmap.id="638622a4-975e-4d27-ae29-92b0b29281ae" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!//基本使用// 
@@ -23080,7 +23245,7 @@ private void SelectChange()
 
 !!! //''可以设置一个全局缓冲管理的类来管理, 减少重复申请内存的操作.使用一个缓冲 到程序结束释放. ''//</pre>
 </div>
-<div tags="WPF基础 内存" title="WPF内存监测" tmap.id="076c1ed5-5ff4-4f1a-ac81-6ff9a46af810" revision="0" bag="default">
+<div tags="WPF基础 内存" title="WPF内存监测" tmap.id="076c1ed5-5ff4-4f1a-ac81-6ff9a46af810" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/qq_28368039/article/details/87854626&quot; &gt;//''WPF性能调试系列_内存监测''//&lt;/a&gt;</pre>
 </div>
 <div tags="WPF基础" title="WPF最小化窗口弹出" tmap.id="f2c3be2b-b012-4e08-82de-3f847ae075ae" type="text/vnd.tiddlywiki" revision="0" bag="default">
@@ -24008,7 +24173,7 @@ doc.Save(path);
 !!//Syntax：//
 * `.\youtube-dl https://www.bilibili.com/video/xxx`</pre>
 </div>
-<div tags="Zetero Zettlr" title="Zetero和Zettlr工作流" tmap.id="7dd13513-7557-4d8f-9751-b18572b98873" revision="0" bag="default">
+<div tags="Zetero Zettlr" title="Zetero和Zettlr工作流" tmap.id="7dd13513-7557-4d8f-9751-b18572b98873" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//开发人员工作流//''
 # Find an interesting paper.
 # Download it and add it to Zotero.
@@ -24429,6 +24594,11 @@ private System.Threading.Mutex mutex = new System.Threading.Mutex(true, &quot;LL
 <div tags="HTTP Linux 项目 $:/tags/Commander/Working" title="从零实现Http服务器" tmap.id="776e6ac6-902d-4507-a0c1-2e63629582dd" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/balloonwj/p/9093578.html&quot; &gt;从零实现一个http服务器&lt;/a&gt;</pre>
 </div>
+<div tags="Java Quartz" title="任务调度系统  Quartz" tmap.id="34c0d68b-9e62-4550-91de-f7b791a9036c" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/xiaoliboke/article/details/80770660&quot; &gt;//''一个著名的任务调度系统是怎么设计的？''//&lt;/a&gt;
+
+!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://blog.csdn.net/noaman_wgs/article/details/80984873&quot; &gt;//''Quartz入门与Demo搭建''//&lt;/a&gt;</pre>
+</div>
 <div tags="[[WPF 自定义 Slider系列]]" title="使用自定义Slider" tmap.id="dc6bb1c6-bf28-4f42-86ef-65c16b738476" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! ''//SliderUserControl使用//''
 ```xml
@@ -24649,6 +24819,11 @@ Convert.ToDecimal(&quot;0.33333333&quot;).ToString(&quot;0.00&quot;);
 </div>
 <div tags="Zettelkasten.de $:/tags/Commander/Working" title="卢曼卡片盒" tmap.id="e310955a-d6c5-4dfa-a78c-19be7c122972" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! ''//张永锡//''  &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://zhuanlan.zhihu.com/c_152262343&quot; &gt;卢曼卡片盒&lt;/a&gt;</pre>
+</div>
+<div tags="C#" title="反射" tmap.id="f53b2fcc-7402-4fec-9d06-04a79b7b6ce1" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+    &lt;&lt;toc-selective-expandable '反射'&gt;&gt;
+&lt;/div&gt;</pre>
 </div>
 <div tags="CallBack" title="回调函数" tmap.id="7bd3b6e6-b99f-4028-80b6-72b2043eb0c0" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!!! &lt;a class=&quot;badge-pill badge-success&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/wangtianxj/articles/1362786.html&quot; &gt;//''C#实现回调函数''// &lt;/a&gt;
@@ -26208,6 +26383,59 @@ pasv_max_port=62000  #最大接口
 | '' (abc|def) '' | //'' Matches abc or def	''// |
 
 * 汉字正则：`^[\u4e00-\u9fa5]{2,4}$`</pre>
+</div>
+<div tags="Generic" title="泛型 协变和逆变" tmap.id="c59cfbdc-1ce7-4ce0-a84a-b1379c904cb8" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/dotnet261010/p/9034594.html&quot; &gt;//''C# 泛型详解''//&lt;/a&gt;
+
+```cs
+public class Animal
+{
+    public int Id { get; set; }
+}
+
+public class Cat :Animal
+{
+    public string Name { get; set; }
+}
+
+// 声明子类对象指向父类
+Animal animal2 = new Cat();
+// 声明Animal类的集合
+List&lt;Animal&gt; listAnimal = new List&lt;Animal&gt;();
+```
+
+!!! ''//`List&lt;Animal&gt; list = new List&lt;Cat&gt;();`//''
+* 尽管 `Cat` 继承自 `Animal`，但 `List&lt;Animal&gt;` 和 `List&lt;Cat&gt;` 之间并没有继承关系
+
+!!! ''//解决方案：协变//''
+```cs
+// IEnumerable&lt;基类&gt; List2 = new List&lt;基类/子类&gt;();
+IEnumerable&lt;Animal&gt; List2 = new List&lt;Cat&gt;();
+```
+
+```cs
+public interface IEnumerable&lt;out T&gt; : IEnumerable
+{
+    IEnumerator&lt;T&gt; GetEnumerator();
+}
+```
+
+!!! ''//逆变//''
+* 相对于 `协变`，`In` 关键词
+```cs
+public interface ICustomerListIn&lt;int T&gt;
+{
+    void Show(T t);
+}
+```
+
+```cs
+ICustomerListIn&lt;Cat&gt; customerListCat2 = new CustomerListIn&lt;Animal&gt;();
+```
+</pre>
+</div>
+<div tags="Generic" title="泛型 缓存" tmap.id="c41ba90c-a547-4b57-82ec-3d78efdc0e84" revision="0" bag="default">
+<pre>!!! &lt;a class=&quot;badge-pill badge-info&quot; target=&quot;_blank&quot; href=&quot;https://www.cnblogs.com/dotnet261010/p/9034594.html&quot; &gt;//''C# 泛型详解''//&lt;/a&gt;</pre>
 </div>
 <div tags="TableOfContents Temp" title="理财" tmap.id="701c7c68-2b3f-423d-b353-e9086e1686c9" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
