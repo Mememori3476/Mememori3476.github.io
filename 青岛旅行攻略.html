@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青岛旅行攻略 — 红瓦绿树 碧海蓝天</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #fff8f5;
+    color: #3d2a2a;
+    line-height: 1.9;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    height: 92vh;
+    min-height: 560px;
+    background: linear-gradient(135deg, #e60012 0%, #ff3344 35%, #ff6666 70%, #ff9999 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 15% 60%, rgba(255,215,0,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 160px;
+    background: linear-gradient(to top, #fff8f5 0%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    animation: fadeInUp 1.2s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 10px 36px;
+    border: 2px solid rgba(255,215,0,0.5);
+    color: #ffd700;
+    font-size: 15px;
+    letter-spacing: 10px;
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 88px;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.15);
+    margin-bottom: 16px;
+    letter-spacing: 16px;
+  }
+
+  .hero h1 .hl { color: #ffd700; }
+
+  .hero .sub {
+    font-size: 24px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 10px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  .hero .quote {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    color: rgba(255,215,0,0.85);
+    letter-spacing: 6px;
+    margin-top: 24px;
+    font-weight: 600;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 44px;
+    left: 50%; transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    letter-spacing: 4px;
+    animation: bounce 2.4s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(12px); }
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky;
+    top: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid #f0e0d8;
+    padding: 0 40px;
+  }
+  .nav-inner {
+    max-width: 1260px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav a {
+    flex-shrink: 0;
+    color: #8b5a4a;
+    text-decoration: none;
+    padding: 18px 22px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+  .nav a:hover {
+    color: #e60012;
+    border-bottom-color: #e60012;
+    background: rgba(230,0,18,0.04);
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 1260px;
+    margin: 0 auto;
+    padding: 60px 40px 40px;
+  }
+
+  /* ===== SECTION TITLE ===== */
+  .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .section-title .cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: #e60012;
+    letter-spacing: 8px;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .section-title .en {
+    font-size: 13px;
+    color: rgba(230,0,18,0.35);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+  }
+  .section-title .line {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, transparent, #e60012, transparent);
+    margin: 18px auto 0;
+  }
+
+  /* ===== DECO ===== */
+  .deco-line {
+    text-align: center;
+    color: rgba(230,0,18,0.15);
+    font-size: 22px;
+    letter-spacing: 14px;
+    margin: 36px 0;
+  }
+
+  /* ===== TIP BOX ===== */
+  .tip-box {
+    background: linear-gradient(135deg, #fff0ec, #fff8f5);
+    border-left: 4px solid #e60012;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 28px;
+    margin: 18px 0;
+  }
+  .tip-box strong { color: #e60012; }
+
+  /* ===== OVERVIEW CARD ===== */
+  .overview-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(230,0,18,0.06);
+    overflow: hidden;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+  }
+  .overview-visual {
+    min-height: 320px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; padding: 40px;
+    background: linear-gradient(135deg,#e60012,#ff5566);
+    color: #fff; text-align: center;
+  }
+  .overview-visual .big-icon { font-size: 72px; margin-bottom: 14px; }
+  .overview-body { padding: 44px; }
+  .overview-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 700;
+    color: #8b1a1a; margin-bottom: 14px;
+  }
+  .overview-body p { font-size: 15px; color: #555; line-height: 2; margin-bottom: 10px; }
+
+  /* ===== TAG CLOUD ===== */
+  .tag-cloud {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin: 12px 0;
+  }
+  .tag-cloud span {
+    padding: 6px 18px;
+    background: #fff;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #e60012;
+    border: 1px solid rgba(230,0,18,0.18);
+    transition: all 0.3s;
+  }
+  .tag-cloud span:hover {
+    background: #e60012; color: #fff; border-color: #e60012; transform: scale(1.04);
+  }
+
+  /* ===== GRID ===== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+  }
+
+  /* ===== CARD ===== */
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.35s;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    border: 1px solid #f5e8e4;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 36px rgba(230,0,18,0.1);
+    border-color: rgba(230,0,18,0.15);
+  }
+  .card-img {
+    height: 170px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 44px; position: relative;
+  }
+  .card-body { padding: 24px; }
+  .card-body h3 { font-size: 18px; font-weight: 700; color: #8b1a1a; margin-bottom: 6px; }
+  .card-body .tag {
+    display: inline-block; padding: 2px 10px;
+    background: rgba(230,0,18,0.07); color: #e60012;
+    border-radius: 16px; font-size: 11px; margin-bottom: 8px;
+  }
+  .card-body p { font-size: 14px; color: #555; line-height: 1.9; }
+  .card-body .price { margin-top: 10px; font-size: 13px; color: #e60012; font-weight: 500; }
+  .card-body .map-link {
+    display: inline-block; margin-top: 10px; font-size: 12px;
+    color: #007aff; text-decoration: none; font-weight: 500;
+  }
+  .card-body .map-link:hover { text-decoration: underline; }
+  .card-body ul { list-style: none; padding: 0; }
+  .card-body ul li {
+    padding: 5px 0 5px 18px; position: relative; font-size: 14px; color: #555; line-height: 1.7;
+  }
+  .card-body ul li::before {
+    content: '●'; position: absolute; left: 0; color: #e60012; font-size: 8px; top: 9px;
+  }
+
+  /* ===== FEATURE CARD ===== */
+  .feature-card {
+    background: #fff; border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    border: 1px solid #f5e8e4;
+    overflow: hidden; margin-bottom: 24px;
+    display: grid; grid-template-columns: 1fr 1.4fr;
+  }
+  .feature-card.reverse { direction: rtl; }
+  .feature-card.reverse .feature-body { direction: ltr; }
+  .feature-visual {
+    min-height: 280px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; padding: 36px; text-align: center; color: #fff;
+  }
+  .feature-visual .big-icon { font-size: 60px; margin-bottom: 12px; }
+  .feature-body { padding: 36px 40px; }
+  .feature-body h3 { font-size: 22px; font-weight: 700; color: #8b1a1a; margin-bottom: 12px; }
+  .feature-body p { font-size: 14px; color: #555; line-height: 2; margin-bottom: 8px; }
+  .feature-body ul { list-style: none; padding: 0; }
+  .feature-body ul li {
+    padding: 5px 0 5px 20px; position: relative; font-size: 14px; color: #555; line-height: 1.8;
+  }
+  .feature-body ul li::before {
+    content: '◆'; position: absolute; left: 0; color: #e60012; font-size: 10px; top: 8px;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, #e60012, rgba(230,0,18,0.06));
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 44px; padding-left: 30px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -33px; top: 6px; width: 12px; height: 12px;
+    background: #e60012; border-radius: 50%;
+    border: 3px solid #fff; box-shadow: 0 0 0 2px #e60012;
+  }
+  .timeline-item .day {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px; font-weight: 700; color: #8b1a1a; margin-bottom: 6px;
+  }
+  .timeline-item .day span { font-size: 13px; font-weight: 400; color: #999; margin-left: 10px; }
+  .timeline-item p { font-size: 14px; color: #555; line-height: 2.1; }
+  .timeline-item .map-inline { margin-top: 8px; }
+  .timeline-item .map-inline a {
+    color: #007aff; text-decoration: none; font-size: 13px; margin-right: 16px;
+  }
+  .timeline-item .map-inline a:hover { text-decoration: underline; }
+
+  /* ===== TABLE ===== */
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table {
+    width: 100%; border-collapse: collapse; background: #fff;
+    border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  }
+  thead { background: linear-gradient(135deg, #cc0011, #e60012); }
+  thead th { padding: 15px 18px; color: #fff; font-size: 14px; font-weight: 600; letter-spacing: 2px; text-align: left; }
+  tbody td { padding: 13px 18px; font-size: 14px; color: #555; border-bottom: 1px solid #f5e8e4; }
+  tbody tr:hover { background: rgba(230,0,18,0.03); }
+
+  /* ===== HOTEL RANK ===== */
+  .hotel-rank { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .hotel-rank .rank {
+    display: inline-block; padding: 2px 10px; border-radius: 4px;
+    font-size: 11px; font-weight: 700; color: #fff;
+  }
+  .rank-ss { background: #cc0011; }
+  .rank-s  { background: #e64539; }
+  .rank-a  { background: #e67850; }
+  .rank-b  { background: #c09070; }
+
+  /* ===== FOOD CAT ===== */
+  .food-cat {
+    background: #fff; border-radius: 14px; overflow: hidden;
+    border: 1px solid #f5e8e4; margin-bottom: 20px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  }
+  .food-cat-header {
+    padding: 20px 28px;
+    display: flex; align-items: center; gap: 14px;
+    cursor: pointer; user-select: none;
+  }
+  .food-cat-header .fc-icon { font-size: 28px; }
+  .food-cat-header .fc-title { font-size: 18px; font-weight: 700; color: #8b1a1a; }
+  .food-cat-body { padding: 0 28px 24px; }
+  .food-item {
+    padding: 14px 0; border-bottom: 1px solid #f5e8e4;
+    display: grid; grid-template-columns: 1fr auto; gap: 10px;
+  }
+  .food-item:last-child { border-bottom: none; }
+  .food-item .fi-name { font-weight: 600; color: #3d2a2a; font-size: 15px; }
+  .food-item .fi-price { color: #e60012; font-size: 13px; white-space: nowrap; }
+  .food-item .fi-desc { grid-column: 1 / -1; font-size: 14px; color: #666; line-height: 1.7; margin-top: -4px; }
+  .food-item .fi-map { grid-column: 1 / -1; }
+  .food-item .fi-map a { color: #007aff; text-decoration: none; font-size: 12px; }
+  .food-item .fi-map a:hover { text-decoration: underline; }
+
+  /* ===== SPOT BLOCK ===== */
+  .spot-block {
+    background: #fff; border-radius: 14px; overflow: hidden;
+    border: 1px solid #f5e8e4; margin-bottom: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    padding: 24px 28px;
+  }
+  .spot-block h4 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px; color: #8b1a1a; margin-bottom: 6px;
+  }
+  .spot-block .sb-meta { font-size: 13px; color: #999; margin-bottom: 8px; }
+  .spot-block .sb-meta a { color: #007aff; text-decoration: none; }
+  .spot-block .sb-meta a:hover { text-decoration: underline; }
+  .spot-block p { font-size: 14px; color: #555; line-height: 1.9; }
+
+  /* ===== BUS CARD ===== */
+  .bus-card {
+    background: #fff; border-radius: 14px; overflow: hidden;
+    border: 1px solid #f5e8e4; margin-bottom: 18px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    display: grid; grid-template-columns: 100px 1fr; min-height: 0;
+  }
+  .bus-num {
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px; font-weight: 900; color: #fff; padding: 20px;
+  }
+  .bus-body { padding: 18px 22px; }
+  .bus-body h4 { font-size: 16px; color: #8b1a1a; margin-bottom: 2px; }
+  .bus-body .bus-sub { font-size: 13px; color: #999; margin-bottom: 6px; }
+  .bus-body p { font-size: 14px; color: #555; line-height: 1.8; }
+  .bus-body .bus-stops { margin-top: 6px; font-size: 13px; color: #888; }
+
+  /* ===== HOTEL CARD ===== */
+  .hotel-card {
+    background: #fff; border-radius: 14px; overflow: hidden;
+    border: 1px solid #f5e8e4; padding: 22px 24px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    margin-bottom: 14px;
+  }
+  .hotel-card h4 { font-size: 17px; color: #8b1a1a; margin-bottom: 4px; }
+  .hotel-card p { font-size: 14px; color: #555; line-height: 1.8; }
+  .hotel-card .map-link { font-size: 12px; color: #007aff; text-decoration: none; }
+  .hotel-card .map-link:hover { text-decoration: underline; }
+
+  /* ===== BUTTON ===== */
+  .map-btn {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #007aff;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s;
+  }
+  .map-btn:hover { background: #0055cc; transform: scale(1.03); }
+
+  /* ===== FADE IN ===== */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: all 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: linear-gradient(135deg, #e60012, #ff5566);
+    padding: 48px 40px;
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  footer .fq {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    color: #ffd700;
+    margin-bottom: 14px;
+    letter-spacing: 4px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 44px; letter-spacing: 8px; }
+    .hero .sub { font-size: 16px; letter-spacing: 6px; }
+    .container { padding: 40px 16px; }
+    .section-title .cn { font-size: 28px; }
+    .grid { grid-template-columns: 1fr; }
+    .overview-card { grid-template-columns: 1fr; }
+    .overview-visual { min-height: 180px; padding: 28px; }
+    .overview-body { padding: 28px; }
+    .feature-card { grid-template-columns: 1fr; }
+    .feature-card.reverse { direction: ltr; }
+    .feature-visual { min-height: 180px; padding: 24px; }
+    .feature-body { padding: 24px; }
+    .nav { padding: 0 8px; }
+    .nav a { padding: 14px 12px; font-size: 12px; letter-spacing: 1px; }
+    .bus-card { grid-template-columns: 70px 1fr; }
+    .bus-num { font-size: 20px; padding: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ 超全旅行攻略 ✦</div>
+    <h1>青<span class="hl">岛</span></h1>
+    <div class="sub">红瓦绿树 · 碧海蓝天</div>
+    <div class="quote">「 哈啤酒 · 吃蛤蜊 · 洗海澡 · 看小嫚 」</div>
+  </div>
+  <div class="scroll-hint">▼ 向下探索 ▼</div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#overview">📌 概述</a>
+    <a href="#route">🗓️ 行程</a>
+    <a href="#spots">📍 景点</a>
+    <a href="#food">🍜 美食</a>
+    <a href="#laoshan">⛰️ 崂山</a>
+    <a href="#bus">🚌 公交</a>
+    <a href="#citywalk">🚶 Citywalk</a>
+    <a href="#hotel">🏨 住宿</a>
+    <a href="#tips">💡 贴士</a>
+  </div>
+</nav>
+
+<!-- ===================================================== -->
+<!-- 1. 概述 -->
+<!-- ===================================================== -->
+<section class="container" id="overview">
+  <div class="section-title fade-in">
+    <span class="cn">青岛印象</span>
+    <span class="en">Qingdao · China's Seaside Gem</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="overview-card fade-in">
+    <div class="overview-visual">
+      <div class="big-icon">🏛️</div>
+      <div style="font-size:20px;font-weight:300;letter-spacing:6px;opacity:0.95;">山 · 海 · 城 相融</div>
+      <div style="margin-top:12px;font-size:14px;opacity:0.7;letter-spacing:2px;">红瓦绿树 · 碧海蓝天</div>
+    </div>
+    <div class="overview-body">
+      <h3>一座来了就不想走的城市</h3>
+      <p>青岛，山东省辖地级市，别称岛城、琴岛，是国务院批复确定的中国沿海重要中心城市和滨海度假旅游城市、国际性港口城市。青岛地处中国华东地区、山东半岛东南、东濒黄海，属温带季风气候。</p>
+      <p>青岛是国家历史文化名城、中国道教发祥地。因树木繁多，四季常青而得名。1891年清政府驻兵建置，1897年德国租借并建设港口和铁路，青岛因德占时期的城市规划而有了"红瓦绿树"的独特城市风貌。登高远望老城区，密密红房顶充满建筑美。</p>
+      <p>来青岛必做的 <strong>三件事</strong>：</p>
+      <div class="tag-cloud">
+        <span>🍺 哈啤酒 — 青岛啤酒YYDS</span>
+        <span>🦪 吃蛤蜊（gá là）</span>
+        <span>🏊 洗海澡</span>
+        <span>👧 看小嫚（漂亮小姐姐）</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 最佳季节 -->
+  <div class="overview-card fade-in" style="grid-template-columns:1fr 2fr;">
+    <div class="overview-visual" style="background:linear-gradient(135deg,#ff8833,#ffaa44);">
+      <div class="big-icon">📅</div>
+      <div style="font-size:18px;font-weight:300;letter-spacing:4px;">最佳旅行时间</div>
+    </div>
+    <div class="overview-body">
+      <h3>什么时候去最合适？</h3>
+      <ul style="list-style:none;padding:0;">
+        <li style="padding:6px 0 6px 22px;position:relative;font-size:14px;color:#555;line-height:1.8;">
+          <span style="position:absolute;left:0;color:#e60012;font-weight:700;">🌸</span>
+          <strong>4月</strong> — 樱花季！推荐去<a href="https://maps.apple.com/?q=青岛中国海洋大学" target="_blank" style="color:#007aff;">中国海洋大学</a>、<a href="https://maps.apple.com/?q=青岛三明南路" target="_blank" style="color:#007aff;">三明南路</a>看樱花，宁武关路、青岛大学看海棠花。天气不冷不热。
+        </li>
+        <li style="padding:6px 0 6px 22px;position:relative;font-size:14px;color:#555;line-height:1.8;">
+          <span style="position:absolute;left:0;color:#e60012;font-weight:700;">🌿</span>
+          <strong>5月</strong> — 蔷薇花开满城。5月1日起栈桥回澜阁开放时间延长。</li>
+        <li style="padding:6px 0 6px 22px;position:relative;font-size:14px;color:#555;line-height:1.8;">
+          <span style="position:absolute;left:0;color:#e60012;font-weight:700;">🌊</span>
+          <strong>7-8月</strong> — 旺季。适合下海游泳、洗海澡。8月有青岛国际啤酒节。缺点是酒店价格上天。</li>
+        <li style="padding:6px 0 6px 22px;position:relative;font-size:14px;color:#555;line-height:1.8;">
+          <span style="position:absolute;left:0;color:#e60012;font-weight:700;">🍁</span>
+          <strong>9-11月</strong> — <strong>⭐ 黄金季节！</strong>9月开渔，海鲜最好吃；酒店房价和机票跳水；天气舒爽。秋天八大关的梧桐树美极了。</li>
+        <li style="padding:6px 0 6px 22px;position:relative;font-size:14px;color:#555;line-height:1.8;">
+          <span style="position:absolute;left:0;color:#e60012;font-weight:700;">❄️</span>
+          <strong>12-2月</strong> — 西伯利亚海鸥飞来<a href="https://maps.apple.com/?q=青岛栈桥" target="_blank" style="color:#007aff;">栈桥</a>过冬，喂海鸥的浪漫只有青岛有！日出几乎天天能看到。</li>
+      </ul>
+      <div class="tip-box" style="margin:12px 0 0;">
+        <strong>💡 强烈推荐 9月出行</strong> — 开渔吃海鲜 + 酒店跳水 + 天气舒爽，性价比之王。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 2. 行程推荐 -->
+<!-- ===================================================== -->
+<section class="container" id="route" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">行程推荐</span>
+    <span class="en">Suggested Itineraries</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item fade-in">
+      <div class="day">Day 1 <span>老城经典 — 初见青岛</span></div>
+      <p>
+        <strong>上午：</strong><a href="https://maps.apple.com/?q=青岛栈桥" target="_blank">栈桥</a>（远观拍照即可）→ <a href="https://maps.apple.com/?q=青岛天主教堂" target="_blank">天主教堂</a>（圣弥厄尔大教堂，哥特式建筑）→ <a href="https://maps.apple.com/?q=青岛中山路" target="_blank">中山路</a>（百年老街，看1907光影俱乐部）<br>
+        <strong>中午：</strong><a href="https://maps.apple.com/?q=青岛啤酒博物馆" target="_blank">青岛啤酒博物馆</a>（买95元品鉴票，喝8杯酒！A区历史+B区酿造工艺+C区1903餐吧）<br>
+        <strong>下午：</strong><a href="https://maps.apple.com/?q=青岛八大关" target="_blank">八大关</a>（万国建筑群，正阳关路→武胜关路→宁武关路，适合压马路拍照）<br>
+        <strong>晚上：</strong><a href="https://maps.apple.com/?q=青岛五四广场" target="_blank">五四广场</a> + <a href="https://maps.apple.com/?q=青岛奥帆中心" target="_blank">奥帆中心</a>（看夜景灯光秀，5-10月每晚8点）。对面就是<a href="https://maps.apple.com/?q=青岛情人坝" target="_blank">情人坝</a>+白灯塔，看夕阳第一名
+      </p>
+      <div class="map-inline">
+        <a href="https://maps.apple.com/?daddr=青岛栈桥&daddr=青岛天主教堂&daddr=青岛啤酒博物馆&daddr=青岛八大关&daddr=青岛五四广场" target="_blank">🗺️ 一键导航今日路线</a>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="day">Day 2 <span>崂山南线 — 山海之约</span></div>
+      <p>
+        <strong>上午：</strong><a href="https://maps.apple.com/?q=青岛仰口景区" target="_blank">仰口景区</a>（坐索道上山，看海天一色。走觅天洞登山，山顶"天苑"俯瞰海岸线）<br>
+        <strong>中午：</strong><a href="https://maps.apple.com/?q=青岛青山渔村" target="_blank">青山渔村</a>（500多年历史的红瓦渔村，背山面海，像意大利五渔村）<br>
+        <strong>下午：</strong><a href="https://maps.apple.com/?q=青岛太清宫" target="_blank">太清景区</a>（太清宫，道教圣地。蒲松龄曾在此修行。坐索道下山）<br>
+        <strong>交通：</strong>坐<a href="#bus">618路公交</a>从仰口到垭口，坐左边靠窗位，体验最美峡湾公路
+      </p>
+      <div class="map-inline">
+        <a href="https://maps.apple.com/?daddr=青岛仰口景区&daddr=青岛青山渔村&daddr=青岛太清宫" target="_blank">🗺️ 一键导航今日路线</a>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="day">Day 3 <span>文艺漫步 — 老城Citywalk</span></div>
+      <p>
+        <strong>上午：</strong><a href="https://maps.apple.com/?q=青岛信号山公园" target="_blank">信号山</a>或<a href="https://maps.apple.com/?q=青岛小鱼山公园" target="_blank">小鱼山</a>（俯瞰老城红瓦全景，看最美角度）→ <a href="https://maps.apple.com/?q=青岛大学路" target="_blank">大学路</a>（网红红墙拍照）→ <a href="https://maps.apple.com/?q=青岛美术馆" target="_blank">青岛美术馆</a>（中西合璧建筑）<br>
+        <strong>中午：</strong><a href="https://maps.apple.com/?q=青岛黄县路" target="_blank">黄县路</a>（<a href="https://maps.apple.com/?q=老舍故居青岛" target="_blank">老舍故居</a>、<a href="https://maps.apple.com/?q=荒岛书店青岛" target="_blank">荒岛书店</a>）→ <a href="https://maps.apple.com/?q=青岛龙江路" target="_blank">龙江路</a>（宫崎骏涂鸦街，适合拍照）<br>
+        <strong>下午：</strong><a href="https://maps.apple.com/?q=青岛邮电博物馆" target="_blank">邮电博物馆</a>（寄50年慢邮）→ <a href="https://maps.apple.com/?q=良友书坊青岛" target="_blank">良友书坊</a>（最美书店）→ <a href="https://maps.apple.com/?q=青岛广西路" target="_blank">广西路</a>德式建筑群<br>
+        <strong>晚上：</strong><a href="https://maps.apple.com/?q=青岛台东夜市" target="_blank">台东夜市</a>（花100元吃到撑）
+      </p>
+      <div class="map-inline">
+        <a href="https://maps.apple.com/?daddr=青岛信号山公园&daddr=青岛大学路&daddr=青岛黄县路&daddr=青岛龙江路&daddr=青岛邮电博物馆&daddr=青岛台东夜市" target="_blank">🗺️ 一键导航今日路线</a>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="day">Day 4+ <span>自由扩展 — 深度体验</span></div>
+      <p>
+        <strong>☀️ 文艺线：</strong><a href="https://maps.apple.com/?q=青岛小麦岛" target="_blank">小麦岛公园</a>（网红草原海景）→ <a href="https://maps.apple.com/?q=青岛燕儿岛公园" target="_blank">燕儿岛公园</a>（礁石木栈道）→ <a href="https://maps.apple.com/?q=如是书店青岛" target="_blank">如是书店</a>（360度海边看书）→ <a href="https://maps.apple.com/?q=青岛方所书店" target="_blank">方所书店</a>（万象城B1层）<br>
+        <strong>🏖️ 玩水线：</strong><a href="https://maps.apple.com/?q=青岛金沙滩" target="_blank">金沙滩</a>（沙质最细，需一天）或 <a href="https://maps.apple.com/?q=石老人海水浴场" target="_blank">石老人海水浴场</a>（最长沙滩，游客密度最低）<br>
+        <strong>⚓ 军事线：</strong><a href="https://maps.apple.com/?q=青岛海军博物馆" target="_blank">海军博物馆</a>（三艘退役舰艇可登舰）<br>
+        <strong>🛒 市井线：</strong><a href="https://maps.apple.com/?q=青岛团岛农贸市场" target="_blank">团岛农贸市场</a>或<a href="https://maps.apple.com/?q=青岛海泊河早市" target="_blank">海泊河早市</a>（买海鲜、吃山东大包）→ <a href="https://maps.apple.com/?q=青岛埠西市场" target="_blank">埠西市场</a>（最大海鲜市场之一）
+      </p>
+    </div>
+  </div>
+
+  <!-- 青岛vs其他目的地 参考小贴士 -->
+  <div class="tip-box fade-in">
+    <strong>📌 关于崂山行程的建议：</strong> 如果时间紧，崂山可压缩为一日游，走南线即可。如果时间充裕，崂山最好两日游——住崂山君澜酒店，慢慢感受。金沙滩也是一整天的行程。市区景点除崂山外都不远，紧凑些一天可逛完。
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 3. 必游景点 -->
+<!-- ===================================================== -->
+<section class="container" id="spots" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">必游景点</span>
+    <span class="en">Must-Visit Spots</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#e60012,#ff5566);font-size:56px;">🏛️</div>
+      <div class="card-body">
+        <h3>栈桥 & 回澜阁</h3>
+        <span class="tag">地标 · 免费</span>
+        <p>青岛的标志，始建于1892年，桥尽头是回澜阁延伸入大海，被誉为"青岛十景"之一。精华在于远观拍照而非走上去。秋冬季成千上万的西伯利亚海鸥来此过冬，12-2月最佳观赏期。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛栈桥" target="_blank">📍 市南区太平路12号 — 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#2d6b3f,#4a9f5a);font-size:56px;">🌳</div>
+      <div class="card-body">
+        <h3>八大关</h3>
+        <span class="tag">万国建筑 · 免费</span>
+        <p>八条以长城关口命名的街道（正阳关路、武胜关路、宁武关路等），集合了二十多个国家的建筑风格。最能体现"红瓦绿树、碧海蓝天"的地方。小清新最爱，适合压马路、拍婚纱照。秋天梧桐树最美。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛八大关" target="_blank">📍 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#1a4a7a,#2d7abf);font-size:56px;">⛵</div>
+      <div class="card-body">
+        <h3>五四广场 & 奥帆中心</h3>
+        <span class="tag">城市核心 · 免费</span>
+        <p>青岛最核心区域。五四广场因1919年五四运动"还我青岛"得名。奥帆中心是2008年奥运会帆船比赛场地。对面就是情人坝+白灯塔，看夕阳第一名。晚上8点有灯光秀（5-10月），浮山湾夜景璀璨。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛五四广场" target="_blank">📍 市南区东海西路 — 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#8b6914,#d4a017);font-size:56px;">🍺</div>
+      <div class="card-body">
+        <h3>青岛啤酒博物馆</h3>
+        <span class="tag">60元起 · 2小时</span>
+        <p>全世界唯一以啤酒为主题的博物馆。A区文化历史变迁，B区百年酿造工艺实景重现。B区可领一杯最新鲜的青岛一厂原浆，口感秒杀瓶装。C区1903餐吧可继续喝。正常票60元，强烈建议买<strong>95元品鉴票</strong>（可喝8杯酒）。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛啤酒博物馆" target="_blank">📍 市北区登州路56号 — 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#4a0030,#8b0050);font-size:56px;">⛪</div>
+      <div class="card-body">
+        <h3>天主教堂（圣弥厄尔教堂）</h3>
+        <span class="tag">建筑瑰宝 · 约10元</span>
+        <p>青岛市区最大的哥特式建筑，中国唯一的祝圣教堂。红顶黄墙的砖石双塔建筑，十分醒目。建于1932年，由德国设计师毕娄哈设计。这个角度像极了布拉格。内部庄严肃穆，彩绘玻璃窗很美。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛天主教堂" target="_blank">📍 市南区浙江路15号 — 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#5a3a2a,#8b6040);font-size:56px;">🔔</div>
+      <div class="card-body">
+        <h3>江苏路基督教堂</h3>
+        <span class="tag">古堡风格 · 约10元</span>
+        <p>乍看像一座古堡，由钟楼和礼堂两部分组成。钟楼100多岁了还在准时工作，每到整点和半点都会报时。登塔楼能远眺大海。内部比想象中朴素，两层设计，周末有两场固定礼拜。与天主教堂并称青岛建筑"门面担当"。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛江苏路基督教堂" target="_blank">📍 市南区江苏路15号 — 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#2c6020,#4a9f30);font-size:56px;">⛰️</div>
+      <div class="card-body">
+        <h3>信号山公园</h3>
+        <span class="tag">俯瞰全景 · 约10元</span>
+        <p>青岛最高的山（海拔98米），山顶有三幢红色蘑菇楼。远处是无尽大海，近处是一列列错落有致的红屋顶洋房。来青岛必去的拍照打卡地，能拍出明信片角度的城市全景。建议下午去，光线最美。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛信号山公园" target="_blank">📍 市南区龙山路16号 — 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#1a4a6a,#2d7a9f);font-size:56px;">🐟</div>
+      <div class="card-body">
+        <h3>小鱼山公园</h3>
+        <span class="tag">俯瞰全景 · 低价</span>
+        <p>遥望青岛海岸线和老城区风光，红瓦绿树尽收眼底。公园不大、地势也不高，3分钟爬到至高点。建议黄昏时过来欣赏落日余晖。附近的鱼山路、福山支路、大学路被称为"文化名人故居一条街"。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛小鱼山公园" target="_blank">📍 市南区福山支路24号 — 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#0a5a7a,#1a8abf);font-size:56px;">🏖️</div>
+      <div class="card-body">
+        <h3>海水浴场</h3>
+        <span class="tag">夏日必玩</span>
+        <p>
+          <strong>第一海水浴场</strong>（汇泉湾，位置最好，<a href="https://maps.apple.com/?q=青岛第一海水浴场" target="_blank" style="color:#007aff;">地图</a>）<br>
+          <strong>第二海水浴场</strong>（八大关旁，<a href="https://maps.apple.com/?q=青岛第二海水浴场" target="_blank" style="color:#007aff;">地图</a>）<br>
+          <strong>第三海水浴场</strong>（太平角，万国建筑背景最美，<a href="https://maps.apple.com/?q=青岛第三海水浴场" target="_blank" style="color:#007aff;">地图</a>）<br>
+          <strong>石老人海水浴场</strong>（最长，人少，推荐！<a href="https://maps.apple.com/?q=石老人海水浴场" target="_blank" style="color:#007aff;">地图</a>）<br>
+          <strong>金沙滩</strong>（沙质最细，但较远需一天，<a href="https://maps.apple.com/?q=青岛金沙滩" target="_blank" style="color:#007aff;">地图</a>）
+        </p>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#6b0040,#a00060);font-size:56px;">🎨</div>
+      <div class="card-body">
+        <h3>大学路 & 龙江路</h3>
+        <span class="tag">文艺打卡 · 免费</span>
+        <p><strong>大学路网红墙</strong>——90%的人来拍照的红墙转角，常年排队。但鱼山路上有真正的宝藏：<strong>青岛美术馆</strong>（中西合璧建筑，罗马柱廊+中国宫殿+阿拉伯式混搭，中庭玻璃穹顶绝美）。<strong>龙江路</strong>满墙宫崎骏涂鸦，《龙猫》《千与千寻》动漫元素，像走进了童话世界。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛大学路" target="_blank">📍 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#2a1a5a,#4a2d8b);font-size:56px;">📬</div>
+      <div class="card-body">
+        <h3>青岛邮电博物馆</h3>
+        <span class="tag">文青必去 · 一楼免费</span>
+        <p>始建于1901年，原是胶澳德意志帝国邮局旧址，暗红色砖墙+哥特式塔楼。一楼免费展览区有整面古董电话墙，收藏了1920年代起十几个国家的老电话。可以写一封信给未来的自己，最长保存50年。四楼是咖啡馆。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛邮电博物馆" target="_blank">📍 市南区安徽路5号 — 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#8b6914,#c09020);font-size:56px;">📚</div>
+      <div class="card-body">
+        <h3>如是书店 & 良友书坊</h3>
+        <span class="tag">海边阅读 · 免费</span>
+        <p><strong>如是书店</strong>（<a href="https://maps.apple.com/?q=如是书店青岛石老人" target="_blank" style="color:#007aff;">地图</a>）——面朝大海的360度全透明圆环结构书店，在石老人海水浴场边上。看书看海，人间惬意。<strong>良友书坊</strong>（<a href="https://maps.apple.com/?q=良友书坊青岛" target="_blank" style="color:#007aff;">地图</a>）——在邮电博物馆旁边，百年德式老建筑里，四楼塔楼区有哈利波特主题小天地。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 4. 美食地图 -->
+<!-- ===================================================== -->
+<section class="container" id="food" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">美食地图</span>
+    <span class="en">Qingdao Food Guide · 吃到怀疑人生</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🥢 找餐厅秘籍：</strong> 看哪个餐厅门口<strong>鲁B车牌</strong>的车停得多，那么这家准靠谱！本地人用嘴投票，排队越长的店越值得吃。
+  </div>
+
+  <!-- 海鲜 -->
+  <div class="food-cat fade-in">
+    <div class="food-cat-header" style="background:linear-gradient(135deg,#0a3d62,#1e6f9f);">
+      <span class="fc-icon">🦐</span>
+      <span class="fc-title" style="color:#fff;">肥美海鲜 · 原汁原味</span>
+    </div>
+    <div class="food-cat-body">
+      <p style="padding:12px 0 4px;font-size:14px;color:#555;line-height:1.9;">北方沿海讲究自然本味，冷水海鲜生长周期长，白水清煮就足够鲜美。青岛的海鲜三种吃法：白灼（蘸酱吃）、爆炒（重口味）、烧烤（烤生蚝、烤大虾）。生蚝8元/斤，石斑鱼18元/斤，比目鱼20元/斤，扇贝15元/2斤。</p>
+
+      <div class="food-item">
+        <div class="fi-name">海乐海鲜家常菜</div>
+        <div class="fi-price">人均 88元</div>
+        <div class="fi-desc">韭菜海肠、油泼扇贝、蒜蓉生蚝、香辣虾、辣炒蛏子。海鲜水饺无敌——全家福拼盘（黄色黄花鱼、黑色墨鱼、绿色鲅鱼、白色三鲜）。桶装鲜啤必点。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=海乐海鲜家常菜青岛" target="_blank">📍 莱阳路51号甲（鲁迅公园对面）→</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">前海沿餐厅</div>
+        <div class="fi-price">人均 70元</div>
+        <div class="fi-desc">招牌海肠捞饭，海肠Q弹有韧性；风味茄子外酥里软，酸甜口。分量大，一个人吃不完。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=前海沿餐厅青岛中山路" target="_blank">📍 中山路67号悦喜客来购物广场2楼 →</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">船歌鱼水饺</div>
+        <div class="fi-price">人均 60-80元</div>
+        <div class="fi-desc">青岛版"外婆家"，遍地连锁。饺子一绝，皮有嚼劲，轻轻爆汁！黄花鱼墨鱼双拼必点。海菜凉粉酸爽可口，加小虾干。辣炒小花蛤、蒜炒小鲍鱼都是招牌。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=船歌鱼水饺青岛" target="_blank">📍 多家分店，搜索最近门店 →</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">万喜啤酒屋（可自带海鲜加工）</div>
+        <div class="fi-price">加工费 10-15元/斤</div>
+        <div class="fi-desc">去海鲜市场买好"海货"带来加工。清蒸10元/斤，红烧15元/斤。扎啤直接从啤酒厂运送，保持原始风味。边喝啤酒边吃海鲜，最地道的青岛体验！</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=万喜啤酒屋青岛成武路" target="_blank">📍 成武路47号（西镇地铁站B口步行150米）→</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">福多多家常菜馆</div>
+        <div class="fi-price">人均 60元</div>
+        <div class="fi-desc">苍蝇馆子，味道一流。鲅鱼水饺鱼肉滑嫩无腥味；清炒蛤蜊原汁原味；五花肉炒笔管（墨鱼）嘎嘎下饭。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=福多多家常菜馆青岛" target="_blank">📍 市北区无棣二路10号乙 →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 韩国料理 -->
+  <div class="food-cat fade-in">
+    <div class="food-cat-header" style="background:linear-gradient(135deg,#cc0040,#ff3366);">
+      <span class="fc-icon">🇰🇷</span>
+      <span class="fc-title" style="color:#fff;">韩国料理 · 完全不输韩国</span>
+    </div>
+    <div class="food-cat-body">
+      <p style="padding:12px 0 4px;font-size:14px;color:#555;line-height:1.9;">青岛居住着10w+韩国人，韩国料理水平极高。三大韩国人聚居区：市南崂山、城阳、李沧。走一步一家韩料店，味道都不差。</p>
+
+      <div class="food-item">
+        <div class="fi-name">健康家饭</div>
+        <div class="fi-price">人均 57元</div>
+        <div class="fi-desc">韩国夫妇开的店，韩式小清新风格。韩式辣酱年糕一生推！芝士年糕Q弹程度刚好，辣酱包裹层次丰富。芝士鸡蛋卷是点单王者。韩式五花肉套餐配紫苏叶，香气四溢。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=健康家饭青岛" target="_blank">📍 龙江路19号丙大下坡（近黄县支路）→</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">火炉情</div>
+        <div class="fi-price">人均 74元</div>
+        <div class="fi-desc">其貌不扬但味道惊艳！免费的大麦茶香气四溢，土豆泥有沙拉酱奶味。大酱汤、海鲜汤、豆腐汤随便点。店员帮烤肥牛、五花肉，完全不肥腻。还送小麻糍。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=火炉情青岛古田路" target="_blank">📍 香港花园古田路14号（近爱购）→</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">绣罗</div>
+        <div class="fi-price">人均 73元</div>
+        <div class="fi-desc">土豆泥和南瓜汤绝了，喝得让人上头！烤肉每桌必点，猪五花叠蒜瓣蘸酱包生菜/紫苏叶。辣牛肉汤、海鲜豆腐汤有中式改良。配真露烧酒（果味），快意人生。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=绣罗青岛云岭路" target="_blank">📍 梅岭东路三友公寓北门口（近云岭路）→</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">新罗参鸡汤</div>
+        <div class="fi-price">人均 61元</div>
+        <div class="fi-desc">青岛老牌韩料，长期稳坐top10。参鸡汤里一整只童子鸡，夹糯米红枣，滋补。米肠热腾腾上场，超级香。店里能看到好多罐泡好的人参，滋补气息无处不在。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=新罗参鸡汤青岛" target="_blank">📍 漳州二路68号-2号 →</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">东门传统炭火烤肉</div>
+        <div class="fi-price">人均 78元</div>
+        <div class="fi-desc">在城阳区。招牌「东门吾桑格」牛肉薄切，蘸水果料汁配葱丝，生菜包裹不满足都难。烤炉一圈加芝士玉米、鸡蛋羹。全程帮烤服务到位。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=东门传统炭火烤肉青岛" target="_blank">📍 城阳区春城路212号 →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 本地特色小吃 -->
+  <div class="food-cat fade-in">
+    <div class="food-cat-header" style="background:linear-gradient(135deg,#7a3d1a,#b06030);">
+      <span class="fc-icon">🥟</span>
+      <span class="fc-title" style="color:#fff;">本地小吃 & 市井味道</span>
+    </div>
+    <div class="food-cat-body">
+
+      <div class="food-item">
+        <div class="fi-name">白玉餐厅</div>
+        <div class="fi-price">人均 40元</div>
+        <div class="fi-desc">20多年鲁菜苍蝇馆子，近天主教堂。招牌炸蘑菇、鱼香茄子、辣鸡心、糖醋里脊，闭眼点不踩雷。整体口味偏甜。完全没有装修，全靠味道留人。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=白玉餐厅青岛" target="_blank">📍 天主教堂附近（老城区）→</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">老谢野馄饨</div>
+        <div class="fi-price">人均 30-50元</div>
+        <div class="fi-desc">"野"=夜。早期街边地摊的"野性"得名。黑胡椒汤底馄饨鲜美，配烧烤是灵魂组合。只有下午17:30-凌晨2:00营业。台东夜市附近。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=老谢野馄饨青岛" target="_blank">📍 市北区延安路142-1号 →</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">众品老方子锅贴甜沫</div>
+        <div class="fi-price">人均 25元</div>
+        <div class="fi-desc">老字号！虾仁锅贴酥脆鲜嫩，墨鱼锅贴用墨鱼汁和面黑皮酥脆。青岛人早餐标配：锅贴+甜沫（小米面咸粥，加粉条、豆干、菠菜，名字带"甜"实际是咸的）。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=众品老方子锅贴青岛" target="_blank">📍 市南区延吉路图书馆东北108号 →</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">台东夜市（整条街）</div>
+        <div class="fi-price">人均 30-100元</div>
+        <div class="fi-desc">"中日韩美食大排档"！花100元吃到撑。认准排长队的店：满口香（开了30多年，辣肉超赞，炸蘑菇心头爱，人均30）、糯米蛋糕（蛋挞1元/个，蛋卷10元一大袋，甜度刚好不齁）。建议多约朋友一起分享。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=青岛台东夜市" target="_blank">📍 市北区台东三路 →</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">宏发红西饼屋</div>
+        <div class="fi-price">人均 15元</div>
+        <div class="fi-desc">老牌面包店，承载本地人童年回忆。红豆乳酪包松软甜蜜，糯米面包外脆里糯，用料扎实。"糯唧唧"爱好者无法抵挡。</div>
+        <div class="fi-map"><a href="https://maps.apple.com/?q=宏发红西饼屋青岛" target="_blank">📍 市南区天津路20戊 →</a></div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">王哥庄大馒头（崂山特产）</div>
+        <div class="fi-price">约 10-20元</div>
+        <div class="fi-desc">比脑袋还大！青岛市非物质文化遗产。配方加牛奶蜂蜜，底部一层硬壳，嚼起来香甜可口。可切片当主食。崂山各大餐馆都有。</div>
+      </div>
+
+      <div class="food-item">
+        <div class="fi-name">海泊河早市</div>
+        <div class="fi-price">丰俭由人</div>
+        <div class="fi-desc">青岛本地人最爱逛的早市之一，海鲜新鲜便宜。早餐推荐：山东大包（大虾包6元，整只大虾+肉馅；裙带肋排包）、王家粗面玉米饼子（外酥里糯）、青岛脂渣（猪油渣金黄酥脆越嚼越香）。<br>⏰ 早上5:00-中午12:00 | <a href="https://maps.apple.com/?q=青岛海泊河早市" target="_blank" style="color:#007aff;">📍 市北区人民路20号</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 崂山三绝 & 黑暗饮料 -->
+  <div class="food-cat fade-in">
+    <div class="food-cat-header" style="background:linear-gradient(135deg,#2a6b3a,#3d9f5a);">
+      <span class="fc-icon">🧃</span>
+      <span class="fc-title" style="color:#fff;">崂山三绝 · 黑暗饮料挑战</span>
+    </div>
+    <div class="food-cat-body">
+      <div class="food-item">
+        <div class="fi-name">崂山白花蛇草水 🏆 最难喝</div>
+        <div class="fi-price">约 5元</div>
+        <div class="fi-desc">某乎上"崂山白花蛇草水有多难喝？"有1399个回答。味道众说纷纭：夏日腐烂草席味、味精水味、汗味、红花油味、穿三天的袜子味、冻猪油味……真正勇士才敢喝！但粉丝说是健康续命水，一定要冷藏喝。</div>
+      </div>
+      <div class="food-item">
+        <div class="fi-name">崂山可乐</div>
+        <div class="fi-price">约 4元</div>
+        <div class="fi-desc">山东90后情怀饮料！比可口可乐甜，有淡淡中草药味。配方含高良姜、丁香、白芷、砂仁等草药成分。没什么碳酸气泡，像小时候的糖精味可乐。</div>
+      </div>
+      <div class="food-item">
+        <div class="fi-name">崂山苏打水</div>
+        <div class="fi-price">约 4元</div>
+        <div class="fi-desc">气更足，带一点点咸味，不难喝。可搭配青柠饮用，或调崂山牌鸡尾酒。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="deco-line">◆ ◇ ◆ ◇ ◆ ◇ ◆</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 5. 崂山专题 -->
+<!-- ===================================================== -->
+<section class="container" id="laoshan" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">崂山专题</span>
+    <span class="en">Mount Lao · 海上第一名山</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="overview-card fade-in">
+    <div class="overview-visual" style="background:linear-gradient(135deg,#1a4a3a,#2d7a5a);">
+      <div class="big-icon">⛰️</div>
+      <div style="font-size:18px;font-weight:300;letter-spacing:4px;">中国海岸线第一高峰</div>
+      <div style="margin-top:8px;font-size:14px;opacity:0.7;">海拔 1132.7 米</div>
+    </div>
+    <div class="overview-body">
+      <h3>青岛最野的海，在崂山</h3>
+      <p>崂山是中国海岸线第一高峰，有着"海上第一名山"的美誉。崂山并不单指一座山，而是一片区域。这里有曾经刷爆某音的环海公路，一半海水一半崂山，视觉冲击感极强。想要避开人海看真正的"野"海，一定要来崂山。</p>
+      <p>崂山也是道教发祥地之一。<strong>太清宫</strong>名扬天下，蒲松龄的《聊斋志异》中道士穿墙而过的典故就发源于此。</p>
+      <p><strong>重要提醒：</strong>崂山景区极大，分为五大景区。每个景区或多或少都需要爬山，务必穿舒适的运动鞋，备足水，做好防晒（SPF50+）。</p>
+      <a class="map-btn" href="https://maps.apple.com/?q=青岛崂山风景区" target="_blank">🗺️ 崂山风景区地图</a>
+    </div>
+  </div>
+
+  <div class="table-wrap fade-in">
+    <table>
+      <thead>
+        <tr>
+          <th>线路</th>
+          <th>景区</th>
+          <th>核心看点</th>
+          <th>票价</th>
+          <th>适合人群</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>⭐ 南线</strong></td>
+          <td>仰口 · 太清 · 棋盘石</td>
+          <td>山海融合经典。<strong>仰口</strong>坐索道看海天一色 + <strong>青山渔村</strong>红瓦村落 + <strong>太清宫</strong>道教圣地。含索道体验</td>
+          <td>通票150元<br>仰口索道35元/趟<br>太清索道45元/趟</td>
+          <td>⭐⭐⭐⭐⭐ 首推！</td>
+        </tr>
+        <tr>
+          <td><strong>中线</strong></td>
+          <td>巨峰</td>
+          <td>崂山主峰，海拔最高。看最壮阔的山海一色。坐索道上去后仍需步行</td>
+          <td>158元</td>
+          <td>登山爱好者</td>
+        </tr>
+        <tr>
+          <td><strong>北线</strong></td>
+          <td>北九水</td>
+          <td>溪涧森林徒步，九水十八潭。夏天避暑玩水，本地人最爱</td>
+          <td>90元</td>
+          <td>亲子 · 避暑</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🏆 崂山一日游最佳方案（南线精华）：</strong><br>
+    上午 <strong>仰口景区</strong>（坐索道上山 → 走觅天洞或绕山道 → 山顶"天苑"俯瞰海岸线）→ 中午 <strong>青山渔村</strong>（618路公交到垭口，坐左边靠窗）→ 下午 <strong>太清景区</strong>（太清宫拜老子，抱拳礼 → 坐索道下山）<br>
+    <strong>⚠️ 避坑：</strong> 仰口索道可能维修，出发前确认。觅天洞内漆黑狭窄，用手机照明即可，体型过大者建议走绕山道。暑假爬山极易中暑，防晒必须做好。
+  </div>
+
+  <div class="grid">
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#1a5a3a,#2d8a5a);font-size:48px;">🚡</div>
+      <div class="card-body">
+        <h3>仰口景区 — 必去！</h3>
+        <span class="tag">山海融合 · 最佳</span>
+        <p>崂山最值得打卡的景区，游客最多。海拔800米左右，有山有海有沙滩，日落时山海人融合最美。仰口索道是开放式缆车，视野极好。奇峰异石有狮子峰、觅天洞、寿字峰。名人石刻有郭沫若、臧克家等。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛仰口景区" target="_blank">📍 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#3a2a1a,#6b4a2d);font-size:48px;">☯️</div>
+      <div class="card-body">
+        <h3>太清宫</h3>
+        <span class="tag">道教圣地 · 千年古树</span>
+        <p>《聊斋志异》作者蒲松龄曾在此修行。巨大的老子像屹立山峦之中。庙宇分三官殿、三清殿、三皇殿。千年古树银杏遍地，秋天红叶尽染。拜神用<strong>左手包右手的拱手礼（抱拳礼）</strong>，不是双手合十！从下车点步行到太清宫的路有朴树、鸡爪槭，一路飘香。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛太清宫" target="_blank">📍 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#8b4513,#b07030);font-size:48px;">🏘️</div>
+      <div class="card-body">
+        <h3>青山渔村</h3>
+        <span class="tag">500年渔村 · 免费</span>
+        <p>背山面海、被梯田和茶园合围的红瓦渔村，有500多年历史。从高处往下望，配合蓝色大海，美得冒泡！不在收费景区内，<a href="#bus">618路公交</a>经过。天气好时可以假装在意大利五渔村。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛青山渔村" target="_blank">📍 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#4a6b3a,#6a9f4a);font-size:48px;">🍄</div>
+      <div class="card-body">
+        <h3>崂山美食吃什么？</h3>
+        <span class="tag">鲁菜 · 渔家宴</span>
+        <ul>
+          <li><strong>王哥庄大馒头</strong> — 非遗，比脑袋大，加牛奶蜂蜜</li>
+          <li><strong>海鲜饺子</strong> — 鲅鱼饺子（黄皮）、墨鱼饺子（黑皮）</li>
+          <li><strong>崂山石花菜海凉粉</strong> — 海鲜味咸口凉粉，解暑清爽</li>
+          <li><strong>崂山菇炖鸡</strong> — 代表菜之一，本地小公鸡+崂山菇炖制</li>
+          <li><strong>清蒸海螺/皮皮虾/爆炒扇贝</strong> — 盲点不踩雷</li>
+        </ul>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛崂山区美食" target="_blank">📍 崂山农家菜（打开地图）→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 6. 公交漫游 -->
+<!-- ===================================================== -->
+<section class="container" id="bus" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">公交漫游</span>
+    <span class="en">2 Yuan City Tour by Bus</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🚌 强烈推荐坐公交！</strong> 青岛老城区单行线多、停车难、坡大不建议骑自行车。公交在地上跑，正好慢慢欣赏建筑。最多只需<strong>2元</strong>，就能把青岛精华的、迷人的、有烟火气的风景都看了。地铁2号线和3号线也覆盖主要景点，用"青岛地铁通"APP很方便。
+  </div>
+
+  <div class="bus-card fade-in">
+    <div class="bus-num" style="background:linear-gradient(135deg,#0a6a3a,#1aaa60);">618</div>
+    <div class="bus-body">
+      <h4>最美峡湾公交</h4>
+      <div class="bus-sub">仰口 → 垭口 | 全程约30分钟 | 经过76个急弯</div>
+      <p>崂山最红的公交线路！碧海蓝天、山峦果树、红瓦村庄、茶园梯田全程连播，风景好看不重样。<strong>雕龙嘴站</strong>看日出；<strong>返岭站</strong>野生沙滩拍照一流；<strong>青山站</strong>最美渔村。春天来坐沿途是樱花杏花。上山坐<strong>左边</strong>窗边，下山坐<strong>右边</strong>。</p>
+      <div class="bus-stops">🚏 仰口 → 雕龙嘴 → 华严寺 → 返岭 → 青山 → 垭口</div>
+    </div>
+  </div>
+
+  <div class="bus-card fade-in">
+    <div class="bus-num" style="background:linear-gradient(135deg,#1a4a8a,#2d7ad0);">468</div>
+    <div class="bus-body">
+      <h4>市区景点浓缩环线</h4>
+      <div class="bus-sub">小西湖 → 五四广场 | 环线约30分钟</div>
+      <p>初代"最美公交"，几乎每一站跳下来都是景点！深入八大关核心景区的唯一公交（正阳关路→武胜关路→宁武关路）。途径第三海水浴场（太平角万国建筑背景）。终点五四广场+奥帆中心。第一次来青岛跟着468路走就对了。</p>
+      <div class="bus-stops">🚏 小西湖 → 八大关 → 武胜关路 → 宁武关路 → 第三海水浴场 → 太平角公园 → 五四广场</div>
+    </div>
+  </div>
+
+  <div class="bus-card fade-in">
+    <div class="bus-num" style="background:linear-gradient(135deg,#0a4a6a,#1a7aaf);">316</div>
+    <div class="bus-body">
+      <h4>超长看海公交</h4>
+      <div class="bus-sub">四川路停车场 → 麦岛路停车场 | 全程约2h</div>
+      <p>沿着崂山区+市南区海岸线开，大片路段贴着海。小绿书热门打卡点<strong>西陵峡三路</strong>在沿线，能拍出"路的尽头就是海"。怕人多可选25路、312路、321路同路段替代。</p>
+      <div class="bus-stops">🚏 栈桥 → 中山公园 → 八大关 → 太平角公园 → 五四广场 → 奥帆中心 → 小麦岛公园</div>
+    </div>
+  </div>
+
+  <div class="bus-card fade-in">
+    <div class="bus-num" style="background:linear-gradient(135deg,#0a4a6a,#1a7aaf);">317</div>
+    <div class="bus-body">
+      <h4>看海延伸线</h4>
+      <div class="bus-sub">天泰体育场 → 石老人</div>
+      <p>316路的姐妹线，延伸到石老人海水浴场。如果住石老人附近（游客密度最低的海水浴场），这条线是出行首选。在武胜关路、太平角公园、东海东路麦岛路与316路有交集。</p>
+      <div class="bus-stops">🚏 中山公园 → 八大关 → 五四广场 → 奥帆中心 → 小麦岛公园 → 极地海洋世界 → 石老人</div>
+    </div>
+  </div>
+
+  <div class="bus-card fade-in">
+    <div class="bus-num" style="background:linear-gradient(135deg,#8b4a1a,#c07030);">220</div>
+    <div class="bus-body">
+      <h4>老城文艺 + 西镇美食</h4>
+      <div class="bus-sub">团岛 → 信号山 | 沉浸式逛老城</div>
+      <p>既经过文艺的信号山、小鱼山、大学路（名人故居片区），也经过老青岛市井味浓的团岛、西镇。沿途可去<strong>团岛农贸市场</strong>逛早市。西镇美食云集：西镇臭豆腐、西镇电烤肉、西镇辣鸡架、张姐炸串、九龙餐厅、白玉餐厅、建明炸串……都是几十年的老店。始发站<strong>团岛路贵州站</strong>就在团岛农贸市场门口。</p>
+      <div class="bus-stops">🚏 团岛 → 西镇 → 信号山公园 → 大学路 → 龙江路 → 广西路 → 栈桥</div>
+    </div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🚏 公交小贴士：</strong> 坐6路、25路也是"老青岛"经典线路。票价1-2元，支持支付宝/微信乘车码。崂山618路因山路急弯多，公交司机驾驶技术一流，请扶好坐稳。
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 7. Citywalk 老城漫步 -->
+<!-- ===================================================== -->
+<section class="container" id="citywalk" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">老城 Citywalk</span>
+    <span class="en">Walk Through Old Qingdao</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="overview-card fade-in">
+    <div class="overview-visual" style="background:linear-gradient(135deg,#5a2d6b,#8a4a9f);">
+      <div class="big-icon">🚶</div>
+      <div style="font-size:18px;font-weight:300;letter-spacing:4px;">走2万步，摸到老青岛的魂</div>
+    </div>
+    <div class="overview-body">
+      <h3>5km 精华路线</h3>
+      <p>青岛正为申报世界文化遗产做准备，将包括八大关在内的28平方公里老城区纳入保护范围。浓缩出这条适合游客的路线——<strong>起点栈桥、终点福山路</strong>，全长约5km，步行+参观约需4-5小时。</p>
+    </div>
+  </div>
+
+  <div class="spot-block fade-in">
+    <h4>第一站：栈桥</h4>
+    <div class="sb-meta">⏱ 15分钟 · 远观拍照即可 | <a href="https://maps.apple.com/?q=青岛栈桥" target="_blank">🗺️ 地图</a></div>
+    <p>青岛地标，桥尽头回澜阁延伸入大海。建议在海边或航拍视角拍照。冬季有成群西伯利亚海鸥。</p>
+  </div>
+
+  <div class="spot-block fade-in">
+    <h4>第二站：中山路</h4>
+    <div class="sb-meta">⏱ 30分钟 | <a href="https://maps.apple.com/?q=青岛中山路" target="_blank">🗺️ 地图</a></div>
+    <p>百年商业街。推荐两座老建筑：<strong>中山路1号</strong>红色房子（原青岛国际俱乐部，德占时期第一个俱乐部，现为西餐厅，内部保留原貌）；<strong>1907光影俱乐部</strong>（湖北路交界处，中国现存开业最早的商业电影院，1907年就有。主楼后院天台是与圣弥厄尔教堂合影的好机位）。<strong>劈柴院</strong>不推荐（城市模板美食街）。</p>
+  </div>
+
+  <div class="spot-block fade-in">
+    <h4>第三站：广西路 — 百年历史老街</h4>
+    <div class="sb-meta">⏱ 40分钟 | <a href="https://maps.apple.com/?q=青岛广西路" target="_blank">🗺️ 地图</a></div>
+    <p>德占时期商贸经济中心，相当于青岛最早的CBD。值得特别留意的建筑：</p>
+    <ul style="list-style:none;padding:0;margin-top:8px;">
+      <li style="padding:4px 0 4px 20px;position:relative;font-size:14px;color:#555;">📮 <a href="https://maps.apple.com/?q=青岛邮电博物馆" target="_blank" style="color:#007aff;">青岛邮电博物馆</a> — 原胶澳德意志帝国邮局旧址，唯一保存完好的百年以上木质塔楼建筑</li>
+      <li style="padding:4px 0 4px 20px;position:relative;font-size:14px;color:#555;">🏠 <a href="https://maps.apple.com/?q=崂山矿泉博物馆" target="_blank" style="color:#007aff;">崂山矿泉博物馆</a>（红房子） — 被青岛人称为"红房子"，免费参观，可买到崂山三绝</li>
+      <li style="padding:4px 0 4px 20px;position:relative;font-size:14px;color:#555;">🏛️ 侯爵饭店旧址 — 百年建筑，花岗岩墙+彩色老虎窗，现为市南公安分局</li>
+      <li style="padding:4px 0 4px 20px;position:relative;font-size:14px;color:#555;">📚 <a href="https://maps.apple.com/?q=良友书坊青岛" target="_blank" style="color:#007aff;">良友书坊</a> — 2023年山东省年度最美书店，四楼塔楼区是秘密读书基地</li>
+    </ul>
+  </div>
+
+  <div class="spot-block fade-in">
+    <h4>第四站：沂水路 — 历史分量</h4>
+    <div class="sb-meta">⏱ 20分钟 | <a href="https://maps.apple.com/?q=青岛沂水路" target="_blank">🗺️ 地图</a></div>
+    <p>德占时期将象征统治的<strong>胶澳总督府旧址</strong>建于此，正对进出胶州湾口主航道正南方向。五四运动后青岛是第一个回归的被侵占城市，回归典礼在这里举行。曾是多国领馆驻地（1号美国领事馆、14号英国领事馆）。道路两侧法国梧桐，秋天极美。每天早上6-8点有<strong>沂水路早市</strong>，食材新鲜便宜。</p>
+  </div>
+
+  <div class="spot-block fade-in">
+    <h4>第五站：江苏路 — 基督教堂</h4>
+    <div class="sb-meta">⏱ 20分钟 | <a href="https://maps.apple.com/?q=青岛江苏路基督教堂" target="_blank">🗺️ 地图</a></div>
+    <p>青岛建筑"门面担当"之一。教堂乍看像古堡，钟楼100多岁了还在工作，登塔楼远眺大海。</p>
+  </div>
+
+  <div class="spot-block fade-in">
+    <h4>第六站：黄县路 — 一半沧桑一半文艺</h4>
+    <div class="sb-meta">⏱ 30分钟 | <a href="https://maps.apple.com/?q=青岛黄县路" target="_blank">🗺️ 地图</a></div>
+    <p>不到600m但名人故居密集。<strong>老舍故居</strong>（<a href="https://maps.apple.com/?q=老舍故居青岛" target="_blank" style="color:#007aff;">地图</a>）— 创作《骆驼祥子》的地方，国内首个以文学作品命名的博物馆，藏品280余件。目前修缮中，开放时间待定。<strong>荒岛书店</strong>（<a href="https://maps.apple.com/?q=荒岛书店青岛" target="_blank" style="color:#007aff;">地图</a>）— 1933年开业，老舍当年最爱去的书店。《骆驼祥子》手稿写在荒岛书店稿纸上。保留上世纪30年代实木老家具。<strong>不舍昼夜咖啡馆</strong> — 在鹿晗《诺言》MV里出现过，两层小洋房拍照好看。</p>
+  </div>
+
+  <div class="spot-block fade-in">
+    <h4>第七站：鱼山路 — 文化名人故居一条街</h4>
+    <div class="sb-meta">⏱ 30分钟 | <a href="https://maps.apple.com/?q=青岛鱼山路" target="_blank">🗺️ 地图</a></div>
+    <p>不要只跟网红墙拍照！鱼山路是真正的文化宝藏：德国人阿里文（筹建青岛海关）、闻一多（青岛大学文学院院长）、赫崇本（著名海洋学家）、梁实秋（青岛大学外语系主任）都曾是这里居民。<strong>青岛美术馆</strong>（<a href="https://maps.apple.com/?q=青岛美术馆" target="_blank" style="color:#007aff;">地图</a>）— 原世界红十字会青岛分址，建筑混搭罗马柱廊式+中国宫殿式+阿拉伯式，中庭玻璃穹顶绝美。展览大多免费，需至少提前1天预约。</p>
+  </div>
+
+  <div class="spot-block fade-in">
+    <h4>第八站：福山路 — 半山腰的浪漫</h4>
+    <div class="sb-meta">⏱ 20分钟 | <a href="https://maps.apple.com/?q=青岛福山路" target="_blank">🗺️ 地图</a></div>
+    <p>我最爱的路！架在半山腰上，坡道连着台阶，爬满绿植的红顶别墅洋房，拍照有错落的层次美，像欧洲小镇。易烊千玺《送你一朵小红花》在这里取景。影后胡蝶、康有为、沈从文、宋春舫都曾在此居住。咖啡店、花店、甜品店很多，走累了找家顺眼的小店休息吧。从福山路步行20分钟可达八大关。</p>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🚶 Citywalk 小贴士：</strong> 全程约5km，步行+参观4-5小时。穿舒适的鞋子！老城区有坡度，但正因如此才有了错落有致的美。沿途咖啡馆众多，随时可以歇脚。建议带上相机，每个转角都是风景。
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 8. 住宿指南 -->
+<!-- ===================================================== -->
+<section class="container" id="hotel" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">住宿指南</span>
+    <span class="en">Where to Stay in Qingdao</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>📍 首选区域：市南区 / 市北区</strong> — 大部分景点（除崂山、金沙滩外）都在这两个区。第一次来青岛建议住这里。多刷青岛可市区+黄岛/崂山组合。即墨区不适合旅行者。如果坐高铁，建议买到<strong>青岛站</strong>（最文艺火车站）的车票，距离市区近。
+  </div>
+
+  <div class="grid">
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#e60012,#ff5566);font-size:48px;">👑</div>
+      <div class="card-body">
+        <div class="hotel-rank"><span class="rank rank-ss">YYDS</span></div>
+        <h4>青岛海景花园</h4>
+        <p>青岛酒店业永远滴神！服务入选<strong>哈佛商学院教程</strong>（中国唯一一家）。HBA设计，设计风格像上海华尔道夫。免费机场接送、免费洗车、甚至帮你洗衣服！亲子设施一整层：小童游乐室（3岁以下）、大童游乐室（4-6岁）、酷乐城堡（6岁以上）、儿童小影院和手工室。</p>
+        <a class="map-link" href="https://maps.apple.com/?q=青岛海景花园酒店" target="_blank">📍 打开地图 →</a>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#6b0000,#b00000);font-size:48px;">⭐</div>
+      <div class="card-body">
+        <div class="hotel-rank"><span class="rank rank-ss">第一档</span></div>
+        <h4>瑞吉 · 涵碧楼</h4>
+        <p><strong>瑞吉</strong>（<a href="https://maps.apple.com/?q=青岛瑞吉酒店" target="_blank" style="color:#007aff;">地图</a>）：青岛最高最新，天际线房间、泳池、餐厅都是青岛最高，比信号山还高！俯瞰城市景观一级棒。<strong>涵碧楼</strong>（<a href="https://maps.apple.com/?q=青岛涵碧楼" target="_blank" style="color:#007aff;">地图</a>）：安缦设计师Kerry Hill操刀，现代极简+中式元素。全套房有温泉，青岛最贵。缺点是在黄岛，适合泡酒店不适合逛景点。</p>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#8b4513,#c07030);font-size:48px;">🏆</div>
+      <div class="card-body">
+        <div class="hotel-rank"><span class="rank rank-s">第二档</span></div>
+        <h4>凯悦 · 海天 · 洲际</h4>
+        <p><strong>凯悦</strong>（<a href="https://maps.apple.com/?q=青岛凯悦酒店" target="_blank" style="color:#007aff;">地图</a>）：市区唯一有沙滩的酒店！大部分房间海景，视野一级棒。东海88餐厅又好吃又划算（有饭卡的话）。<strong>海天</strong>（<a href="https://maps.apple.com/?q=青岛海天酒店" target="_blank" style="color:#007aff;">地图</a>）：CCD设计，自助餐厅看海角度青岛最佳。80%房间能看海。前台升级最爽快。<strong>洲际</strong>（<a href="https://maps.apple.com/?q=青岛海尔洲际酒店" target="_blank" style="color:#007aff;">地图</a>）：五四广场奥帆中心旁，顶楼Venu海景酒廊看灯光秀。</p>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-img" style="background:linear-gradient(135deg,#5a3a2a,#8b6040);font-size:48px;">🏨</div>
+      <div class="card-body">
+        <div class="hotel-rank"><span class="rank rank-a">第三档</span></div>
+        <h4>更多优选</h4>
+        <p><strong>崂山君澜</strong>（<a href="https://maps.apple.com/?q=青岛崂山君澜酒店" target="_blank" style="color:#007aff;">地图</a>）：2021年新开业，270度三面环海，距仰口景区5公里。早餐有炒花甲。适合崂山行程。<strong>金沙滩希尔顿/威斯汀</strong>（<a href="https://maps.apple.com/?q=青岛金沙滩希尔顿" target="_blank" style="color:#007aff;">地图</a>）：适合金沙滩行程。<strong>市区威斯汀/香格里拉</strong>：位置好但偏老。<strong>汇泉王朝</strong>：在第一海水浴场旁，楼顶旋转餐厅俯瞰汇泉湾。<strong>八大关宾馆</strong>：国宾馆。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 9. 实用贴士 -->
+<!-- ===================================================== -->
+<section class="container" id="tips" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">实用贴士</span>
+    <span class="en">Travel Tips & FAQs</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr));">
+    <div class="card fade-in">
+      <div class="card-body">
+        <h3>🚇 市内交通</h3>
+        <ul>
+          <li>地铁2号线和3号线覆盖主要景点</li>
+          <li>公交优选——看建筑+仅1元车费，用"青岛地铁通"APP</li>
+          <li>✗ 老城区不建议自驾（单行线多、停车难）</li>
+          <li>✗ 不建议骑自行车（坡大）</li>
+          <li>✓ 去崂山建议自驾，沿海公路超爽，像美国一号公路</li>
+          <li>✓ 打车也很方便，市区不大</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-body">
+        <h3>✈️ 大交通</h3>
+        <ul>
+          <li><strong>高铁优先！</strong>新机场胶东国际机场离市区很远（类似浦东到上海市区距离），到市区50分钟以上</li>
+          <li>青岛站（最文艺火车站）和青岛北站都在市区，高铁推荐到青岛站</li>
+          <li>飞抵胶东机场后可打车/机场大巴/地铁到市区</li>
+          <li>出发城市如果离青岛没那么远，果断选高铁</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-body">
+        <h3>💰 省钱攻略</h3>
+        <ul>
+          <li><strong>9月出行最划算</strong>（开渔+酒店跳水+天气舒爽）</li>
+          <li>啤酒博物馆买<strong>95元品鉴票</strong>（8杯酒，比60元基础票划算）</li>
+          <li>去海鲜市场买→啤酒屋加工，比餐厅吃省一半</li>
+          <li>台东夜市100元吃到撑</li>
+          <li>大多数景点免费</li>
+          <li>公交1-2元、地铁不贵</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-body">
+        <h3>📸 拍照机位</h3>
+        <ul>
+          <li><a href="https://maps.apple.com/?q=青岛信号山公园" target="_blank">信号山</a>/<a href="https://maps.apple.com/?q=青岛小鱼山公园" target="_blank">小鱼山</a> — 红瓦全景明信片角度</li>
+          <li><a href="https://maps.apple.com/?q=青岛西陵峡三路" target="_blank">西陵峡三路</a> — "路的尽头就是海"</li>
+          <li><a href="https://maps.apple.com/?q=青岛情人坝" target="_blank">情人坝</a>+白灯塔 — 看夕阳第一名</li>
+          <li>1907光影俱乐部天台 — 拍天主教堂合影</li>
+          <li><a href="https://maps.apple.com/?q=青岛龙江路" target="_blank">龙江路</a> — 宫崎骏动漫涂鸦墙</li>
+          <li><a href="https://maps.apple.com/?q=青岛大学路" target="_blank">大学路</a>网红红墙转角</li>
+          <li><a href="https://maps.apple.com/?q=青岛小麦岛" target="_blank">小麦岛</a> — 草地+海景+栈桥</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-body">
+        <h3>🌊 海水浴场怎么选</h3>
+        <ul>
+          <li><strong>第一次来+逛景区</strong>：选一至六浴，位置方便</li>
+          <li><strong>专心玩水</strong>：推荐<a href="https://maps.apple.com/?q=石老人海水浴场" target="_blank">石老人</a>（最长沙滩，人少）</li>
+          <li><strong>参加啤酒节</strong>：直奔<a href="https://maps.apple.com/?q=青岛金沙滩" target="_blank">金沙滩</a></li>
+          <li>第一海水浴场最热闹方便</li>
+          <li>第三海水浴场背景最美（太平角万国建筑）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-body">
+        <h3>⚠️ 注意事项</h3>
+        <ul>
+          <li><strong>防晒！防晒！防晒！</strong> SPF50+多抹几层，海风吹一吹皱纹就出来了</li>
+          <li>崂山爬山穿舒适运动鞋，备足水</li>
+          <li>吃海鲜可备肠胃药，适量饮用</li>
+          <li>啤酒屋加工先问好价格，避免纠纷</li>
+          <li>老舍故居目前修缮中，出发前确认开放状态</li>
+          <li>青岛美术馆需至少提前1天预约</li>
+          <li>7-8月旺季酒店务必提前预订</li>
+          <li>崂山门票实行预约制，关注"崂山风景区"公众号</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 看花日历 -->
+  <div class="spot-block fade-in" style="margin-top:20px;">
+    <h4>🌸 青岛全年赏花日历</h4>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:12px;">
+      <div style="background:linear-gradient(135deg,#ffe0e8,#fff0f4);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:24px;">🌸</div>
+        <div style="font-weight:600;color:#8b1a1a;font-size:14px;">4月</div>
+        <div style="font-size:12px;color:#666;">樱花·海棠</div>
+        <div style="font-size:11px;color:#999;">中国海洋大学<br>三明南路</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#ffe8e0,#fff5f0);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:24px;">🌺</div>
+        <div style="font-weight:600;color:#8b1a1a;font-size:14px;">5月</div>
+        <div style="font-size:12px;color:#666;">蔷薇花</div>
+        <div style="font-size:11px;color:#999;">全城绽放</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#fff0d0,#fff8e8);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:24px;">🌾</div>
+        <div style="font-weight:600;color:#8b1a1a;font-size:14px;">6月</div>
+        <div style="font-size:12px;color:#666;">麦收花</div>
+        <div style="font-size:11px;color:#999;">崂山沿线</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#e0e8ff,#f0f4ff);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:24px;">🪷</div>
+        <div style="font-weight:600;color:#8b1a1a;font-size:14px;">8月</div>
+        <div style="font-size:12px;color:#666;">荷花</div>
+        <div style="font-size:11px;color:#999;">中山公园</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#ffe0c0,#fff0e0);border-radius:10px;padding:14px;text-align:center;">
+        <div style="font-size:24px;">🍂</div>
+        <div style="font-weight:600;color:#8b1a1a;font-size:14px;">11月</div>
+        <div style="font-size:12px;color:#666;">秋叶红</div>
+        <div style="font-size:11px;color:#999;">八大关</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+<footer>
+  <div class="fq">「 青岛大概是我去过的路上能看到拍婚纱人最多的城市 」</div>
+  <p style="font-size:16px;letter-spacing:6px;margin:10px 0;">红瓦绿树 · 碧海蓝天 · 哈啤酒 · 吃蛤蜊 · 洗海澡 · 看小嫚</p>
+  <p style="margin-top:18px;opacity:0.7;">攻略整理自8篇青岛旅行公众号文章 · 献给每一个向往海边的你</p>
+  <p style="margin-top:6px;opacity:0.5;font-size:12px;">数据整理于 2026年5月 · 部分景点开放时间可能变动，出行前建议确认</p>
+</footer>
+
+<script>
+// Intersection Observer for fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Smooth scroll for nav
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青岛两天一夜 — 精选精华路线</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #fff8f5;
+    color: #3d2a2a;
+    line-height: 1.9;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    height: 88vh;
+    min-height: 500px;
+    background: linear-gradient(135deg, #e60012 0%, #ff3344 35%, #ff6666 70%, #ff9999 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 15% 60%, rgba(255,215,0,0.2) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 140px;
+    background: linear-gradient(to top, #fff8f5 0%, transparent 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    animation: fadeInUp 1.2s ease-out;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 10px 36px;
+    border: 2px solid rgba(255,215,0,0.5);
+    color: #ffd700;
+    font-size: 15px;
+    letter-spacing: 10px;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 74px;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.12);
+    margin-bottom: 14px;
+    letter-spacing: 14px;
+  }
+  .hero h1 .hl { color: #ffd700; }
+  .hero .sub {
+    font-size: 22px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 8px;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  .hero .sub2 {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 4px;
+    font-weight: 300;
+  }
+  .hero .quote {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    color: rgba(255,215,0,0.85);
+    letter-spacing: 6px;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%; transform: translateX(-50%);
+    z-index: 3;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    letter-spacing: 4px;
+    animation: bounce 2.4s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(12px); }
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: sticky;
+    top: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid #f0e0d8;
+    padding: 0 40px;
+  }
+  .nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav a {
+    flex-shrink: 0;
+    color: #8b5a4a;
+    text-decoration: none;
+    padding: 16px 22px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+  .nav a:hover {
+    color: #e60012;
+    border-bottom-color: #e60012;
+    background: rgba(230,0,18,0.04);
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 30px 30px;
+  }
+
+  /* ===== SECTION TITLE ===== */
+  .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .section-title .cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #e60012;
+    letter-spacing: 6px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .section-title .en {
+    font-size: 12px;
+    color: rgba(230,0,18,0.3);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+  .section-title .line {
+    width: 50px; height: 3px;
+    background: linear-gradient(90deg, transparent, #e60012, transparent);
+    margin: 14px auto 0;
+  }
+
+  /* ===== TIP BOX ===== */
+  .tip-box {
+    background: linear-gradient(135deg, #fff0ec, #fff8f5);
+    border-left: 4px solid #e60012;
+    border-radius: 0 12px 12px 0;
+    padding: 18px 24px;
+    margin: 16px 0;
+  }
+  .tip-box strong { color: #e60012; }
+
+  /* ===== TIMELINE ===== (Day 行程时间轴) */
+  .day-section {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(230,0,18,0.06);
+    border: 1px solid #f5e8e4;
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+  .day-header {
+    padding: 22px 32px;
+    background: linear-gradient(135deg, #e60012, #ff5566);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .day-header .dh-icon { font-size: 32px; }
+  .day-header .dh-title { font-size: 22px; font-weight: 700; letter-spacing: 4px; }
+  .day-header .dh-sub { font-size: 13px; opacity: 0.8; letter-spacing: 2px; margin-top: 2px; }
+  .day-body { padding: 10px 32px 28px; }
+
+  .time-slot {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px dashed #f0e4e0;
+  }
+  .time-slot:last-child { border-bottom: none; }
+  .time-slot .ts-time {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e60012;
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+  .time-slot .ts-content h4 {
+    font-size: 16px;
+    color: #8b1a1a;
+    margin-bottom: 4px;
+  }
+  .time-slot .ts-content p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+  }
+  .time-slot .ts-content .ts-map {
+    margin-top: 6px;
+  }
+  .time-slot .ts-content .ts-map a {
+    color: #007aff;
+    text-decoration: none;
+    font-size: 12px;
+    margin-right: 14px;
+  }
+  .time-slot .ts-content .ts-map a:hover { text-decoration: underline; }
+  .time-slot .ts-content .ts-tag {
+    display: inline-block;
+    padding: 1px 10px;
+    background: rgba(230,0,18,0.07);
+    color: #e60012;
+    border-radius: 12px;
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  /* ===== FOOD SUGGESTION ===== */
+  .food-suggestion {
+    margin-top: 12px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #fff8f0, #fffdf8);
+    border-radius: 10px;
+    border: 1px solid #f5e8d8;
+  }
+  .food-suggestion .fs-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #8b5a2a;
+    margin-bottom: 6px;
+  }
+  .food-suggestion .fs-item {
+    font-size: 13px;
+    color: #666;
+    padding: 3px 0;
+  }
+  .food-suggestion .fs-item a {
+    color: #007aff;
+    text-decoration: none;
+  }
+  .food-suggestion .fs-item a:hover { text-decoration: underline; }
+
+  /* ===== SPOT GRID ===== */
+  .spot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 10px;
+  }
+
+  .spot-card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #f5e8e4;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: all 0.3s;
+  }
+  .spot-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(230,0,18,0.08);
+  }
+  .spot-card-img {
+    height: 130px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+  }
+  .spot-card-body { padding: 18px 20px; }
+  .spot-card-body h4 {
+    font-size: 16px;
+    color: #8b1a1a;
+    margin-bottom: 4px;
+  }
+  .spot-card-body .sc-tag {
+    display: inline-block;
+    padding: 1px 10px;
+    background: rgba(230,0,18,0.07);
+    color: #e60012;
+    border-radius: 12px;
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+  .spot-card-body p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.8;
+  }
+  .spot-card-body .sc-map {
+    margin-top: 8px;
+  }
+  .spot-card-body .sc-map a {
+    color: #007aff;
+    text-decoration: none;
+    font-size: 12px;
+  }
+  .spot-card-body .sc-map a:hover { text-decoration: underline; }
+
+  /* ===== FOOD CARDS ===== */
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .food-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #f5e8e4;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    padding: 18px 20px;
+  }
+  .food-card .fc-name {
+    font-weight: 700;
+    color: #8b1a1a;
+    font-size: 15px;
+  }
+  .food-card .fc-price {
+    font-size: 13px;
+    color: #e60012;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .food-card .fc-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7;
+  }
+  .food-card .fc-map a {
+    color: #007aff;
+    text-decoration: none;
+    font-size: 12px;
+  }
+  .food-card .fc-map a:hover { text-decoration: underline; }
+
+  /* ===== TIPS ===== */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .tip-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #f5e8e4;
+    padding: 18px 20px;
+  }
+  .tip-card h4 { font-size: 15px; color: #8b1a1a; margin-bottom: 6px; }
+  .tip-card ul { list-style: none; padding: 0; }
+  .tip-card ul li {
+    padding: 4px 0 4px 18px;
+    position: relative;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7;
+  }
+  .tip-card ul li::before {
+    content: '●';
+    position: absolute;
+    left: 0;
+    color: #e60012;
+    font-size: 7px;
+    top: 9px;
+  }
+
+  /* ===== FADE ===== */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: all 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== DECO ===== */
+  .deco-line {
+    text-align: center;
+    color: rgba(230,0,18,0.12);
+    font-size: 20px;
+    letter-spacing: 12px;
+    margin: 30px 0;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: linear-gradient(135deg, #e60012, #ff5566);
+    padding: 40px 30px;
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+  footer .fq {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    color: #ffd700;
+    margin-bottom: 12px;
+    letter-spacing: 4px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 44px; letter-spacing: 8px; }
+    .hero .sub { font-size: 16px; }
+    .container { padding: 30px 16px; }
+    .section-title .cn { font-size: 28px; }
+    .day-header { padding: 16px 20px; }
+    .day-header .dh-title { font-size: 18px; }
+    .day-body { padding: 6px 18px 20px; }
+    .time-slot { grid-template-columns: 1fr; gap: 4px; }
+    .time-slot .ts-time { font-size: 13px; }
+    .spot-grid { grid-template-columns: 1fr; }
+    .food-grid { grid-template-columns: 1fr; }
+    .nav { padding: 0 8px; }
+    .nav a { padding: 12px 10px; font-size: 12px; letter-spacing: 1px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ 两天一夜 ✦</div>
+    <h1>青<span class="hl">岛</span></h1>
+    <div class="sub">红瓦绿树 · 碧海蓝天</div>
+    <div class="sub2">精选精华 · 不负好时光</div>
+    <div class="quote">「 哈啤酒 · 吃蛤蜊 · 看夕阳 · 逛老城 」</div>
+  </div>
+  <div class="scroll-hint">▼ 向下探索 ▼</div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#day1">📅 Day 1 老城·夕阳·夜景</a>
+    <a href="#day2">📅 Day 2 崂山·市井</a>
+    <a href="#food">🍜 美食指南</a>
+    <a href="#tips">💡 实用贴士</a>
+  </div>
+</nav>
+
+<!-- ===================================================== -->
+<!-- DAY 1 -->
+<!-- ===================================================== -->
+<section class="container" id="day1">
+  <div class="section-title fade-in">
+    <span class="cn">第一天 · 老城风韵</span>
+    <span class="en">Day 1 · Old Town · Sunset · Night View</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="day-section fade-in">
+    <div class="day-header">
+      <div class="dh-icon">🌅</div>
+      <div>
+        <div class="dh-title">上午 · 老城漫步</div>
+        <div class="dh-sub">天主教堂 → 基督教堂 → 小鱼山 → 大学路 → 龙江路</div>
+      </div>
+    </div>
+    <div class="day-body">
+
+      <div class="time-slot">
+        <div class="ts-time">08:00</div>
+        <div class="ts-content">
+          <h4>🥟 早餐 · 团岛农贸市场 / 海泊河早市</h4>
+          <p>二选一！<strong>团岛农贸市场</strong>是青岛最厉害的农贸市场，周边小吃店遍布；<strong>海泊河早市</strong>规模超大，本地人最爱。推荐山东大包（大虾包6元/个，整只虾+肉馅）、王家粗面玉米饼子（外酥里糯）、青岛脂渣（猪油渣越嚼越香）。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛团岛农贸市场" target="_blank">📍 团岛农贸市场</a>
+            <a href="https://maps.apple.com/?q=青岛海泊河早市" target="_blank">📍 海泊河早市（市北区人民路20号）</a>
+            <span style="font-size:12px;color:#999;">⏰ 早市 5:00-12:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">09:30</div>
+        <div class="ts-content">
+          <h4>⛪ 天主教堂（圣弥厄尔教堂）</h4>
+          <span class="ts-tag">建筑瑰宝</span>
+          <p>青岛市区最大的哥特式建筑，中国唯一的祝圣教堂。红顶黄墙砖石双塔，十分醒目，像极了布拉格。建于1932年，德国设计师毕娄哈设计。彩绘玻璃窗很美，适合拍照。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛天主教堂" target="_blank">📍 市南区浙江路15号</a>
+            <span style="font-size:12px;color:#999;">🎫 约10元</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">10:15</div>
+        <div class="ts-content">
+          <h4>🔔 江苏路基督教堂</h4>
+          <span class="ts-tag">百年钟楼</span>
+          <p>乍看像一座古堡，由钟楼和礼堂两部分组成。钟楼100多岁了还在准时工作，每到整点和半点报时。登塔楼能远眺大海。周末有两场固定礼拜。与天主教堂并称青岛建筑"门面担当"。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛江苏路基督教堂" target="_blank">📍 市南区江苏路15号</a>
+            <span style="font-size:12px;color:#999;">🎫 约10元</span>
+          </div>
+          <div class="food-suggestion" style="margin-top:10px;">
+            <div class="fs-title">🍽️ 附近午餐推荐</div>
+            <div class="fs-item">• <strong>白玉餐厅</strong> — 20多年鲁菜苍蝇馆子，炸蘑菇、鱼香茄子、辣鸡心，人均40元 | <a href="https://maps.apple.com/?q=白玉餐厅青岛" target="_blank">📍 天主教堂附近</a></div>
+            <div class="fs-item">• <strong>前海沿餐厅</strong> — 海肠捞饭+风味茄子，人均70元 | <a href="https://maps.apple.com/?q=前海沿餐厅青岛中山路" target="_blank">📍 中山路67号</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">13:00</div>
+        <div class="ts-content">
+          <h4>🐟 小鱼山公园</h4>
+          <span class="ts-tag">俯瞰老城</span>
+          <p>遥望青岛海岸线和老城区风光，红瓦绿树尽收眼底。公园不大，3分钟爬到至高点。俯瞰栈桥、汇泉湾、鲁迅公园、第一海水浴场都在脚下。建议黄昏来更美，但下午光线也不错。附近的鱼山路是"文化名人故居一条街"。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛小鱼山公园" target="_blank">📍 市南区福山支路24号</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">14:00</div>
+        <div class="ts-content">
+          <h4>📸 大学路 → 龙江路</h4>
+          <span class="ts-tag">文艺打卡</span>
+          <p><strong>大学路</strong> — 网红红墙转角，90%的人来拍照。旁边的<strong>青岛美术馆</strong>值得一看（中西合璧建筑，罗马柱廊+中国宫殿+阿拉伯式混搭，中庭玻璃穹顶绝美）。<strong>龙江路</strong> — 满墙宫崎骏涂鸦，《龙猫》《千与千寻》动漫元素，像走进童话世界。黄县路有老舍故居和荒岛书店。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛大学路" target="_blank">📍 大学路</a>
+            <a href="https://maps.apple.com/?q=青岛龙江路" target="_blank">📍 龙江路</a>
+            <a href="https://maps.apple.com/?q=青岛美术馆" target="_blank">📍 青岛美术馆（免费需预约）</a>
+          </div>
+          <div class="food-suggestion" style="margin-top:10px;">
+            <div class="fs-title">☕ 下午茶推荐</div>
+            <div class="fs-item">• <strong>健康家饭</strong>（龙江路）— 韩式辣酱年糕+芝士鸡蛋卷，人均57元 | <a href="https://maps.apple.com/?q=健康家饭青岛" target="_blank">📍 龙江路19号</a></div>
+            <div class="fs-item">• <strong>不舍昼夜咖啡馆</strong>（黄县路）— 鹿晗MV取景地，两层小洋房 | <a href="https://maps.apple.com/?q=不舍昼夜咖啡馆青岛" target="_blank">📍 黄县路</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">15:30</div>
+        <div class="ts-content">
+          <h4>🌳 八大关</h4>
+          <span class="ts-tag">万国建筑博览</span>
+          <p>八条以长城关口命名的街道，集合二十多个国家的建筑风格。最能体现"红瓦绿树、碧海蓝天"的地方。推荐路线：正阳关路→武胜关路→宁武关路。秋天梧桐树最美，夏天郁郁葱葱。适合压马路、拍婚纱照。从八大关可直接步行到第二海水浴场。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛八大关" target="_blank">📍 八大关景区</a>
+            <a href="https://maps.apple.com/?q=青岛第二海水浴场" target="_blank">📍 第二海水浴场</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Day 1 下午 + 晚上 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#cc5511,#ff8844);">
+      <div class="dh-icon">🌇</div>
+      <div>
+        <div class="dh-title">傍晚 · 夕阳 · 夜景</div>
+        <div class="dh-sub">情人坝看夕阳 → 五四广场灯光秀 → 八大关夜漫步 → 台东夜市</div>
+      </div>
+    </div>
+    <div class="day-body">
+
+      <div class="time-slot">
+        <div class="ts-time">17:30</div>
+        <div class="ts-content">
+          <h4>🌅 情人坝 · 白灯塔 · 看夕阳</h4>
+          <span class="ts-tag">青岛看夕阳第一名</span>
+          <p>奥帆中心对面的情人坝+白灯塔，是青岛看夕阳最好的地方，没有之一！夕阳时分，波光粼粼的海面映着落日余晖，白灯塔在金色光芒中格外浪漫。很多新人在这里拍婚纱照。这一刻，你会觉得青岛美得令人窒息。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛情人坝" target="_blank">📍 奥帆中心对面 · 情人坝</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">19:00</div>
+        <div class="ts-content">
+          <h4>🏙️ 五四广场 & 奥帆中心 · 夜景</h4>
+          <span class="ts-tag">灯光秀</span>
+          <p>五四广场是青岛最核心的区域。晚上8点有<strong>灯光秀和喷泉秀</strong>（5-10月，4月16日-8月31日19:40-21:00启闭，20:00、20:30各1场）。浮山湾灯火璀璨，奥帆中心对面就是刚才看夕阳的情人坝。夜景比白天更美。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛五四广场" target="_blank">📍 五四广场</a>
+            <a href="https://maps.apple.com/?q=青岛奥帆中心" target="_blank">📍 奥帆中心</a>
+          </div>
+          <div class="food-suggestion" style="margin-top:10px;">
+            <div class="fs-title">🍽️ 五四广场附近晚餐推荐</div>
+            <div class="fs-item">• <strong>船歌鱼水饺</strong> — 青岛版"外婆家"，黄花鱼墨鱼双拼水饺一绝 | <a href="https://maps.apple.com/?q=船歌鱼水饺青岛" target="_blank">📍 多家分店</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">20:30</div>
+        <div class="ts-content">
+          <h4>🌃 八大关 · 夜漫步</h4>
+          <span class="ts-tag">静谧夜色</span>
+          <p>夜晚的八大关褪去白日的喧嚣，路灯下的老建筑别有一番韵味。人少景美，海风轻拂，最适合散步消食。从五四广场打车到八大关很近，10分钟车程。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛八大关" target="_blank">📍 八大关</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">21:30</div>
+        <div class="ts-content">
+          <h4>🍢 台东夜市</h4>
+          <span class="ts-tag">夜宵天堂</span>
+          <p>"中日韩美食大排档"！花不到100元吃到撑。认准排长队的店：<strong>满口香</strong>（30多年老店，辣肉超赞，炸蘑菇心头爱，人均30）、<strong>糯米蛋糕</strong>（蛋挞1元/个，蛋卷10元一大袋）。还有<strong>老谢野馄饨</strong>（黑胡椒汤底+烧烤，只有晚上营业到凌晨2点）也在附近。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛台东夜市" target="_blank">📍 市北区台东三路</a>
+            <a href="https://maps.apple.com/?q=老谢野馄饨青岛" target="_blank">📍 老谢野馄饨（延安路142-1号）</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- DAY 2 -->
+<!-- ===================================================== -->
+<section class="container" id="day2" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">第二天 · 崂山寻海</span>
+    <span class="en">Day 2 · Mount Lao · Seaview & Village</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in" style="margin-bottom:20px;">
+    <strong>⏰ 重要提醒：</strong> 崂山距离市区约1小时车程，建议早上早点出发。仅有一天时间的话，走<strong>南线精华路线</strong>最合理：仰口→青山渔村→太清。618路公交是串联这些地方的灵魂交通工具！
+  </div>
+
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#1a5a3a,#2d8a5a);">
+      <div class="dh-icon">⛰️</div>
+      <div>
+        <div class="dh-title">全天 · 崂山南线精华</div>
+        <div class="dh-sub">仰口景区 → 青山渔村 → 618路最美公交 → 返程</div>
+      </div>
+    </div>
+    <div class="day-body">
+
+      <div class="time-slot">
+        <div class="ts-time">08:00</div>
+        <div class="ts-content">
+          <h4>🚗 出发前往崂山</h4>
+          <p>建议打车或自驾前往<strong>仰口景区</strong>（约1小时车程）。如果前一天住市区市南/市北区，可打车到仰口景区售票处。也可坐地铁转公交，但耗时较长。务必提前在"崂山风景区"公众号预约购票。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛仰口景区" target="_blank">📍 仰口景区</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">09:30</div>
+        <div class="ts-content">
+          <h4>⛰️ 仰口景区</h4>
+          <span class="ts-tag">崂山最精华</span>
+          <p>崂山最值得打卡的景区！海拔800米左右，有山有海有沙滩。强烈推荐坐<strong>仰口索道</strong>（开放式缆车，视野极好）上山，看海天一色。登顶"天苑"俯瞰海岸线，景色壮阔。下山可走觅天洞（幽深石洞需手机照明）或绕山道。注意防晒！SPF50+多抹几层。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛仰口景区" target="_blank">📍 仰口景区</a>
+            <span style="font-size:12px;color:#999;">🎫 崂山通票150元 · 索道35元/趟</span>
+          </div>
+          <div class="food-suggestion" style="margin-top:10px;">
+            <div class="fs-title">🍽️ 午餐推荐 · 青山渔村</div>
+            <div class="fs-item">爬完山坐618路到青山渔村，吃崂山农家菜：王哥庄大馒头（非遗比脑袋大）、鲅鱼饺子、崂山菇炖鸡、清蒸海鲜。人均50-80元。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">12:30</div>
+        <div class="ts-content">
+          <h4>🚌 618路公交 · 最美峡湾公路</h4>
+          <span class="ts-tag">2元看尽山海</span>
+          <p>从仰口坐<strong>618路公交</strong>到垭口（青山渔村站下车）。全程约30分钟，经过76个急弯，沿途碧海蓝天、山峦果树、红瓦村庄、茶园梯田连播。上山坐<strong>左边靠窗</strong>位，风景绝佳！<strong>青山站</strong>是全程最美的一站，500多年历史的红瓦渔村背山面海，被梯田和茶园合围，美得冒泡。</p>
+          <div class="ts-map">
+            <span style="font-size:12px;color:#999;">🚏 仰口 → 雕龙嘴 → 华严寺 → 返岭 → 青山 → 垭口</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">13:00</div>
+        <div class="ts-content">
+          <h4>🏘️ 青山渔村</h4>
+          <span class="ts-tag">500年 · 红瓦渔村</span>
+          <p>崂山的实力网红！背山面海，满村皆是红瓦屋顶，配合蔚蓝大海和绿色茶园，天气好时可以假装在意大利五渔村。从高处往下望，整个村子像画一样。不在收费景区内，618路青山站下车即到。可以在村里吃顿渔家宴，体验当地生活。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛青山渔村" target="_blank">📍 青山渔村</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">15:00</div>
+        <div class="ts-content">
+          <h4>🚗 返程 & 自由补充</h4>
+          <p>从青山渔村坐618路到终点垭口，或原路返回仰口。如果时间体力还有余量，推荐顺路去<strong>太清宫</strong>（道教圣地，看老子像和千年古树）。返回市区约1小时车程。到市区大约17:00左右，可以去青岛啤酒博物馆（如果前一天没去）或直接去火车站/机场。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=青岛太清宫" target="_blank">📍 太清宫（有余力可去）</a>
+          </div>
+          <div class="food-suggestion" style="margin-top:10px;">
+            <div class="fs-title">🍽️ 返程晚餐推荐</div>
+            <div class="fs-item">• <strong>海乐海鲜家常菜</strong> — 韭菜海肠、油泼扇贝、海鲜水饺全家福，人均88元 | <a href="https://maps.apple.com/?q=海乐海鲜家常菜青岛" target="_blank">📍 莱阳路51号甲</a></div>
+            <div class="fs-item">• <strong>万喜啤酒屋</strong> — 可自带海鲜加工，喝扎啤！加工费清蒸10元/斤红烧15元/斤 | <a href="https://maps.apple.com/?q=万喜啤酒屋青岛成武路" target="_blank">📍 成武路47号</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- 美食指南 -->
+<!-- ===================================================== -->
+<section class="container" id="food" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">美食指南</span>
+    <span class="en">Where to Eat · 精华推荐</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="food-grid">
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🦐 海乐海鲜家常菜</div>
+      <div class="fc-price">人均 88元</div>
+      <div class="fc-desc">韭菜海肠、油泼扇贝、蒜蓉生蚝、香辣虾、辣炒蛏子。海鲜水饺无敌——全家福拼盘（黄色黄花鱼、黑色墨鱼、绿色鲅鱼、白色三鲜）。桶装鲜啤必点。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=海乐海鲜家常菜青岛" target="_blank">📍 莱阳路51号甲（鲁迅公园对面）</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥟 船歌鱼水饺</div>
+      <div class="fc-price">人均 60-80元</div>
+      <div class="fc-desc">青岛版"外婆家"，遍地连锁。饺子一绝，皮有嚼劲爆汁！黄花鱼墨鱼双拼必点。海菜凉粉酸爽可口。辣炒小花蛤、蒜炒小鲍鱼也是招牌。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=船歌鱼水饺青岛" target="_blank">📍 多家分店（近五四广场）</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🍺 万喜啤酒屋</div>
+      <div class="fc-price">加工费 10-15元/斤</div>
+      <div class="fc-desc">去海鲜市场买"海货"来加工，最地道的青岛体验！清蒸10元/斤，红烧15元/斤。扎啤直接从啤酒厂运送，保持原始风味。配海鲜绝了。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=万喜啤酒屋青岛成武路" target="_blank">📍 成武路47号（西镇地铁站B口）</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥢 白玉餐厅</div>
+      <div class="fc-price">人均 40元</div>
+      <div class="fc-desc">20多年鲁菜苍蝇馆子，近天主教堂。炸蘑菇、鱼香茄子、辣鸡心、糖醋里脊闭眼点不踩雷。没有装修，全靠味道留人。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=白玉餐厅青岛" target="_blank">📍 天主教堂附近（老城区）</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🍢 台东夜市</div>
+      <div class="fc-price">人均 30-100元</div>
+      <div class="fc-desc">"中日韩美食大排档"！满口香（30年老店，辣肉+炸蘑菇人均30）、糯米蛋糕（蛋挞1元/个）。建议多约朋友一起分享，尝更多种类。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=青岛台东夜市" target="_blank">📍 市北区台东三路</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🇰🇷 健康家饭</div>
+      <div class="fc-price">人均 57元</div>
+      <div class="fc-desc">韩国夫妇开的小清新韩料。韩式辣酱年糕一生推！芝士鸡蛋卷是点单王者。韩式五花肉套餐配紫苏叶包着吃，香气四溢。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=健康家饭青岛" target="_blank">📍 龙江路19号丙（大学路片区）</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥟 老谢野馄饨</div>
+      <div class="fc-price">人均 30-50元</div>
+      <div class="fc-desc">"野"=夜，街边地摊的"野性"得名。黑胡椒汤底馄饨鲜美，配烧烤灵魂组合。只有17:30-凌晨2:00营业，台东夜市附近。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=老谢野馄饨青岛" target="_blank">📍 市北区延安路142-1号</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥟 前海沿餐厅</div>
+      <div class="fc-price">人均 70元</div>
+      <div class="fc-desc">招牌海肠捞饭，海肠Q弹有韧性。风味茄子外酥里软，酸甜口。分量大，一个人吃不完。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=前海沿餐厅青岛中山路" target="_blank">📍 中山路67号悦喜客来2楼</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🧃 崂山三绝（必体验）</div>
+      <div class="fc-price">各 4-5元</div>
+      <div class="fc-desc"><strong>白花蛇草水</strong>（最难喝饮料挑战，汗味/草席味）；<strong>崂山可乐</strong>（中药味，山东90后情怀）；<strong>崂山苏打水</strong>（咸味，不难喝）。超市都有卖。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 实用贴士 -->
+<!-- ===================================================== -->
+<section class="container" id="tips" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">实用贴士</span>
+    <span class="en">Travel Tips for 2-Day Trip</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tips-grid">
+    <div class="tip-card fade-in">
+      <h4>🚇 交通</h4>
+      <ul>
+        <li>高铁到<strong>青岛站</strong>最方便（最文艺火车站，市区中心）</li>
+        <li>地铁2号线和3号线覆盖市区主要景点</li>
+        <li>老城区不建议自驾（单行多停车难）</li>
+        <li>去崂山建议打车/自驾</li>
+        <li>公交1-2元，推荐468路、220路逛老城</li>
+      </ul>
+    </div>
+
+    <div class="tip-card fade-in">
+      <h4>🎫 门票预约</h4>
+      <ul>
+        <li>崂山需提前在"崂山风景区"公众号预约购票</li>
+        <li>青岛美术馆需至少提前1天预约</li>
+        <li>大多数景点免费，无需排队购票</li>
+        <li>啤酒博物馆可现场购票</li>
+      </ul>
+    </div>
+
+    <div class="tip-card fade-in">
+      <h4>💰 预算参考（2天）</h4>
+      <ul>
+        <li>崂山通票 150元 + 索道 70元</li>
+        <li>啤酒博物馆 60-95元（强烈推荐95元品鉴票）</li>
+        <li>天主教堂/基督教堂 各约10元</li>
+        <li>三餐 人均 150-250元/天</li>
+        <li>公交+打车 约 80-150元</li>
+      </ul>
+    </div>
+
+    <div class="tip-card fade-in">
+      <h4>⚠️ 注意事项</h4>
+      <ul>
+        <li><strong>防晒！SPF50+</strong> 海风吹一吹皱纹就出来了</li>
+        <li>崂山穿舒适运动鞋，备足水</li>
+        <li>吃海鲜可备肠胃药</li>
+        <li>啤酒屋加工先问好价格</li>
+        <li>7-8月旺季酒店提前预订</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deco-line">◆ ◇ ◆ ◇ ◆</div>
+
+  <div class="fade-in" style="text-align:center;padding:20px 0;">
+    <div style="font-size:28px;margin-bottom:6px;">📱</div>
+    <p style="font-size:15px;color:#555;">所有地点均已添加 Apple 地图链接，点击即可导航</p>
+    <p style="font-size:13px;color:#999;margin-top:4px;">祝你在青岛的两天一夜，玩得开心，吃得满足！</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="fq">「 青岛，一座让你来了就不想走的城市 」</div>
+  <p style="font-size:14px;letter-spacing:4px;">红瓦绿树 · 碧海蓝天 · 哈啤酒 · 吃蛤蜊</p>
+  <p style="margin-top:14px;opacity:0.7;">两天一夜 · 精选精华路线</p>
+</footer>
+
+<script>
+// Intersection Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
