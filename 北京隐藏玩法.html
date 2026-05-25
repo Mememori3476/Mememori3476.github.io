@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北京隐藏玩法 — 只有待10年以上才知道</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f9f5f0;
+    color: #3d2a2a;
+    line-height: 1.9;
+  }
+  .hero {
+    position: relative;
+    height: 88vh; min-height: 500px;
+    background: linear-gradient(135deg, #1a2a3a 0%, #2c4a3e 30%, #8b5a2b 65%, #5a3a1a 100%);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,215,0,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 140px;
+    background: linear-gradient(to top, #f9f5f0 0%, transparent 100%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 40px; animation: fadeInUp 1.2s ease-out; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-badge {
+    display: inline-block; padding: 10px 36px;
+    border: 2px solid rgba(255,215,0,0.4); color: #ffd700;
+    font-size: 14px; letter-spacing: 6px; margin-bottom: 28px; font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif; font-size: 68px; font-weight: 900;
+    color: #fff; text-shadow: 0 4px 40px rgba(0,0,0,0.2);
+    margin-bottom: 14px; letter-spacing: 8px;
+  }
+  .hero h1 .hl { color: #ffd700; }
+  .hero .sub { font-size: 20px; color: rgba(255,255,255,0.85); letter-spacing: 6px; font-weight: 300; margin-bottom: 6px; }
+  .hero .sub2 { font-size: 15px; color: rgba(255,255,255,0.55); letter-spacing: 3px; font-weight: 300; }
+  .hero .quote {
+    font-family: 'Noto Serif SC', serif; font-size: 18px;
+    color: rgba(255,215,0,0.7); letter-spacing: 4px; margin-top: 18px; font-weight: 600;
+  }
+  .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 3; color: rgba(255,255,255,0.4); font-size: 13px; letter-spacing: 4px; animation: bounce 2.4s infinite; }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(12px); } }
+
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(249,245,240,0.96); backdrop-filter: blur(20px);
+    border-bottom: 1px solid #e8ddd0; padding: 0 40px;
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav a {
+    flex-shrink: 0; color: #7a5a4a; text-decoration: none;
+    padding: 16px 14px; font-size: 13px; letter-spacing: 2px;
+    transition: all 0.3s; border-bottom: 2px solid transparent; white-space: nowrap;
+  }
+  .nav a:hover { color: #c0392b; border-bottom-color: #c0392b; background: rgba(192,57,43,0.04); }
+  .nav .nav-tag { font-size: 10px; background: #2c4a3e; color: #fff; border-radius: 8px; padding: 0 6px; margin-left: 4px; vertical-align: super; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 50px 30px 30px; }
+  .section-title { text-align: center; margin-bottom: 40px; position: relative; }
+  .section-title .cn { font-family: 'Noto Serif SC', serif; font-size: 36px; font-weight: 900; color: #2c4a3e; letter-spacing: 6px; display: block; margin-bottom: 4px; }
+  .section-title .en { font-size: 12px; color: rgba(44,74,62,0.3); letter-spacing: 4px; text-transform: uppercase; }
+  .section-title .line { width: 50px; height: 3px; background: linear-gradient(90deg, transparent, #2c4a3e, transparent); margin: 14px auto 0; }
+
+  .tip-box { background: linear-gradient(135deg, #edf5f0, #f5faf7); border-left: 4px solid #2c4a3e; border-radius: 0 12px 12px 0; padding: 18px 24px; margin: 16px 0; }
+  .tip-box strong { color: #2c4a3e; }
+
+  .zone-section { background: #fff; border-radius: 16px; box-shadow: 0 2px 20px rgba(44,74,62,0.06); border: 1px solid #e8f0ea; overflow: hidden; margin-bottom: 36px; }
+  .zone-header { padding: 22px 32px; background: linear-gradient(135deg, #2c4a3e, #4a7a63); color: #fff; display: flex; align-items: center; gap: 14px; }
+  .zone-header .zh-icon { font-size: 32px; }
+  .zone-header .zh-title { font-size: 22px; font-weight: 700; letter-spacing: 4px; }
+  .zone-header .zh-sub { font-size: 13px; opacity: 0.8; letter-spacing: 2px; margin-top: 2px; }
+  .zone-body { padding: 10px 32px 28px; }
+
+  .spot-block { padding: 20px 0; border-bottom: 1px dashed #e8f0ea; }
+  .spot-block:last-child { border-bottom: none; }
+  .spot-block .sb-title { font-size: 19px; font-weight: 700; color: #2c4a3e; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .spot-block .sb-title .sb-badge { font-size: 11px; background: #2c4a3e; color: #fff; padding: 0 10px; border-radius: 10px; font-weight: 400; }
+  .spot-block .sb-desc { font-size: 14px; color: #555; line-height: 1.85; margin-bottom: 8px; }
+  .spot-block .sb-detail { list-style: none; padding: 0; margin: 8px 0; }
+  .spot-block .sb-detail li { padding: 6px 0 6px 22px; position: relative; font-size: 14px; color: #555; line-height: 1.7; }
+  .spot-block .sb-detail li::before { content: '\2713'; position: absolute; left: 0; color: #2c4a3e; font-weight: 700; }
+  .spot-block .sb-detail li .label { color: #2c4a3e; font-weight: 600; }
+  .spot-block .sb-map { margin-top: 6px; }
+  .spot-block .sb-map a { color: #007aff; text-decoration: none; font-size: 13px; margin-right: 16px; }
+  .spot-block .sb-map a:hover { text-decoration: underline; }
+  .spot-block .sb-tag { display: inline-block; padding: 1px 10px; background: rgba(44,74,62,0.07); color: #2c4a3e; border-radius: 12px; font-size: 11px; margin-bottom: 4px; }
+
+  .food-block { margin-top: 12px; padding: 16px 20px; background: linear-gradient(135deg, #fff8f0, #fffdf8); border-radius: 10px; border: 1px solid #f5e8d8; }
+  .food-block .fb-title { font-size: 14px; font-weight: 700; color: #7a5a2a; margin-bottom: 6px; }
+  .food-block .fb-item { font-size: 13px; color: #666; padding: 3px 0; }
+  .food-block .fb-item a { color: #007aff; text-decoration: none; }
+  .food-block .fb-item .hl { color: #c0392b; font-weight: 600; }
+
+  .fade-in { opacity: 0; transform: translateY(24px); transition: all 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .deco-line { text-align: center; color: rgba(44,74,62,0.15); font-size: 20px; letter-spacing: 12px; margin: 30px 0; }
+
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 16px; }
+  .tip-card { background: #fff; border-radius: 12px; border: 1px solid #e8f0ea; padding: 18px 20px; }
+  .tip-card h4 { font-size: 15px; color: #2c4a3e; margin-bottom: 6px; }
+  .tip-card ul { list-style: none; padding: 0; }
+  .tip-card ul li { padding: 4px 0 4px 18px; position: relative; font-size: 13px; color: #555; line-height: 1.7; }
+  .tip-card ul li::before { content: '\25cf'; position: absolute; left: 0; color: #2c4a3e; font-size: 7px; top: 9px; }
+
+  .route-flow { display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; margin: 24px 0 32px; }
+  .route-flow .rf-item { padding: 8px 16px; background: #fff; border: 1px solid #e8f0ea; border-radius: 8px; font-size: 13px; color: #2c4a3e; font-weight: 500; }
+  .route-flow .rf-item:hover { background: #2c4a3e; color: #fff; }
+  .route-flow .rf-arrow { color: #aaa; font-size: 14px; }
+
+  footer { background: linear-gradient(135deg, #1a2a3a, #2c4a3e); padding: 40px 30px; text-align: center; color: rgba(255,255,255,0.85); font-size: 13px; letter-spacing: 2px; }
+  footer .fq { font-family: 'Noto Serif SC', serif; font-size: 18px; color: #ffd700; margin-bottom: 12px; letter-spacing: 4px; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 40px; letter-spacing: 6px; }
+    .hero .sub { font-size: 15px; }
+    .container { padding: 30px 16px; }
+    .section-title .cn { font-size: 28px; }
+    .zone-header { padding: 16px 20px; }
+    .zone-header .zh-title { font-size: 18px; }
+    .zone-body { padding: 6px 18px 20px; }
+    .nav { padding: 0 8px; }
+    .nav a { padding: 12px 6px; font-size: 11px; letter-spacing: 1px; }
+    .route-flow .rf-item { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">HIDDEN BEIJING</div>
+    <h1>北京<span class="hl">隐藏</span>玩法</h1>
+    <div class="sub">只有待 10 年以上，才知道的这些</div>
+    <div class="sub2">避开人潮 · 不走回头路 · 本地人私藏</div>
+    <div class="quote">「有些热门景点换个时间去、换条路线走，体验感能差出一倍」</div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#route">路线总览</a>
+    <a href="#zone1">天安门·故宫·景山</a>
+    <a href="#zone2">天坛</a>
+    <a href="#zone3">胡同深处</a>
+    <a href="#zone4">颐和园</a>
+    <a href="#zone5">长城</a>
+    <a href="#food">美食地图</a>
+    <a href="#tips">实用贴士</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- ===== 路线总览 ===== -->
+<section id="route">
+  <div class="section-title fade-in">
+    <span class="cn">路线总览</span>
+    <span class="en">— Route Overview —</span>
+    <div class="line"></div>
+  </div>
+  <p style="text-align:center;color:#666;font-size:15px;margin-bottom:6px;">以下按地理区域编排，从北京中轴线核心向外辐射，一条不走回头路的隐藏玩法路线</p>
+  <div class="route-flow fade-in">
+    <span class="rf-item">天安门</span><span class="rf-arrow">→</span>
+    <span class="rf-item">故宫</span><span class="rf-arrow">→</span>
+    <span class="rf-item">景山</span><span class="rf-arrow">→</span>
+    <span class="rf-item">天坛</span><span class="rf-arrow">→</span>
+    <span class="rf-item">胡同·什刹海</span><span class="rf-arrow">→</span>
+    <span class="rf-item">颐和园</span><span class="rf-arrow">→</span>
+    <span class="rf-item">长城</span>
+  </div>
+  <div class="tip-box fade-in">
+    <strong>核心思路：</strong> 上午 8:00–11:00 户外活动 → 中午 12:00–15:00 室内避暑（博物馆/书店/咖啡馆） → 下午 16:00 后继续户外。所有热门景点都有一条「本地人路线」，下文一一拆解。
+  </div>
+</section>
+
+<!-- ===== Zone 1: 天安门·故宫·景山 ===== -->
+<section id="zone1">
+  <div class="section-title fade-in" style="margin-top:50px;">
+    <span class="cn">中轴线核心</span>
+    <span class="en">— Tiananmen · Forbidden City · Jingshan —</span>
+    <div class="line"></div>
+  </div>
+  <p style="text-align:center;color:#666;font-size:14px;margin-bottom:20px;">天安门 → 故宫 → 景山，沿中轴线由南往北，一氣呵成</p>
+
+  <div class="zone-section fade-in">
+    <div class="zone-header">
+      <span class="zh-icon">🏛️</span>
+      <div>
+        <div class="zh-title">天安门 · 不只升旗</div>
+        <div class="zh-sub">降旗 · 城楼 · 夜骑 · 1路公交</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="spot-block">
+        <div class="sb-title">🇨🇳 看降旗，不早起 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">升旗需要凌晨排队，孩子大概率扛不住。降旗同样的仪仗队规格，下午 15:00 后入场，人流少很多，还不用摸黑早起。</div>
+        <ul class="sb-detail">
+          <li><span class="label">预约：</span>「天安门广场预约参观」小程序抢「降旗及夜间」时段，每天中午 12:00 更新</li>
+          <li><span class="label">机位：</span>想看仪仗队走 1/2 号安检口；想面对天安门走 3/4/7 号安检口</li>
+        </ul>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京天安门广场" target="_blank">🗺️ 天安门广场</a>
+        </div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🌃 夜骑长安街 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">晚上 19:00–21:00 夜骑天安门，长安街华灯亮起，比白天拍照更有氛围感。沿长安街骑行，顺路溜达到国家大剧院，一路都是「北京味」。</div>
+        <div class="tip-box" style="margin:8px 0;">
+          <strong>提醒：</strong> 长安街骑行需要满 12 周岁，共享单车即可，注意天安门前路段不能停车驻足。
+        </div>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京长安街" target="_blank">🗺️ 长安街</a>
+          <a href="https://maps.apple.com/?q=北京国家大剧院" target="_blank">🗺️ 国家大剧院</a>
+        </div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🚌 1 路公交 · 移动观景台 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">沿途经过天安门正对面，孩子坐在靠窗位看个够。1 路公交贯穿长安街，堪称「移动的北京中轴线观光车」。</div>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京1路公交" target="_blank">🗺️ 1 路公交线路</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone-section fade-in">
+    <div class="zone-header">
+      <span class="zh-icon">🏯</span>
+      <div>
+        <div class="zh-title">故宫 · 避开人潮的捷径</div>
+        <div class="zh-sub">下午场 · 东华门入场 · 景山替补</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="spot-block">
+        <div class="sb-title">🎫 约下午场，人更少 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">故宫没有淡季。建议约下午场，因为下午旅行团开始离场，人流明显减少。</div>
+        <ul class="sb-detail">
+          <li><span class="label">预约：</span>提前 1–7 天，「故宫博物院」小程序抢票，旺季务必准时抢</li>
+        </ul>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🚶 东华门入场，省 1 小时排队</div>
+        <div class="sb-desc">不用在午门广场暴晒排队，两条捷径：</div>
+        <ul class="sb-detail">
+          <li><span class="label">路线一：</span>地铁 1 号线「天安门东」B 口出 → 沿南池子大街步行 10 分钟到东华门 → 左转步行到午门，树荫多不排队</li>
+          <li><span class="label">路线二：</span>地铁 8 号线「金鱼胡同」C 口出 → 步行 15 分钟到东华门</li>
+        </ul>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京东华门" target="_blank">🗺️ 东华门</a>
+          <a href="https://maps.apple.com/?q=北京南池子大街" target="_blank">🗺️ 南池子大街</a>
+        </div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">📸 带娃必走的游览路线</div>
+        <div class="sb-desc">东华门城墙走到午门入宫 → 文华殿 → 钟表馆 → 九龙壁 → 珍宝馆 → 宁寿宫（珍妃井） → 东六宫（延禧宫） → 中轴线三大殿 → 西六宫 → 慈宁宫 → 武英殿 → 从神武门出宫。出宫后向左沿河走，能看到角楼夕阳，景色绝佳。</div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">⛰️ 没抢到票？去景山！ <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">从西门进去 5 分钟到万春亭山顶，故宫全景的绝佳观赏点。日落前半小时上来，看整个故宫镀金屋顶，比在里面挤着看还震撼。</div>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京景山公园" target="_blank">🗺️ 景山公园</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Zone 2: 天坛 ===== -->
+<section id="zone2">
+  <div class="section-title fade-in" style="margin-top:50px;">
+    <span class="cn">南城 · 天坛秘境</span>
+    <span class="en">— Temple of Heaven —</span>
+    <div class="line"></div>
+  </div>
+  <p style="text-align:center;color:#666;font-size:14px;margin-bottom:20px;">从景山向南 30 分钟地铁即达，串联天坛精华与周边隐藏美食</p>
+
+  <div class="zone-section fade-in">
+    <div class="zone-header">
+      <span class="zh-icon">⛩️</span>
+      <div>
+        <div class="zh-title">天坛 · 不只祈年殿</div>
+        <div class="zh-sub">联票 · 七十二长廊 · 夜景 · 豆汁 · 涮肉</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="spot-block">
+        <div class="sb-title">🎟️ 一定要买联票</div>
+        <div class="sb-desc">普通门票只能逛外围。进祈年殿、回音壁必须买联票。</div>
+        <ul class="sb-detail">
+          <li><span class="label">经典路线：</span>东门进 → 长廊 → 祈年殿 → 皇穹宇 → 回音壁 → 圜丘 → 三座门 → 斋宫 → 西门出</li>
+          <li><span class="label">赶时间：</span>北门进，5 分钟到祈年殿，不绕路</li>
+        </ul>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京天坛公园" target="_blank">🗺️ 天坛公园</a>
+        </div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">📷 七十二长廊 · 光影大片 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">天坛公园内有一条神秘长廊，中午阳光好时，阳光从柱子间漏下来在地上画成金线，随手拍都是治愈系照片。累了就在长椅歇脚。</div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🌙 亮灯后的天坛更震撼 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">祈年殿灯光秀只在<strong>周五、周六和特定节假日 19:00 左右</strong>亮灯。白天和夜晚是两种完全不同的体验。</div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🍜 天坛周边必吃</div>
+        <div class="food-block">
+          <div class="fb-title">🥟 北门出 · 尹三豆汁</div>
+          <div class="fb-item">很多人特意来打卡的焦圈配豆汁。第一次喝可以少买点——豆汁的味道不是所有人都能接受。</div>
+          <div class="fb-item"><a href="https://maps.apple.com/?q=北京尹三豆汁" target="_blank">🗺️ 尹三豆汁（天坛北门）</a></div>
+        </div>
+        <div class="food-block" style="margin-top:8px;">
+          <div class="fb-title">🥩 南门出 · 南门涮肉</div>
+          <div class="fb-item">天坛南门外的老北京铜锅涮肉，是本地人常去的老字号。逛完天坛从南门出，正好涮一锅。</div>
+          <div class="fb-item"><a href="https://maps.apple.com/?q=北京南门涮肉天坛" target="_blank">🗺️ 南门涮肉（天坛南门）</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Zone 3: 胡同深处 ===== -->
+<section id="zone3">
+  <div class="section-title fade-in" style="margin-top:50px;">
+    <span class="cn">胡同深处 · 老北京韵味</span>
+    <span class="en">— Hutong · Shichahai —</span>
+    <div class="line"></div>
+  </div>
+  <p style="text-align:center;color:#666;font-size:14px;margin-bottom:20px;">从中轴线向北到什刹海、鼓楼区域，钻进真正的老北京胡同</p>
+
+  <div class="zone-section fade-in">
+    <div class="zone-header">
+      <span class="zh-icon">🚲</span>
+      <div>
+        <div class="zh-title">小众胡同 · 本地人私藏</div>
+        <div class="zh-sub">寿比胡同 · 琉璃寺 · 烂漫 · 什刹海黄包车</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="spot-block">
+        <div class="sb-title">🚶 三条小众胡同 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">避开南锣鼓巷的人挤人，钻进真正的老北京胡同：</div>
+        <ul class="sb-detail">
+          <li><span class="label">寿比胡同：</span>鼓楼东大街南侧，有卖文玩的小店和情调咖啡馆</li>
+          <li><span class="label">琉璃寺胡同：</span>安定门西侧，安静有味道</li>
+          <li><span class="label">烂漫胡同：</span>菜市口附近，南城胡同的代表</li>
+        </ul>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京寿比胡同" target="_blank">🗺️ 寿比胡同</a>
+          <a href="https://maps.apple.com/?q=北京琉璃寺胡同" target="_blank">🗺️ 琉璃寺胡同</a>
+          <a href="https://maps.apple.com/?q=北京烂漫胡同" target="_blank">🗺️ 烂漫胡同</a>
+        </div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🛺 什刹海黄包车 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">到什刹海租一辆黄包车，边看风景边听师傅讲老北京的趣事、名人故居，感受四合院和胡同的独特韵味。跟坐汽车逛完全是两种感觉，途中还能随时停下拍照。</div>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京什刹海" target="_blank">🗺️ 什刹海</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Zone 4: 颐和园 ===== -->
+<section id="zone4">
+  <div class="section-title fade-in" style="margin-top:50px;">
+    <span class="cn">西北 · 颐和园不费脚</span>
+    <span class="en">— Summer Palace —</span>
+    <div class="line"></div>
+  </div>
+  <p style="text-align:center;color:#666;font-size:14px;margin-bottom:20px;">地铁 4 号线直达，从北宫门进的「懒人路线」轻松逛完皇家园林</p>
+
+  <div class="zone-section fade-in">
+    <div class="zone-header">
+      <span class="zh-icon">🌿</span>
+      <div>
+        <div class="zh-title">颐和园 · 懒人版 & 金光穿洞</div>
+        <div class="zh-sub">北宫门进 · 画中游 · 长廊 · 十七孔桥</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="spot-block">
+        <div class="sb-title">🚶 懒人路线 · 全程不费脚 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">多数人从东宫门进，光走到湖边就累瘫了。试试从北宫门进：</div>
+        <ul class="sb-detail">
+          <li>北宫门进 → 直奔<span class="label">画中游</span>（颐和园最佳观景台，站亭子里看昆明湖像在画里，有阴凉能歇脚）</li>
+          <li>→ 链接长廊 → 乐寿堂 → 仁寿殿 → 知春亭 → 十七孔桥 → 南湖岛</li>
+          <li>→ 最后从<span class="label">新建宫门</span>出</li>
+          <li>避开了佛香阁爬山路线，全程平路不费脚</li>
+        </ul>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京颐和园北宫门" target="_blank">🗺️ 颐和园北宫门</a>
+          <a href="https://maps.apple.com/?q=北京颐和园画中游" target="_blank">🗺️ 画中游</a>
+          <a href="https://maps.apple.com/?q=北京颐和园新建宫门" target="_blank">🗺️ 新建宫门</a>
+        </div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🌅 金光穿洞 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">颐和园最著名景观——夕阳穿过十七孔桥，将十七个孔洞全部穿透照亮。冬至前后一个月是最佳自然观赏期。其他季节也值得一看：周末和节假日晚上 20:00 左右会亮灯，灯光版同样震撼。</div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🍜 周边美食</div>
+        <div class="food-block">
+          <div class="fb-title">🍚 出新建宫门后</div>
+          <div class="fb-item">向西到西苑 / 向东到海淀黄庄都是美食聚集地，或乘地铁到五道口觅食</div>
+          <div class="fb-item"><a href="https://maps.apple.com/?q=北京五道口" target="_blank">🗺️ 五道口美食区</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Zone 5: 长城 ===== -->
+<section id="zone5">
+  <div class="section-title fade-in" style="margin-top:50px;">
+    <span class="cn">远郊 · 长城壮游</span>
+    <span class="en">— Mutianyu · Badaling —</span>
+    <div class="line"></div>
+  </div>
+  <p style="text-align:center;color:#666;font-size:14px;margin-bottom:20px;">至少预留一整天。首选慕田峪，人少景美体验好</p>
+
+  <div class="zone-section fade-in">
+    <div class="zone-header">
+      <span class="zh-icon">🧱</span>
+      <div>
+        <div class="zh-title">慕田峪长城 · 省妈路线</div>
+        <div class="zh-sub">缆车 · 滑道 · 人少景美</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="spot-block">
+        <div class="sb-title">🏆 为什么选慕田峪而非八达岭 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">暑假八达岭缆车排队 2 小时起，拍照全是后脑勺。慕田峪人少景美，有缆车、滑道和摆渡车，体验感强很多。</div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🚌 交通方式</div>
+        <ul class="sb-detail">
+          <li><span class="label">经济型：</span>「北京旅游集散中心」小程序订直通大巴，80 元/人往返，市区多个站点接送</li>
+          <li><span class="label">省时型：</span>包车，市区过去 1 小时出头，车费一两百，能直接到景区门口</li>
+        </ul>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">🎯 「最省妈」路线</div>
+        <ul class="sb-detail">
+          <li>缆车直接到 <span class="label">14 号敌楼</span>，不用走路</li>
+          <li>从 14 号往 <span class="label">6 号敌楼</span> 走，这段路很缓，走 1 小时左右，沿途看长城盘在山上</li>
+          <li>从 6 号敌楼坐 <span class="label">滑道</span> 下山，速度不快、安全又刺激</li>
+          <li><strong>注意：</strong> 缆车和滑道分属不同公司，票不通用。建议买缆车上 + 滑道下的套票</li>
+        </ul>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京慕田峪长城" target="_blank">🗺️ 慕田峪长城</a>
+        </div>
+      </div>
+      <div class="spot-block">
+        <div class="sb-title">备选：八达岭长城</div>
+        <div class="sb-desc">如果想去打卡「不到长城非好汉」：</div>
+        <ul class="sb-detail">
+          <li><span class="label">公交：</span>北土城 / 德胜门坐 877 路直达</li>
+          <li><span class="label">高铁：</span>北京北站 / 清河站坐高铁到八达岭长城站，半小时即达</li>
+        </ul>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京八达岭长城" target="_blank">🗺️ 八达岭长城</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 美食地图 ===== -->
+<section id="food">
+  <div class="section-title fade-in" style="margin-top:50px;">
+    <span class="cn">美食地图 · 隐藏滋味</span>
+    <span class="en">— Food Secrets —</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="zone-section fade-in">
+    <div class="zone-header">
+      <span class="zh-icon">🦆</span>
+      <div>
+        <div class="zh-title">北京烤鸭 · 不只全聚德</div>
+        <div class="zh-sub">四季民福 · 利群 · 小大董 · 金百万</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="spot-block">
+        <div class="sb-title">本地人常吃的烤鸭店 <span class="sb-badge">隐藏玩法</span></div>
+        <div class="sb-desc">来北京吃烤鸭，真的不一定要吃全聚德：</div>
+        <ul class="sb-detail">
+          <li><span class="label">四季民福：</span>北京人常吃的烤鸭店。出故宫走东华门，边上一家，故宫店位置绝佳</li>
+          <li><span class="label">利群烤鸭：</span>从王府井鲜鱼口拐进北翔凤胡同，名气很大</li>
+          <li><span class="label">小大董：</span>性价比高，分店多，就近安排</li>
+          <li><span class="label">金百万：</span>北京人常去的平价烤鸭店</li>
+        </ul>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京四季民福烤鸭" target="_blank">🗺️ 四季民福</a>
+          <a href="https://maps.apple.com/?q=北京利群烤鸭" target="_blank">🗺️ 利群烤鸭</a>
+          <a href="https://maps.apple.com/?q=北京小大董烤鸭" target="_blank">🗺️ 小大董</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone-section fade-in">
+    <div class="zone-header">
+      <span class="zh-icon">🥢</span>
+      <div>
+        <div class="zh-title">小吃聚集地 · 不踩雷</div>
+        <div class="zh-sub">牛街 · 护国寺 · 紫光园</div>
+      </div>
+    </div>
+    <div class="zone-body">
+      <div class="spot-block">
+        <div class="sb-title">别去网红街，去这些地方 <span class="sb-badge">隐藏玩法</span></div>
+        <ul class="sb-detail">
+          <li><span class="label">牛街：</span>清真美食聚集地，白记年糕、聚宝源涮肉、伊宝荷叶甑糕，基本不踩雷</li>
+          <li><span class="label">护国寺小吃：</span>老北京小吃集合店，豆汁儿、焦圈、豌豆黄、驴打滚一站式体验</li>
+          <li><span class="label">紫光园：</span>北京人常去的清真馆子，酱牛肉、牛肉饼、炒疙瘩都地道</li>
+        </ul>
+        <div class="sb-map">
+          <a href="https://maps.apple.com/?q=北京牛街" target="_blank">🗺️ 牛街小吃</a>
+          <a href="https://maps.apple.com/?q=北京护国寺小吃" target="_blank">🗺️ 护国寺小吃</a>
+          <a href="https://maps.apple.com/?q=北京紫光园" target="_blank">🗺️ 紫光园</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 实用贴士 ===== -->
+<section id="tips">
+  <div class="section-title fade-in" style="margin-top:50px;">
+    <span class="cn">实用贴士</span>
+    <span class="en">— Practical Tips —</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tips-grid fade-in">
+    <div class="tip-card">
+      <h4>🌡️ 夏日避暑法则 <span style="font-size:11px;color:#c0392b;font-weight:400;">隐藏玩法</span></h4>
+      <ul>
+        <li>中午 12:00–15:00 别在户外暴晒</li>
+        <li>安排室内活动：博物馆、书店、咖啡馆，有空调还能歇脚</li>
+        <li>推荐：国家博物馆、首都博物馆、正阳书局、Pageone 书店</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <h4>🚇 交通贴士</h4>
+      <ul>
+        <li>非京牌车进不了二环主路，景点停车场一位难求</li>
+        <li>带娃首选地铁 + 公交</li>
+        <li>想看风景坐 1 路公交或观光巴士</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <h4>🎫 预约提醒</h4>
+      <ul>
+        <li>故宫：提前 1–7 天抢票</li>
+        <li>天安门广场：提前 1–7 天小程序预约</li>
+        <li>天坛联票、颐和园票相对好买</li>
+        <li>关注景点开放时间调整</li>
+      </ul>
+    </div>
+    <div class="tip-card">
+      <h4>📝 行程编排建议</h4>
+      <ul>
+        <li>上午 8–11 点户外 → 中午室内 → 下午 4 点后继续</li>
+        <li>天安门 + 故宫 + 景山可安排在同一天</li>
+        <li>天坛 + 牛街安排半天</li>
+        <li>颐和园需至少半天</li>
+        <li>长城需要一整天</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="deco-line fade-in">◇ ◇ ◇</div>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="fq">「避开人潮，才能看见真正的北京」</div>
+  <p>内容整理自：三个妈妈六个娃 · 北京隐藏玩法</p>
+  <p style="opacity:0.5;margin-top:6px;font-size:12px;">Mememori3476.github.io</p>
+</footer>
+
+<script>
+// Intersection Observer for fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
