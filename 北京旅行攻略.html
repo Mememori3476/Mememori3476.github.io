@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北京旅行攻略 — 皇城根下的日与夜</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f9f5f0;
+    color: #3d2a2a;
+    line-height: 1.9;
+  }
+  .hero {
+    position: relative;
+    height: 88vh; min-height: 500px;
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 30%, #d4543a 65%, #8b4513 100%);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,215,0,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 140px;
+    background: linear-gradient(to top, #f9f5f0 0%, transparent 100%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 40px; animation: fadeInUp 1.2s ease-out; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-badge {
+    display: inline-block; padding: 10px 36px;
+    border: 2px solid rgba(255,215,0,0.5); color: #ffd700;
+    font-size: 15px; letter-spacing: 10px; margin-bottom: 28px; font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif; font-size: 74px; font-weight: 900;
+    color: #fff; text-shadow: 0 4px 40px rgba(0,0,0,0.12);
+    margin-bottom: 14px; letter-spacing: 14px;
+  }
+  .hero h1 .hl { color: #ffd700; }
+  .hero .sub { font-size: 22px; color: rgba(255,255,255,0.9); letter-spacing: 8px; font-weight: 300; margin-bottom: 8px; }
+  .hero .sub2 { font-size: 16px; color: rgba(255,255,255,0.65); letter-spacing: 4px; font-weight: 300; }
+  .hero .quote {
+    font-family: 'Noto Serif SC', serif; font-size: 20px;
+    color: rgba(255,215,0,0.85); letter-spacing: 6px; margin-top: 20px; font-weight: 600;
+  }
+  .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 3; color: rgba(255,255,255,0.5); font-size: 13px; letter-spacing: 4px; animation: bounce 2.4s infinite; }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(12px); } }
+
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(249,245,240,0.96); backdrop-filter: blur(20px);
+    border-bottom: 1px solid #e8ddd0; padding: 0 40px;
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav a {
+    flex-shrink: 0; color: #7a5a4a; text-decoration: none;
+    padding: 16px 18px; font-size: 13px; letter-spacing: 2px;
+    transition: all 0.3s; border-bottom: 2px solid transparent; white-space: nowrap;
+  }
+  .nav a:hover { color: #c0392b; border-bottom-color: #c0392b; background: rgba(192,57,43,0.04); }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 50px 30px 30px; }
+  .section-title { text-align: center; margin-bottom: 40px; position: relative; }
+  .section-title .cn { font-family: 'Noto Serif SC', serif; font-size: 36px; font-weight: 900; color: #c0392b; letter-spacing: 6px; display: block; margin-bottom: 4px; }
+  .section-title .en { font-size: 12px; color: rgba(192,57,43,0.3); letter-spacing: 4px; text-transform: uppercase; }
+  .section-title .line { width: 50px; height: 3px; background: linear-gradient(90deg, transparent, #c0392b, transparent); margin: 14px auto 0; }
+
+  .tip-box { background: linear-gradient(135deg, #fef0ec, #fff8f5); border-left: 4px solid #c0392b; border-radius: 0 12px 12px 0; padding: 18px 24px; margin: 16px 0; }
+  .tip-box strong { color: #c0392b; }
+
+  .day-section { background: #fff; border-radius: 16px; box-shadow: 0 2px 20px rgba(192,57,43,0.06); border: 1px solid #f0e4dc; overflow: hidden; margin-bottom: 36px; }
+  .day-header { padding: 22px 32px; background: linear-gradient(135deg, #c0392b, #e06050); color: #fff; display: flex; align-items: center; gap: 14px; }
+  .day-header .dh-icon { font-size: 32px; }
+  .day-header .dh-title { font-size: 22px; font-weight: 700; letter-spacing: 4px; }
+  .day-header .dh-sub { font-size: 13px; opacity: 0.8; letter-spacing: 2px; margin-top: 2px; }
+  .day-body { padding: 10px 32px 28px; }
+
+  .time-slot { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 16px 0; border-bottom: 1px dashed #f0e4dc; }
+  .time-slot:last-child { border-bottom: none; }
+  .time-slot .ts-time { font-size: 14px; font-weight: 700; color: #c0392b; padding-top: 2px; white-space: nowrap; }
+  .time-slot .ts-content h4 { font-size: 16px; color: #7a2a1a; margin-bottom: 4px; }
+  .time-slot .ts-content p { font-size: 14px; color: #555; line-height: 1.8; }
+  .time-slot .ts-content .ts-map { margin-top: 6px; }
+  .time-slot .ts-content .ts-map a { color: #007aff; text-decoration: none; font-size: 12px; margin-right: 14px; }
+  .time-slot .ts-content .ts-map a:hover { text-decoration: underline; }
+  .time-slot .ts-content .ts-tag { display: inline-block; padding: 1px 10px; background: rgba(192,57,43,0.07); color: #c0392b; border-radius: 12px; font-size: 11px; margin-bottom: 4px; }
+
+  .food-suggestion { margin-top: 12px; padding: 14px 18px; background: linear-gradient(135deg, #fff8f0, #fffdf8); border-radius: 10px; border: 1px solid #f5e8d8; }
+  .food-suggestion .fs-title { font-size: 14px; font-weight: 700; color: #7a5a2a; margin-bottom: 6px; }
+  .food-suggestion .fs-item { font-size: 13px; color: #666; padding: 3px 0; }
+  .food-suggestion .fs-item a { color: #007aff; text-decoration: none; }
+  .food-suggestion .fs-item a:hover { text-decoration: underline; }
+
+  .spot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; margin-top: 10px; }
+  .spot-card { background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid #f0e4dc; box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: all 0.3s; }
+  .spot-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(192,57,43,0.08); }
+  .spot-card-img { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+  .spot-card-body { padding: 18px 20px; }
+  .spot-card-body h4 { font-size: 16px; color: #7a2a1a; margin-bottom: 4px; }
+  .spot-card-body .sc-tag { display: inline-block; padding: 1px 10px; background: rgba(192,57,43,0.07); color: #c0392b; border-radius: 12px; font-size: 11px; margin-bottom: 6px; }
+  .spot-card-body p { font-size: 13px; color: #555; line-height: 1.8; }
+  .spot-card-body .sc-map { margin-top: 8px; }
+  .spot-card-body .sc-map a { color: #007aff; text-decoration: none; font-size: 12px; }
+  .spot-card-body .sc-map a:hover { text-decoration: underline; }
+
+  .food-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 16px; }
+  .food-card { background: #fff; border-radius: 12px; border: 1px solid #f0e4dc; box-shadow: 0 2px 12px rgba(0,0,0,0.04); padding: 18px 20px; }
+  .food-card .fc-name { font-weight: 700; color: #7a2a1a; font-size: 15px; }
+  .food-card .fc-price { font-size: 13px; color: #c0392b; font-weight: 500; margin-bottom: 4px; }
+  .food-card .fc-desc { font-size: 13px; color: #555; line-height: 1.7; }
+  .food-card .fc-map a { color: #007aff; text-decoration: none; font-size: 12px; }
+  .food-card .fc-map a:hover { text-decoration: underline; }
+
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .tip-card { background: #fff; border-radius: 12px; border: 1px solid #f0e4dc; padding: 18px 20px; }
+  .tip-card h4 { font-size: 15px; color: #7a2a1a; margin-bottom: 6px; }
+  .tip-card ul { list-style: none; padding: 0; }
+  .tip-card ul li { padding: 4px 0 4px 18px; position: relative; font-size: 13px; color: #555; line-height: 1.7; }
+  .tip-card ul li::before { content: '\25cf'; position: absolute; left: 0; color: #c0392b; font-size: 7px; top: 9px; }
+
+  .fade-in { opacity: 0; transform: translateY(24px); transition: all 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .deco-line { text-align: center; color: rgba(192,57,43,0.12); font-size: 20px; letter-spacing: 12px; margin: 30px 0; }
+
+  footer { background: linear-gradient(135deg, #8b1a1a, #c0392b); padding: 40px 30px; text-align: center; color: rgba(255,255,255,0.85); font-size: 13px; letter-spacing: 2px; }
+  footer .fq { font-family: 'Noto Serif SC', serif; font-size: 18px; color: #ffd700; margin-bottom: 12px; letter-spacing: 4px; }
+
+  .route-table { width:100%; font-size:14px; border-collapse:collapse; margin-top:8px; }
+  .route-table th { padding:10px 12px; text-align:left; background:linear-gradient(135deg,#c0392b,#e06050); color:#fff; }
+  .route-table td { padding:8px 12px; border-bottom:1px solid #f0e4dc; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 44px; letter-spacing: 8px; }
+    .hero .sub { font-size: 16px; }
+    .container { padding: 30px 16px; }
+    .section-title .cn { font-size: 28px; }
+    .day-header { padding: 16px 20px; }
+    .day-header .dh-title { font-size: 18px; }
+    .day-body { padding: 6px 18px 20px; }
+    .time-slot { grid-template-columns: 1fr; gap: 4px; }
+    .time-slot .ts-time { font-size: 13px; }
+    .spot-grid, .food-grid, .tips-grid { grid-template-columns: 1fr; }
+    .nav { padding: 0 8px; }
+    .nav a { padding: 12px 8px; font-size: 11px; letter-spacing: 1px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ 北京 ✦</div>
+    <h1>北<span class="hl">京</span></h1>
+    <div class="sub">皇城根下 · 胡同深处</div>
+    <div class="sub2">一座百逛不腻的城市</div>
+    <div class="quote">「 红墙映黄叶 · 古柏伴蓝天 · 千年帝都 · 烟火人间 」</div>
+  </div>
+  <div class="scroll-hint">▼ 向下探索 ▼</div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#routes">📅 行程推荐</a>
+    <a href="#spots">🏛️ 必游景点</a>
+    <a href="#hutong">🏘️ 胡同Citywalk</a>
+    <a href="#food">🍜 美食地图</a>
+    <a href="#temple">🛕 寺庙巡礼</a>
+    <a href="#flower">🌸 赏花攻略</a>
+    <a href="#museum">🏛️ 博物馆</a>
+    <a href="#tips">💡 实用贴士</a>
+  </div>
+</nav>
+
+<!-- ===================================================== -->
+<!-- 初识北京 -->
+<!-- ===================================================== -->
+<section class="container" id="intro">
+  <div class="section-title fade-in">
+    <span class="cn">初识北京</span>
+    <span class="en">Welcome to Beijing</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🏛️ 北京档案：</strong> 首都，三千年建城史、八百年建都史。7.8公里中轴线纵贯南北，故宫、天坛、长城等7处世界遗产。204座博物馆、数百个驻京办餐厅、无数条藏故事的老胡同——北京是一座你来了多少次都逛不完的城市。
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 行程推荐 -->
+<!-- ===================================================== -->
+<section class="container" id="routes" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">经典路线推荐</span>
+    <span class="en">Recommended Itineraries</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-section fade-in">
+    <div class="day-header">
+      <div class="dh-icon">🏛️</div>
+      <div>
+        <div class="dh-title">Day 1 · 中轴线经典</div>
+        <div class="dh-sub">天安门 → 故宫 → 景山 → 北海 → 什刹海 → 鼓楼</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="time-slot">
+        <div class="ts-time">08:30</div>
+        <div class="ts-content">
+          <h4>🏛️ 天安门广场 & 故宫</h4>
+          <span class="ts-tag">世界遗产</span>
+          <p>早起看升旗仪式，然后穿越天安门进入<strong>故宫博物院</strong>（建议提前7天预约）。中轴线走到底约3小时，走马观花也要2小时。推荐走西六宫或东六宫避开人流。故宫全年都人多，做好心理准备。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京故宫博物院" target="_blank">📍 故宫博物院</a>
+            <span style="font-size:12px;color:#999;">🎫 60元（淡季40元）· 需提前预约</span>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 地铁1号线「天安门东」站 <a href="https://maps.apple.com/?q=北京天安门东地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+      <div class="time-slot">
+        <div class="ts-time">13:00</div>
+        <div class="ts-content">
+          <h4>🌄 景山公园</h4>
+          <span class="ts-tag">俯瞰故宫全景</span>
+          <p>故宫神武门出来对面就是景山公园。爬上万春亭，俯瞰故宫全景——中轴线尽收眼底，远处是CBD中国尊。秋天来看，红墙黄瓦映着金叶，是北京最经典的画面之一。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京景山公园" target="_blank">📍 景山公园</a>
+            <span style="font-size:12px;color:#999;">🎫 2元</span>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 地铁8号线「中国美术馆」站 步行10分钟 <a href="https://maps.apple.com/?q=北京中国美术馆地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+      <div class="time-slot">
+        <div class="ts-time">14:30</div>
+        <div class="ts-content">
+          <h4>🏞️ 北海公园</h4>
+          <span class="ts-tag">让我们荡起双桨</span>
+          <p>"让我们荡起双桨"的原创地！白塔、红墙、绿树、碧湖，是北京人童年记忆的集合。可以划船，看白塔倒映在水中央。从景山步行10分钟即到。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京北海公园" target="_blank">📍 北海公园</a>
+            <span style="font-size:12px;color:#999;">🎫 旺季10元，淡季5元</span>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 地铁6号线「北海北」站 <a href="https://maps.apple.com/?q=北京北海北地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a> | 🚌 107路「北海」站 <a href="https://maps.apple.com/?q=北京北海公交站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+      <div class="time-slot">
+        <div class="ts-time">16:30</div>
+        <div class="ts-content">
+          <h4>🌅 什刹海 → 烟袋斜街 → 鼓楼</h4>
+          <span class="ts-tag">老北京傍晚</span>
+          <p>从北海北漫步至什刹海，看夕阳下的湖面波光粼粼。穿过<strong>烟袋斜街</strong>(北京最古老的商业街之一)，走到<strong>鼓楼</strong>——赵雷歌里唱的那个。鼓楼东大街有很多有意思的小店。傍晚时分，什刹海的酒吧街开始热闹起来。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京什刹海" target="_blank">📍 什刹海</a>
+            <a href="https://maps.apple.com/?q=北京鼓楼" target="_blank" style="margin-left:12px;">📍 鼓楼</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 地铁8号线「什刹海」站 <a href="https://maps.apple.com/?q=北京什刹海地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+          <div class="food-suggestion">
+            <div class="fs-title">🍽️ 附近晚餐推荐</div>
+            <div class="fs-item">• <strong>姚记炒肝</strong> — 鼓楼东大街，炒肝+包子，老北京早餐代表 | <a href="https://maps.apple.com/?q=姚记炒肝北京鼓楼" target="_blank">🗺️</a></div>
+            <div class="fs-item">• <strong>菊儿人家</strong> — 南锣鼓巷菊儿胡同，卤肉饭是招牌 | <a href="https://maps.apple.com/?q=菊儿人家北京" target="_blank">🗺️</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#8b5a2b,#c49a6c);">
+      <div class="dh-icon">🏘️</div>
+      <div>
+        <div class="dh-title">Day 2 · 胡同漫步</div>
+        <div class="dh-sub">四选一 · 每条路都精彩</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p style="font-size:14px;color:#555;margin-bottom:12px;">北京胡同各有性格，选一条你感兴趣的走一天：</p>
+
+      <div class="time-slot">
+        <div class="ts-time">A<br>东四</div>
+        <div class="ts-content">
+          <h4>🅰️ 东四胡同群 · 文艺青年首选</h4>
+          <span class="ts-tag">文物院落+独立小店</span>
+          <p>东四拥有北京最大的胡同群之一。以东四北大街为中轴，深入东西两侧胡同——这里有百年文物院落，也有气质独特的小店。推荐去 <strong>东四博物馆</strong>、<strong>NEST巢空间</strong>（老厂房改造艺术空间）、<strong>SALTY ICE PLUS Cafe</strong>（老北京四合院风咖啡馆）。附近的<strong>稻香村零号店</strong>可以买到最时髦的京式糕点和二八酱冰淇淋。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京东四" target="_blank">📍 东四</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 地铁5号线「东四」站 或 「张自忠路」站 <a href="https://maps.apple.com/?q=北京东四地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">B<br>阜景街</div>
+        <div class="ts-content">
+          <h4>🅱️ 阜景街 · 老舍笔下的最美街</h4>
+          <span class="ts-tag">白塔+帝王庙+鲁迅博物馆</span>
+          <p>老舍笔下"又美又漂亮"的一条街。起点<strong>阜成门</strong>，终点<strong>景山</strong>。一路经过<strong>妙应寺白塔</strong>（元大都遗存，北京最美白塔）、<strong>历代帝王庙</strong>（不输故宫的皇家气派）、<strong>万松老人塔</strong>（元代砖塔）、<strong>鲁迅博物馆</strong>（免费，看鲁迅手稿）。路上还穿过充满烟火气的胡同。建议分两天逛完。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京妙应寺白塔" target="_blank">📍 妙应寺白塔</a>
+            <a href="https://maps.apple.com/?q=北京历代帝王庙" target="_blank" style="margin-left:12px;">📍 历代帝王庙</a>
+            <a href="https://maps.apple.com/?q=北京鲁迅博物馆" target="_blank" style="margin-left:12px;">📍 鲁迅博物馆</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 地铁2号线「阜成门」站 <a href="https://maps.apple.com/?q=北京阜成门地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">C<br>前门</div>
+        <div class="ts-content">
+          <h4>🅲 杨梅竹斜街 · 京味儿松弛感</h4>
+          <span class="ts-tag">胡同小店+三里河公园</span>
+          <p>靠近前门，却比南锣鼓巷安静得多。<strong>杨梅竹斜街</strong>保留了老北京的松弛感，有趣的小店扎堆。附近的<strong>西兴隆街</strong>京味儿更浓，有<strong>三里河公园</strong>（小桥流水，北京"小江南"）、<strong>法原建筑博物馆</strong>（古建爱好者天堂）。从中国铁道博物馆（正阳门馆）开始逛起，沿途咖啡店、书店、文创店密集。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京杨梅竹斜街" target="_blank">📍 杨梅竹斜街</a>
+            <a href="https://maps.apple.com/?q=北京三里河公园" target="_blank" style="margin-left:12px;">📍 三里河公园</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 地铁7/8号线「珠市口」站 <a href="https://maps.apple.com/?q=北京珠市口地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="ts-time">D<br>107路</div>
+        <div class="ts-content">
+          <h4>🅳 坐107路玩北京 · 移动的风景线</h4>
+          <span class="ts-tag">串起老北京记忆</span>
+          <p>北京最值得坐的公交线路！起于<strong>东直门</strong>终于<strong>白石桥东</strong>，串联东西城和海淀。途经<strong>北新桥</strong>（美食中心）、<strong>北海</strong>（白塔）、<strong>什刹海</strong>（鼓楼）、<strong>北京动物园</strong>（熊猫）、<strong>紫竹院</strong>……跟着107路可以穿越各种老北京范儿的地，邂逅一个既有皇家格调又无敌接地气的帝都。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京东直门公交枢纽" target="_blank">🗺️ 107路起点·东直门</a>
+            <a href="https://maps.apple.com/?q=北京白石桥东公交站" target="_blank" style="margin-left:12px;">🗺️ 107路终点·白石桥东</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#2d5a3a,#4a8a5a);">
+      <div class="dh-icon">🏞️</div>
+      <div>
+        <div class="dh-title">Day 3 · 皇家园林 or 长城</div>
+        <div class="dh-sub">颐和园/圆明园 → 清华/五道口 或 八达岭/慕田峪</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="time-slot">
+        <div class="ts-time">A</div>
+        <div class="ts-content">
+          <h4>🅰️ 颐和园 + 圆明园 + 五道口</h4>
+          <span class="ts-tag">皇家园林一日</span>
+          <p><strong>颐和园</strong>——中国古典园林之首，昆明湖+万寿山+十七孔桥，建议从北宫门进，经过苏州街、佛香阁、长廊，从东宫门出。走马观花也得3-4小时。<strong>圆明园</strong>（在隔壁）——西洋楼遗址大水法是标志打卡点，春天的荷花值得看。</p>
+          <p>从圆明园走15分钟到<strong>五道口</strong>——"北京宇宙中心"，清华北大的"校外食堂"。这里韩国料理、各国美食密集，是感受海淀学霸日常的好地方。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京颐和园" target="_blank">📍 颐和园</a>
+            <a href="https://maps.apple.com/?q=北京圆明园" target="_blank" style="margin-left:12px;">📍 圆明园</a>
+            <a href="https://maps.apple.com/?q=北京五道口" target="_blank" style="margin-left:12px;">📍 五道口</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 地铁4号线「北宫门」站（颐和园）或「圆明园」站 | 🚇 地铁13号线「五道口」站</p>
+          <div class="food-suggestion">
+            <div class="fs-title">🍽️ 五道口美食推荐</div>
+            <div class="fs-item">• <strong>五道口枣糕</strong> — 成府路43号，北京最好吃的枣糕！排队也要买 | <a href="https://maps.apple.com/?q=五道口枣糕" target="_blank">🗺️</a></div>
+            <div class="fs-item">• <strong>彭姐麻辣烫</strong> — 五道口老牌麻辣烫，学神的深夜食堂 | <a href="https://maps.apple.com/?q=彭姐麻辣烫北京" target="_blank">🗺️</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="ts-time">B</div>
+        <div class="ts-content">
+          <h4>🅱️ 长城一日游</h4>
+          <span class="ts-tag">不到长城非好汉</span>
+          <p><strong>八达岭长城</strong>（最经典）：市区坐市郊S2线（北京北站/清河站出发，约1.5h，可刷一卡通）或877路公交（德胜门出发）。建议早出发。长城上风大，注意保暖防晒。旺季人多得像在爬人墙。</p>
+          <p><strong>慕田峪长城</strong>（人少景美）：比八达岭更推荐！有缆车上下，适合带老人小孩。从东直门坐旅游专线或打车前往。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京八达岭长城" target="_blank">📍 八达岭长城</a>
+            <a href="https://maps.apple.com/?q=北京慕田峪长城" target="_blank" style="margin-left:12px;">📍 慕田峪长城</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚄 市郊S2线「八达岭」站 <a href="https://maps.apple.com/?q=北京八达岭火车站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 必游景点 -->
+<!-- ===================================================== -->
+<section class="container" id="spots" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">必游景点</span>
+    <span class="en">Must-See Attractions</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="spot-grid">
+
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#c0392b,#e06050);">🏛️</div>
+      <div class="spot-card-body">
+        <h4>故宫博物院</h4>
+        <span class="sc-tag">世界遗产</span>
+        <p>明清两代皇宫，世界上最大的木质结构古建筑群。建议至少留4小时，主线走中轴线+东西六宫。提前7天在公众号预约。</p>
+        <div class="sc-map">
+          <a href="https://maps.apple.com/?q=北京故宫博物院" target="_blank">📍 东城区景山前街4号</a>
+          <span style="font-size:11px;color:#999;">🎫 60元</span>
+        </div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 1号线「天安门东」站 <a href="https://maps.apple.com/?q=北京天安门东地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+      </div>
+    </div>
+
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#2d5a3a,#4a8a5a);">🌿</div>
+      <div class="spot-card-body">
+        <h4>天坛公园</h4>
+        <span class="sc-tag">世界遗产</span>
+        <p>明清皇帝祭天之所。祈年殿是北京最标志性的建筑之一。斋宫的玉兰花春天极美，回音壁是力学奇迹。公园内古柏参天，本地人晨练的后花园。</p>
+        <div class="sc-map">
+          <a href="https://maps.apple.com/?q=北京天坛公园" target="_blank">📍 东城区天坛内东里7号</a>
+          <span style="font-size:11px;color:#999;">🎫 联票34元</span>
+        </div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 5号线「天坛东门」站 <a href="https://maps.apple.com/?q=北京天坛东门地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+      </div>
+    </div>
+
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#5a4a8a,#8a6aaa);">🏞️</div>
+      <div class="spot-card-body">
+        <h4>颐和园</h4>
+        <span class="sc-tag">皇家园林之首</span>
+        <p>中国古典园林的集大成者。昆明湖、万寿山、十七孔桥、佛香阁、长廊（世界最长画廊）。秋天万寿山红叶映湖绝美。建议北宫门进东宫门出。</p>
+        <div class="sc-map">
+          <a href="https://maps.apple.com/?q=北京颐和园" target="_blank">📍 海淀区新建宫门路19号</a>
+          <span style="font-size:11px;color:#999;">🎫 联票60元</span>
+        </div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 4号线「北宫门」站 <a href="https://maps.apple.com/?q=北京北宫门地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+      </div>
+    </div>
+
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#8b4513,#c49a6c);">🏘️</div>
+      <div class="spot-card-body">
+        <h4>恭王府</h4>
+        <span class="sc-tag">一座恭王府，半部清朝史</span>
+        <p>清代规模最大的王府，曾是和珅的宅邸。后罩楼长160米，有44个窗户，每个窗户后的房间都藏着故事。花园仿故宫宁寿宫建。和珅的藏宝楼值得看。</p>
+        <div class="sc-map">
+          <a href="https://maps.apple.com/?q=北京恭王府" target="_blank">📍 西城区柳荫街甲14号</a>
+          <span style="font-size:11px;color:#999;">🎫 40元</span>
+        </div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 6号线「北海北」站 <a href="https://maps.apple.com/?q=北京北海北地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+      </div>
+    </div>
+
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#2a4a6a,#4a7a9a);">🕌</div>
+      <div class="spot-card-body">
+        <h4>雍和宫</h4>
+        <span class="sc-tag">京城香火最旺</span>
+        <p>北京现存规模最大的藏传佛教寺庙，原为雍正府邸。香火极旺，求事业学业特别灵。万福阁内18米高弥勒木雕像震撼。门票25元，门口可以领香。周末人尤其多。</p>
+        <div class="sc-map">
+          <a href="https://maps.apple.com/?q=北京雍和宫" target="_blank">📍 东城区雍和宫大街12号</a>
+          <span style="font-size:11px;color:#999;">🎫 25元</span>
+        </div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 2/5号线「雍和宫」站 <a href="https://maps.apple.com/?q=北京雍和宫地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+      </div>
+    </div>
+
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#8b1a1a,#c0392b);">🎡</div>
+      <div class="spot-card-body">
+        <h4>天安门广场</h4>
+        <span class="sc-tag">世界上最大广场</span>
+        <p>每天日出时分有升旗仪式，日落时有降旗。建议查好时间提前半小时到。广场周围有人民英雄纪念碑、毛主席纪念堂、国家博物馆、正阳门。安检严格，带好身份证。</p>
+        <div class="sc-map">
+          <a href="https://maps.apple.com/?q=北京天安门广场" target="_blank">📍 东城区长安街</a>
+        </div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 1号线「天安门东/西」站 <a href="https://maps.apple.com/?q=北京天安门东地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 胡同Citywalk -->
+<!-- ===================================================== -->
+<section class="container" id="hutong" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">胡同 Citywalk</span>
+    <span class="en">Hutong · Walking Routes</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#8b5a2b,#c49a6c);">
+      <div class="dh-icon">🚶</div>
+      <div>
+        <div class="dh-title">东四 · 北京最大胡同群之一</div>
+        <div class="dh-sub">文物院落 × 独立小店 × 文艺浓度最高</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p>东四片区拥有北京最大的胡同群之一，以东四北大街为中轴，东西两侧胡同里藏着大量文物院落和有趣的小店。推荐精华路线：</p>
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="ts-time">🗺️<br>路线</div>
+        <div class="ts-content">
+          <p><strong>东四地铁站 → 东四博物馆 → 东四四条 → 东四六条 → NEST巢空间 → 东四北大街 → 稻香村零号店</strong></p>
+          <p style="margin-top:6px;font-size:13px;color:#666;">沿途可以拐进任意胡同探索，有惊喜。东四的平衡感很好——不太商业化也不至于没有吸引力。值得专门花一天来逛。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京东四博物馆" target="_blank">📍 东四博物馆</a>
+            <a href="https://maps.apple.com/?q=北京稻香村零号店" target="_blank" style="margin-left:12px;">📍 稻香村零号店</a>
+            <a href="https://maps.apple.com/?q=北京NEST巢空间" target="_blank" style="margin-left:12px;">📍 NEST巢空间</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 5号线「东四」站 <a href="https://maps.apple.com/?q=北京东四地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#6a4a2a,#9a7a5a);">
+      <div class="dh-icon">🚶</div>
+      <div>
+        <div class="dh-title">阜景街 · 老舍笔下的最美一条街</div>
+        <div class="dh-sub">白塔 × 帝王庙 × 鲁迅博物馆 × 万松老人塔</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p>这是一条地图上没有，但在老舍笔下"又美又漂亮"的街。起点阜成门，终点景山公园，约2.5公里。建议分两天走完，沿途每一个点都值得细看。</p>
+      <div class="time-slot">
+        <div class="ts-time">📍<br>路线</div>
+        <div class="ts-content">
+          <p><strong>阜成门 → 鲁迅博物馆（免费）→ 妙应寺白塔 → 历代帝王庙 → 万松老人塔 → 西四 → 地质博物馆 → 广济寺 → 西什库教堂 → 北海 → 景山</strong></p>
+        </div>
+      </div>
+      <div class="time-slot">
+        <div class="ts-time">⭐<br>重点</div>
+        <div class="ts-content">
+          <h4>妙应寺白塔</h4>
+          <p>元大都遗存，由尼泊尔匠师阿尼哥设计建造，北京最古老、最大的喇嘛塔。在胡同里不经意间抬头看到白塔尖，是北京最美的画面之一。附近的白塔寺药店、白塔寺周边的胡同都很好逛。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京妙应寺白塔" target="_blank">📍 妙应寺（白塔寺）</a>
+            <span style="font-size:12px;color:#999;">🎫 20元</span>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 2号线「阜成门」站 <a href="https://maps.apple.com/?q=北京阜成门地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="ts-time">🍜<br>美食</div>
+        <div class="ts-content">
+          <h4>沿线必吃</h4>
+          <p>
+            <strong>杏园餐厅</strong> — 西四北大街，炖肉刀削面一绝，老北京人的食堂 <a href="https://maps.apple.com/?q=杏园餐厅北京西四" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a><br>
+            <strong>二友居西四包子铺</strong> — 西四南大街，60年老字号，西四包子配炒肝 <a href="https://maps.apple.com/?q=二友居西四包子铺" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a><br>
+            <strong>华天延吉</strong> — 西四北大街，北京最老牌的朝鲜冷面馆 <a href="https://maps.apple.com/?q=华天延吉北京西四" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#c0392b,#e06050);">
+      <div class="dh-icon">🚶</div>
+      <div>
+        <div class="dh-title">前门 · 杨梅竹斜街 & 西兴隆街</div>
+        <div class="dh-sub">京味儿松弛感 · 小店密集 · 三里河"小江南"</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="ts-time">🗺️<br>路线</div>
+        <div class="ts-content">
+          <p><strong>Day 1：</strong>中国铁道博物馆（正阳门馆）→ 杨梅竹斜街 → Pageone书店（前门北京坊店，网红书店）<br>
+          <strong>Day 2：</strong>西兴隆街 → 三里河公园 → 法原建筑博物馆</p>
+          <p style="margin-top:6px;font-size:13px;color:#666;">这里距离天安门、故宫很近，走完运动量超标的中轴线后，来这放松摆烂再合适不过。距离地铁珠市口站步行5分钟。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=北京杨梅竹斜街" target="_blank">📍 杨梅竹斜街</a>
+            <a href="https://maps.apple.com/?q=北京三里河公园" target="_blank" style="margin-left:12px;">📍 三里河公园</a>
+            <a href="https://maps.apple.com/?q=北京Pageone前门" target="_blank" style="margin-left:12px;">📍 Pageone书店</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 7/8号线「珠市口」站 <a href="https://maps.apple.com/?q=北京珠市口地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 美食地图 -->
+<!-- ===================================================== -->
+<section class="container" id="food" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">美食地图</span>
+    <span class="en">Beijing Food Guide</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🍜 破除"美食荒漠"误解：</strong> 北京绝非美食荒漠！除了豆汁卤煮，还有涮羊肉、烤鸭、炸灌肠、打卤面、肉饼、麻酱烧饼等本地味道。更不用说遍布北京的驻京办餐厅（省不如市，市不如县）和使馆区各国料理——在北京，可以一城吃遍全世界。
+  </div>
+
+  <div class="food-grid">
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥩 羊大爷涮肉</div>
+      <div class="fc-price">人均 80-120元</div>
+      <div class="fc-desc">北京涮肉代表！铜锅清水涮鲜切羊肉，灵魂是麻酱（芝麻酱+花生酱调制）。鲜切肉必点，羊肉新鲜部位多。夏天冬天都得吃涮肉。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=羊大爷涮肉北京麦子店" target="_blank">📍 朝阳区麦子店西街39号</a></div>
+      <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 14号线「枣营」站 <a href="https://maps.apple.com/?q=北京枣营地地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥟 牛街清真小吃街</div>
+      <div class="fc-price">人均 20-50元</div>
+      <div class="fc-desc">一公里的回民街，几乎每家店都排队！<strong>白记年糕</strong>（驴打滚、豌豆黄）、<strong>伊宝荷叶甑糕</strong>、<strong>洪记包子</strong>、<strong>满记烧饼</strong>、<strong>马记电烤串</strong>——每家都是老字号。紫光园奶皮子酸奶一定要喝。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=北京牛街" target="_blank">📍 西城区牛街</a></div>
+      <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 19号线「牛街」站 <a href="https://maps.apple.com/?q=北京牛街地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a> | 🚌 10路/88路「牛街」站 <a href="https://maps.apple.com/?q=北京牛街公交站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🌶️ 宜宾驻京办</div>
+      <div class="fc-price">人均 60-90元</div>
+      <div class="fc-desc">驻京办中的"排队王"！宜宾燃面必点，李庄白肉薄如蝉翼。省不如市，市不如县——越小的地方驻京办越地道。北京还有新疆饭庄、飞天大厦(甘肃)、常州宾馆等各地驻京办等你解锁。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=宜宾驻京办北京" target="_blank">📍 宜宾招待所餐厅</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🍜 五道口宇宙中心</div>
+      <div class="fc-price">人均 20-100元</div>
+      <div class="fc-desc">清华北大"校外食堂"，各国美食云集！枣糕王（排队名物）、明洞邦雪冰（韩式雪冰）、五道双马（韩餐）、彭姐麻辣烫（学神夜宵）、么哈（墨西哥菜，性价比之王）。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=北京五道口" target="_blank">📍 海淀区成府路/五道口</a></div>
+      <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 13号线「五道口」站 <a href="https://maps.apple.com/?q=北京五道口地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥮 北新桥美食圈</div>
+      <div class="fc-price">人均 15-80元</div>
+      <div class="fc-desc">以北新桥地铁站为中心，往北雍和宫/五道营，往南东四，往东东直门内大街，往西鼓楼。推荐：<strong>北三条胡同面馆</strong>（打卤面）、<strong>晓林肉饼</strong>、<strong>丰年灌肠</strong>、<strong>三元梅园</strong>（宫廷奶酪）、<strong>稻香村零号店</strong>（二八酱冰淇淋）。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=北京北新桥" target="_blank">📍 北新桥片区</a></div>
+      <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 5号线「北新桥」站 <a href="https://maps.apple.com/?q=北京北新桥地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🦆 北京烤鸭</div>
+      <div class="fc-price">人均 100-200元</div>
+      <div class="fc-desc">来北京哪能不吃烤鸭！<strong>四季民福</strong>（性价比之王，故宫店景观位可看角楼）、<strong>大董</strong>（高端，创新烤鸭）、<strong>全聚德</strong>（老字号，但被吐槽较多）。推荐四季民福，人均150元，烤鸭蘸白糖是灵魂。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=四季民福烤鸭北京" target="_blank">📍 四季民福（多家分店）</a></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 寺庙巡礼 -->
+<!-- ===================================================== -->
+<section class="container" id="temple" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">寺庙巡礼</span>
+    <span class="en">Temples · 听古乐 · 看展 · 喝咖啡</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="spot-grid">
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#5a2a2a,#8a4a4a);">🛕</div>
+      <div class="spot-card-body">
+        <h4>雍和宫</h4>
+        <span class="sc-tag">藏传佛教 · 香火最旺</span>
+        <p>雍正府邸改建的藏传佛教寺庙，京城香火最旺。求事业学业特别灵。万福阁18米弥勒木雕为稀世珍宝。领香免费，礼佛顺序有讲究。</p>
+        <div class="sc-map"><a href="https://maps.apple.com/?q=北京雍和宫" target="_blank">📍 雍和宫大街12号</a></div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 2/5号线「雍和宫」站</p>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#6a4a2a,#9a7a4a);">🛕</div>
+      <div class="spot-card-body">
+        <h4>妙应寺（白塔寺）</h4>
+        <span class="sc-tag">元大都白塔 · 胡同经典画面</span>
+        <p>尼泊尔匠师阿尼哥设计建造的白塔，是北京最古老的喇嘛塔。在红墙胡同的缝隙中看白塔尖，是北京最经典的画面之一。寺内有白塔寺药店和咖啡店。</p>
+        <div class="sc-map"><a href="https://maps.apple.com/?q=北京妙应寺白塔" target="_blank">📍 西城区阜成门内大街171号</a></div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 2号线「阜成门」站</p>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#2a4a6a,#4a6a8a);">🛕</div>
+      <div class="spot-card-body">
+        <h4>红螺寺</h4>
+        <span class="sc-tag">南有普陀，北有红螺</span>
+        <p>"男雍和，女红螺"——求姻缘最灵验的寺庙。位于怀柔，环境清幽，千年古银杏树秋色绝美。从市区需1.5小时车程，适合搭配慕田峪长城一日游。</p>
+        <div class="sc-map"><a href="https://maps.apple.com/?q=北京红螺寺" target="_blank">📍 怀柔区红螺东路2号</a></div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚌 东直门乘916快车至怀柔换乘H57路</p>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#3a5a2a,#5a7a4a);">🛕</div>
+      <div class="spot-card-body">
+        <h4>潭柘寺</h4>
+        <span class="sc-tag">先有潭柘寺，后有北京城</span>
+        <p>北京最古老的寺庙（始建于西晋），比北京城建城还早。古树参天，帝王银杏（1300年）秋天满树金黄。位于门头沟，市区开车1小时可到。</p>
+        <div class="sc-map"><a href="https://maps.apple.com/?q=北京潭柘寺" target="_blank">📍 门头沟区潭柘寺镇</a></div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚌 地铁S1线石厂站换乘931路</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 赏花攻略 -->
+<!-- ===================================================== -->
+<section class="container" id="flower" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">赏花攻略</span>
+    <span class="en">Beijing Flowers · 四季花历</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#d4488a,#f06a9a);">
+      <div class="dh-icon">🌸</div>
+      <div>
+        <div class="dh-title">四季花历 · 北京赏花地图</div>
+        <div class="dh-sub">春天的北京，比秋天更惊艳</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <table class="route-table">
+        <tr><th>季节</th><th>花种</th><th>推荐地点</th><th>花期</th></tr>
+        <tr><td rowspan="4" style="font-weight:700;color:#d4488a;">🌸 春</td><td>桃花</td><td>颐和园西堤、十里堡</td><td>3月中-4月初</td></tr>
+        <tr><td>玉兰</td><td>天坛斋宫、大觉寺</td><td>3月下旬-4月</td></tr>
+        <tr><td>梨花</td><td>故宫寿康宫、承乾宫</td><td>4月上旬</td></tr>
+        <tr><td>海棠</td><td>元大都遗址公园、宋庆龄故居</td><td>4月中</td></tr>
+        <tr><td rowspan="2" style="font-weight:700;color:#2a7a3a;">🌿 夏</td><td>荷花</td><td>圆明园、北海公园</td><td>6-8月</td></tr>
+        <tr><td>向日葵</td><td>奥林匹克森林公园</td><td>7-8月</td></tr>
+        <tr><td rowspan="2" style="font-weight:700;color:#c49a2a;">🍂 秋</td><td>银杏</td><td>地坛公园、雍和宫、三里屯东五街</td><td>10月下旬-11月</td></tr>
+        <tr><td>红叶</td><td>香山、颐和园万寿山、八达岭</td><td>10月中-11月初</td></tr>
+        <tr><td style="font-weight:700;color:#5a7a9a;">❄️ 冬</td><td>蜡梅</td><td>故宫御花园、颐和园乐农轩</td><td>12月-2月</td></tr>
+      </table>
+      <div class="tip-box" style="margin-top:16px;">
+        <strong>💡 赏花Tips：</strong> 北京的春天虽短暂但极美。古寺红墙配上花，是中式美学的巅峰。故宫的梨花（寿康宫）、天坛的玉兰（斋宫）都是绝佳拍照地。秋天地坛公园的银杏大道人少景美，不输雍和宫。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 博物馆 -->
+<!-- ===================================================== -->
+<section class="container" id="museum" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">博物馆之城</span>
+    <span class="en">204 Museums · National Treasure</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🏛️ 北京拥有204座登记在册的博物馆、18座国家一级博物馆（全国最多）。</strong> 雍和宫、明十三陵、恭王府等景点本身也是博物馆"编制"。逛博物馆是了解北京最好的方式。
+  </div>
+
+  <div class="spot-grid">
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#c0392b,#e06050);">🏛️</div>
+      <div class="spot-card-body">
+        <h4>中国国家博物馆</h4>
+        <span class="sc-tag">馆中巨无霸</span>
+        <p>世界上最大的博物馆之一，日走3万步都逛不完。建议提前预约，重点看"古代中国"基本陈列（负一层）。后母戊鼎、四羊方尊等都是教科书级别的国宝。</p>
+        <div class="sc-map"><a href="https://maps.apple.com/?q=北京中国国家博物馆" target="_blank">📍 东城区东长安街16号</a></div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 1号线「天安门东」站 <a href="https://maps.apple.com/?q=北京天安门东地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#8b4513,#c49a6c);">🏛️</div>
+      <div class="spot-card-body">
+        <h4>首都博物馆</h4>
+        <span class="sc-tag">了解北京最好的起点</span>
+        <p>老北京民俗展+燕地青铜器+明清瓷器。方厅和圆厅的建筑本身就很特别。建议先来这里再逛其他景点，会对北京历史有全面认知。免费需预约。</p>
+        <div class="sc-map"><a href="https://maps.apple.com/?q=北京首都博物馆" target="_blank">📍 西城区复兴门外大街16号</a></div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 1号线「木樨地」站 <a href="https://maps.apple.com/?q=北京木樨地地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-card-img" style="background:linear-gradient(135deg,#2a4a6a,#4a7a9a);">🏛️</div>
+      <div class="spot-card-body">
+        <h4>中国铁道博物馆</h4>
+        <span class="sc-tag">前门正阳门馆</span>
+        <p>位于前门的正阳门东站老建筑内，本身就是文物。看中国铁路发展史，适合搭配杨梅竹斜街一起逛。还有免费的东北角楼展，看正阳门城楼内部结构。</p>
+        <div class="sc-map"><a href="https://maps.apple.com/?q=北京中国铁道博物馆正阳门" target="_blank">📍 前门大街甲2号</a></div>
+        <p style="margin-top:4px;font-size:12px;color:#007aff;">🚇 2/8号线「前门」站 <a href="https://maps.apple.com/?q=北京前门地铁站" target="_blank" style="font-size:11px;color:#007aff;">🗺️</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 实用贴士 -->
+<!-- ===================================================== -->
+<section class="container" id="tips" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">实用贴士</span>
+    <span class="en">Travel Tips</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tips-grid">
+    <div class="tip-card fade-in">
+      <h4>🚇 交通</h4>
+      <ul>
+        <li>机场：首都机场（地铁首都机场线）/大兴机场（地铁大兴机场线）</li>
+        <li>高铁到<strong>北京南站</strong>（4/14号线）或<strong>北京西站</strong>（7/9号线）最方便</li>
+        <li>地铁覆盖全市景点，下载"亿通行"APP扫码乘车</li>
+        <li>公交上下车均需刷卡/扫码</li>
+        <li>工作日高峰二环内非常堵，尽量坐地铁</li>
+      </ul>
+    </div>
+    <div class="tip-card fade-in">
+      <h4>🎫 门票预约</h4>
+      <ul>
+        <li><strong>故宫：</strong>提前7天在"故宫博物院"公众号抢票，秒光</li>
+        <li><strong>国博：</strong>提前1-3天在"国家博物馆"公众号预约</li>
+        <li><strong>天安门广场：</strong>提前1天预约</li>
+        <li>大部分景点周一闭馆！</li>
+        <li>长城建议选慕田峪，人比八达岭少很多</li>
+      </ul>
+    </div>
+    <div class="tip-card fade-in">
+      <h4>💰 预算参考（3天）</h4>
+      <ul>
+        <li>故宫60 + 景山2 + 天坛34 + 颐和园60</li>
+        <li>雍和宫25 + 恭王府40</li>
+        <li>三餐人均 80-150元/天</li>
+        <li>地铁+打车 约 50-100元/天</li>
+        <li>长城一日 约 150-200元（不含门票）</li>
+      </ul>
+    </div>
+    <div class="tip-card fade-in">
+      <h4>⚠️ 注意事项</h4>
+      <ul>
+        <li><strong>防晒！</strong>北京春秋紫外线强，风大干燥</li>
+        <li>故宫全年人多，做好心理准备</li>
+        <li>备好身份证，很多景点安检严格</li>
+        <li>北京很大，不要贪心想一天去太多地方</li>
+        <li>值得买的伴手礼：稻香村（认准三禾标志）、张一元茶</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deco-line">◆ ◇ ◆ ◇ ◆</div>
+
+  <div class="fade-in" style="text-align:center;padding:20px 0;">
+    <div style="font-size:28px;margin-bottom:6px;">🏯</div>
+    <p style="font-size:15px;color:#555;">所有地点均已添加 Apple 地图链接，点击即可导航</p>
+    <p style="font-size:13px;color:#999;margin-top:4px;">祝你在北京的每一天，都玩得开心，吃得满足！</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="fq">「 北京，一座你来了就不想走的城市 」</div>
+  <p style="font-size:14px;letter-spacing:4px;">红墙黄瓦 · 胡同深处 · 一城吃遍全世界</p>
+  <p style="margin-top:14px;opacity:0.7;">北京旅行攻略 · 皇城根下的日与夜</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
