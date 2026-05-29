@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天津旅行攻略 — 隐姓埋名的宝藏城市</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f9f5f0;
+    color: #3d2a2a;
+    line-height: 1.9;
+  }
+  .hero {
+    position: relative;
+    height: 88vh; min-height: 500px;
+    background: linear-gradient(135deg, #8B4513 0%, #D2691E 30%, #CD853F 65%, #A0522D 100%);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,215,0,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.08) 0%, transparent 50%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 140px;
+    background: linear-gradient(to top, #f9f5f0 0%, transparent 100%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 40px; animation: fadeInUp 1.2s ease-out; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-badge {
+    display: inline-block; padding: 10px 36px;
+    border: 2px solid rgba(255,215,0,0.5); color: #ffd700;
+    font-size: 15px; letter-spacing: 10px; margin-bottom: 28px; font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif; font-size: 74px; font-weight: 900;
+    color: #fff; text-shadow: 0 4px 40px rgba(0,0,0,0.12);
+    margin-bottom: 14px; letter-spacing: 14px;
+  }
+  .hero h1 .hl { color: #ffd700; }
+  .hero .sub { font-size: 22px; color: rgba(255,255,255,0.9); letter-spacing: 8px; font-weight: 300; margin-bottom: 8px; }
+  .hero .sub2 { font-size: 16px; color: rgba(255,255,255,0.65); letter-spacing: 4px; font-weight: 300; }
+  .hero .quote {
+    font-family: 'Noto Serif SC', serif; font-size: 20px;
+    color: rgba(255,215,0,0.85); letter-spacing: 6px; margin-top: 20px; font-weight: 600;
+  }
+  .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 3; color: rgba(255,255,255,0.5); font-size: 13px; letter-spacing: 4px; animation: bounce 2.4s infinite; }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(12px); } }
+
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(249,245,240,0.96); backdrop-filter: blur(20px);
+    border-bottom: 1px solid #e8ddd0; padding: 0 40px;
+  }
+  .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav a {
+    flex-shrink: 0; color: #7a5a4a; text-decoration: none;
+    padding: 16px 14px; font-size: 13px; letter-spacing: 2px;
+    transition: all 0.3s; border-bottom: 2px solid transparent; white-space: nowrap;
+  }
+  .nav a:hover { color: #D2691E; border-bottom-color: #D2691E; background: rgba(210,105,30,0.04); }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 50px 30px 30px; }
+  .section-title { text-align: center; margin-bottom: 40px; position: relative; }
+  .section-title .cn { font-family: 'Noto Serif SC', serif; font-size: 36px; font-weight: 900; color: #8B4513; letter-spacing: 6px; display: block; margin-bottom: 4px; }
+  .section-title .en { font-size: 12px; color: rgba(139,69,19,0.3); letter-spacing: 4px; text-transform: uppercase; }
+  .section-title .line { width: 50px; height: 3px; background: linear-gradient(90deg, transparent, #8B4513, transparent); margin: 14px auto 0; }
+
+  .tip-box { background: linear-gradient(135deg, #fef0ec, #fff8f5); border-left: 4px solid #D2691E; border-radius: 0 12px 12px 0; padding: 18px 24px; margin: 16px 0; }
+  .tip-box strong { color: #8B4513; }
+
+  .day-section { background: #fff; border-radius: 16px; box-shadow: 0 2px 20px rgba(139,69,19,0.06); border: 1px solid #f0e4dc; overflow: hidden; margin-bottom: 36px; }
+  .day-header { padding: 22px 32px; background: linear-gradient(135deg, #8B4513, #D2691E); color: #fff; display: flex; align-items: center; gap: 14px; }
+  .day-header .dh-icon { font-size: 32px; }
+  .day-header .dh-title { font-size: 22px; font-weight: 700; letter-spacing: 4px; }
+  .day-header .dh-sub { font-size: 13px; opacity: 0.8; letter-spacing: 2px; margin-top: 2px; }
+  .day-body { padding: 10px 32px 28px; }
+
+  .time-slot { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 16px 0; border-bottom: 1px dashed #f0e4dc; }
+  .time-slot:last-child { border-bottom: none; }
+  .time-slot .ts-time { font-size: 14px; font-weight: 700; color: #D2691E; padding-top: 2px; white-space: nowrap; }
+  .time-slot .ts-content h4 { font-size: 16px; color: #7a2a1a; margin-bottom: 4px; }
+  .time-slot .ts-content p { font-size: 14px; color: #555; line-height: 1.8; }
+  .time-slot .ts-content .ts-map { margin-top: 6px; }
+  .time-slot .ts-content .ts-map a { color: #8B4513; text-decoration: underline; font-size: 12px; margin-right: 14px; }
+  .time-slot .ts-content .ts-map a:hover { text-decoration: underline; }
+  .time-slot .ts-content .ts-tag { display: inline-block; padding: 1px 10px; background: rgba(139,69,19,0.07); color: #8B4513; border-radius: 12px; font-size: 11px; margin-bottom: 4px; margin-right: 4px; }
+
+  .food-suggestion { margin-top: 12px; padding: 14px 18px; background: linear-gradient(135deg, #fff8f0, #fffdf8); border-radius: 10px; border: 1px solid #f5e8d8; }
+  .food-suggestion .fs-title { font-size: 14px; font-weight: 700; color: #7a5a2a; margin-bottom: 6px; }
+  .food-suggestion .fs-item { font-size: 13px; color: #666; padding: 3px 0; }
+  .food-suggestion .fs-item a { color: #D2691E; text-decoration: underline; }
+
+  .spot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; margin-top: 10px; }
+  .spot-card { background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid #f0e4dc; box-shadow: 0 2px 12px rgba(0,0,0,0.04); transition: all 0.3s; }
+  .spot-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(139,69,19,0.08); }
+  .spot-card-img { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+  .spot-card-body { padding: 18px 20px; }
+  .spot-card-body h4 { font-size: 16px; color: #7a2a1a; margin-bottom: 4px; }
+  .spot-card-body .sc-tag { display: inline-block; padding: 1px 10px; background: rgba(139,69,19,0.07); color: #8B4513; border-radius: 12px; font-size: 11px; margin-bottom: 6px; }
+  .spot-card-body p { font-size: 13px; color: #555; line-height: 1.8; }
+  .spot-card-body .sc-map { margin-top: 8px; }
+  .spot-card-body .sc-map a { color: #8B4513; text-decoration: underline; font-size: 12px; }
+  .spot-card-body .sc-map a:hover { text-decoration: underline; }
+
+  .food-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 16px; }
+  .food-card { background: #fff; border-radius: 12px; border: 1px solid #f0e4dc; box-shadow: 0 2px 12px rgba(0,0,0,0.04); padding: 18px 20px; }
+  .food-card .fc-name { font-weight: 700; color: #7a2a1a; font-size: 15px; }
+  .food-card .fc-price { font-size: 13px; color: #D2691E; font-weight: 500; margin-bottom: 4px; }
+  .food-card .fc-desc { font-size: 13px; color: #555; line-height: 1.7; }
+  .food-card .fc-desc .hl { color: #8B4513; font-weight: 600; }
+  .food-card .fc-map a { color: #8B4513; text-decoration: underline; font-size: 12px; }
+  .food-card .fc-map a:hover { text-decoration: underline; }
+
+  .hotel-grid { display: grid; gap: 12px; margin-top: 12px; }
+  .hotel-card { background: #fff; border-radius: 12px; border: 1px solid #f0e4dc; padding: 16px 20px; }
+  .hotel-card h4 { font-size: 15px; color: #7a2a1a; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .hotel-card .meta { font-size: 13px; color: #888; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .hotel-card .meta a { color: #D2691E; text-decoration: underline; font-size: 12px; }
+  .hotel-card .addr { font-size: 13px; color: #999; margin-top: 4px; }
+  .badge-hot { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; background: #ffebee; color: #c62828; }
+  .badge-good { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; background: #e8f5e9; color: #2e7d32; }
+  .badge-super { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; background: #e8eaf6; color: #283593; }
+
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .tip-card { background: #fff; border-radius: 12px; border: 1px solid #f0e4dc; padding: 18px 20px; }
+  .tip-card h4 { font-size: 15px; color: #7a2a1a; margin-bottom: 6px; }
+  .tip-card ul { list-style: none; padding: 0; }
+  .tip-card ul li { padding: 4px 0 4px 18px; position: relative; font-size: 13px; color: #555; line-height: 1.7; }
+  .tip-card ul li::before { content: '\25cf'; position: absolute; left: 0; color: #D2691E; font-size: 7px; top: 9px; }
+
+  .fade-in { opacity: 0; transform: translateY(24px); transition: all 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .deco-line { text-align: center; color: rgba(139,69,19,0.12); font-size: 20px; letter-spacing: 12px; margin: 30px 0; }
+
+  .info-box { background: #fff; border-radius: 16px; box-shadow: 0 2px 20px rgba(139,69,19,0.06); border: 1px solid #f0e4dc; overflow: hidden; margin-bottom: 24px; }
+  .info-box-header { padding: 18px 24px; background: linear-gradient(135deg, #8B4513, #D2691E); color: #fff; display: flex; align-items: center; gap: 10px; }
+  .info-box-header .ibh-icon { font-size: 26px; }
+  .info-box-header .ibh-title { font-size: 17px; font-weight: 700; letter-spacing: 2px; }
+  .info-box-body { padding: 18px 24px; }
+  .info-box-body p { font-size: 14px; color: #555; line-height: 1.8; margin-bottom: 8px; }
+  .info-box-body p:last-child { margin-bottom: 0; }
+
+  .detail-list { list-style: none; padding: 0; margin: 8px 0; }
+  .detail-list li { padding: 6px 0 6px 22px; position: relative; font-size: 14px; color: #555; line-height: 1.7; }
+  .detail-list li::before { content: '\2713'; position: absolute; left: 0; color: #D2691E; font-weight: 700; }
+  .detail-list li .label { color: #8B4513; font-weight: 600; }
+
+  .warn-list { list-style: none; padding: 0; margin: 8px 0; }
+  .warn-list li { padding: 6px 0 6px 22px; position: relative; font-size: 14px; color: #555; line-height: 1.7; }
+  .warn-list li::before { content: '\26A0'; position: absolute; left: 0; top: 7px; }
+
+  footer { background: linear-gradient(135deg, #6a3a1a, #8B4513); padding: 40px 30px; text-align: center; color: rgba(255,255,255,0.85); font-size: 13px; letter-spacing: 2px; }
+  footer .fq { font-family: 'Noto Serif SC', serif; font-size: 18px; color: #ffd700; margin-bottom: 12px; letter-spacing: 4px; }
+
+  .tab-group { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tab-group .tab { padding: 6px 18px; border-radius: 20px; font-size: 12px; background: #f0e4dc; color: #7a5a4a; }
+
+  .hotel-sub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; margin-top: 10px; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 44px; letter-spacing: 8px; }
+    .hero .sub { font-size: 16px; }
+    .container { padding: 30px 16px; }
+    .section-title .cn { font-size: 28px; }
+    .day-header { padding: 16px 20px; }
+    .day-header .dh-title { font-size: 18px; }
+    .day-body { padding: 6px 18px 20px; }
+    .time-slot { grid-template-columns: 1fr; gap: 4px; }
+    .time-slot .ts-time { font-size: 13px; }
+    .spot-grid, .food-grid, .tips-grid, .hotel-sub-grid { grid-template-columns: 1fr; }
+    .nav { padding: 0 8px; }
+    .nav a { padding: 12px 6px; font-size: 11px; letter-spacing: 1px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ 天津 ✦</div>
+    <h1>天<span class="hl">津</span></h1>
+    <div class="sub">九河下梢 · 渤海之滨</div>
+    <div class="sub2">一座低调却好吃到封神的城市</div>
+    <div class="quote">「 百来栋欧式古建 · 万国建筑博览 · 北方早餐的巅峰 」</div>
+  </div>
+  <div class="scroll-hint">▼ 向下探索 ▼</div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#intro">📖 初识天津</a>
+    <a href="#routes">📅 行程推荐</a>
+    <a href="#spots">🏛️ 必游景点</a>
+    <a href="#breakfast">🥟 早餐美食</a>
+    <a href="#bus">🚌 特色公交</a>
+    <a href="#hotels">🏨 住宿推荐</a>
+    <a href="#tips">💡 实用贴士</a>
+  </div>
+</nav>
+
+<!-- ===================================================== -->
+<!-- 初识天津 -->
+<!-- ===================================================== -->
+<section class="container" id="intro">
+  <div class="section-title fade-in">
+    <span class="cn">初识天津</span>
+    <span class="en">Welcome to Tianjin</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🏛️ 天津档案：</strong> 四大直辖市之一，600年建城史。九河下梢、渤海之滨，百年码头文化孕育了独特的饮食习惯。百来栋欧式古建筑散落大街小巷，清末九国租界留下了"万国建筑博览会"的美誉。相比北京上海，天津人的幸福指数极高——慢慢悠悠不争不抢，去茶馆喝茶、看相声，不躺平也不内卷，过着属于他们的45度人生。
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 行程推荐 -->
+<!-- ===================================================== -->
+<section class="container" id="routes" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">行程推荐 · 2天1晚</span>
+    <span class="en">Customized Itinerary</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- 住址信息 -->
+  <div class="info-box fade-in">
+    <div class="info-box-header" style="background:linear-gradient(135deg,#2a6a4a,#4a9a6a);">
+      <div class="ibh-icon">🏠</div>
+      <div class="ibh-title">住宿信息</div>
+    </div>
+    <div class="info-box-body">
+      <p><strong>住宿：</strong> 海河沿线（天津之眼/古文化街附近），推荐如家·neo狮子林桥店或汉庭狮子林大街店，价格约150-200元/晚</p>
+      <p><strong>交通：</strong> 天津站（海河沿岸）、天津西站、天津南站均有地铁。市内景点集中，共享单车+地铁是最佳出行方式</p>
+      <p><strong>行程适合：</strong> 周末短途游，周五晚到周日下午</p>
+    </div>
+  </div>
+
+  <!-- ===== DAY 1 ===== -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#8B4513,#D2691E);">
+      <div class="dh-icon">🚶</div>
+      <div>
+        <div class="dh-title">Day 1 · 津门精华</div>
+        <div class="dh-sub">天津之眼 → 古文化街 → 意式风情区 → 海河夜游</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="tab-group">
+        <span class="tab">⏰ 全天行程</span>
+        <span class="tab">🚇 3号线「天津站」</span>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">上午</div>
+        <div class="ts-content">
+          <h4>🥟 天津早餐 · 从早点铺开始</h4>
+          <span class="ts-tag">早餐是天津的灵魂</span>
+          <p>来天津第一件事——吃早餐！天津人为了早餐是不睡懒觉的。推荐去居民区楼下的早点铺，不追求精致环境，味道最正。<strong>西北角、中山路、南市食品街</strong>一带老字号扎堆。</p>
+          <div class="food-suggestion">
+            <div class="fs-title">🍽️ 必吃早餐清单</div>
+            <div class="fs-item">• <strong>煎饼果子</strong> — 绿豆面外衣+油条薄脆，抹上面酱豆腐乳，天津的灵魂早餐</div>
+            <div class="fs-item">• <strong>锅巴菜</strong> — 锅巴配上卤子，热气腾腾，配大饼吃最香</div>
+            <div class="fs-item">• <strong>炸卷圈</strong> — 面皮包裹豆芽菜香菜臭豆腐，炸至酥脆，配豆浆绝配</div>
+            <div class="fs-item">• <strong>糖果子</strong> — 多了一层糖面皮的炸果子，焦糖色微微带甜</div>
+            <div class="fs-item">• <strong>老豆腐/豆腐脑</strong> — 天津老豆腐卤子浓郁，配烧饼正好</div>
+          </div>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津西北角" target="_blank">📍 西北角早点区</a>
+            <a href="https://maps.apple.com/?q=天津中山路" target="_blank" style="margin-left:12px;">📍 中山路早点区</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">10:00</div>
+        <div class="ts-content">
+          <h4>🏛️ 古文化街 · 天津老字号聚集地</h4>
+          <span class="ts-tag">民俗文化</span>
+          <span class="ts-tag">免费</span>
+          <p>天津老字号店铺聚集地，全长687米。可以买到<strong>泥人张</strong>彩塑（天津一绝，人物栩栩如生）、<strong>杨柳青年画</strong>（色彩鲜艳，寓意吉祥）、<strong>风筝魏</strong>的风筝。街上还有很多小吃摊，耳朵眼炸糕的总店也在这里。</p>
+          <p><strong>必逛：</strong> 天后宫（中国三大妈祖庙之一，免费参观）、玉皇阁、通庆里（百年建筑群）。</p>
+          <p><strong>Tips：</strong> 上午去人少，逛起来舒服。泥人张建议买小件，价格几十到几百不等。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津古文化街" target="_blank">📍 南开区通北路 · 古文化街</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#D2691E;">🚇 2号线「鼓楼」站 或 「东南角」站 步行10分钟 <a href="https://maps.apple.com/?q=天津鼓楼地铁站" target="_blank" style="font-size:11px;color:#D2691E;">🗺️</a></p>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">12:00</div>
+        <div class="ts-content">
+          <h4>🍜 午餐 · 古文化街/南市食品街</h4>
+          <p>古文化街上就有不少小吃，也可以步行到附近的<strong>南市食品街</strong>（步行15分钟）——天津老字号美食聚集地。</p>
+          <div class="food-suggestion">
+            <div class="fs-title">🍽️ 推荐午餐</div>
+            <div class="fs-item">• <strong>耳朵眼炸糕</strong>（古文化街总店） — 天津三绝之一，糯米外皮炸至金黄，内里豆馅丝滑 | <a href="https://maps.apple.com/?q=耳朵眼炸糕古文化街" target="_blank">🗺️</a></div>
+            <div class="fs-item">• <strong>石头门坎素包</strong> — 南市食品街，百年老字号素包子 | <a href="https://maps.apple.com/?q=石头门坎素包天津" target="_blank">🗺️</a></div>
+            <div class="fs-item">• <strong>天津老城里十三香果仁</strong> — 煮花生、五香果仁，下酒零食一绝 | <a href="https://maps.apple.com/?q=天津南市食品街" target="_blank">🗺️</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">14:00</div>
+        <div class="ts-content">
+          <h4>🇮🇹 意式风情区 · 天津的"小欧洲"</h4>
+          <span class="ts-tag">亚洲唯一意式建筑群</span>
+          <span class="ts-tag">免费</span>
+          <p>亚洲唯一的意大利风格建筑群，曾是意大利租界，现存137栋意式建筑。走在马可波罗广场上，仿佛穿越到了欧洲。梁启超故居（饮冰室）、曹禺故居都在这里。</p>
+          <p><strong>拍照Tips：</strong> 马可波罗广场的雕塑和周围建筑非常出片。傍晚灯光亮起后氛围感翻倍。</p>
+          <p><strong>Tips：</strong> 区域内有各种餐厅和酒吧，价格偏贵，建议逛逛拍照就好，吃饭可以到旁边的北安桥附近。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津意式风情区" target="_blank">📍 河北区光复道 · 意式风情区</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#D2691E;">🚇 2号线「建国道」站 步行5分钟 <a href="https://maps.apple.com/?q=天津建国道地铁站" target="_blank" style="font-size:11px;color:#D2691E;">🗺️</a></p>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">16:00</div>
+        <div class="ts-content">
+          <h4>🏛️ 五大道景区 · 万国建筑博览会</h4>
+          <span class="ts-tag">全国最大洋楼群</span>
+          <span class="ts-tag">免费</span>
+          <p>全国最大最有特色的洋楼建筑群，由五条主要道路构成，纵横23条道路，汇聚着2000多幢欧洲不同时期的建筑，包括英式、法式、意式、德式、西班牙式等。清末民初时这里是豪门聚集地，时不时就能看到名人故居。</p>
+          <p><strong>必逛：</strong></p>
+          <ul class="detail-list">
+            <li><span class="label"><a href="https://maps.apple.com/?q=天津民园体育场" target="_blank" style="color:#8B4513;text-decoration:underline;">民园体育场</a></span> 英式跑马场改建，我国最早的现代化体育场。浓浓的欧式风格，天气好时坐在里面晒太阳很惬意</li>
+            <li><span class="label">名人故居</span> 张学良故居、张自忠故居、徐世昌故居等散落其中</li>
+            <li><span class="label">马场道</span> 五大道中最长的一条道，保留了大量的老建筑</li>
+          </ul>
+          <p><strong>Tips：</strong> 五大道范围很大，靠双脚走完不太现实，建议骑<strong>共享单车</strong>游览。路上也有游览马车（80元/位）。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津五大道" target="_blank">📍 和平区五大道</a>
+            <a href="https://maps.apple.com/?q=天津民园体育场" target="_blank" style="margin-left:12px;">📍 民园体育场</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#D2691E;">🚇 1号线「小白楼」站 或 「营口道」站 步行即到 <a href="https://maps.apple.com/?q=天津小白楼地铁站" target="_blank" style="font-size:11px;color:#D2691E;">🗺️</a></p>
+        </div>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">18:00</div>
+        <div class="ts-content">
+          <h4>🍜 晚餐 · 天津特色美食</h4>
+          <div class="food-suggestion">
+            <div class="fs-title">🍽️ 推荐晚餐</div>
+            <div class="fs-item">• <strong>大铁勺酒楼</strong> — 天津本地人最爱的饭馆之一，八珍豆腐、锅塌里脊、老爆三样都是经典天津菜，人均50-70元 | <a href="https://maps.apple.com/?q=大铁勺酒楼天津" target="_blank">🗺️</a></div>
+            <div class="fs-item">• <strong>正阳春烤鸭店</strong> — 天津老字号烤鸭，比全聚德划算，鸭子皮脆肉嫩 | <a href="https://maps.apple.com/?q=正阳春烤鸭天津" target="_blank">🗺️</a></div>
+            <div class="fs-item">• <strong>红旗饭庄</strong> — 天津老字号，罾蹦鲤鱼是招牌（带鳞脆炸整条鲤鱼，酸甜口） | <a href="https://maps.apple.com/?q=红旗饭庄天津" target="_blank">🗺️</a></div>
+            <div class="fs-item">• <strong>津菜典藏</strong> — 想一次吃遍天津菜的可以考虑，人均80-120元 | <a href="https://maps.apple.com/?q=津菜典藏天津" target="_blank">🗺️</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="ts-time">20:00</div>
+        <div class="ts-content">
+          <h4>🎡 天津之眼 · 海河夜景</h4>
+          <span class="ts-tag">地标必去</span>
+          <span class="ts-tag">70元/人</span>
+          <p>世界上唯一建在桥上的摩天轮（建在永乐桥上），高120米。晚上去风景最好——随着摩天轮缓缓上升，海河两岸的夜景尽收眼底，灯火璀璨。</p>
+          <p><strong>Tips：</strong> 建议提前在美团预约买票，现场排队人较多。不想坐摩天轮的话，在<strong>海河边散步</strong>也是绝佳体验——从天津之眼沿河往南走，经过狮子林桥、望海楼、古文化街，全程约3公里，夜景美不胜收。</p>
+          <p><strong>隐藏玩法 📖：</strong> 天津之眼下面的永乐桥本身就是拍照的好机位，桥下有很多摄影爱好者出没。摩天轮亮灯时间是日落前后，建议先拍夕阳再排摩天轮。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津之眼摩天轮" target="_blank">📍 河北区李公祠大街与五马路交口</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#D2691E;">🚇 1号线「西北角」站 步行15分钟 <a href="https://maps.apple.com/?q=天津西北角地铁站" target="_blank" style="font-size:11px;color:#D2691E;">🗺️</a></p>
+          <div class="tip-box" style="margin-top:8px;padding:10px 16px;">
+            <strong>🏨 晚上回酒店：</strong> 你住在海河沿线的话，散步就能回酒店。天津之眼到狮子林桥一带的酒店步行10-20分钟。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DAY 2 ===== -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#2a5a6a,#4a7a8a);">
+      <div class="dh-icon">🎯</div>
+      <div>
+        <div class="dh-title">Day 2 · 人文探索（二选一）</div>
+        <div class="dh-sub">方案A：瓷房子+静园+五大道深度 | 方案B：天津博物馆+茶馆听相声</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="tab-group">
+        <span class="tab">⏰ 半天/全天</span>
+        <span class="tab">🎯 二选一</span>
+      </div>
+
+      <div class="time-slot">
+        <div class="ts-time">A</div>
+        <div class="ts-content">
+          <h4>🏛️ 方案A · 瓷房子 + 静园 + 五大道深度</h4>
+          <p><strong>上午：瓷房子</strong></p>
+          <span class="ts-tag">🎫 50元</span>
+          <p>前身是一幢百年法式老洋楼，被主人张连志用古董瓷片贴满全身，被誉为"中国古瓷博物馆"。从外面看就已经很震撼，全身贴满汉白玉石雕、水晶石玛瑙和碎瓷片。不过里面和外面看差别不大，不买票也可以在门口拍照打卡。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津瓷房子" target="_blank">📍 和平区赤峰道72号</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#D2691E;">🚇 1号线「营口道」站 步行10分钟 <a href="https://maps.apple.com/?q=天津营口道地铁站" target="_blank" style="font-size:11px;color:#D2691E;">🗺️</a></p>
+
+          <p style="margin-top:12px;"><strong>然后：静园</strong></p>
+          <span class="ts-tag">🎫 20元</span>
+          <p>建于1921年的欧式花园宅邸，最早是北洋政府驻日公使陆宗舆的宅邸。末代皇帝溥仪曾在此居住（1929-1931年），将原名"乾园"改为"静园"，寓意"静观变化，静待时机"。园内保留了溥仪居住时的原貌，建筑风格融合了西班牙式和日式元素。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津静园" target="_blank">📍 和平区鞍山道70号</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#D2691E;">🚇 1号线「鞍山道」站 步行5分钟 <a href="https://maps.apple.com/?q=天津鞍山道地铁站" target="_blank" style="font-size:11px;color:#D2691E;">🗺️</a></p>
+
+          <p style="margin-top:12px;"><strong>下午：五大道深度 · 骑共享单车穿行</strong></p>
+          <p>昨天如果只是走马观花，今天可以深度骑游五大道。推荐路线：<strong>民园体育场</strong>出发 → 马场道 → 重庆道 → 成都道 → 睦南道 → 大理道。沿途都是名人故居和漂亮的老洋房，没有任何两栋建筑是相同的。睦南道上的<strong>疙瘩楼</strong>（京剧名家故居）值得一看。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津疙瘩楼" target="_blank">📍 疙瘩楼 · 河北路283号</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="ts-time">B</div>
+        <div class="ts-content">
+          <h4>🎭 方案B · 文化体验日</h4>
+          <p><strong>上午：天津博物馆 / 天津自然博物馆</strong></p>
+          <span class="ts-tag">🎫 免费需预约</span>
+          <p><strong>天津博物馆</strong>（文化中心内）——国家一级博物馆，镇馆之宝：<strong>《雪景寒林图》</strong>（范宽，北宋山水画巅峰）、<strong>清乾隆珐琅彩芍药雉鸡图玉壶春瓶</strong>（存世仅四件）。馆藏文物20万件，从石器时代到近代天津卫，全面展示天津历史。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津博物馆" target="_blank">📍 河西区平江道62号</a>
+          </div>
+          <p style="margin-top:4px;font-size:12px;color:#D2691E;">🚇 5/6号线「文化中心」站 <a href="https://maps.apple.com/?q=天津文化中心地铁站" target="_blank" style="font-size:11px;color:#D2691E;">🗺️</a></p>
+
+          <p style="margin-top:12px;"><strong>下午：茶馆听相声</strong></p>
+          <span class="ts-tag">天津必体验</span>
+          <p>天津是相声之都，"茶馆相声"是天津特有的文化体验。推荐<strong>名流茶馆</strong>（古文化街店或五大道店）——最老牌的相声茶馆，票价80-150元/人，演出约2.5小时，性价比极高，通常下午和晚上都有场次。点一壶茶、一碟瓜子，听台上捧逗哏你来我往，这就是天津人的日常周末。</p>
+          <p>其他选择：<strong>谦祥益文苑</strong>（大胡同）、<strong>西岸相声会馆</strong>（人民公园）。</p>
+          <div class="ts-map">
+            <a href="https://maps.apple.com/?q=天津名流茶馆古文化街" target="_blank">📍 名流茶馆（古文化街店）</a>
+            <a href="https://maps.apple.com/?q=天津谦祥益文苑" target="_blank" style="margin-left:12px;">📍 谦祥益文苑</a>
+          </div>
+          <p><strong>Tips：</strong> 建议提前一天买票，周末场次容易满。天津的茶馆相声很接地气，不用担心听不懂。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 必游景点 -->
+<!-- ===================================================== -->
+<section class="container" id="spots" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">必游景点 · 详细攻略</span>
+    <span class="en">Must-See Attractions</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- 天津之眼 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#2a4a6a,#4a7a9a);">
+      <div class="dh-icon">🎡</div>
+      <div>
+        <div class="dh-title">天津之眼摩天轮</div>
+        <div class="dh-sub">世界上唯一建在桥上的摩天轮 · 地标中的地标</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p><strong>基本信息：</strong> 河北区李公祠大街与五马路交口（永乐桥上）| 🎫 70元/人 | 🕙 9:30-21:30</p>
+      <p><strong>交通：</strong> 地铁1号线「<a href="https://maps.apple.com/?q=天津西北角地铁站" target="_blank" style="color:#8B4513;text-decoration:underline;">西北角</a>」站步行15分钟；或乘坐公交到「<a href="https://maps.apple.com/?q=天津之眼公交站" target="_blank" style="color:#8B4513;text-decoration:underline;">天津之眼</a>」站</p>
+      <p><strong>最佳时段：</strong> 傍晚去最好，日落前半小时到，先看夕阳染红海河，再排队坐摩天轮看夜景。摩天轮一圈约30分钟。</p>
+      <p><strong>不坐摩天轮也能看：</strong> 天津之眼下面的海河沿线就是绝佳观景台。从永乐桥沿河步行到狮子林桥，两岸灯光璀璨，是天津最经典的夜景画面。</p>
+      <p><strong>周边联动：</strong> 天津之眼旁边就是<strong>大悲禅院</strong>（天津香火最旺的佛教寺庙，免费参观），白天可以顺路去。</p>
+      <div class="ts-map">
+        <a href="https://maps.apple.com/?q=天津之眼摩天轮" target="_blank">📍 天津之眼</a>
+        <a href="https://maps.apple.com/?q=天津大悲禅院" target="_blank" style="margin-left:12px;">📍 大悲禅院</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 五大道 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#8B5a2a,#c49a6c);">
+      <div class="dh-icon">🏛️</div>
+      <div>
+        <div class="dh-title">五大道景区</div>
+        <div class="dh-sub">万国建筑博览会 · 全国最大洋楼建筑群</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p><strong>基本信息：</strong> 和平区五大道 | 🎫 免费（街区开放）| 名人故居需单独购票</p>
+      <p><strong>交通：</strong> 地铁1号线「<a href="https://maps.apple.com/?q=天津小白楼地铁站" target="_blank" style="color:#8B4513;text-decoration:underline;">小白楼</a>」站或「<a href="https://maps.apple.com/?q=天津营口道地铁站" target="_blank" style="color:#8B4513;text-decoration:underline;">营口道</a>」站步行即到</p>
+      <p><strong>五大道路名：</strong> 马场道、睦南道、大理道、常德道、重庆道（实际上成都道也算在内，所以是"六大道"但习惯称五大道）。每条道都各有特色——马场道最长、睦南道名人故居最多、大理道海棠最美。</p>
+      <p><strong>必看建筑：</strong></p>
+      <ul class="detail-list">
+        <li><span class="label"><a href="https://maps.apple.com/?q=天津民园体育场" target="_blank" style="color:#8B4513;text-decoration:underline;">民园体育场</a></span> 英式跑马场改建，天津足球的诞生地，球迷心中的圣殿。适合散步、晒太阳</li>
+        <li><span class="label"><a href="https://maps.apple.com/?q=天津疙瘩楼" target="_blank" style="color:#8B4513;text-decoration:underline;">疙瘩楼</a></span> 河北路283号，外墙布满瓷片疙瘩的奇特的建筑，京剧名家马连良曾居住</li>
+        <li><span class="label"><a href="https://maps.apple.com/?q=天津张园" target="_blank" style="color:#8B4513;text-decoration:underline;">张园/静园</a></span> 末代皇帝溥仪在天津的居住地</li>
+        <li><span class="label">先农大院</span> 马场道上的历史建筑群，内有小红门咖啡馆等文艺小店</li>
+      </ul>
+      <p><strong>游览方式：</strong> 强烈建议<strong>骑共享单车</strong>穿行，五大道范围约2平方公里，步行太远，开车又太快。也可以坐<strong>马车</strong>（80元/位，民园体育场门口上车，全程约30分钟，有讲解）。</p>
+      <div class="ts-map">
+        <a href="https://maps.apple.com/?q=天津五大道" target="_blank">📍 五大道景区</a>
+        <a href="https://maps.apple.com/?q=天津民园体育场" target="_blank" style="margin-left:12px;">📍 民园体育场</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 瓷房子 & 静园 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#5a2a6a,#8a4a8a);">
+      <div class="dh-icon">🏺</div>
+      <div>
+        <div class="dh-title">瓷房子 & 静园</div>
+        <div class="dh-sub">天津最魔幻的建筑 · 末代皇帝的行宫</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p><strong>瓷房子：</strong> 和平区赤峰道72号 | 🎫 50元 | 🕙 9:00-18:00</p>
+      <p>前身是一幢百年法式老洋楼，被收藏家张连志用无数古董瓷片、汉白玉石雕、水晶玛瑙贴满全身。从门口经过就很难不被它吸引——全身贴满碎瓷片的房子，放眼全国都找不到第二栋。被称为"中国古瓷博物馆"。</p>
+      <p>🚇 1号线「<a href="https://maps.apple.com/?q=天津营口道地铁站" target="_blank" style="color:#8B4513;text-decoration:underline;">营口道</a>」站步行10分钟</p>
+      <div class="ts-map">
+        <a href="https://maps.apple.com/?q=天津瓷房子" target="_blank">📍 瓷房子</a>
+      </div>
+
+      <p style="margin-top:16px;"><strong>静园：</strong> 和平区鞍山道70号 | 🎫 20元 | 🕙 8:30-17:00</p>
+      <p>建于1921年的欧式花园宅邸，是末代皇帝溥仪在天津的居住地（1929-1931年）。"静园"之名由溥仪所取，寓意"静观变化，静待时机"。园内保留了当时的原貌，可以一窥末代皇帝在天津的生活。建筑融合了西班牙式和日式风格，花园精致小巧。</p>
+      <p>🚇 1号线「<a href="https://maps.apple.com/?q=天津鞍山道地铁站" target="_blank" style="color:#8B4513;text-decoration:underline;">鞍山道</a>」站步行5分钟</p>
+      <div class="ts-map">
+        <a href="https://maps.apple.com/?q=天津静园" target="_blank">📍 静园</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 意式风情区 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#2a6a4a,#4a9a6a);">
+      <div class="dh-icon">🇮🇹</div>
+      <div>
+        <div class="dh-title">意式风情区</div>
+        <div class="dh-sub">亚洲唯一的意大利风格建筑群</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p><strong>基本信息：</strong> 河北区光复道 | 🎫 免费 | 全天开放</p>
+      <p><strong>交通：</strong> 地铁2号线「<a href="https://maps.apple.com/?q=天津建国道地铁站" target="_blank" style="color:#8B4513;text-decoration:underline;">建国道</a>」站步行5分钟；或从天津站步行15分钟</p>
+      <p>始建于1902年，原为意大利租界，现存137栋意式建筑，是亚洲唯一完整的意大利风格建筑群。马可·波罗广场中心的和平女神雕塑是标志。梁启超故居（饮冰室）——在这里写下了《少年中国说》等名篇，曹禺故居也在这里。</p>
+      <p><strong>拍照Tips：</strong> 马可波罗广场、但丁广场、威尼斯广场都很好拍。傍晚灯光亮起后特别有欧洲小镇的感觉。</p>
+      <p><strong>吃喝：</strong> 区内有西餐厅和酒吧，价格偏高。建议在附近吃天津菜。</p>
+      <div class="ts-map">
+        <a href="https://maps.apple.com/?q=天津意式风情区" target="_blank">📍 意式风情区</a>
+        <a href="https://maps.apple.com/?q=天津梁启超故居" target="_blank" style="margin-left:12px;">📍 梁启超故居（饮冰室）</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 古文化街 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#8B1a1a,#c0392b);">
+      <div class="dh-icon">🏮</div>
+      <div>
+        <div class="dh-title">古文化街</div>
+        <div class="dh-sub">老字号 · 民俗 · 小吃一条街</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p><strong>基本信息：</strong> 南开区通北路 | 🎫 免费 | 🕙 街区全天，店铺9:00-18:00</p>
+      <p><strong>交通：</strong> 地铁2号线「<a href="https://maps.apple.com/?q=天津鼓楼地铁站" target="_blank" style="color:#8B4513;text-decoration:underline;">鼓楼</a>」站或「<a href="https://maps.apple.com/?q=天津东南角地铁站" target="_blank" style="color:#8B4513;text-decoration:underline;">东南角</a>」站步行10分钟</p>
+      <p>全长687米的仿清建筑街区，天津老字号云集。必逛店铺：</p>
+      <ul class="detail-list">
+        <li><span class="label"><a href="https://maps.apple.com/?q=泥人张天津古文化街" target="_blank" style="color:#8B4513;text-decoration:underline;">泥人张</a></span> 天津一绝，彩塑人物栩栩如生，小件几十元起</li>
+        <li><span class="label"><a href="https://maps.apple.com/?q=杨柳青年画天津古文化街" target="_blank" style="color:#8B4513;text-decoration:underline;">杨柳青年画</a></span> 色彩鲜艳的民俗年画，"连年有余"最经典</li>
+        <li><span class="label"><a href="https://maps.apple.com/?q=天津天后宫" target="_blank" style="color:#8B4513;text-decoration:underline;">天后宫</a></span> 中国三大妈祖庙之一，免费参观</li>
+        <li><span class="label"><a href="https://maps.apple.com/?q=耳朵眼炸糕古文化街" target="_blank" style="color:#8B4513;text-decoration:underline;">耳朵眼炸糕</a></span> 天津三绝之一，总店就在街上</li>
+      </ul>
+      <p><strong>Tips：</strong> 上午去人少体验好。泥人张买小件做伴手礼很合适。街上有不少拉客的三轮车，不需要就礼貌拒绝。</p>
+      <div class="ts-map">
+        <a href="https://maps.apple.com/?q=天津古文化街" target="_blank">📍 古文化街</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 早餐美食 -->
+<!-- ===================================================== -->
+<section class="container" id="breakfast" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">天津早餐 · 北方早餐的巅峰</span>
+    <span class="en">Tianjin Breakfast · A Culinary Heritage</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🥟 天津早餐文化：</strong> 天津地处九河下梢、渤海之滨，有着百年的码头历史。清代以来，大量难民涌入天津在码头卖苦力，工人们每天早晨必须吃饱才有力气干活，早餐因此成为一天中最重要的一餐。这种文化延续至今——天津人为了早餐是不睡懒觉的，一定要去早点铺坐下来吃。早点铺不求精致，不在乎环境，只求味道正！
+  </div>
+
+  <div class="food-grid">
+    <div class="food-card fade-in">
+      <div class="fc-name">🥞 煎饼果子</div>
+      <div class="fc-price">人均 6-15元</div>
+      <div class="fc-desc">天津早餐界的传奇！<span class="hl">绿豆面</span>外衣配上<span class="hl">油条薄脆</span>，抹上面酱、豆腐乳、油辣椒，撒一把葱花。天津餐饮协会甚至成立了"煎饼果子分会"，制定了行业标准——做煎饼果子在天津是一种有规范的职业。本地人最爱绿豆面+油条的经典搭配，年轻人口味丰富的会加牛肉、海参、辣条……</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=天津西北角煎饼果子" target="_blank">📍 西北角早点区</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥣 锅巴菜（嘎巴菜）</div>
+      <div class="fc-price">人均 5-10元</div>
+      <div class="fc-desc">天津独有的早餐！锅巴切成条，浇上浓郁卤子，配上芝麻酱、辣椒油、豆腐乳。热气腾腾一碗下肚，配大饼吃最香。外地人可能不太习惯，但天津人一天不吃就想的慌。推荐<span class="hl">大福来锅巴菜</span>（老字号，多家分店）。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=大福来锅巴菜天津" target="_blank">📍 大福来锅巴菜</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🫓 炸卷圈</div>
+      <div class="fc-price">人均 3-6元</div>
+      <div class="fc-desc">天津人心中地位不亚于煎饼果子的美味！面皮包裹<span class="hl">豆芽菜、香菜、臭豆腐</span>，用面糊子封口，丢在锅里炸至酥脆。刚出锅的炸卷圈酥脆掉渣，咬下去满满的酱豆腐风味。一定要配一碗豆浆，是卷圈的绝配！</div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🍩 糖果子</div>
+      <div class="fc-price">人均 3-5元</div>
+      <div class="fc-desc">天津炸果子有<span class="hl">十三种之多</span>！糖果子是其中最受欢迎的一种——比普通油条多了一层糖面皮，炸至焦糖色，微微带甜但丝毫不腻。配一碗老豆腐正好。其他果子种类还有：长劈、果篦、花梨瓣、糖皮儿、果头、排叉、套环儿散子……</div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥟 耳朵眼炸糕</div>
+      <div class="fc-price">人均 3-5元</div>
+      <div class="fc-desc">天津三绝之一（另两绝是狗不理包子和十八街麻花）。<span class="hl">糯米粉</span>外皮，<span class="hl">豆馅</span>内里，在滚油中炸至金黄色。外焦里嫩，酥皮脆而不硬，豆馅丝滑细腻，甜度适中。趁热咬一口，像冰激凌慢慢融化在口腔。古文化街有总店。</div>
+      <div class="fc-map"><a href="https://maps.apple.com/?q=耳朵眼炸糕古文化街" target="_blank">📍 耳朵眼炸糕（古文化街总店）</a></div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🫘 麻酱烧饼</div>
+      <div class="fc-price">人均 2-5元</div>
+      <div class="fc-desc">天津人把<span class="hl">麻酱</span>运用得淋漓尽致！黑棕色的烧饼，麻酱在和面时就加进去了，还加了红糖，入口偏甜。除了麻酱烧饼，还有麻酱花卷、麻酱和白糖、麻酱面……天津人上辈子大概是麻酱做的。</div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🥚 鸡蛋果子（荷包蛋）</div>
+      <div class="fc-price">人均 4-8元</div>
+      <div class="fc-desc">天津的荷包蛋和别处不一样——在油饼上戳一个孔，打一个鸡蛋进去，有点类似鸡蛋灌饼但饼换成了油饼。炸好的"荷包蛋"特别酥脆，一个下肚，一早上都满足。</div>
+    </div>
+
+    <div class="food-card fade-in">
+      <div class="fc-name">🫔 大饼卷一切</div>
+      <div class="fc-price">人均 8-20元</div>
+      <div class="fc-desc">平平无奇的一张面饼，能承载一整个味蕾世界！想吃荤的夹<span class="hl">火腿、熏肉、红肠、心肝肚</span>，加黄瓜丝儿。想吃素的夹<span class="hl">茄夹、藕夹</span>刷上酱汁。饼烙得恰到好处，捧到手上还有淡淡的油香味儿。</div>
+    </div>
+  </div>
+
+  <div class="tip-box fade-in" style="margin-top:20px;">
+    <strong>💡 早餐去哪吃？</strong> 推荐去居民区楼下的早点铺——<strong>西北角、中山路、南市食品街、洪湖里</strong>一带老字号扎堆。天津早点铺一般营业到10点左右，最好8点前去。大福来、至美斋是连锁老字号，不容易踩雷。
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 住宿推荐 -->
+<!-- ===================================================== -->
+<section class="container" id="hotels" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">海河附近 · 200元以内住宿</span>
+    <span class="en">Budget Hotels near Haihe River</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🏨 选酒店策略：</strong> 海河沿线（天津之眼至天津站段）是旅游黄金带，步行就能逛古文化街、意式风情区、天津之眼。以下均为经济型连锁品牌，日常价150-200元，在携程/美团预订时筛选"特惠价"或工作日入住更便宜。
+  </div>
+
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#2a6a4a,#4a9a6a);">
+      <div class="dh-icon">🏨</div>
+      <div>
+        <div class="dh-title">推荐酒店 · 海河沿线</div>
+        <div class="dh-sub">评分从高到低 · 点击地图链接直接导航</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="hotel-sub-grid">
+        <div class="hotel-card">
+          <h4>如家酒店·neo(天津之眼狮子林桥店) <span class="badge-hot">强烈推荐</span></h4>
+          <div class="meta">
+            <span>⭐ 4.6</span>
+            <span>💰 约150-200元</span>
+            <a href="https://maps.apple.com/?ll=39.151786,117.197832&q=如家酒店neo天津之眼狮子林桥店" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">河北区东河沿大街71号 · 紧邻海河，走路到古文化街10分钟</div>
+        </div>
+
+        <div class="hotel-card">
+          <h4>汉庭酒店(天津之眼狮子林大街店) <span class="badge-hot">强烈推荐</span></h4>
+          <div class="meta">
+            <span>⭐ 4.6</span>
+            <span>💰 约150-200元</span>
+            <a href="https://maps.apple.com/?ll=39.148496,117.196749&q=汉庭酒店天津之眼狮子林大街店" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">河北区烧锅胡同5号 · 近望海楼，过马路就是海河</div>
+        </div>
+
+        <div class="hotel-card">
+          <h4>汉庭酒店(天津之眼美院店) <span class="badge-good">推荐</span></h4>
+          <div class="meta">
+            <span>⭐ 4.5</span>
+            <span>💰 约150-200元</span>
+            <a href="https://maps.apple.com/?ll=39.155109,117.192143&q=汉庭酒店天津之眼美院店" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">河北区地纬路23号 · 步行到天津之眼10分钟</div>
+        </div>
+
+        <div class="hotel-card">
+          <h4>汉庭酒店(天津之眼店)</h4>
+          <div class="meta">
+            <span>⭐ 4.2</span>
+            <span>💰 约150-200元</span>
+            <a href="https://maps.apple.com/?ll=39.153331,117.182482&q=汉庭酒店天津之眼店" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">红桥区尚都街25号 · 近永乐桥/天津之眼</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 更多汉庭如家 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#2a4a6a,#4a7a9a);">
+      <div class="dh-icon">🏨</div>
+      <div>
+        <div class="dh-title">更多汉庭/如家 · 海河打车10分钟内</div>
+        <div class="dh-sub">扩大搜索范围 · 以下酒店打车到海河均不超过10分钟</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="hotel-sub-grid">
+        <div class="hotel-card">
+          <h4>汉庭酒店(天津站津湾广场店) <span class="badge-hot">强烈推荐</span></h4>
+          <div class="meta">
+            <span>⭐ 4.9</span>
+            <span>💰 约180-250元</span>
+            <a href="https://maps.apple.com/?ll=39.130923,117.206245&q=汉庭酒店天津站津湾广场店" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">小白楼街道长春道9号 · 津湾广场地铁站C口旁，紧邻海河！评分超高</div>
+        </div>
+
+        <div class="hotel-card">
+          <h4>汉庭酒店(天津海光寺地铁站店) <span class="badge-good">推荐</span></h4>
+          <div class="meta">
+            <span>⭐ 4.7</span>
+            <span>💰 约150-200元</span>
+            <a href="https://maps.apple.com/?ll=39.120699,117.176636&q=汉庭酒店天津海光寺地铁站店" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">万德庄大街1号 · 海光寺地铁站B口，打车到海河约5分钟</div>
+        </div>
+
+        <div class="hotel-card">
+          <h4>汉庭酒店(天津火车站北广场店)</h4>
+          <div class="meta">
+            <span>⭐ 4.5</span>
+            <span>💰 约150-200元</span>
+            <a href="https://maps.apple.com/?ll=39.137946,117.212133&q=汉庭酒店天津火车站北广场店" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">天津站北广场旁 · 步行到海河8分钟，打车3分钟</div>
+        </div>
+
+        <div class="hotel-card">
+          <h4>汉庭酒店(天津西站河北工大店)</h4>
+          <div class="meta">
+            <span>⭐ 4.4</span>
+            <span>💰 约130-180元</span>
+            <a href="https://maps.apple.com/?ll=39.182591,117.178315&q=汉庭酒店天津西站河北工大店" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">天泰路696号 · 沿海河北段，打车到天津之眼约8分钟</div>
+        </div>
+      </div>
+      <div class="tip-box" style="margin-top:16px;margin-bottom:0;">
+        <strong>💡 选哪个？</strong> 如果追求离海河最近 → <strong>汉庭津湾广场店</strong>（紧邻海河，⭐4.9）或 <strong>如家精选古文化街店</strong>（紧邻海河，⭐4.7）。如果追求性价比 → <strong>汉庭海光寺店</strong>（⭐4.7，打车5分钟到海河，约150元）。如果坐高铁到天津站 → <strong>汉庭火车站北广场店</strong>（出站即到）。
+      </div>
+    </div>
+  </div>
+
+  <!-- 超低价 & 青旅 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#5a4a2a,#8a6a3a);">
+      <div class="dh-icon">💰</div>
+      <div>
+        <div class="dh-title">超低价选择 · 百元以内</div>
+        <div class="dh-sub">旅馆/招待所 · 青年旅舍</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <div class="hotel-sub-grid">
+        <div class="hotel-card">
+          <h4>天津亚美旅馆</h4>
+          <div class="meta">
+            <span>⭐ 2.9</span>
+            <span>💰 约60-100元</span>
+            <a href="https://maps.apple.com/?ll=39.146524,117.190112&q=天津亚美旅馆" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">红桥区大胡同34号 · 离海河步行5分钟</div>
+        </div>
+        <div class="hotel-card">
+          <h4>天津金明旅馆</h4>
+          <div class="meta">
+            <span>⭐ 2.8</span>
+            <span>💰 约60-100元</span>
+            <a href="https://maps.apple.com/?ll=39.152787,117.196732&q=天津金明旅馆" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">河北区东河沿大街金明里1号楼 · 就在海河边</div>
+        </div>
+        <div class="hotel-card">
+          <h4>对角巷青年旅舍 <span class="badge-super">背包客首选</span></h4>
+          <div class="meta">
+            <span>💰 约50-80元/床位</span>
+            <a href="https://maps.apple.com/?ll=39.140,117.205&q=对角巷青年旅舍天津站建国道" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">河北区建国道琴海公寓 · 近意风区地铁站，交通方便</div>
+        </div>
+        <div class="hotel-card">
+          <h4>游子情青年旅舍</h4>
+          <div class="meta">
+            <span>💰 约40-70元/床位</span>
+            <a href="https://maps.apple.com/?ll=39.140,117.206&q=游子情青年旅舍天津意风区" target="_blank">📍 在地图中打开</a>
+          </div>
+          <div class="addr">河北区建国道琴海公寓 · 距天津站步行10分钟</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>💡 预订建议：</strong> 推荐优先选<strong>如家·neo(狮子林桥店)</strong> 或 <strong>汉庭(狮子林大街店)</strong>——评分4.6，就在海河边，晚上散步去看天津之眼夜景很方便。如果愿意打车几分钟，<strong>汉庭津湾广场店</strong>（⭐4.9，紧邻海河）也极佳。在美团/携程预订时，选"特惠房"标签，工作日入住基本150-180元搞定。
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 特色公交线路 -->
+<!-- ===================================================== -->
+<section class="container" id="bus" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">特色公交线路 · 坐着公交游天津</span>
+    <span class="en">Tianjin's Tourist Bus Routes</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tip-box fade-in">
+    <strong>🚌 天津的公交线路本身就是风景线。</strong> 海河两岸、五大道洋楼、意式风情区……坐在公交车上就能看遍津门精华。常规公交票价2元，可用支付宝/微信乘车码。天津公交有90分钟内换乘优惠（最多2次免费换乘）。
+  </div>
+
+  <!-- 352路海河风景线 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#2a6a4a,#4a9a6a);">
+      <div class="dh-icon">🚌</div>
+      <div>
+        <div class="dh-title">352路 · 海河风景线（2元）</div>
+        <div class="dh-sub">性价比之王 · 串联20+海河地标</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p><strong>票价：</strong> 2元（一票制）| <strong>运营时间：</strong> 约6:00-21:00</p>
+      <p>全程约16公里，沿海河两岸行驶，串联天津之眼、古文化街、意式风情区、津湾广场、瓷房子等20多个海河地标，被称为"天津文旅移动活地图"。是性价比最高的海河观光公交。</p>
+      <p><strong>途经站点（部分）：</strong></p>
+      <p style="font-size:13px;line-height:2.2;">
+        <a href="https://maps.apple.com/?ll=39.154089,117.188289&q=天津之眼公交站" target="_blank">天津之眼</a> →
+        <a href="https://maps.apple.com/?ll=39.141226,117.189968&q=古文化街公交站" target="_blank">古文化街</a> →
+        <a href="https://maps.apple.com/?ll=39.146,117.201&q=北安桥公交站" target="_blank">北安桥</a> →
+        <a href="https://maps.apple.com/?ll=39.132274,117.207721&q=津湾广场公交站" target="_blank">津湾广场</a> →
+        <a href="https://maps.apple.com/?ll=39.125490,117.203294&q=瓷房子公交站" target="_blank">瓷房子</a> →
+        <a href="https://maps.apple.com/?ll=39.121,117.207&q=渤海大楼公交站" target="_blank">渤海大楼</a> →
+        <a href="https://maps.apple.com/?ll=39.142,117.184&q=北门鼓楼公交站" target="_blank">鼓楼北</a>
+      </p>
+      <div class="tip-box" style="padding:10px 16px;margin-top:8px;">
+        <strong>💡 关联景点：</strong> 天津之眼 <a href="https://maps.apple.com/?ll=39.154089,117.188289&q=天津之眼公交站" target="_blank" style="font-size:11px;">🗺️</a> · 古文化街 <a href="https://maps.apple.com/?ll=39.141226,117.189968&q=古文化街公交站" target="_blank" style="font-size:11px;">🗺️</a> · 意风区（北安桥下）<a href="https://maps.apple.com/?ll=39.146,117.201&q=北安桥公交站" target="_blank" style="font-size:11px;">🗺️</a> · 津湾广场/天津站 <a href="https://maps.apple.com/?ll=39.132274,117.207721&q=津湾广场公交站" target="_blank" style="font-size:11px;">🗺️</a> · 瓷房子 <a href="https://maps.apple.com/?ll=39.125490,117.203294&q=瓷房子公交站" target="_blank" style="font-size:11px;">🗺️</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 观光3路 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#8B5a2a,#c49a6c);">
+      <div class="dh-icon">🚌</div>
+      <div>
+        <div class="dh-title">观光3路 · 桥梁博物馆线（2元）</div>
+        <div class="dh-sub">途经10座海河桥梁</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p><strong>票价：</strong> 2元（一票制）| <strong>运营时间：</strong> 6:00-21:30</p>
+      <p><strong>运行区间：</strong> 程盛道公交站 ↔ 天津青旅公交站</p>
+      <p>途经东丽、河东、河北、红桥、南开等多区，沿途可观赏<strong>10座海河桥梁</strong>（海津大桥、富民桥、国泰桥、光华桥、刘庄桥、直沽桥、金阜桥、大光明桥、金汇桥、解放桥），被游客称为"桥梁博物馆"。同时串联西北角美食街、古文化街、意风区、鼓楼、世纪钟、棉三创意街区等热门地标。</p>
+      <p><strong>关联景点：</strong> 西北角（早餐）→ 鼓楼 → 古文化街 → 意风区 → 世纪钟/天津站</p>
+    </div>
+  </div>
+
+  <!-- 观光10路铛铛车 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#8B1a1a,#c0392b);">
+      <div class="dh-icon">🚃</div>
+      <div>
+        <div class="dh-title">观光10路 · 津沽行韵铛铛车（30元）</div>
+        <div class="dh-sub">复古铛铛车 · 23站环线 · 专业讲解</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p><strong>票价：</strong> 单程30元 / 一日通票50元 / 二日通票80元 / 三日通票100元</p>
+      <p><strong>运营时间：</strong> 9:00-19:00（节假日8:30-20:30）| 约40分钟一班</p>
+      <p><strong>运行区间：</strong> 津湾广场 → 津湾广场（大环线）</p>
+      <p>仿中国第一辆有轨电车的<strong>复古铛铛车</strong>，途经海河文化带、历史风貌区、学府区、现代商圈四大板块。车上配备专业讲解员，全程约2小时。</p>
+      <p><strong>途经站点（共23站）：</strong></p>
+      <p style="font-size:13px;line-height:2.2;">
+        <a href="https://maps.apple.com/?ll=39.132274,117.207721&q=津湾广场公交站" target="_blank">津湾广场</a> →
+        <a href="https://maps.apple.com/?ll=39.138,117.205&q=天津站世纪钟公交站" target="_blank">世纪钟</a> →
+        意风区但丁广场 →
+        孟氏家庙 →
+        金汤桥会师公园 →
+        李叔同故居 →
+        望海楼教堂 →
+        <a href="https://maps.apple.com/?ll=39.154089,117.188289&q=天津之眼公交站" target="_blank">天津之眼</a> →
+        <a href="https://maps.apple.com/?ll=39.141226,117.189968&q=古文化街公交站" target="_blank">古文化街</a> →
+        <a href="https://maps.apple.com/?ll=39.142,117.184&q=北门鼓楼公交站" target="_blank">鼓楼</a> →
+        西北角美食街 →
+        南市旅馆街 →
+        <a href="https://maps.apple.com/?ll=39.120,117.169&q=天津大学公交站" target="_blank">天津大学</a> →
+        南开大学 →
+        水上公园（周邓纪念馆）→
+        天塔 →
+        <a href="https://maps.apple.com/?ll=39.112,117.214&q=文化中心公交站" target="_blank">文化中心</a> →
+        <a href="https://maps.apple.com/?ll=39.112,117.215&q=人民公园公交站" target="_blank">人民公园</a> →
+        <a href="https://maps.apple.com/?ll=39.113,117.210&q=五大道地标钟公交站" target="_blank">五大道</a> →
+        小白楼 →
+        泰安道五大院 →
+        邮政博物馆
+      </p>
+      <p><strong>购票方式：</strong> 微信小程序搜索"天津市旅游巴士"或现场购票</p>
+    </div>
+  </div>
+
+  <!-- 双层观光巴士 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#2a4a6a,#4a7a9a);">
+      <div class="dh-icon">🚌</div>
+      <div>
+        <div class="dh-title">双层观光巴士 · 摄影/相声主题（30-50元）</div>
+        <div class="dh-sub">敞篷看海河 · 摄影师跟拍 · 相声现场表演</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p><strong>票价：</strong> 日场30元 / 夜场50元</p>
+      <p><strong>运营时间：</strong> 日场10:00-18:00 / 夜场18:00-21:00（节假日延长至22:00）</p>
+      <p><strong>购票方式：</strong> 微信小程序"天津市旅游巴士"或"畅游天津"</p>
+
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="ts-time">📸<br>摄影</div>
+        <div class="ts-content">
+          <h4>摄影主题巴士 · 五大道↔天津之眼</h4>
+          <p>双向单程线路，单程约80-100分钟，每1.5小时一班。沿途停靠民园体育场（小白楼音乐厅）、利顺德、解放北路、解放桥、世纪钟、意风区、望海楼、天津之眼、古文化街、瓷房子。车上设置打卡机位，有专业摄影师指导。</p>
+        </div>
+      </div>
+      <div class="deco-line" style="margin:4px 0;">· · ·</div>
+      <div class="time-slot" style="border-bottom:none;">
+        <div class="ts-time">🎭<br>相声</div>
+        <div class="ts-content">
+          <h4>相声主题巴士 · 五大道循环线</h4>
+          <p>循环往返线路（五大道→意风区→天津之眼→意风区→五大道），单程约40-60分钟，每1小时一班。邀请津派相声演员现场表演，沿途结合地标即兴创作，打造"流动剧场"。</p>
+        </div>
+      </div>
+
+      <div class="tip-box" style="padding:10px 16px;margin-top:8px;">
+        <strong>💡 推荐：</strong> 想看海河夜景选<strong>摄影巴士夜场</strong>（18:00后），想体验天津文化选<strong>相声巴士</strong>。提前在小程序"天津市旅游巴士"查班次和购票。
+      </div>
+    </div>
+  </div>
+
+  <!-- 各景点公交站 -->
+  <div class="day-section fade-in">
+    <div class="day-header" style="background:linear-gradient(135deg,#5a4a2a,#8a6a3a);">
+      <div class="dh-icon">🗺️</div>
+      <div>
+        <div class="dh-title">热门景点 · 附近公交站</div>
+        <div class="dh-sub">一站在手，说走就走</div>
+      </div>
+    </div>
+    <div class="day-body">
+      <p style="font-size:14px;color:#555;margin-bottom:12px;">以下为各景点最近的公交站，点击站名直接导航：</p>
+      <div class="tips-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));">
+        <div class="tip-card">
+          <h4>🎡 天津之眼</h4>
+          <ul>
+            <li><a href="https://maps.apple.com/?ll=39.154089,117.188289&q=天津之眼公交站" target="_blank">天津之眼站</a> — 观光10路</li>
+            <li><a href="https://maps.apple.com/?ll=39.154089,117.188289&q=大悲院码头公交站" target="_blank">大悲院码头站</a> — 331路、352路</li>
+            <li>🚇 地铁1号线「西北角」站步行15分</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>🏮 古文化街</h4>
+          <ul>
+            <li><a href="https://maps.apple.com/?ll=39.141226,117.189968&q=古文化街公交站" target="_blank">古文化街站</a> — 观光10路</li>
+            <li><a href="https://maps.apple.com/?ll=39.142,117.184&q=北门鼓楼公交站" target="_blank">北门（鼓楼北）站</a> — 352路</li>
+            <li>🚇 地铁2号线「鼓楼」站步行10分</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>🇮🇹 意式风情区</h4>
+          <ul>
+            <li><a href="https://maps.apple.com/?ll=39.146,117.201&q=北安桥公交站" target="_blank">北安桥站</a> — 352路、324路、901路</li>
+            <li>🚇 地铁2号线「建国道」站步行5分</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>🏛️ 五大道</h4>
+          <ul>
+            <li><a href="https://maps.apple.com/?ll=39.113,117.210&q=五大道地标钟公交站" target="_blank">五大道地标钟站</a> — 观光10路、观光7路</li>
+            <li><a href="https://maps.apple.com/?ll=39.121,117.207&q=渤海大楼公交站" target="_blank">渤海大楼站</a> — 1路、20路、35路、352路</li>
+            <li>🚇 地铁1号线「小白楼」站步行即到</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>🏺 瓷房子</h4>
+          <ul>
+            <li><a href="https://maps.apple.com/?ll=39.125490,117.203294&q=瓷房子公交站" target="_blank">瓷房子站</a> — 352路、观光5路</li>
+            <li>🚇 地铁1号线「营口道」站步行10分</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>🏛️ 静园</h4>
+          <ul>
+            <li>鞍山道沿线多路公交可达</li>
+            <li>🚇 地铁1号线「鞍山道」站步行5分</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>🌉 津湾广场/天津站</h4>
+          <ul>
+            <li><a href="https://maps.apple.com/?ll=39.132274,117.207721&q=津湾广场公交站" target="_blank">津湾广场站</a> — 352路、观光5路、观光10路</li>
+            <li><a href="https://maps.apple.com/?ll=39.138,117.205&q=天津站世纪钟公交站" target="_blank">天津站世纪钟站</a> — 观光10路</li>
+            <li>🚇 地铁2/3/9号线「天津站」</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h4>🥟 西北角（早餐）</h4>
+          <ul>
+            <li>🚇 地铁1号线「西北角」站</li>
+            <li>周边公交：10路、22路、34路等</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box fade-in" style="margin-top:0;">
+    <strong>🚌 乘车提示：</strong> 天津公交支持支付宝/微信乘车码（搜索"天津公交"），票价2元起。常规公交90分钟内换乘最多减免2次。观光10路和双层巴士可通过微信小程序"天津市旅游巴士"购票。352路和观光3路按常规公交票价（2元）即可乘坐。
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- 实用贴士 -->
+<!-- ===================================================== -->
+<section class="container" id="tips" style="padding-top:0;">
+  <div class="section-title fade-in">
+    <span class="cn">实用贴士</span>
+    <span class="en">Travel Tips</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="tips-grid">
+    <div class="tip-card fade-in">
+      <h4>🚇 交通</h4>
+      <ul>
+        <li><strong>北京→天津：</strong> 高铁30分钟（北京南→天津站），二等座54.5元。城际列车非常密集，基本随到随走</li>
+        <li><strong>天津站</strong> 就在海河沿岸，步行到意式风情区10分钟</li>
+        <li>地铁覆盖主要景点，下载"天津地铁"APP扫码乘车</li>
+        <li><strong>共享单车</strong> 是游览最佳方式——五大道、海河沿线骑行体验极好</li>
+        <li>打车起步价低，市内一般20-30元搞定</li>
+      </ul>
+    </div>
+    <div class="tip-card fade-in">
+      <h4>🎫 门票信息</h4>
+      <ul>
+        <li>天津之眼 70元（建议提前美团买票）</li>
+        <li>瓷房子 50元（外面看也行，可省）</li>
+        <li>静园 20元</li>
+        <li>五大道、古文化街、意式风情区 <strong>全部免费</strong></li>
+        <li>天津博物馆 免费需预约（公众号"天津博物馆"）</li>
+        <li>大部分景点周一不闭馆，比北京友好</li>
+      </ul>
+    </div>
+    <div class="tip-card fade-in">
+      <h4>🍜 天津三绝 & 伴手礼</h4>
+      <ul>
+        <li><strong>狗不理包子</strong> — 名气大但本地人不太吃，价格贵。想尝的话去山东路总店</li>
+        <li><strong>十八街麻花</strong> — 桂发祥十八街麻花，买小包装的方便带</li>
+        <li><strong>耳朵眼炸糕</strong> — 现炸的最好吃，古文化街总店有真空包装</li>
+        <li><strong>伴手礼：</strong> 泥人张小件（几十元起）、杨柳青年画、十八街麻花</li>
+      </ul>
+    </div>
+    <div class="tip-card fade-in">
+      <h4>💡 贴士 & 避坑</h4>
+      <ul>
+        <li>天津出租车司机可能会推荐饭馆，坚持自己的选择</li>
+        <li>古文化街拉客三轮车，不需要就礼貌拒绝</li>
+        <li>夏天注意防晒，海河沿线树荫不多</li>
+        <li>相声茶馆建议提前一天买票，周末容易满场</li>
+        <li>天津菜分量偏大，点菜注意别点太多</li>
+        <li>可以顺便办个"天津城市卡"坐地铁有优惠</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="deco-line">◆ ◇ ◆ ◇ ◆</div>
+
+  <div class="fade-in" style="text-align:center;padding:20px 0;">
+    <div style="font-size:28px;margin-bottom:6px;">🎡</div>
+    <p style="font-size:15px;color:#555;">所有地点均已添加 Apple 地图链接，点击即可导航</p>
+    <p style="font-size:13px;color:#999;margin-top:4px;">祝你在天津的每一天，都吃得满足，玩得开心！</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="fq">「 一座光是为了早餐就值得专程去一趟的城市 」</div>
+  <p style="font-size:14px;letter-spacing:4px;">煎饼果子 · 锅巴菜 · 海河夜景 · 万国建筑</p>
+  <p style="margin-top:14px;opacity:0.7;">天津旅行攻略 · 隐姓埋名的宝藏城市</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
