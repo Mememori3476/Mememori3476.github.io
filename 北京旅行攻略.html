@@ -64,7 +64,7 @@
   }
   .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .nav a {
-    flex-shrink: 0; color: #7a5a4a; text-decoration: underline;
+    flex-shrink: 0; color: #7a5a4a; text-decoration: none;
     padding: 16px 14px; font-size: 13px; letter-spacing: 2px;
     transition: all 0.3s; border-bottom: 2px solid transparent; white-space: nowrap;
   }
@@ -202,6 +202,24 @@
   </div>
 </nav>
 
+<div style="max-width:1100px;margin:0 auto;padding:8px 40px 10px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;">
+  <span style="font-size:11px;color:#999;letter-spacing:1px;margin-right:4px;">📌 行程</span>
+  <a href="#day1" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#Day1</a>
+  <a href="#day2" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#Day2</a>
+  <a href="#day3" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#Day3</a>
+  <a href="#day4" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#Day4</a>
+  <a href="#day5" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#Day5</a>
+  <span style="color:#ddd;font-size:12px;">|</span>
+  <span style="font-size:11px;color:#999;letter-spacing:1px;margin-right:4px;">🏛️ 景点</span>
+  <a href="#故宫" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#故宫</a>
+  <a href="#天安门" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#天安门</a>
+  <a href="#恭王府" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#恭王府</a>
+  <a href="#颐和园" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#颐和园</a>
+  <a href="#天坛" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#天坛</a>
+  <a href="#雍和宫" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#雍和宫</a>
+  <a href="#慕田峪长城" style="display:inline-block;padding:1px 10px;background:rgba(192,57,43,0.07);color:#c0392b;border-radius:12px;font-size:12px;text-decoration:none;">#慕田峪长城</a>
+</div>
+
 <!-- ===================================================== -->
 <!-- 初识北京 -->
 <!-- ===================================================== -->
@@ -241,7 +259,7 @@
   </div>
 
   <!-- ===== DAY 1: 5/26 雍和宫周边 ===== -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="day1">
     <div class="day-header" style="background:linear-gradient(135deg,#6a4a2a,#9a7a5a);">
       <div class="dh-icon">🚶</div>
       <div>
@@ -362,12 +380,11 @@
   </div>
 
   <!-- ===== DAY 2: 5/27 故宫 ===== -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="day2">
     <div class="day-header">
       <div class="dh-icon">🏛️</div>
       <div>
         <div class="dh-title">5月27日（周三）· 故宫 + 景山</div>
-        <div class="dh-sub">故宫深度游（上午场）→ 景山看日落 → 中轴线北段</div>
       </div>
     </div>
     <div class="day-body">
@@ -512,7 +529,7 @@
   </div>
 
   <!-- ===== DAY 3: 5/28 颐和园 ===== -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="day3">
     <div class="day-header" style="background:linear-gradient(135deg,#2d5a3a,#4a8a5a);">
       <div class="dh-icon">🏞️</div>
       <div>
@@ -612,7 +629,7 @@
   </div>
 
   <!-- ===== DAY 4: 5/29 慕田峪长城 ===== -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="day4">
     <div class="day-header" style="background:linear-gradient(135deg,#8b1a1a,#5a3a1a);">
       <div class="dh-icon">🧱</div>
       <div>
@@ -738,7 +755,7 @@
   </div>
 
   <!-- ===== DAY 5: 5/30 自由日 ===== -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="day5">
     <div class="day-header" style="background:linear-gradient(135deg,#4a6a8a,#6a8aaa);">
       <div class="dh-icon">🎯</div>
       <div>
@@ -1046,7 +1063,7 @@
   </div>
 
   <!-- 故宫 -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="故宫">
     <div class="day-header">
       <div class="dh-icon">🏛️</div>
       <div>
@@ -1068,7 +1085,7 @@
   </div>
 
   <!-- 天安门 -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="天安门">
     <div class="day-header" style="background:linear-gradient(135deg,#8b1a1a,#c0392b);">
       <div class="dh-icon">🎡</div>
       <div>
@@ -1112,7 +1129,7 @@
   </div>
 
   <!-- 恭王府 -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="恭王府">
     <div class="day-header" style="background:linear-gradient(135deg,#6a4a2a,#9a7a5a);">
       <div class="dh-icon">🏯</div>
       <div>
@@ -1201,12 +1218,11 @@
   </div>
 
   <!-- 颐和园 -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="颐和园">
     <div class="day-header" style="background:linear-gradient(135deg,#2d5a3a,#4a8a5a);">
       <div class="dh-icon">🏞️</div>
       <div>
         <div class="dh-title">颐和园</div>
-        <div class="dh-sub">皇家园林之首 · 中国古典园林集大成者</div>
       </div>
     </div>
     <div class="day-body">
@@ -1223,12 +1239,11 @@
   </div>
 
   <!-- 天坛 -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="天坛">
     <div class="day-header" style="background:linear-gradient(135deg,#2a4a6a,#4a7a9a);">
       <div class="dh-icon">🌿</div>
       <div>
         <div class="dh-title">天坛公园</div>
-        <div class="dh-sub">世界遗产 · 祭天圣地</div>
       </div>
     </div>
     <div class="day-body">
@@ -1247,12 +1262,11 @@
   </div>
 
   <!-- 雍和宫 -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="雍和宫">
     <div class="day-header" style="background:linear-gradient(135deg,#5a2a2a,#8a4a4a);">
       <div class="dh-icon">🛕</div>
       <div>
         <div class="dh-title">雍和宫</div>
-        <div class="dh-sub">京城香火最旺 · 原雍正府邸</div>
       </div>
     </div>
     <div class="day-body">
@@ -1264,12 +1278,11 @@
   </div>
 
   <!-- 慕田峪长城 -->
-  <div class="day-section fade-in">
+  <div class="day-section fade-in" id="慕田峪长城">
     <div class="day-header" style="background:linear-gradient(135deg,#8b4513,#6a4a2a);">
       <div class="dh-icon">🧱</div>
       <div>
         <div class="dh-title">慕田峪长城</div>
-        <div class="dh-sub">人少景美 · 推荐选择</div>
       </div>
     </div>
     <div class="day-body">
@@ -1661,6 +1674,8 @@
   <p style="margin-top:14px;opacity:0.7;">北京旅行攻略 · 皇城根下的日与夜</p>
 </footer>
 
+<button id="backTop" style="position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;border:none;background:rgba(192,57,43,0.85);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.15);z-index:999;display:flex;align-items:center;justify-content:center;">↑</button>
+
 <script>
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1678,6 +1693,9 @@ document.querySelectorAll('.nav a').forEach(link => {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+});
+document.getElementById('backTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
 
